@@ -2,7 +2,6 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.linear_model import LinearRegression
-from tensorflow_estimator.python.estimator.canned.linear import LinearRegressor
 
 ROW_LIMIT = 300
 
@@ -303,6 +302,8 @@ def build_model(algorithm):
         model = linear_model
 
     elif algorithm == 'Linear Regression (Keras)':
+        from tensorflow_estimator.python.estimator.canned.linear import LinearRegressor
+
         model = LinearRegressor()
         model.fit(X_train, y_train)
     else:
