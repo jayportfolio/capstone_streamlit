@@ -1,8 +1,3 @@
-import tensorflow as tf
-
-from tensorflow import keras
-from tensorflow.keras import layers
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
@@ -217,6 +212,11 @@ def build_model(algorithm):
         model.fit(X_train, y_train)
     elif algorithm == 'Deep Neural Network':
 
+        import tensorflow as tf
+
+        from tensorflow import keras
+        from tensorflow.keras import layers
+
         print(tf.__version__)
 
         def build_and_compile_model(norm):
@@ -261,6 +261,10 @@ def build_model(algorithm):
         model = dnn_model
 
     elif algorithm == 'Linear Regression (Keras)':
+        import tensorflow as tf
+
+        from tensorflow import keras
+        from tensorflow.keras import layers
 
         print(tf.__version__)
 
