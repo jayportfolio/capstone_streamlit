@@ -2,116 +2,63 @@ import random
 
 import streamlit as st
 import pickle
-import pandas as pd
-from functions import get_combined_dataset
+from functions import this_test_data, this_df, build_model
+
+import numpy as np
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
-from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
-from sklearn.metrics import confusion_matrix
-from sklearn.model_selection import train_test_split
-
-ROW_LIMIT = 300
-LABEL = 'Price'
-
-dtc = None
+model = None
 
 df, X_test, y_test = None, None, None
 rand_index = -1
 
-
-def this_test_data():
-    import numpy as np
-
-    try:
-        #X_test = np.loadtxt("X_test.csv", delimiter=",", dtype=str)
-        X_test = np.loadtxt("X_test.csv", delimiter=",")
-        y_test = np.loadtxt("y_test.csv", delimiter=",")
-    except:
-
-        # global X_test, y_test
-        # if X_test is not None and y_test is not None:
-        #     return X_test, y_test
-
-        df = this_df()
-        features = df[df.columns[:-1]].values
-        labels = df[LABEL].values
-        X_train, X_test, y_train, y_test = train_test_split(features, labels, train_size=0.7, random_state=1)
-
-        np.savetxt("X_test.csv", X_test[:20], delimiter=",")
-        np.savetxt("y_test.csv", y_test[:20], delimiter=",")
-
-    return X_test, y_test
-
-
-def this_df():
-    global df
-
-    if df is not None:
-        return df
-
-    df = get_combined_dataset('inner2', True, row_limit=ROW_LIMIT)
-    df = df[['location.latitude', 'location.longitude', 'Price']]
-    df['Price'] = pd.to_numeric(df['Price'], 'coerce').dropna().astype(int)
-    # for each in ['bedrooms', 'location.latitude', 'location.longitude']:
-    for each in ['location.latitude', 'location.longitude']:
-        df[each] = pd.to_numeric(df[each], 'coerce').dropna().astype(float)
-    return df
-
-
-def build_model():
-    # global df, dtc
-    global X_test, y_test, dtc
-
-    df = this_df()
-    features = df[df.columns[:-1]].values
-    labels = df[LABEL].values
-    X_train, X_test, y_train, y_test = train_test_split(features, labels, train_size=0.7, random_state=1)
-
-    dtc = DecisionTreeRegressor()
-    # dtc = HistGradientBoostingClassifier()
-    dtc.fit(X_train, y_train)
-
-    return dtc
-
-
-try:
-    dtc = pickle.load(open('new_model2.pkl', 'rb'))
-    # raise ValueError
-except:
-    dtc = build_model()
-    with open('new_model2.pkl', 'wb') as f:
-        pickle.dump(dtc, f)
+ALGORITHM = 'Decision Tree'
 
 
 def main():
     global X_test, y_test, rand_index
 
     st.markdown(
-        "<h1 style='text-align: center; color: White;background-color:#e84343'>Graduate Admission Predictor</h1>",
+        "<h1 style='text-align: center; color: White;background-color:#e84343'>London Property Prices Predictor</h1>",
         unsafe_allow_html=True)
     st.markdown(
-        "<h3 style='text-align: center; color: Black;'>Drop in The required Inputs and we will do  the rest.</h3>",
+        "<h3 style='text-align: center; color: Black;'>Insert yeur property parameters here, or choose a random pre-existing property.</h3>",
         unsafe_allow_html=True)
-    st.markdown("<h4 style='text-align: center; color: Black;'>Submission for The Python Week</h4>",
+    st.markdown("<h4 style='text-align: center; color: Black;'>Sub heading here</h4>",
                 unsafe_allow_html=True)
     st.sidebar.header("What is this Project about?")
     st.sidebar.text(
-        "It a Web app that would help the user in determining whether they will get admission in a Graduate Program or not.")
-    st.sidebar.header("What tools where used to make this?")
+        "This is a Web app that would predict the price of a London property based on parameters.")
+    st.sidebar.header("Sidebar header?")
     st.sidebar.text(
-        "The Model was made using a dataset from Kaggle along with using Kaggle notebooks to train the model. We made use of Sci-Kit learn in order to make our Linear Regression Model.")
+        "Info goes here")
 
-    if st.checkbox('Use sample property'):
-        X_test, y_test = this_test_data()
+    alg = ['Decision Tree', 'Linear Regression', 'Deep Neural Network', 'Linear Regression (Keras)']
+    ALGORITHM = st.selectbox('Which algorithm?', alg)
+
+    try:
+        model = pickle.load(open(f'model_{ALGORITHM}.pkl', 'rb'))
+        # raise ValueError
+    except:
+        model = build_model(ALGORITHM)
+        with open(f'model_{ALGORITHM}.pkl', 'wb') as f:
+            pickle.dump(model, f)
+
+    manual_parameters = st.checkbox('Use manual parameters instead of sample')
+    if not manual_parameters:
+        X_test, y_test = this_test_data(test_data_only=True)
         test_size = len(y_test)
 
         if st.button('randomise!'):
             rand_index = random.randint(0, test_size)
+            inputs = [X_test[rand_index]]
 
-        inputs = [X_test[rand_index]]
-        st.text(f'sample variables ({rand_index}): {inputs[0]}')
-        st.text(f'Expected prediction: {y_test[rand_index]}')
+            random_instance = inputs
+            np.savetxt("random_instance.csv", random_instance, delimiter=",")
+            st.text(f'sample variables ({rand_index}): {inputs[0]}')
+            st.text(f'Expected prediction: {y_test[rand_index]}')
+
     else:
         lati = st.slider("Input Your latitude", 51.00, 52.00)
         longi = st.slider("Input your longitude", -0.5, 0.3)
@@ -123,13 +70,21 @@ def main():
         inputs = [[lati, longi]]
 
     if st.button('Predict'):
-        rand_index = random.randint(0, test_size)
 
-        inputs = [X_test[rand_index]]
-        st.text(f'sample variables ({rand_index}): {inputs[0]}')
-        st.text(f'Expected prediction: {y_test[rand_index]}')
+        if not manual_parameters:
+            try:
+                random_instance = np.loadtxt("random_instance.csv", delimiter=",")
+                inputs = [random_instance]
+            except:
+                rand_index = random.randint(0, test_size)
+                inputs = [X_test[rand_index]]
+                random_instance = inputs
+                np.savetxt("random_instance.csv", random_instance, delimiter=",")
 
-        result = dtc.predict(inputs)
+            st.text(f'sample variables ({rand_index}): {inputs[0]}')
+            st.text(f'Expected prediction: {y_test[rand_index]}')
+
+        result = model.predict(inputs)
         updated_res = result.flatten().astype(float)
         st.success('The predicted price for this property is {}'.format(updated_res))
 
@@ -138,13 +93,10 @@ def main():
         st.write(df)
 
     if st.checkbox('Show predictions and accuracy'):
-        df = this_df()
-        features = df[df.columns[:-1]].values
-        labels = df[LABEL].values
-        X_train, X_test, y_train, y_test = train_test_split(features, labels, train_size=0.7, random_state=1)
-        acc = dtc.score(X_test, y_test)
+        X_train, X_test, y_train, y_test = this_test_data()
+        acc = model.score(X_test, y_test)
         st.write('Accuracy: ', acc)
-        pred_dtc = dtc.predict(X_test)
+        pred_dtc = model.predict(X_test)
         # cm_dtc = confusion_matrix(y_test, pred_dtc)
         # st.write('Confusion matrix: ', cm_dtc)
         st.write('Predictions: ', pred_dtc)

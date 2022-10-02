@@ -1,4 +1,18 @@
+import tensorflow as tf
+
+from tensorflow import keras
+from tensorflow.keras import layers
+
 import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.linear_model import LinearRegression
+from tensorflow_estimator.python.estimator.canned.linear import LinearRegressor
+
+ROW_LIMIT = 300
+
+#df, X_test, y_test = None, None, None
+df = None
 
 FINAL_ROW_COUNT = 100
 
@@ -9,8 +23,9 @@ NA_THRESH = 100
 DROP_COLS = ['businessForSale', 'affordableBuyingScheme', 'status.published', 'address.deliveryPointId',
              'location.showMap', 'misInfo.branchId', 'misInfo.premiumDisplayStampId', 'misInfo.brandPlus']
 
-LABEL = 'variety'
-LABEL = 'Affordable'
+#LABEL = 'variety'
+#LABEL = 'Affordable'
+LABEL = 'Price'
 
 FINAL_BASIC_FILE = "../../data/final_split/listings_data_basic_XXX.csv"
 FINAL_ENRICHED_FILE = "../../data/final_split/listings_data_enriched_XXX.csv"
@@ -144,3 +159,149 @@ def get_df(file):
             break
 
     return merged_df
+
+
+def this_test_data(test_data_only = False):
+    import numpy as np
+
+    try:
+        if not test_data_only:
+            X_train = np.loadtxt("X_train.csv", delimiter=",")
+            y_train = np.loadtxt("y_train.csv", delimiter=",")
+
+        X_test = np.loadtxt("X_test.csv", delimiter=",")
+        y_test = np.loadtxt("y_test.csv", delimiter=",")
+    except:
+        df = this_df()
+        features = df[df.columns[:-1]].values
+        labels = df[LABEL].values
+        X_train, X_test, y_train, y_test = train_test_split(features, labels, train_size=0.7, random_state=1)
+
+        if not test_data_only:
+            np.savetxt("X_train.csv", X_train[:20], delimiter=",")
+            np.savetxt("y_train.csv", y_train[:20], delimiter=",")
+
+        np.savetxt("X_test.csv", X_test[:20], delimiter=",")
+        np.savetxt("y_test.csv", y_test[:20], delimiter=",")
+
+    if not test_data_only:
+        return X_train, X_test, y_train, y_test
+
+    return X_test, y_test
+
+
+def this_df():
+    global df
+
+    if df is not None:
+        return df
+
+    df = get_combined_dataset('inner2', True, row_limit=ROW_LIMIT)
+    df = df[['location.latitude', 'location.longitude', 'Price']]
+    df['Price'] = pd.to_numeric(df['Price'], 'coerce').dropna().astype(int)
+    # for each in ['bedrooms', 'location.latitude', 'location.longitude']:
+    for each in ['location.latitude', 'location.longitude']:
+        df[each] = pd.to_numeric(df[each], 'coerce').dropna().astype(float)
+    return df
+
+
+def build_model(algorithm):
+    X_train, X_test, y_train, y_test = this_test_data()
+
+    if algorithm == 'Decision Tree':
+        model = DecisionTreeRegressor()
+        # dtc = HistGradientBoostingClassifier()
+        model.fit(X_train, y_train)
+    elif algorithm == 'Linear Regression':
+        model = LinearRegression()
+        model.fit(X_train, y_train)
+    elif algorithm == 'Deep Neural Network':
+
+        print(tf.__version__)
+
+        def build_and_compile_model(norm):
+            model = keras.Sequential([
+                norm,
+                layers.Dense(64, activation='relu'),
+                layers.Dense(64, activation='relu'),
+                layers.Dense(1)
+            ])
+
+            model.compile(loss='mean_absolute_error',
+                          optimizer=tf.keras.optimizers.Adam(0.001))
+            return model
+
+        normalizer = tf.keras.layers.Normalization(axis=-1)
+
+        dnn_model = build_and_compile_model(normalizer)
+        #print(dnn_model.summary())
+
+        #% % time
+        history = dnn_model.fit(
+            X_train, #train_features,
+            y_train, #train_labels,
+            validation_split=0.2,
+            verbose=0, epochs=100)
+
+        def plot_loss(history):
+            import matplotlib.pyplot as plt
+            plt.plot(history.history['loss'], label='loss')
+            plt.plot(history.history['val_loss'], label='val_loss')
+            plt.ylim([0, 10])
+            plt.xlabel('Epoch')
+            plt.ylabel('Error [MPG]')
+            plt.legend()
+            plt.grid(True)
+
+        plot_loss(history)
+
+        #test_results['dnn_model'] = dnn_model.evaluate(test_features, test_labels, verbose=0)
+        print(dnn_model.evaluate(X_train, y_train, verbose=0))
+
+        model = dnn_model
+
+    elif algorithm == 'Linear Regression (Keras)':
+
+        print(tf.__version__)
+
+        normalizer = tf.keras.layers.Normalization(axis=-1)
+        linear_model = tf.keras.Sequential([
+            normalizer,
+            layers.Dense(units=1)
+        ])
+
+        linear_model.compile(
+            optimizer=tf.keras.optimizers.Adam(learning_rate=0.1),
+            loss='mean_absolute_error')
+
+        #%%time
+        history = linear_model.fit(
+            X_train, #train_features,
+            y_train, #train_labels,
+            epochs=100,
+            # Suppress logging.
+            verbose=0,
+            # Calculate validation results on 20% of the training data.
+            validation_split=0.2)
+
+        def plot_loss(history):
+            import matplotlib.pyplot as plt
+            plt.plot(history.history['loss'], label='loss')
+            plt.plot(history.history['val_loss'], label='val_loss')
+            plt.ylim([0, 10])
+            plt.xlabel('Epoch')
+            plt.ylabel('Error [MPG]')
+            plt.legend()
+            plt.grid(True)
+
+        plot_loss(history)
+
+        model = linear_model
+
+    elif algorithm == 'Linear Regression (Keras)':
+        model = LinearRegressor()
+        model.fit(X_train, y_train)
+    else:
+        raise ValueError(algorithm)
+
+    return model

@@ -1,2 +1,8 @@
 __pycache__/
 .idea/
+/data/final_split/data.csv
+/guide/dnn_model/
+/app.py
+/iris.csv
+/main.py
+/streamlitty_1.py
