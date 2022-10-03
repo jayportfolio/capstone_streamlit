@@ -8,8 +8,6 @@ import numpy as np
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
-model = None
-
 df, X_test, y_test = None, None, None
 rand_index = -1
 
@@ -23,25 +21,50 @@ def main():
         "<h1 style='text-align: center; color: White;background-color:#e84343'>London Property Prices Predictor</h1>",
         unsafe_allow_html=True)
     st.markdown(
-        "<h3 style='text-align: center; color: Black;'>Insert yeur property parameters here, or choose a random pre-existing property.</h3>",
+        "<h3 style='text-align: center; color: Black;'>Insert your property parameters here, or choose a random pre-existing property.</h3>",
         unsafe_allow_html=True)
     st.markdown("<h4 style='text-align: center; color: Black;'>Sub heading here</h4>",
                 unsafe_allow_html=True)
-    st.sidebar.header("What is this Project about?")
-    st.sidebar.text(
-        "This is a Web app that would predict the price of a London property based on parameters.")
-    st.sidebar.header("Sidebar header?")
-    st.sidebar.text(
-        "Info goes here")
 
-    alg = ['Decision Tree', 'Linear Regression', 'Deep Neural Network', 'Linear Regression (Keras)']
+    st.sidebar.header("What is this Project about?")
+    st.sidebar.markdown(
+        "This is a Web app that would predict the price of a London property based on parameters.")
+    st.sidebar.header("Sidebar Options")
+    include_nulls = st.sidebar.checkbox('include rows with any nulls ')
+    if st.sidebar.button('Purge everything'):
+        st.sidebar.error("I haven't added this functionality yet")
+        # importing the os Library
+        import os
+
+        for deletable_file in [
+            'X_test.csv', 'X_test_no_nulls.csv', 'X_train.csv', 'X_train_no_nulls.csv',
+            'y_test.csv', 'y_test_no_nulls.csv', 'y_train.csv', 'y_train_no_nulls.csv',
+            'model_Decision Tree.pkl',
+            'model_Deep Neural Network.pkl',
+            'model_HistGradientBoostingRegressor.pkl',
+            'model_Linear Regression.pkl',
+        ]:
+            # checking if file exist or not
+            if (os.path.isfile(deletable_file)):
+
+                # os.remove() function to remove the file
+                os.remove(deletable_file)
+
+                # Printing the confirmation message of deletion
+                print("File Deleted successfully:", deletable_file)
+            else:
+                print("File does not exist:", deletable_file)
+            # Showing the message instead of throwig an error
+
+    alg = ['Decision Tree', 'Linear Regression', 'Deep Neural Network', 'Linear Regression (Keras)',
+           'HistGradientBoostingRegressor']
     ALGORITHM = st.selectbox('Which algorithm?', alg)
 
     try:
         model = pickle.load(open(f'model_{ALGORITHM}.pkl', 'rb'))
         # raise ValueError
     except:
-        model = build_model(ALGORITHM)
+        model = build_model(ALGORITHM, drop_nulls=~include_nulls)
         with open(f'model_{ALGORITHM}.pkl', 'wb') as f:
             pickle.dump(model, f)
 
@@ -51,7 +74,7 @@ def main():
         test_size = len(y_test)
 
         if st.button('randomise!'):
-            rand_index = random.randint(0, test_size)
+            rand_index = random.randint(0, test_size - 1)
             inputs = [X_test[rand_index]]
 
             random_instance = inputs
@@ -59,30 +82,45 @@ def main():
             st.text(f'sample variables ({rand_index}): {inputs[0]}')
             st.text(f'Expected prediction: {y_test[rand_index]}')
 
+            expected = y_test[rand_index]
+            np.savetxt("random_instance.csv", random_instance, delimiter=",")
+            random_instance_plus = [rand_index, expected]
+            random_instance_plus.extend(random_instance[0])
+            print("random_instance_plus:", random_instance_plus)
+            np.savetxt("random_instance_plus.csv", [random_instance_plus], delimiter=",")
+
     else:
         lati = st.slider("Input Your latitude", 51.00, 52.00)
         longi = st.slider("Input your longitude", -0.5, 0.3)
-        # toefl = st.slider("Input your TOEFL Score", 0, 120)
-        # research = st.slider("Do You have Research Experience (0 = NO, 1 = YES)", 0, 1)
-        # uni_rating = st.slider("Rating of the University you wish to get in on a Scale 1-5", 1, 5)
+        beds = st.slider("Input number of bedrooms", 0, 6)
+        baths = st.slider("Input number of bathrooms", 0, 6)
 
-        # inputs = [[lati, longi, toefl, research, uni_rating]]
-        inputs = [[lati, longi]]
+        inputs = [[lati, longi, beds, baths]]
 
     if st.button('Predict'):
 
         if not manual_parameters:
             try:
-                random_instance = np.loadtxt("random_instance.csv", delimiter=",")
-                inputs = [random_instance]
+                random_instance_plus = np.loadtxt("random_instance_plus.csv", delimiter=",")
+                rand_index = random_instance_plus[0]
+                expected = random_instance_plus[1]
+                inputs = [random_instance_plus[2:]]
             except:
-                rand_index = random.randint(0, test_size)
+                # raise ValueError()
+                rand_index = random.randint(0, test_size - 1)
                 inputs = [X_test[rand_index]]
                 random_instance = inputs
+                expected = y_test[rand_index]
                 np.savetxt("random_instance.csv", random_instance, delimiter=",")
+                random_instance_plus = [rand_index, expected]
+                random_instance_plus.extend(random_instance)
+                print("random_instance_plus:",random_instance_plus)
+                np.savetxt("random_instance_plus.csv", random_instance_plus, delimiter=",")
 
             st.text(f'sample variables ({rand_index}): {inputs[0]}')
-            st.text(f'Expected prediction: {y_test[rand_index]}')
+            st.text(f'Expected prediction: {expected}')
+
+        print("inputs:", inputs)
 
         result = model.predict(inputs)
         updated_res = result.flatten().astype(float)
@@ -91,6 +129,9 @@ def main():
     if st.checkbox('Show dataframe'):
         df = this_df()
         st.write(df)
+
+    if st.checkbox('Get multiple predictions'):
+        st.write(model.predict(X_test).flatten())
 
     if st.checkbox('Show predictions and accuracy'):
         X_train, X_test, y_train, y_test = this_test_data()

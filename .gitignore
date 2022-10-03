@@ -2,7 +2,7 @@ __pycache__/
 .idea/
 /data/final_split/data.csv
 /guide/dnn_model/
-/appX.py
 /iris.csv
-/main.py
 /streamlitty_1.py
+/testing_model_building.py
+/testing_as_notebook.ipynb
