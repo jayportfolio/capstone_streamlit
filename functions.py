@@ -21,14 +21,14 @@ floats = ['location.latitude', 'location.longitude', 'bedrooms', 'bathrooms', 'd
 # floats = ['location.latitude', 'location.longitude']
 # categories = ['borough']
 categories = ['tenure.tenureType',
-#              'analyticsProperty.preOwned',
-#              'analyticsProperty.propertySubType',
-#              'sharedOwnership.sharedOwnership',
-#              'analyticsProperty.priceQualifier',
+              #              'analyticsProperty.preOwned',
+              #              'analyticsProperty.propertySubType',
+              #              'sharedOwnership.sharedOwnership',
+              #              'analyticsProperty.priceQualifier',
               'analyticsProperty.soldSTC',
-              'borough',
-              'propertyType',
-#               'analyticsProperty.propertyType',
+              #'borough',
+              #'propertyType',
+              #               'analyticsProperty.propertyType',
               ]
 # categories = []
 FEATURES = floats.copy()
@@ -37,16 +37,18 @@ FEATURES.extend(categories)
 DROP_COLS = ['businessForSale', 'affordableBuyingScheme', 'status.published', 'address.deliveryPointId',
              'location.showMap', 'misInfo.branchId', 'misInfo.premiumDisplayStampId', 'misInfo.brandPlus']
 
-FINAL_BASIC_FILE = "../../data/final_split/listings_data_basic_XXX.csv"
-FINAL_ENRICHED_FILE = "../../data/final_split/listings_data_enriched_XXX.csv"
-FINAL_JSON_MODEL_FILE = "../../data/final_split/listings_data_jsonmodel_XXX.csv"
-FINAL_JSON_META_FILE = "../../data/final_split/listings_data_jsonmeta_XXX.csv"
+# FINAL_BASIC_FILE = "../../data/final_split/listings_data_basic_XXX.csv"
+# FINAL_ENRICHED_FILE = "../../data/final_split/listings_data_enriched_XXX.csv"
+# FINAL_JSON_MODEL_FILE = "../../data/final_split/listings_data_jsonmodel_XXX.csv"
+# FINAL_JSON_META_FILE = "../../data/final_split/listings_data_jsonmeta_XXX.csv"
 
-FINAL_BASIC_FILE = "data/final_split/listings_data_basic_XXX.csv"
-FINAL_ENRICHED_FILE = "data/final_split/listings_data_enriched_XXX.csv"
-FINAL_JSON_MODEL_FILE = "data/final_split/listings_data_jsonmodel_XXX.csv"
-FINAL_JSON_META_FILE = "data/final_split/listings_data_jsonmeta_XXX.csv"
-FINAL_RECENT_FILE = "data/final_split/data.csv"
+# csv_directory = "final_split"
+csv_directory = "quick_split"
+FINAL_BASIC_FILE = "data/%s/listings_data_basic_XXX.csv" % csv_directory
+FINAL_ENRICHED_FILE = "data/%s/listings_data_enriched_XXX.csv" % csv_directory
+FINAL_JSON_MODEL_FILE = "data/%s/listings_data_jsonmodel_XXX.csv" % csv_directory
+FINAL_JSON_META_FILE = "data/%s/listings_data_jsonmeta_XXX.csv" % csv_directory
+FINAL_RECENT_FILE = "data/%s/data.csv" % csv_directory
 
 
 def pre_tidy_dataset(property_dataset):
@@ -78,8 +80,8 @@ def pre_tidy_dataset(property_dataset):
 
     try:
         # property_dataset['borough_name'] = property_dataset["borough"].str.extract("\('(.+)',")
-        #property_dataset['propertyType'] = property_dataset["analyticsProperty.propertyType"].str.extract("(.+) /")
-        #property_dataset['propertyType'] = property_dataset["analyticsProperty.propertyType"].str.split("/")[0]
+        # property_dataset['propertyType'] = property_dataset["analyticsProperty.propertyType"].str.extract("(.+) /")
+        # property_dataset['propertyType'] = property_dataset["analyticsProperty.propertyType"].str.split("/")[0]
         property_dataset['propertyType'] = property_dataset['analyticsProperty.propertyType'].apply(simplify)
     except:
         pass
@@ -88,7 +90,6 @@ def pre_tidy_dataset(property_dataset):
         property_dataset['coarse_compass_direction'] = property_dataset["address.outcode"].str.extract("([a-zA-Z]+)")
     except:
         pass
-
 
     try:
         property_dataset['sq_ft'] = property_dataset["size"].str.extract("(\d*) sq. ft.")
@@ -196,11 +197,11 @@ def this_test_data(test_data_only=False, drop_nulls=True):
 
     try:
         if not test_data_only:
-            X_train = np.loadtxt(f"X_train{suffix}.csv", delimiter=",")
-            y_train = np.loadtxt(f"y_train{suffix}.csv", delimiter=",")
+            X_train = np.loadtxt(f"train_test/X_train{suffix}.csv", delimiter=",")
+            y_train = np.loadtxt(f"train_test/y_train{suffix}.csv", delimiter=",")
 
-        X_test = np.loadtxt(f"X_test{suffix}.csv", delimiter=",")
-        y_test = np.loadtxt(f"y_test{suffix}.csv", delimiter=",")
+        X_test = np.loadtxt(f"train_test/X_test{suffix}.csv", delimiter=",")
+        y_test = np.loadtxt(f"train_test/y_test{suffix}.csv", delimiter=",")
     except:
         df = this_df()
 
@@ -219,15 +220,15 @@ def this_test_data(test_data_only=False, drop_nulls=True):
         if not test_data_only:
             suffix = '_no_nulls' if drop_nulls else ''
             print('suffix:', suffix)
-            print('text:', f"X_train{suffix}.csv")
+            print('text:', f"train_test/X_train{suffix}.csv")
             print()
             print(X_train)
             print()
-            np.savetxt("X_train_no_nulls.csv", X_train, delimiter=",")
-            np.savetxt(f"y_train{suffix}.csv", y_train, delimiter=",")
+            np.savetxt("train_test/X_train_no_nulls.csv", X_train, delimiter=",")
+            np.savetxt(f"train_test/y_train{suffix}.csv", y_train, delimiter=",")
 
-        np.savetxt(f"X_test{suffix}.csv", X_test[:20], delimiter=",")
-        np.savetxt(f"y_test{suffix}.csv", y_test[:20], delimiter=",")
+        np.savetxt(f"train_test/X_test{suffix}.csv", X_test[:20], delimiter=",")
+        np.savetxt(f"train_test/y_test{suffix}.csv", y_test[:20], delimiter=",")
 
     if not test_data_only:
         return X_train, X_test, y_train, y_test

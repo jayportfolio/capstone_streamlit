@@ -38,12 +38,13 @@ def main():
         import os
 
         for deletable_file in [
-            'X_test.csv', 'X_test_no_nulls.csv', 'X_train.csv', 'X_train_no_nulls.csv',
-            'y_test.csv', 'y_test_no_nulls.csv', 'y_train.csv', 'y_train_no_nulls.csv',
-            'model_Decision Tree.pkl',
-            'model_Deep Neural Network.pkl',
-            'model_HistGradientBoostingRegressor.pkl',
-            'model_Linear Regression.pkl',
+            'train_test/X_test.csv', 'train_test/X_test_no_nulls.csv', 'train_test/_train.csv', 'train_test/X_train_no_nulls.csv',
+            'train_test/y_test.csv', 'train_test/y_test_no_nulls.csv', 'train_test/y_train.csv', 'train_test/y_train_no_nulls.csv',
+            'models/model_Decision Tree.pkl',
+            'models/model_Deep Neural Network.pkl',
+            'models/model_HistGradientBoostingRegressor.pkl',
+            'models/model_Linear Regression.pkl',
+            'models/model_Linear Regression (Keras).pkl',
         ]:
             # checking if file exist or not
             if (os.path.isfile(deletable_file)):
@@ -57,6 +58,12 @@ def main():
                 print("File does not exist:", deletable_file)
             # Showing the message instead of throwig an error
 
+
+
+    # if st.checkbox('Show dataframe'):
+    #     df = this_df()
+    #     st.write(df)
+
     alg = ['Decision Tree', 'Linear Regression', 'Deep Neural Network', 'Linear Regression (Keras)',
            'HistGradientBoostingRegressor']
     ALGORITHM = st.selectbox('Which algorithm?', alg)
@@ -66,7 +73,7 @@ def main():
         # raise ValueError
     except:
         model = build_model(ALGORITHM, drop_nulls=~include_nulls)
-        with open(f'model_{ALGORITHM}.pkl', 'wb') as f:
+        with open(f'models/model_{ALGORITHM}.pkl', 'wb') as f:
             pickle.dump(model, f)
 
     manual_parameters = st.checkbox('Use manual parameters instead of sample')

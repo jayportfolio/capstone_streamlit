@@ -1,8 +1,11 @@
 __pycache__/
 .idea/
-/data/final_split/data.csv
 /guide/dnn_model/
 /iris.csv
 /streamlitty_1.py
 /testing_model_building.py
 /testing_as_notebook.ipynb
+#/data/quick_split/
+/data/final_split/data.csv
+/models/
+/train_test/
