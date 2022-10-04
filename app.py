@@ -2,7 +2,8 @@ import random
 
 import streamlit as st
 import pickle
-from functions import this_test_data, this_df, build_model
+from functions import this_test_data, this_df
+from functions_models import build_model
 
 import numpy as np
 
