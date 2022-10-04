@@ -56,17 +56,17 @@ def build_model(algorithm, drop_nulls=False):
             validation_split=0.2,
             verbose=0, epochs=100)
 
-        def plot_loss(history):
-            import matplotlib.pyplot as plt
-            plt.plot(history.history['loss'], label='loss')
-            plt.plot(history.history['val_loss'], label='val_loss')
-            plt.ylim([0, 10])
-            plt.xlabel('Epoch')
-            plt.ylabel('Error [MPG]')
-            plt.legend()
-            plt.grid(True)
-
-        plot_loss(history)
+        # def plot_loss(history):
+        #     import matplotlib.pyplot as plt
+        #     plt.plot(history.history['loss'], label='loss')
+        #     plt.plot(history.history['val_loss'], label='val_loss')
+        #     plt.ylim([0, 10])
+        #     plt.xlabel('Epoch')
+        #     plt.ylabel('Error [MPG]')
+        #     plt.legend()
+        #     plt.grid(True)
+        #
+        # plot_loss(history)
 
         # test_results['dnn_model'] = dnn_model.evaluate(test_features, test_labels, verbose=0)
         print(dnn_model.evaluate(X_train, y_train, verbose=0))
@@ -101,17 +101,17 @@ def build_model(algorithm, drop_nulls=False):
             # Calculate validation results on 20% of the training data.
             validation_split=0.2)
 
-        def plot_loss(history):
-            import matplotlib.pyplot as plt
-            plt.plot(history.history['loss'], label='loss')
-            plt.plot(history.history['val_loss'], label='val_loss')
-            plt.ylim([0, 10])
-            plt.xlabel('Epoch')
-            plt.ylabel('Error [MPG]')
-            plt.legend()
-            plt.grid(True)
-
-        plot_loss(history)
+        # def plot_loss(history):
+        #     import matplotlib.pyplot as plt
+        #     plt.plot(history.history['loss'], label='loss')
+        #     plt.plot(history.history['val_loss'], label='val_loss')
+        #     plt.ylim([0, 10])
+        #     plt.xlabel('Epoch')
+        #     plt.ylabel('Error [MPG]')
+        #     plt.legend()
+        #     plt.grid(True)
+        #
+        # plot_loss(history)
 
         model = linear_model
 
