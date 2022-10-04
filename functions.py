@@ -1,15 +1,18 @@
+import json
+import math
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import numpy as np
 
-ROW_LIMIT = 300
+ROW_LIMIT = 3000
+# ROW_LIMIT = 3000
 
 # df, X_test, y_test = None, None, None
 df = None
 
 FINAL_ROW_COUNT = 100
 
-ROW_LIMIT = 3000
 AFFORDABLE_PRICE = 400000
 NA_THRESH = 100
 
@@ -17,18 +20,26 @@ NA_THRESH = 100
 # LABEL = 'Affordable'
 LABEL = 'Price'
 # LABEL = 'Price'
-floats = ['location.latitude', 'location.longitude', 'bedrooms', 'bathrooms', 'distance_to_any_train']
+floats = ['location.latitude', 'location.longitude', 'bedrooms', 'bathrooms',
+          #'distance_to_any_train',
+          #'sharePercentage',
+          #'sharedOwnership.ownershipPercentage',
+          'nearestStation','nearestTram','nearestUnderground','nearestOverground',
+          ]
 # floats = ['location.latitude', 'location.longitude']
 # categories = ['borough']
+successful_categories_300rows_20221004 = ['tenure.tenureType', 'analyticsProperty.soldSTC',
+                                          'analyticsProperty.preOwned',
+                                          'sharedOwnership.sharedOwnership', 'analyticsProperty.propertyType']
 categories = ['tenure.tenureType',
-              #              'analyticsProperty.preOwned',
-              #              'analyticsProperty.propertySubType',
-              #              'sharedOwnership.sharedOwnership',
-              #              'analyticsProperty.priceQualifier',
               'analyticsProperty.soldSTC',
-              #'borough',
-              #'propertyType',
-              #               'analyticsProperty.propertyType',
+              'analyticsProperty.preOwned',
+              'sharedOwnership.sharedOwnership',
+              'analyticsProperty.propertyType',  # 'propertyType',
+               'analyticsProperty.propertySubType',
+               'borough',
+              # 'analyticsProperty.priceQualifier',
+
               ]
 # categories = []
 FEATURES = floats.copy()
@@ -97,12 +108,95 @@ def pre_tidy_dataset(property_dataset):
         pass
 
     property_dataset = property_dataset[(property_dataset['Price'] >= 100000) & (property_dataset['Price'] <= 600000)]
+
     # try:
     # except:
     #     pass
 
     # property_dataset['type'] = property_dataset[\"Description\"].str.extract(\"(house|apartment|flat|maisonette)\")
     # property_dataset['hold_type2'] = property_dataset[\"hold_type\"].str.replace(\"Tenure:\",\"\").str.strip()
+
+    def share_percentage(df_row):
+        #        print(df_row)
+        if df_row['sharedOwnership.sharedOwnership']:
+            if type(df_row['sharedOwnership.ownershipPercentage']) in [int, float] and not math.isnan(
+                    df_row['sharedOwnership.ownershipPercentage']):
+                return df_row['sharedOwnership.ownershipPercentage']
+            else:
+                return None
+        else:
+            return 100
+
+    try:
+        property_dataset['sharePercentage'] = property_dataset.apply(share_percentage, axis=1)
+    except:
+        pass
+
+    def stations(station_list_string, requested_type):
+        #print('stations')
+        # pass
+        # station_list = json.loads(station_list_string)
+        import ast
+        station_list = ast.literal_eval(station_list_string)
+
+        # print('---')
+        # print(station_list)
+
+        # NATIONAL_TRAIN
+        # LIGHT_RAILWAY
+        # TRAM
+        for station in station_list:
+
+            if station['types'] not in [
+                ['NATIONAL_TRAIN'],
+                ['LONDON_UNDERGROUND'],
+                ['LIGHT_RAILWAY'],
+                ['LONDON_OVERGROUND'],
+                ['TRAM'],
+                ['CABLE_CAR'],
+                ['LONDON_UNDERGROUND', 'LIGHT_RAILWAY'],
+                ['LIGHT_RAILWAY', 'LONDON_OVERGROUND'],
+                ['LONDON_UNDERGROUND', 'LONDON_OVERGROUND'],
+                ['NATIONAL_TRAIN','LONDON_UNDERGROUND', 'LONDON_OVERGROUND'],
+                ['NATIONAL_TRAIN', 'LONDON_UNDERGROUND'],
+                ['NATIONAL_TRAIN', 'LIGHT_RAILWAY'],
+                ['NATIONAL_TRAIN', 'TRAM'],
+                ['NATIONAL_TRAIN', 'LONDON_OVERGROUND'],
+                ['NATIONAL_TRAIN', 'TRAM','LONDON_OVERGROUND'],
+                ['NATIONAL_TRAIN','LONDON_UNDERGROUND', 'LIGHT_RAILWAY'],
+                ['NATIONAL_TRAIN','LONDON_UNDERGROUND', 'TRAM'],
+                ['NATIONAL_TRAIN', 'LONDON_UNDERGROUND', 'LIGHT_RAILWAY', 'LONDON_OVERGROUND'],
+            ]:
+                print(station['types'], ":", station_list)
+
+            if requested_type == 'any':
+                # print(station)
+                return station['distance']
+            elif requested_type in station['types']:
+                return station['distance']
+            elif requested_type == "overground" and ('NATIONAL_TRAIN' in station['types'] or 'LONDON_OVERGROUND' in station['types'] or 'LIGHT_RAILWAY' in station['types']):
+                return station['distance']
+            elif requested_type == "underground combined" and 'LONDON_UNDERGROUND' in station['types'] and len(station['types']) > 1:
+                return station['distance']
+            else:
+                pass
+
+        return 20
+
+    try:
+        #        property_dataset['sharePercentage'] = property_dataset.apply(share_percentage, axis=1)
+        # property_dataset['nearestUnderground'] = property_dataset['nearestStations'].apply(stations, args='underground')
+        property_dataset['nearestStation'] = property_dataset['nearestStations'].apply(stations, args=['any'])
+        property_dataset['nearestTram'] = property_dataset['nearestStations'].apply(stations, args=['TRAM'])
+        property_dataset['nearestUnderground'] = property_dataset['nearestStations'].apply(stations,
+                                                                                           args=['LONDON_UNDERGROUND'])
+        property_dataset['nearestOverground'] = property_dataset['nearestStations'].apply(stations,
+                                                                                          args=['overground'])
+
+    # sample_df['new_id'] = sample_df[id_label].apply(convert_id_to_hash2, args=[dictionary])
+
+    except:
+        pass
 
     return property_dataset
 

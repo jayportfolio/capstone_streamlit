@@ -134,6 +134,7 @@ def main():
         updated_res = result.flatten().astype(float)
         st.success('The predicted price for this property is {}'.format(updated_res))
 
+    df = this_df()
     if st.checkbox('Show dataframe'):
         df = this_df()
         st.write(df)

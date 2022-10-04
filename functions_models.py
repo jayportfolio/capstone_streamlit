@@ -32,8 +32,8 @@ def build_model(algorithm, drop_nulls=False):
         def build_and_compile_model(norm):
             model = keras.Sequential([
                 norm,
-                layers.Dense(64, activation='relu'),
-                layers.Dense(64, activation='relu'),
+                layers.Dense(132, activation='relu'),
+                layers.Dense(132, activation='relu'),
                 #layers.Dense(400, activation='relu'),
                 #layers.Dense(400, activation='relu'),
                 #layers.Dense(400, activation='relu'),
