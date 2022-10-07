@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 
 ROW_LIMIT = 3000
-# ROW_LIMIT = 3000
+ROW_LIMIT = 0
 
 # df, X_test, y_test = None, None, None
 df = None
@@ -38,7 +38,7 @@ categories = ['tenure.tenureType',
               'analyticsProperty.propertyType',  # 'propertyType',
                'analyticsProperty.propertySubType',
                'borough',
-              # 'analyticsProperty.priceQualifier',
+              'analyticsProperty.priceQualifier',
 
               ]
 # categories = []
@@ -48,10 +48,6 @@ FEATURES.extend(categories)
 DROP_COLS = ['businessForSale', 'affordableBuyingScheme', 'status.published', 'address.deliveryPointId',
              'location.showMap', 'misInfo.branchId', 'misInfo.premiumDisplayStampId', 'misInfo.brandPlus']
 
-# FINAL_BASIC_FILE = "../../data/final_split/listings_data_basic_XXX.csv"
-# FINAL_ENRICHED_FILE = "../../data/final_split/listings_data_enriched_XXX.csv"
-# FINAL_JSON_MODEL_FILE = "../../data/final_split/listings_data_jsonmodel_XXX.csv"
-# FINAL_JSON_META_FILE = "../../data/final_split/listings_data_jsonmeta_XXX.csv"
 
 # csv_directory = "final_split"
 csv_directory = "quick_split"
@@ -59,10 +55,14 @@ FINAL_BASIC_FILE = "data/%s/listings_data_basic_XXX.csv" % csv_directory
 FINAL_ENRICHED_FILE = "data/%s/listings_data_enriched_XXX.csv" % csv_directory
 FINAL_JSON_MODEL_FILE = "data/%s/listings_data_jsonmodel_XXX.csv" % csv_directory
 FINAL_JSON_META_FILE = "data/%s/listings_data_jsonmeta_XXX.csv" % csv_directory
-FINAL_RECENT_FILE = "data/%s/data.csv" % csv_directory
+FINAL_RECENT_FILE = "data/source/df_listings.csv"
+FINAL_RECENT_FILE_SAMPLE = "data/sample/df_listings_sample.csv"
 
 
 def pre_tidy_dataset(property_dataset):
+
+    #     df = df[~df.index.duplicated(keep='last')]
+
     property_dataset['Price'] = pd.to_numeric(property_dataset['Price'], 'coerce').dropna().astype(int)
 
     # do any necessary renames, and some preliminary feature engineering
@@ -181,7 +181,8 @@ def pre_tidy_dataset(property_dataset):
             else:
                 pass
 
-        return 20
+        #return 99
+        return None
 
     try:
         #        property_dataset['sharePercentage'] = property_dataset.apply(share_percentage, axis=1)
@@ -234,8 +235,8 @@ def get_combined_dataset(HOW, early_duplicates, row_limit=None, verbose=False):
     elif HOW == 'inner2':  # https://www.statology.org/pandas-merge-on-index/
         df_original = df_list \
             .join(df_json, how='inner', lsuffix='', rsuffix='_model') \
-            .join(df_meta, how='inner', lsuffix='', rsuffix='_meta') \
-            .join(df_indiv, how='inner', lsuffix='', rsuffix='_listing')
+            .join(df_meta, how='inner', lsuffix='', rsuffix='_meta') #\
+            #.join(df_indiv, how='inner', lsuffix='', rsuffix='_listing')
         # .join(df_age, how=HOW, lsuffix='', rsuffix='_age')
     elif HOW == 'inner':  # https://www.statology.org/pandas-merge-on-index/
         df_original = pd.merge(
@@ -251,7 +252,8 @@ def get_combined_dataset(HOW, early_duplicates, row_limit=None, verbose=False):
     del df_json
     del df_meta
 
-    df_original.iloc[:20].to_csv('full_combined_sample.csv')
+    df_original.iloc[:20].to_csv('data/source/df_source_full_sample.csv')
+    df_original.to_csv('data/source/df_source_full.csv')
 
     if row_limit and row_limit > 0:
         # return df_original[:row_limit]
@@ -364,4 +366,7 @@ def this_df(row_limit=ROW_LIMIT):
 
     for each in floats:
         df[each] = pd.to_numeric(df[each], 'coerce').dropna().astype(float)
+
+    df.to_csv(FINAL_RECENT_FILE, index=True)
+    df.sample(20).to_csv(FINAL_RECENT_FILE_SAMPLE)
     return df

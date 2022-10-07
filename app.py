@@ -2,6 +2,8 @@ import random
 
 import streamlit as st
 import pickle
+
+import functions
 from functions import this_test_data, this_df
 from functions_models import build_model
 
@@ -45,6 +47,10 @@ def main():
             'models/model_HistGradientBoostingRegressor.pkl',
             'models/model_Linear Regression.pkl',
             'models/model_Linear Regression (Keras).pkl',
+            'random_instance.csv',
+            'random_instance_plus.csv',
+            functions.FINAL_RECENT_FILE,
+            functions.FINAL_RECENT_FILE_SAMPLE,
         ]:
             # checking if file exist or not
             if (os.path.isfile(deletable_file)):

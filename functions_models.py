@@ -69,7 +69,7 @@ def build_model(algorithm, drop_nulls=False):
         # plot_loss(history)
 
         # test_results['dnn_model'] = dnn_model.evaluate(test_features, test_labels, verbose=0)
-        print(dnn_model.evaluate(X_train, y_train, verbose=0))
+        print(dnn_model.evaluate(X_test, y_test, verbose=0))
 
         model = dnn_model
 

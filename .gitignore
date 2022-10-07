@@ -10,3 +10,9 @@ __pycache__/
 /models/m*
 /train_test/X*.*
 /train_test/y*.*
+/data/df_listings.csv
+/data/quick_split/data.csv
+/data/source/
+old/
+old/*
+offline/
