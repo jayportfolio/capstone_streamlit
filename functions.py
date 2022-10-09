@@ -39,6 +39,8 @@ categories = ['tenure.tenureType',
                'analyticsProperty.propertySubType',
                'borough',
               'analyticsProperty.priceQualifier',
+              'keyFeatures',
+              'sharedownership_in_description'
 
               ]
 # categories = []
@@ -198,6 +200,17 @@ def pre_tidy_dataset(property_dataset):
 
     except:
         pass
+
+    def so_i_d(text_description_row):
+        if 'share' in text_description_row.lower() and  '%' in text_description_row:
+            return True
+
+        return 'shared ownership' in text_description_row.lower()
+
+    #try:
+    property_dataset['sharedownership_in_description'] = property_dataset['text.description'].apply(so_i_d)
+    #except:
+    #    pass
 
     return property_dataset
 
