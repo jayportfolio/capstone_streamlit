@@ -1,13 +1,13 @@
 {
     "linear regression - basic (v01)": {
-        "Score": 0.29666981355195765,
-        "R square Accuracy: ": 0.29666981355195765,
-        "Mean Absolute Error Accuracy: ": 72921.55809491842,
-        "Mean Squared Error Accuracy: ": 8297985798.70861,
-        "Root Mean Squared Error: ": 91093.28075499646,
-        "Training Time": 0.05508241653442383,
+        "Score": 0.2966605892500712,
+        "R square Accuracy: ": 0.2966605892500712,
+        "Mean Absolute Error Accuracy: ": 72918.44502808477,
+        "Mean Squared Error Accuracy: ": 8298094628.28472,
+        "Root Mean Squared Error: ": 91093.87810541783,
+        "Training Time": 0.08855524063110351,
         "random_state": 101,
-        "date": "2022-10-11 21:06:41.029446"
+        "date": "2022-10-11 21:19:16.400505"
     },
     "linear regression - grid search (v01)": {
         "Score": 0.30250020553441537,
