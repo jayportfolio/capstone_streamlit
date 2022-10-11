@@ -15,4 +15,7 @@ __pycache__/
 /data/source/
 old/
 old/*
+*_old/
+*_old/*
 offline/
+.ipynb_checkpoints/
