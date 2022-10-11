@@ -320,7 +320,7 @@ def this_test_data(test_data_only=False, drop_nulls=True):
         # xxxfeatures = df[df.columns[:-1]].values
         # features = df[FEATURES].values
         # labels = df[LABEL].values
-        # X_train, X_test, y_train, y_test = train_test_split(features, labels, train_size=0.7, random_state=1)
+        # X_train, X_test, y_train, y_test = train_test_split(features, labels, train_size=0.9, random_state=RANDOM_STATE)
         X_train, X_test, y_train, y_test = tt_split(df)
 
         print('test_data_only', test_data_only)
@@ -354,7 +354,7 @@ def tt_split(df):
     features = df[df.columns[1:]].values
     # features = df[FEATURES].values
     labels = df[LABEL].values
-    X_train, X_test, y_train, y_test = train_test_split(features, labels, train_size=0.7, random_state=1)
+    X_train, X_test, y_train, y_test = train_test_split(features, labels, train_size=0.9, random_state=RANDOM_STATE)
     return X_train, X_test, y_train, y_test
 
 

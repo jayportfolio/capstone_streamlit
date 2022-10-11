@@ -1,0 +1,153 @@
+{
+  "id": "123478178",
+  "status": {
+    "published": true,
+    "archived": false
+  },
+  "text": {
+    "description": "SSTC* At 646 sq ft, this exceptional bright and spacious one bedroom apartment is located on the first floor of Richardson Mews, an exclusive new development of 1, 2 and 3 bedroom luxury apartments. <br /><br />Set back from the thoroughfare, the apartment offers a large private terrace measuring approximately 160 Sq Ft of external space with direct access from the reception room via large floor to ceiling glazed doors.<br /><br />Set behind a fully refurbished, red brick period facade, the property offers high specification throughout, including; Miele and Bosch appliances, under floor heating, composite stone work tops and engineered wood flooring.<br /><br />Located *11 minutes from the heart of leafy Highgate Village and *8 minutes from Highgate Underground, the property is excellently located transport and amenities along with the open spaces provided over and beyond Highgate Hill. <br /><br />**Incentive- Designer Furniture package included.<br /><br /><br />*Google Maps<br />** Subject to offer level.<br /><br />For a blend of historic London village atmosphere, desirability and an enviable list of the best of London's green spaces, all mixed with ease of access to everything the capital has to offer, <br /><br />Highgate is an unparallelled location.<br /><br />",
+    "propertyPhrase": "1 bedroom flat",
+    "disclaimer": "<b>Disclaimer</b> - Property reference 30617666. The information displayed about this property comprises a property advertisement. Rightmove.co.uk makes no warranty as to the accuracy or completeness of the advertisement or any linked or associated information, and Rightmove has no control over the content. This property advertisement does not constitute property particulars. The information is provided and maintained by <b>Dexters, New Homes (Mayfair)</b>.&nbsp;Please contact the selling agent or developer directly to obtain any information which may be available under the terms of The Energy Performance of Buildings (Certificates and Inspections) (England and Wales) Regulations 2007 or the Home Report if in relation to a residential property in Scotland.",
+    "auctionFeesDisclaimer": null,
+    "guidePriceDisclaimer": null,
+    "reservePriceDisclaimer": null,
+    "staticMapDisclaimerText": "Map data ©<a href=\"http://www.openstreetmap.org/copyright\" rel=\"nofollow\" target=\"_blank\" title=\"Open Street Map\">OpenStreetMap</a> contributors.",
+    "newHomesBrochureDisclaimer": "Please note that Rightmove will send the above details to Dexters only. By submitting this form, you confirm that you agree to our website <a href=\"/this-site/terms-of-use.html\">terms of use</a>, our <a href=\"/this-site/privacy-policy.html\">privacy policy</a> and understand how we store <a href=\"/this-site/cookies.html\">cookies</a> on your device.",
+    "shareText": "Check out this 1 bedroom flat for sale on Rightmove",
+    "shareDescription": "1 bedroom flat for sale in Archway Road, Richardson Mews, Highgate, N6 for £599,950. Marketed by Dexters, New Homes (Mayfair)",
+    "pageTitle": "1 bedroom flat for sale in Archway Road, Richardson Mews, Highgate, N6",
+    "shortDescription": "1 bedroom flat for sale"
+  },
+  "prices": {
+    "primaryPrice": "£599,950",
+    "secondaryPrice": null,
+    "displayPriceQualifier": "",
+    "pricePerSqFt": null,
+    "message": null,
+    "exchangeRate": null
+  },
+  "keyFeatures": [
+    "New Development",
+    "Help to Buy",
+    "Private Terrace",
+    "Integrated Appliances",
+    "10 Year Building Guarantee",
+    "150 Year Lease",
+    "Photos are indicative of the finished home"
+  ],
+  "images": [
+  ],
+  "floorplans": [
+    {
+      "url": "https://media.rightmove.co.uk/188k/187892/123478178/187892_30617666_FLP_00_0001.jpeg",
+      "caption": "Floorplan 1",
+      "type": "IMAGE",
+      "resizedFloorplanUrls": {
+        "size296x197": "https://media.rightmove.co.uk/dir/188k/187892/123478178/187892_30617666_FLP_00_0001_max_296x197.jpeg"
+      }
+    }
+  ],
+  "virtualTours": [],
+  "rooms": [],
+  "location": {
+    "latitude": 51.573741,
+    "longitude": -0.14148,
+    "circleRadiusOnMap": 0,
+    "zoomLevel": 15,
+    "pinType": "ACCURATE_POINT",
+    "showMap": true
+  },
+  "nearestAirports": [],
+  "nearestStations": [
+    {
+      "name": "Highgate Station",
+      "types": [
+        "LONDON_UNDERGROUND"
+      ],
+      "distance": 0.34712054261500774,
+      "unit": "miles"
+    },
+    {
+      "name": "Archway Station",
+      "types": [
+        "LONDON_UNDERGROUND"
+      ],
+      "distance": 0.6322089622644822,
+      "unit": "miles"
+    },
+    {
+      "name": "Upper Holloway Station",
+      "types": [
+        "LONDON_OVERGROUND"
+      ],
+      "distance": 0.8662906236496526,
+      "unit": "miles"
+    }
+  ],
+  "showSchoolInfo": true,
+  "countryGuide": null,
+  "channel": "RES_NEW",
+  "propertyUrls": {
+    "similarPropertiesUrl": "/new-homes-for-sale/N6-5BN.html?radius=0.5&minPrice=500000&maxPrice=700000&minBedrooms=1",
+    "nearbySoldPropertiesUrl": "/house-prices/n6-5bn.html"
+  },
+  "sizings": [],
+  "brochures": [
+    {
+      "url": "https://media.rightmove.co.uk/188k/187892/123478178/187892_30617666_DOC_00_0001.pdf",
+      "caption": "Brochure 1"
+    }
+  ],
+  "epcGraphs": [],
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "transactionType": "BUY",
+  "tags": [
+    "NEW_HOME"
+  ],
+  "misInfo": {
+    "branchId": 187892,
+    "offerAdvertStampTypeId": null,
+    "premiumDisplay": false,
+    "premiumDisplayStampId": null,
+    "brandPlus": true,
+    "featuredProperty": false
+  },
+  "listingHistory": {
+    "listingUpdateReason": "Reduced on 11/07/2022"
+  },
+  "feesApply": null,
+  "broadband": {
+    "disclaimer": "* This is the average speed from the provider with the fastest broadband package available on <a rel=\"sponsored\" href=\"https://www.comparethemarket.com\" target=\"_blank\">comparethemarket.com</a> at this postcode. The average speed displayed is based on the download speeds of at least 50% of customers at peak time (8pm to 10pm). Fibre/cable services at the postcode are subject to availability and may differ between properties within a postcode. Speeds can be affected by a range of technical and environmental factors. The speed at the property may be lower than that listed above. You can check the estimated speed and confirm availability to a property prior to purchasing on the broadband provider's website. Providers may increase charges. The information is provided and maintained by <a href=\"https://www.stickee.co.uk/\" target=\"_blank\">Stickee Technology Limited</a>.",
+    "broadbandCheckerUrl": "https://partnerships-broadband.comparethemarket.com/v1/broadband/rightmove/N65BN?apikey=b5d6bdd3849a566c520a13f5126b181c9ed9371c7e061e21ee22f4f4ae996119"
+  },
+  "lettings": null,
+  "tenure": {
+    "tenureType": "LEASEHOLD",
+    "yearsRemainingOnLease": null,
+    "message": null
+  },
+  "soldPropertyType": "FLAT",
+  "auctionProvider": null,
+  "propertySubType": "Flat",
+  "businessForSale": false,
+  "commercial": false,
+  "commercialUseClasses": [],
+  "affordableBuyingScheme": true,
+  "sharedOwnership": {
+    "sharedOwnership": false,
+    "ownershipPercentage": null,
+    "rentPrice": null,
+    "rentFrequency": "not specified"
+  },
+  "livingCosts": {
+    "councilTaxExempt": false,
+    "councilTaxIncluded": false,
+    "annualGroundRent": null,
+    "groundRentReviewPeriodInYears": null,
+    "groundRentPercentageIncrease": null,
+    "annualServiceCharge": null,
+    "councilTaxBand": null,
+    "domesticRates": null
+  }
+}

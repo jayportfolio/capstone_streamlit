@@ -198,14 +198,14 @@ def pre_tidy_dataset(property_dataset):
     return property_dataset
 
 
-def get_combined_dataset(HOW, early_duplicates, row_limit=None, verbose=False):
-    df_list = get_df(FINAL_BASIC_FILE)
+def get_combined_dataset(HOW, early_duplicates, row_limit=None, verbose=False, folder_prefix=''):
+    df_list = get_df(FINAL_BASIC_FILE, folder_prefix)
     # df_indiv = get_df(FINAL_ENRICHED_FILE, testing)
-    df_indiv = get_df(FINAL_ENRICHED_FILE)
-    df_meta = get_df(FINAL_JSON_META_FILE)
+    df_indiv = get_df(FINAL_ENRICHED_FILE, folder_prefix)
+    df_meta = get_df(FINAL_JSON_META_FILE, folder_prefix)
     # df_json1 = get_df(LISTING_JSON_MODEL_FILE, on_bad_lines='warn')  # EDIT 29-06-2022: There are bid listings and regular listings. I scrape them seporately and join them here.
     # df_json = get_df(LISTING_JSON_MODEL_FILE)
-    df_json = get_df(FINAL_JSON_MODEL_FILE)
+    df_json = get_df(FINAL_JSON_MODEL_FILE, folder_prefix)
 
     df_meta['id_copy'] = df_meta['id_copy'].astype(int)
     df_json['id'] = df_json['id'].astype(int)
@@ -248,8 +248,8 @@ def get_combined_dataset(HOW, early_duplicates, row_limit=None, verbose=False):
     del df_json
     del df_meta
 
-    df_original.iloc[:20].to_csv('data/source/df_source_full_sample.csv')
-    df_original.to_csv('data/source/df_source_full.csv')
+    df_original.iloc[:20].to_csv(folder_prefix + 'data/source/df_source_full_sample.csv')
+    df_original.to_csv(folder_prefix + 'data/source/df_source_full.csv')
 
     if row_limit and row_limit > 0:
         # return df_original[:row_limit]
@@ -257,12 +257,12 @@ def get_combined_dataset(HOW, early_duplicates, row_limit=None, verbose=False):
     return df_original
 
 
-def get_df(file):
+def get_df(file, folder_prefix=''):
     df_array = []
     for n in range(10):
         prefix = '00' if n <= 10 else '0'
 
-        filename = file.replace('XXX', prefix + str(n))
+        filename = folder_prefix + file.replace('XXX', prefix + str(n))
 
         from os.path import exists
         file_exists = exists(filename)
@@ -303,7 +303,7 @@ def this_test_data(test_data_only=False, drop_nulls=True):
         # xxxfeatures = df[df.columns[:-1]].values
         # features = df[FEATURES].values
         # labels = df[LABEL].values
-        # X_train, X_test, y_train, y_test = train_test_split(features, labels, train_size=0.7, random_state=1)
+        # X_train, X_test, y_train, y_test = train_test_split(features, labels, train_size=0.9, random_state=RANDOM_STATE)
         X_train, X_test, y_train, y_test = tt_split(df)
 
         print('test_data_only', test_data_only)
@@ -337,7 +337,7 @@ def tt_split(df):
     features = df[df.columns[1:]].values
     # features = df[FEATURES].values
     labels = df[LABEL].values
-    X_train, X_test, y_train, y_test = train_test_split(features, labels, train_size=0.7, random_state=1)
+    X_train, X_test, y_train, y_test = train_test_split(features, labels, train_size=0.9, random_state=RANDOM_STATE)
     return X_train, X_test, y_train, y_test
 
 
