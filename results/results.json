@@ -5,9 +5,9 @@
         "Mean Absolute Error Accuracy: ": 72918.44502808477,
         "Mean Squared Error Accuracy: ": 8298094628.28472,
         "Root Mean Squared Error: ": 91093.87810541783,
-        "Training Time": 0.08855524063110351,
+        "Training Time": 0.05306229591369629,
         "random_state": 101,
-        "date": "2022-10-11 21:19:16.400505"
+        "date": "2022-10-11 21:22:17.266163"
     },
     "linear regression - grid search (v01)": {
         "Score": 0.30250020553441537,
@@ -33,9 +33,9 @@
         "Mean Absolute Error Accuracy: ": 55623.65893824485,
         "Mean Squared Error Accuracy: ": 5345846038.636742,
         "Root Mean Squared Error: ": 73115.2927822678,
-        "Training Time": 0.10950279235839844,
+        "Training Time": 0.0904770851135254,
         "random_state": 101,
-        "date": "2022-10-11 18:44:41.297619"
+        "date": "2022-10-11 21:22:27.645835"
     },
     "knn - scaled (v01)": {
         "Score": 0.5874395788689057,
@@ -43,8 +43,8 @@
         "Mean Absolute Error Accuracy: ": 52147.37048754063,
         "Mean Squared Error Accuracy: ": 4867444312.242618,
         "Root Mean Squared Error: ": 69767.07183365672,
-        "Training Time": 0.1111372947692871,
+        "Training Time": 0.10507874488830567,
         "random_state": 101,
-        "date": "2022-10-11 18:48:24.630263"
+        "date": "2022-10-11 21:22:35.293865"
     }
 }
