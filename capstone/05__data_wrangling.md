@@ -58,6 +58,10 @@ The data is joined into a single dataset using pandas.
 [Final Data](../data/final/df_listings.csv)
 
 
+## Exploratory Data Analysis
+
+[Exploratory Data Analysis](../process/C_insight/iteration01__001__basic_insights.ipynb)
+
 ## Cleaning and wrangling data collection
 
 The data collected was frequently unclean and inconsistent.
@@ -118,7 +122,7 @@ I have included a step in the data cleaning to identify and remove these instanc
 
 ## Summary of remedies for unclean data
 
-I have analysed the data to identify where it is incorrect, and either:
+I have analysed the data to identify where it is incorrect or missing, and either:
 * corrected the data
 * imputed a value for that data
 * where a suitable remedy could not be found, excluded that instance from the final version of the data

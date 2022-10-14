@@ -110,7 +110,21 @@ def get_df(file, folder_prefix=''):
 
 
 
-def pre_tidy_dataset(property_dataset, warnings=True):
+def tidy_dataset(df, version:int) -> pd.DataFrame:
+
+    if version >= 2:
+        df['sharedOwnership'] = (
+                (df['sharedOwnership.sharedOwnership'] == True) |
+                (df['analyticsProperty.priceQualifier'] == 'Shared ownership') |
+                (df['keyFeatures'].str.contains('shared ownership'))
+        )
+
+        df = df[df['sharedOwnership'] == False]
+
+    return df
+
+
+def add_supplements(property_dataset):
     property_dataset['Price'] = pd.to_numeric(property_dataset['Price'], 'coerce').dropna().astype(int)
 
     # do any necessary renames, and some preliminary feature engineering
@@ -215,8 +229,7 @@ def pre_tidy_dataset(property_dataset, warnings=True):
                 ['NATIONAL_TRAIN','LONDON_UNDERGROUND', 'TRAM'],
                 ['NATIONAL_TRAIN', 'LONDON_UNDERGROUND', 'LIGHT_RAILWAY', 'LONDON_OVERGROUND'],
             ]:
-                if warnings:
-                    print(f"WARNING: Station type not found: {station['types']}: {station}")
+                print(f"WARNING: Station type not found: {station['types']}: {station}")
 
             if requested_type == 'any':
                 # print(station)
