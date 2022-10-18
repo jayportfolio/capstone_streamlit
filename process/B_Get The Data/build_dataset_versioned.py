@@ -1,37 +1,27 @@
 from termcolor import colored
 
-from functions_20221018_B import set_csv_directory, get_combined_dataset
-from functions_20221018_B import add_supplements, tidy_dataset, feature_engineer
+from functions_20221018_C import set_csv_directory, get_combined_dataset, get_columns
+from functions_20221018_C import add_supplements, tidy_dataset, feature_engineer, preprocess
 
 import pandas as pd
-
-VERSION='03'
-
-filename = f'df_listings_v{VERSION}.csv'
-df_pathname_raw = f'../../data/source/{filename}'
-df_pathname_tidy = f'../../data/final/{filename}'
-
-LABEL = 'Price'
-
-booleans = []
-floats = ['bedrooms', 'bathrooms', 'nearestStation', 'latitude_deviation2', 'longitude_deviation2']
-categories = ['tenure.tenureType']
-
-columns = []
-columns.extend(booleans)
-columns.extend(floats)
-columns.extend(categories)
-
 
 cutdown_rows = 0
 
 
-def build_dataset_versioned(version:int, folder_prefix='../../'):
+def main():
+    build_dataset_versioned(5)
+    
 
-    columns = []
-    columns.extend(booleans)
-    columns.extend(floats)
-    columns.extend(categories)
+def build_dataset_versioned(version_number:int, folder_prefix='../../'):
+    VERSION = '0' + str(version_number)
+
+    filename = f'df_listings_v{VERSION}.csv'
+    df_pathname_raw = f'../../data/source/{filename}'
+    df_pathname_tidy = f'../../data/final/{filename}'
+
+    LABEL = 'Price'
+
+    columns, booleans, floats, categories = get_columns(version=version_number)
 
     print(colored(f"features", "blue"), "-> ", columns)
     columns.insert(0, LABEL)
@@ -45,12 +35,6 @@ def build_dataset_versioned(version:int, folder_prefix='../../'):
     df = get_combined_dataset(HOW='inner', early_duplicates=True, folder_prefix=folder_prefix)
     print(f'finished getting {retrieval_type} data!')
 
-    # retrieval_type = 'RAW'
-    # print(f'starting to save {retrieval_type} data...')
-    # df.to_csv(df_pathname_raw)
-    # print(f'finished saving {retrieval_type} data!')
-
-
     retrieval_type = 'RAW'
     print(f'adding supplements...')
     df = add_supplements(df)
@@ -58,8 +42,9 @@ def build_dataset_versioned(version:int, folder_prefix='../../'):
     df.to_csv(df_pathname_raw)
     print(f'finished saving {retrieval_type} data!')
 
-    df = tidy_dataset(df, version=int(VERSION))
-    df = feature_engineer(df, version=int(VERSION))
+    df = tidy_dataset(df, version=version_number)
+    df = feature_engineer(df, version=version_number)
+    df = preprocess(df, version=version_number)
 
     df = df[columns]
 
@@ -68,5 +53,8 @@ def build_dataset_versioned(version:int, folder_prefix='../../'):
     df.to_csv(df_pathname_tidy)
     print(f'finished saving {retrieval_type} data!')
 
+    print("Finished!!")
 
-build_dataset_versioned(2)
+
+if __name__ == '__main__':
+    main()

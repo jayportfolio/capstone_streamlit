@@ -13,6 +13,7 @@ FINAL_JSON_META_FILE = "data/DDD/listings_data_jsonmeta_XXX.csv"
 FINAL_RECENT_FILE = "data/source/df_listings.csv"
 FINAL_RECENT_FILE_SAMPLE = "data/sample/df_listings_sample.csv"
 
+
 def set_csv_directory(update_csv_directory):
     global csv_directory
     csv_directory = update_csv_directory
@@ -75,7 +76,6 @@ def get_combined_dataset(HOW, early_duplicates, row_limit=None, verbose=False, f
         # return df_original[:row_limit]
         return df_original.sample(n=row_limit)
 
-
     if early_duplicates:
         df_original = df_original[~df_original.index.duplicated(keep='last')]
 
@@ -99,62 +99,45 @@ def get_df(file, folder_prefix=''):
                 # each_df = pd.read_csv(filename, on_bad_lines='skip')
                 # df_array.append(each_df)
                 merged_df = pd.concat([merged_df, pd.read_csv(filename, on_bad_lines='skip')])
-                #print(n)
+                # print(n)
 
             # print(f'error on {file} at split {prefix}')
         else:
             if n == 1:
-                raise LookupError("didn't find ANY matching files! filename: "+filename)
-            #print(f'{n + 1} splits for {file}')
+                raise LookupError("didn't find ANY matching files! filename: " + filename)
+            # print(f'{n + 1} splits for {file}')
             break
 
     return merged_df
 
 
-
-def feature_engineer(df, version:int) -> pd.DataFrame:
+def feature_engineer(df, version: int) -> pd.DataFrame:
     if version >= 3:
-
         df['location.latitude'] = pd.to_numeric(df['location.latitude'], 'coerce').dropna().astype(float)
         df['location.longitude'] = pd.to_numeric(df['location.longitude'], 'coerce').dropna().astype(float)
 
-        # average_latitude = df['location.latitude'].mean()
-        # average_longitude = df['location.longitude'].mean()
-        # print(average_latitude)
-        # print(average_longitude)
-        # print()
         average_latitude1 = df['location.latitude'].median()
         average_longitude1 = df['location.longitude'].median()
-        #print(average_latitude1)
-        #print(average_longitude1)
-        #print()
-        # 51.499672
-        # -0.10444
-        average_latitude2 = 51.4626624
-        average_longitude2 = -0.0651048
 
-        # average_latitude = (df['location.latitude'].max() + df['location.latitude'].min())/2
-        # average_longitude = (df['location.longitude'].max() + df['location.longitude'].min())/2
-        # print(average_latitude)
-        # print(average_longitude)
-        # print()
+        central_latitude = 51.4626624
+        central_longitude = -0.0651048
 
-        df['latitude_deviation'] = abs(df['location.latitude'] - average_latitude1)
-        df['longitude_deviation'] = abs(df['location.longitude'] - average_longitude1)
-
-        df['latitude_deviation2'] = abs(df['location.latitude'] - average_latitude2)
-        df['longitude_deviation2'] = abs(df['location.longitude'] - average_longitude2)
+        df['latitude_deviation'] = abs(df['location.latitude'] - central_latitude)
+        df['longitude_deviation'] = abs(df['location.longitude'] - central_longitude)
 
         return df
 
-trial_df = pd.read_csv('../../data/final/df_listings_v02.csv')
-feature_engineer(trial_df, version=3)
 
-def tidy_dataset(df, version:int) -> pd.DataFrame:
+# if testing:
+# trial_df = pd.read_csv('../../data/final/df_listings_v02.csv')
+# feature_engineer(trial_df, version=3)
 
+def tidy_dataset(df, version: int) -> pd.DataFrame:
     if version >= 2:
         df = df[df['sharedOwnership'] == False]
 
+    if version >= 4:
+        df = df[df['nearestStation'] <= 4]
     return df
 
 
@@ -206,17 +189,25 @@ def add_supplements(property_dataset):
     property_dataset['text.description'] = property_dataset['text.description'].str.lower()
 
     property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership'])
-    property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership']) | (property_dataset['sharedOwnership.sharedOwnership'] == 1)
-    property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership']) | (property_dataset['analyticsProperty.priceQualifier'] == 'Shared ownership')
+    property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership']) | (
+                property_dataset['sharedOwnership.sharedOwnership'] == 1)
+    property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership']) | (
+                property_dataset['analyticsProperty.priceQualifier'] == 'Shared ownership')
 
-    property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership']) | (property_dataset['keyFeatures'].str.contains('shared ownership'))
-    property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership']) | ((property_dataset['keyFeatures'].str.contains('share')) & (property_dataset['keyFeatures'].str.contains('%')))
+    property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership']) | (
+        property_dataset['keyFeatures'].str.contains('shared ownership'))
+    property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership']) | (
+                (property_dataset['keyFeatures'].str.contains('share')) & (
+            property_dataset['keyFeatures'].str.contains('%')))
 
-    property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership']) | (property_dataset['text.description'].str.contains('shared ownership'))
-    property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership']) | ((property_dataset['text.description'].str.contains('share')) & (property_dataset['text.description'].str.contains('%')))
-    #property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership']) | (property_dataset['sharedownership_in_description'])
+    property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership']) | (
+        property_dataset['text.description'].str.contains('shared ownership'))
+    property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership']) | (
+                (property_dataset['text.description'].str.contains('share')) & (
+            property_dataset['text.description'].str.contains('%')))
 
-    
+    # property_dataset['sharedOwnership'] = (property_dataset['sharedOwnership']) | (property_dataset['sharedownership_in_description'])
+
     def share_percentage(df_row):
         #        print(df_row)
         if df_row['sharedOwnership.sharedOwnership']:
@@ -234,7 +225,7 @@ def add_supplements(property_dataset):
         pass
 
     def stations(station_list_string, requested_type):
-        #print('stations')
+        # print('stations')
         # pass
         # station_list = json.loads(station_list_string)
         import ast
@@ -258,14 +249,14 @@ def add_supplements(property_dataset):
                 ['LONDON_UNDERGROUND', 'LIGHT_RAILWAY'],
                 ['LIGHT_RAILWAY', 'LONDON_OVERGROUND'],
                 ['LONDON_UNDERGROUND', 'LONDON_OVERGROUND'],
-                ['NATIONAL_TRAIN','LONDON_UNDERGROUND', 'LONDON_OVERGROUND'],
+                ['NATIONAL_TRAIN', 'LONDON_UNDERGROUND', 'LONDON_OVERGROUND'],
                 ['NATIONAL_TRAIN', 'LONDON_UNDERGROUND'],
                 ['NATIONAL_TRAIN', 'LIGHT_RAILWAY'],
                 ['NATIONAL_TRAIN', 'TRAM'],
                 ['NATIONAL_TRAIN', 'LONDON_OVERGROUND'],
-                ['NATIONAL_TRAIN', 'TRAM','LONDON_OVERGROUND'],
-                ['NATIONAL_TRAIN','LONDON_UNDERGROUND', 'LIGHT_RAILWAY'],
-                ['NATIONAL_TRAIN','LONDON_UNDERGROUND', 'TRAM'],
+                ['NATIONAL_TRAIN', 'TRAM', 'LONDON_OVERGROUND'],
+                ['NATIONAL_TRAIN', 'LONDON_UNDERGROUND', 'LIGHT_RAILWAY'],
+                ['NATIONAL_TRAIN', 'LONDON_UNDERGROUND', 'TRAM'],
                 ['NATIONAL_TRAIN', 'LONDON_UNDERGROUND', 'LIGHT_RAILWAY', 'LONDON_OVERGROUND'],
             ]:
                 print(f"WARNING: Station type not found: {station['types']}: {station}")
@@ -275,9 +266,12 @@ def add_supplements(property_dataset):
                 return station['distance']
             elif requested_type in station['types']:
                 return station['distance']
-            elif requested_type == "overground" and ('NATIONAL_TRAIN' in station['types'] or 'LONDON_OVERGROUND' in station['types'] or 'LIGHT_RAILWAY' in station['types']):
+            elif requested_type == "overground" and (
+                    'NATIONAL_TRAIN' in station['types'] or 'LONDON_OVERGROUND' in station[
+                'types'] or 'LIGHT_RAILWAY' in station['types']):
                 return station['distance']
-            elif requested_type == "underground combined" and 'LONDON_UNDERGROUND' in station['types'] and len(station['types']) > 1:
+            elif requested_type == "underground combined" and 'LONDON_UNDERGROUND' in station['types'] and len(
+                    station['types']) > 1:
                 return station['distance']
             else:
                 pass
