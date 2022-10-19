@@ -67,8 +67,9 @@ def main():
             # Showing the message instead of throwig an error
 
     alg = [
-        'optimised_model_Linear Regression (Ridge)_v05',
         'optimised_model_XG Boost_v05',
+        'optimised_model_Linear Regression (Ridge)_v05',
+        'optimised_model_Neural Network_v05',
         'Decision Tree', 'Linear Regression', 'Deep Neural Network', 'Linear Regression (Keras)',
         'HistGradientBoostingRegressor']
     ALGORITHM = st.selectbox('Which algorithm?', alg)

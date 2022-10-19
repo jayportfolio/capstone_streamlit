@@ -268,19 +268,19 @@
         "random_state": 101
     },
     "neural network - grid search [input64, norm, dense64^6, dense1] (v05)": {
-        "Mean Absolute Error Accuracy": 56328.67605559017,
-        "Mean Squared Error Accuracy": 5158335364.131704,
-        "R square Accuracy": 0.5363273319892014,
-        "Root Mean Squared Error": 71821.5522258584,
-        "Score": 0.5363273319892014,
+        "Mean Absolute Error Accuracy": 55885.640490484824,
+        "Mean Squared Error Accuracy": 5064702159.344852,
+        "R square Accuracy": 0.5447438374726965,
+        "Root Mean Squared Error": 71166.72086969338,
+        "Score": 0.5447438374726965,
         "Training Time": 999.0,
-        "date": "2022-10-19 01:54:43.574617",
+        "date": "2022-10-19 14:27:35.067307",
         "first run": "2022-10-19 01:41:10.125181",
         "max params": {
             "batch_size": 10,
             "epochs": 100
         },
-        "max score": 0.5363273319892014,
+        "max score": 0.5447438374726965,
         "params": {
             "batch_size": 10,
             "epochs": 100
