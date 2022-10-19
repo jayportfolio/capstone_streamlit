@@ -276,6 +276,27 @@
         "first run": "2022-10-13 23:34:58.113261",
         "random_state": 101
     },
+    "neural network - grid search [input64, norm, dense64^6, dense1] (v05)": {
+        "Mean Absolute Error Accuracy": 56328.67605559017,
+        "Mean Squared Error Accuracy": 5158335364.131704,
+        "R square Accuracy": 0.5363273319892014,
+        "Root Mean Squared Error": 71821.5522258584,
+        "Score": 0.5363273319892014,
+        "Training Time": 999.0,
+        "date": "2022-10-19 01:54:43.574617",
+        "first run": "2022-10-19 01:41:10.125181",
+        "max params": {
+            "batch_size": 10,
+            "epochs": 100
+        },
+        "max score": 0.5363273319892014,
+        "params": {
+            "batch_size": 10,
+            "epochs": 100
+        },
+        "random_state": 101,
+        "suboptimal": "pending"
+    },
     "xg boost - basic (v02)": {
         "Mean Absolute Error Accuracy": 48536.5190564137,
         "Mean Squared Error Accuracy": 3979587053.666782,
@@ -437,30 +458,30 @@
         "suboptimal": "pending"
     },
     "xg boost - random search (v05)": {
-        "Score": 0.710594188729091,
-        "R square Accuracy": 0.710594188729091,
         "Mean Absolute Error Accuracy": 42229.0017522372,
         "Mean Squared Error Accuracy": 3219625252.591313,
+        "R square Accuracy": 0.710594188729091,
         "Root Mean Squared Error": 56741.74171270488,
+        "Score": 0.710594188729091,
         "Training Time": 4.457040309906006,
-        "random_state": 101,
         "date": "2022-10-19 00:23:46.324581",
-        "params": {
-            "model__verbosity": 1,
-            "model__tree_method": "approx",
-            "model__objective": "reg:squarederror",
-            "model__n_estimators": 100,
-            "model__max_depth": 10
-        },
         "first run": "2022-10-19 00:23:46.326282",
         "max params": {
-            "model__verbosity": 1,
-            "model__tree_method": "approx",
-            "model__objective": "reg:squarederror",
+            "model__max_depth": 10,
             "model__n_estimators": 100,
-            "model__max_depth": 10
+            "model__objective": "reg:squarederror",
+            "model__tree_method": "approx",
+            "model__verbosity": 1
         },
         "max score": 0.710594188729091,
+        "params": {
+            "model__max_depth": 10,
+            "model__n_estimators": 100,
+            "model__objective": "reg:squarederror",
+            "model__tree_method": "approx",
+            "model__verbosity": 1
+        },
+        "random_state": 101,
         "suboptimal": "pending"
     }
 }
