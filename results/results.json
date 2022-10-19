@@ -137,33 +137,24 @@
         "random_state": 101
     },
     "linear regression (ridge) - random search (v05)": {
-        "Mean Absolute Error Accuracy": 63769.72935094095,
-        "Mean Squared Error Accuracy": 6191347503.226655,
-        "R square Accuracy": 0.44347189301323553,
-        "Root Mean Squared Error": 78685.11614801528,
-        "Score": 0.44347189301323553,
-        "Training Time": 0.2222280502319336,
-        "date": "2022-10-19 00:13:33.769898",
+        "Mean Absolute Error Accuracy": 63770.69586828932,
+        "Mean Squared Error Accuracy": 6191276570.283344,
+        "R square Accuracy": 0.44347826903665266,
+        "Root Mean Squared Error": 78684.66540745627,
+        "Score": 0.44347826903665266,
+        "Training Time": 0.14141321182250977,
+        "date": "2022-10-19 11:11:49.868418",
         "first run": "2022-10-19 00:13:33.773722",
-        "max params": {
-            "model__alpha": 0.1,
-            "model__fit_intercept": true,
-            "model__max_iter": 10000,
-            "model__positive": false,
-            "model__solver": "sag",
-            "model__tol": 0.001
-        },
-        "max score": 0.44347189301323553,
+        "max params": "MULTIPLE PARAM OPTIONS",
         "params": {
-            "model__alpha": 0.1,
+            "model__alpha": 0.001,
             "model__fit_intercept": true,
             "model__max_iter": 10000,
             "model__positive": false,
-            "model__solver": "sag",
-            "model__tol": 0.001
+            "model__solver": "svd",
+            "model__tol": 1e-05
         },
-        "random_state": 101,
-        "suboptimal": "pending"
+        "random_state": 101
     },
     "linear regression - basic (v01)": {
         "Mean Absolute Error Accuracy": 72921.55809491842,
@@ -463,8 +454,8 @@
         "R square Accuracy": 0.710594188729091,
         "Root Mean Squared Error": 56741.74171270488,
         "Score": 0.710594188729091,
-        "Training Time": 4.457040309906006,
-        "date": "2022-10-19 00:23:46.324581",
+        "Training Time": 2.3376071453094482,
+        "date": "2022-10-19 12:47:50.767724",
         "first run": "2022-10-19 00:23:46.326282",
         "max params": {
             "model__max_depth": 10,

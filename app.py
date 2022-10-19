@@ -3,9 +3,8 @@ import random
 import streamlit as st
 import pickle
 
-import functions
-from functions import this_test_data, this_df
-from functions_models import build_model
+from functions_20221019B import this_test_data, get_source_dataframe
+# from functions_models import build_model
 
 import numpy as np
 
@@ -15,6 +14,7 @@ df, X_test, y_test = None, None, None
 rand_index = -1
 
 ALGORITHM = 'Decision Tree'
+VERSION = '05'
 
 
 def main():
@@ -40,8 +40,10 @@ def main():
         import os
 
         for deletable_file in [
-            'train_test/X_test.csv', 'train_test/X_test_no_nulls.csv', 'train_test/_train.csv', 'train_test/X_train_no_nulls.csv',
-            'train_test/y_test.csv', 'train_test/y_test_no_nulls.csv', 'train_test/y_train.csv', 'train_test/y_train_no_nulls.csv',
+            'train_test/X_test.csv', 'train_test/X_test_no_nulls.csv', 'train_test/_train.csv',
+            'train_test/X_train_no_nulls.csv',
+            'train_test/y_test.csv', 'train_test/y_test_no_nulls.csv', 'train_test/y_train.csv',
+            'train_test/y_train_no_nulls.csv',
             'models/model_Decision Tree.pkl',
             'models/model_Deep Neural Network.pkl',
             'models/model_HistGradientBoostingRegressor.pkl',
@@ -49,8 +51,8 @@ def main():
             'models/model_Linear Regression (Keras).pkl',
             'random_instance.csv',
             'random_instance_plus.csv',
-            functions.FINAL_RECENT_FILE,
-            functions.FINAL_RECENT_FILE_SAMPLE,
+            # functions.FINAL_RECENT_FILE,
+            # functions.FINAL_RECENT_FILE_SAMPLE,
         ]:
             # checking if file exist or not
             if (os.path.isfile(deletable_file)):
@@ -64,27 +66,26 @@ def main():
                 print("File does not exist:", deletable_file)
             # Showing the message instead of throwig an error
 
-
-
-    # if st.checkbox('Show dataframe'):
-    #     df = this_df()
-    #     st.write(df)
-
-    alg = ['Decision Tree', 'Linear Regression', 'Deep Neural Network', 'Linear Regression (Keras)',
-           'HistGradientBoostingRegressor']
+    alg = [
+        'optimised_model_Linear Regression (Ridge)_v05',
+        'optimised_model_XG Boost_v05',
+        'Decision Tree', 'Linear Regression', 'Deep Neural Network', 'Linear Regression (Keras)',
+        'HistGradientBoostingRegressor']
     ALGORITHM = st.selectbox('Which algorithm?', alg)
 
     try:
-        model = pickle.load(open(f'model_{ALGORITHM}.pkl', 'rb'))
+        # model = pickle.load(open(f'model_{ALGORITHM}.pkl', 'rb'))
+        # model = pickle.load(open(f'models/optimised_model_{ALGORITHM}.pkl', 'rb'))
+        # model = pickle.load(open('models/optimised_model_Linear Regression (Ridge)_v05.pkl', 'rb'))
+        model_path = f'models/{ALGORITHM}.pkl'
+        model = pickle.load(open(model_path, 'rb'))
         # raise ValueError
     except:
-        model = build_model(ALGORITHM, drop_nulls=~include_nulls)
-        with open(f'models/model_{ALGORITHM}.pkl', 'wb') as f:
-            pickle.dump(model, f)
+        raise ValueError(f'no model: {model_path}')
 
     manual_parameters = st.checkbox('Use manual parameters instead of sample')
     if not manual_parameters:
-        X_test, y_test = this_test_data(test_data_only=True)
+        X_test, y_test = this_test_data(VERSION=VERSION, test_data_only=True)
         test_size = len(y_test)
 
         if st.button('randomise!'):
@@ -128,7 +129,7 @@ def main():
                 np.savetxt("random_instance.csv", random_instance, delimiter=",")
                 random_instance_plus = [rand_index, expected]
                 random_instance_plus.extend(random_instance)
-                print("random_instance_plus:",random_instance_plus)
+                print("random_instance_plus:", random_instance_plus)
                 np.savetxt("random_instance_plus.csv", random_instance_plus, delimiter=",")
 
             st.text(f'sample variables ({rand_index}): {inputs[0]}')
@@ -140,16 +141,16 @@ def main():
         updated_res = result.flatten().astype(float)
         st.success('The predicted price for this property is {}'.format(updated_res))
 
-    df = this_df()
+    df = get_source_dataframe(IN_COLAB=False, VERSION=VERSION, folder_prefix='')
     if st.checkbox('Show dataframe'):
-        df = this_df()
+        df, df_type = get_source_dataframe(IN_COLAB=False, VERSION=VERSION, folder_prefix='')
         st.write(df)
 
     if st.checkbox('Get multiple predictions'):
         st.write(model.predict(X_test).flatten())
 
     if st.checkbox('Show predictions and accuracy'):
-        X_train, X_test, y_train, y_test = this_test_data()
+        X_train, X_test, y_train, y_test = this_test_data(VERSION=VERSION)
         acc = model.score(X_test, y_test)
         st.write('Accuracy: ', acc)
         pred_dtc = model.predict(X_test)
