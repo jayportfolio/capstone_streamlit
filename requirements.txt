@@ -10,6 +10,9 @@ streamlit
 #notebook #==6.4.12
 #seaborn #==0.11.2
 
+xgboost
+scikeras
+
 #tensorflow
 tensorflow-cpu
 
