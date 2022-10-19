@@ -13,8 +13,8 @@ streamlit
 xgboost
 scikeras
 
-#tensorflow
-tensorflow-cpu
+#xxxtensorflow
+#tensorflow-cpu
 
 #html2text #==2020.1.16
 #ipykernel #==6.13.1
