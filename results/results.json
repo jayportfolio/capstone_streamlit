@@ -156,6 +156,37 @@
         },
         "random_state": 101
     },
+    "linear regression (ridge) - random search (v06)": {
+        "Mean Absolute Error Accuracy": 63602.60767072651,
+        "Mean Squared Error Accuracy": 6135163103.904871,
+        "R square Accuracy": 0.4568924571672859,
+        "Root Mean Squared Error": 78327.28198976952,
+        "Score": 0.4568924571672859,
+        "Training Time": 0.23014211654663086,
+        "best is shared": true,
+        "best params": {
+            "model__alpha": 0.001,
+            "model__fit_intercept": true,
+            "model__max_iter": 10000,
+            "model__positive": false,
+            "model__solver": "cholesky",
+            "model__tol": 0.001
+        },
+        "best score": 0.45688531064697346,
+        "best time": 0.019932031631469727,
+        "date": "2022-10-23 13:04:54.289778",
+        "first run": "2022-10-21 18:42:49.450401",
+        "params": {
+            "model__alpha": 0.01,
+            "model__fit_intercept": true,
+            "model__max_iter": 1000,
+            "model__positive": false,
+            "model__solver": "sag",
+            "model__tol": 0.001
+        },
+        "random_state": 101,
+        "suboptimal": "pending"
+    },
     "linear regression - basic (v01)": {
         "Mean Absolute Error Accuracy": 72921.55809491842,
         "Mean Squared Error Accuracy": 8297985798.70861,
