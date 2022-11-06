@@ -17,5 +17,6 @@ old/
 old/*
 *_old/
 *_old/*
+*old.*
 offline/
 .ipynb_checkpoints/
