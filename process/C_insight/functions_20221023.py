@@ -3,11 +3,90 @@ import math
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
+import ast
+
+def get_exploding_features(version_number):
+    if version_number == 9:
+        EXPLODING_FEATURES = 10
+
+    return EXPLODING_FEATURES
+
 
 def test_module():
-    # trial_df = pd.read_csv('../../data/final/df_listings_v02.csv')
-    # feature_engineer(trial_df, version=3)
-    pass
+    if True:
+        pass
+    elif False:
+        trial_df = pd.read_csv('../../data/final/df_listings_v08.csv')
+        feature_engineer(trial_df, version=3)
+    else:
+        trial_df = pd.read_csv('../../data/source/df_listings_v08.csv')
+        #add_supplements(trial_df)
+        dff, aggregate_features = aggregate_keyFeatures(trial_df['keyFeatures'])
+
+        dff.sort_values('occurrences', ascending=False, inplace=True)
+        dff.set_index('feature', inplace=True)
+        #trial_df['reduced_features'] = trial_df['keyFeatures'].apply(reduce_keyFeatures, args=[aggregate_features, 10])
+        trial_df['reduced_features'] = trial_df['keyFeatures'].apply(reduce_keyFeatures, args=[dff.index, 10])
+
+        #dummied = df['keyFeatures'].str.get_dummies(',')
+        trial_df['reduced_features'].explode()
+        #print(dummied.head(5))
+        df1 = (
+            trial_df['reduced_features'].explode()
+            .str.get_dummies(',').sum(level=0).add_prefix('features_')
+        )
+        #df = df.drop('keyFeatures', 1).join(df1)
+        df = trial_df.join(df1)
+        print(df.head(5))
+
+
+
+def aggregate_keyFeatures(key_features_column):
+
+    from string import punctuation
+
+    aggregated_features = []
+
+    def clean(text):
+        clean_each = [x.replace('*','') for x in text]
+        clean_each = [x.lstrip('-') for x in clean_each]
+        clean_each = [x.replace('\t','') for x in clean_each]
+        clean_each = [x.lstrip('-') for x in clean_each]
+        clean_each = [x.lstrip('-') for x in clean_each]
+        clean_each = [x.lstrip('•') for x in clean_each]
+        return clean_each
+
+    for each_string in key_features_column:
+        each = ast.literal_eval(each_string)
+        #print("each\n", each)
+
+        clean_each = clean(each)
+
+        aggregated_features.extend(clean_each)
+    ar_unique, i = np.unique(aggregated_features, return_counts=True)
+    print(ar_unique, i)
+    print(len(ar_unique), len(i))
+    comb = np.vstack((ar_unique, i))
+    dff = pd.DataFrame(comb.T, columns=['feature','occurrences'])
+    dff['occurrences'] = pd.to_numeric(dff['occurrences'], 'coerce').dropna().astype(int)
+
+    dff.sort_values('occurrences', ascending=False, inplace=True)
+    dff.set_index('feature', inplace=True)
+
+    return dff, aggregated_features
+
+def reduce_keyFeatures(key_features_string, full_features, max_features):
+    features_list = ast.literal_eval(key_features_string)
+
+    allowed_features = full_features[:max_features]
+
+    filtered_features_list = [x for x in features_list if x in allowed_features]
+    if len(filtered_features_list) > 0:
+        print(f"{features_list}\n==>   {filtered_features_list}")
+
+    return filtered_features_list
+
+
 
 # csv_directory = "final_split"
 # csv_directory = "quick_split"
@@ -48,8 +127,7 @@ def get_source_dataframe(IN_COLAB, VERSION, rows=0, folder_prefix='../../../'):
     return inDF, retrieval_type
 
 
-
-def this_test_data(VERSION,  test_data_only=False, drop_nulls=True):
+def this_test_data(VERSION, test_data_only=False, drop_nulls=True):
     suffix = "_no_nulls" if drop_nulls else ""
 
     try:
@@ -69,7 +147,7 @@ def this_test_data(VERSION,  test_data_only=False, drop_nulls=True):
         # features = df[FEATURES].values
         # labels = df[LABEL].values
         # X_train, X_test, y_train, y_test = train_test_split(features, labels, train_size=0.9, random_state=RANDOM_STATE)
-        X_train, X_test, y_train, y_test =  tt_split (VERSION, df)
+        X_train, X_test, y_train, y_test = tt_split(VERSION, df)
 
         print('test_data_only', test_data_only)
         print('drop_nulls', drop_nulls)
@@ -84,9 +162,9 @@ def this_test_data(VERSION,  test_data_only=False, drop_nulls=True):
             np.savetxt("train_test/X_train_no_nulls.csv", X_train, delimiter=",")
             np.savetxt(f"train_test/y_train{suffix}.csv", y_train, delimiter=",")
 
-        #np.savetxt(f"train_test/X_test{suffix}.csv", X_test[:20], delimiter=",")
+        # np.savetxt(f"train_test/X_test{suffix}.csv", X_test[:20], delimiter=",")
         np.savetxt(f"train_test/X_test{suffix}.csv", X_test, delimiter=",")
-        #np.savetxt(f"train_test/y_test{suffix}.csv", y_test[:20], delimiter=",")
+        # np.savetxt(f"train_test/y_test{suffix}.csv", y_test[:20], delimiter=",")
         np.savetxt(f"train_test/y_test{suffix}.csv", y_test, delimiter=",")
 
     if not test_data_only:
@@ -94,8 +172,8 @@ def this_test_data(VERSION,  test_data_only=False, drop_nulls=True):
 
     return X_test, y_test
 
-def tt_split(VERSION, df, RANDOM_STATE=101, LABEL='Price'):
 
+def tt_split(VERSION, df, RANDOM_STATE=101, LABEL='Price'):
     columns, booleans, floats, categories = get_columns(version=VERSION)
 
     for column in categories:
@@ -276,22 +354,19 @@ def add_supplements(property_dataset):
 
         return 99
 
-    try:
-        #        property_dataset['sharePercentage'] = property_dataset.apply(share_percentage, axis=1)
-        # property_dataset['nearestUnderground'] = property_dataset['nearestStations'].apply(stations, args='underground')
-        property_dataset['nearestStation'] = property_dataset['nearestStations'].apply(stations, args=['any'])
-        property_dataset['nearestTram'] = property_dataset['nearestStations'].apply(stations, args=['TRAM'])
-        property_dataset['nearestUnderground'] = property_dataset['nearestStations'].apply(stations,
-                                                                                           args=['LONDON_UNDERGROUND'])
-        property_dataset['nearestOverground'] = property_dataset['nearestStations'].apply(stations,
-                                                                                          args=['overground'])
+    property_dataset['nearestStation'] = property_dataset['nearestStations'].apply(stations, args=['any'])
+    property_dataset['nearestTram'] = property_dataset['nearestStations'].apply(stations, args=['TRAM'])
+    property_dataset['nearestUnderground'] = property_dataset['nearestStations'].apply(stations,
+                                                                                       args=['LONDON_UNDERGROUND'])
+    property_dataset['nearestOverground'] = property_dataset['nearestStations'].apply(stations,
+                                                                                      args=['overground'])
 
-    # sample_df['new_id'] = sample_df[id_label].apply(convert_id_to_hash2, args=[dictionary])
 
-    except:
-        pass
+    dff, aggregate_features = aggregate_keyFeatures(property_dataset['keyFeatures'])
+    #property_dataset['reduced_features'] = property_dataset['keyFeatures'].apply(reduce_keyFeatures, args=[dff.index,get_exploding_features()])
 
     return property_dataset
+
 
 
 def tidy_dataset(df, version: int) -> pd.DataFrame:
@@ -303,6 +378,7 @@ def tidy_dataset(df, version: int) -> pd.DataFrame:
 
 def get_columns(version: int) -> pd.DataFrame:
     version_number = int(version)
+    custom = []
 
     if version_number == 2:
         booleans = []
@@ -320,6 +396,25 @@ def get_columns(version: int) -> pd.DataFrame:
                   'latitude_deviation', 'longitude_deviation']
         categories = ['tenure.tenureType']
 
+    elif version_number == 7:
+        booleans = []
+        floats = ['bedrooms', 'bathrooms', 'nearestStation', 'location.latitude', 'location.longitude',
+                  'latitude_deviation', 'longitude_deviation']
+        categories = ['tenure.tenureType']
+        custom = ['listingHistory.listingUpdateReason']
+    elif version_number == 8:
+        booleans = []
+        floats = ['bedrooms', 'bathrooms', 'nearestStation', 'location.latitude', 'location.longitude',
+                  'latitude_deviation', 'longitude_deviation', 'keyFeatures']
+        categories = ['tenure.tenureType']
+        custom = ['listingHistory.listingUpdateReason']
+    elif version_number == 9:
+        booleans = []
+        floats = ['bedrooms', 'bathrooms', 'nearestStation', 'location.latitude', 'location.longitude',
+                  'latitude_deviation', 'longitude_deviation', 'keyFeatures']
+        categories = ['tenure.tenureType']
+        custom = []
+
     else:
         raise ValueError(f'no columns data available for version {version}')
 
@@ -327,8 +422,9 @@ def get_columns(version: int) -> pd.DataFrame:
     columns.extend(booleans)
     columns.extend(floats)
     columns.extend(categories)
+    columns.extend(custom)
 
-    return (columns, booleans, floats, categories)
+    return (columns, booleans, floats, categories, custom)
 
 
 def preprocess(df, version: int) -> pd.DataFrame:
@@ -356,7 +452,7 @@ def preprocess(df, version: int) -> pd.DataFrame:
         df = df[df['bathrooms'] <= 5]
         df = df[(df['nearestStation'] <= 20)]
 
-    elif version_number == 6:
+    elif version_number <= 7 or version_number == 8 or version_number == 9:
         df['location.latitude'] = pd.to_numeric(df['location.latitude'], 'coerce').dropna().astype(float)
 
         df = df[(df['bedrooms'] <= 7)]
@@ -407,7 +503,18 @@ def feature_engineer(df, version: int) -> pd.DataFrame:
         df['latitude_deviation2'] = abs(df['location.latitude'] - average_latitude2)
         df['longitude_deviation2'] = abs(df['location.longitude'] - average_longitude2)
 
-        return df
+    if version_number == 9:
+        # df['reduced_features'].explode()
+
+        exploded_features_df = (
+            df['reduced_features'].explode()
+            .str.get_dummies(',').sum(level=0).add_prefix('feature_')
+        )
+        df = df.drop('keyFeatures', 1).join(exploded_features_df)
+        # df = df.join(exploded_features_df)
+
+    return df
+
 
 if __name__ == '__main__':
     test_module()
@@ -475,7 +582,9 @@ def get_combined_dataset(HOW, early_duplicates, row_limit=None, verbose=False, f
 
     return df_original
 
+
 from datetime import datetime
+
 
 def update_results(key, saved_results_json, new_results):
     try:
