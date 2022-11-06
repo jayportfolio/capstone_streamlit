@@ -15,9 +15,7 @@ Techniques used to create prediction models include:
 * Multiple linear regression
 * XGBoost
 * Decision Tree with Bagging (https://www.kaggle.com/code/pear2jam/bagging-hyperparameters/notebook)
-### Kaggle
 
-![img.png](img.png)
 ### Research Papers
 
 
@@ -27,6 +25,3 @@ Advocates for the usage of RF (random forest) and GBM (gradient boosting machine
 
 ![img.png](../capstone_artifacts/images/06_01_img.png)
 
-### Towards Data Science
-
-### University Research
