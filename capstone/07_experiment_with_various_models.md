@@ -4,7 +4,7 @@
 
 At this stage I am using iteration 06 of my dataset features.
 <br>The dataset can be found
-here: [Root Link](/process/E_train%20model/iteration06/it06_01_4__linear_regression_randomsearch__20221019.ipynb)
+here: [Root Link](/data/final/df_listings_v06.csv)
 or [Relative Link](../data/final/df_listings_v06.csv)
 
 ## Model Training
