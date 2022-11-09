@@ -239,11 +239,19 @@ def fit_model_with_cross_validation(gs, X_train, y_train, fits):
     pipe_start = time()
     cv_result = gs[0].fit(X_train, y_train)
     pipe_end = time()
-    print(f"Total fit/CV time: {int(pipe_end - pipe_start)} seconds   ({pipe_start} ==> {pipe_end})")
     average_time = round((pipe_end - pipe_start) / (fits), 2)
-    print(f"{average_time} seconds per fit")
+    # xxx print(f"{average_time} seconds per fit") # not correct if declared fits was overstated
+    # print(f"average fit time = {cv_result.cv_results_.mean_fit_time}s")
+    # print(f"max fit time = {cv_result.cv_results_.mean_fit_time.max()}s")
+    # print(f"average fit/score time = {round(cv_result.cv_results_.mean_fit_time,2)}s/{round(cv_result.cv_results_.mean_score_time,2)}s")
 
-    return cv_result, average_time
+    print(f"Total fit/CV time      : {int(pipe_end - pipe_start)} seconds   ({pipe_start} ==> {pipe_end})")
+    print()
+    print(f'average fit/score time = {round(cv_result.cv_results_["mean_fit_time"].mean(), 2)}s/{round(cv_result.cv_results_["mean_score_time"].mean(), 2)}s')
+    print(f'max fit/score time     = {round(cv_result.cv_results_["mean_fit_time"].max(), 2)}s/{round(cv_result.cv_results_["mean_score_time"].max(), 2)}s')
+    print(f'refit time             = {round(cv_result.refit_time_, 2)}s')
+
+    return cv_result, average_time, cv_result.refit_time_, len(cv_result.cv_results_["mean_fit_time"])
 
 
 def get_best_estimator_average_time(best_estimator_pipe, X_train, y_train, debug=False):
