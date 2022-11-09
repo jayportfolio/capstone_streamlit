@@ -11,43 +11,29 @@
         "random_state": 101
     },
     "decision tree - random search (v06)": {
-        "Mean Absolute Error Accuracy": 58238.093360525716,
-        "Mean Squared Error Accuracy": 5668783177.55937,
-        "R square Accuracy": 0.49817814941934546,
-        "Root Mean Squared Error": 75291.32206011108,
-        "Score": 0.49817814941934546,
-        "Training Time": 36.84150171279907,
-        "date": "2022-11-06 22:09:00.900366",
+        "Mean Absolute Error Accuracy": 61115.94180438482,
+        "Mean Squared Error Accuracy": 5842260482.550115,
+        "R square Accuracy": 0.4828212907254342,
+        "Root Mean Squared Error": 76434.68115031366,
+        "Score": 0.4828212907254342,
+        "Training Time": 0.053670835494995114,
+        "best params": "MULTIPLE PARAM OPTIONS",
+        "date": "2022-11-09 14:18:41.504802",
         "first run": "2022-11-06 22:09:00.901821",
-        "best params": {
-            "model__ccp_alpha": 0.1,
-            "model__criterion": "absolute_error",
-            "model__max_depth": null,
-            "model__max_features": "sqrt",
-            "model__max_leaf_nodes": null,
-            "model__min_impurity_decrease": 5,
-            "model__min_samples_leaf": 2,
-            "model__min_samples_split": 500,
-            "model__min_weight_fraction_leaf": 0.0,
-            "model__random_state": null,
-            "model__splitter": "best"
-        },
-        "best score": 0.49817814941934546,
         "params": {
-            "model__ccp_alpha": 0.1,
-            "model__criterion": "absolute_error",
+            "model__ccp_alpha": 0.05,
+            "model__criterion": "poisson",
             "model__max_depth": null,
-            "model__max_features": "sqrt",
-            "model__max_leaf_nodes": null,
-            "model__min_impurity_decrease": 5,
-            "model__min_samples_leaf": 2,
-            "model__min_samples_split": 500,
+            "model__max_features": null,
+            "model__max_leaf_nodes": 50,
+            "model__min_impurity_decrease": 0.1,
+            "model__min_samples_leaf": 4,
+            "model__min_samples_split": 2,
             "model__min_weight_fraction_leaf": 0.0,
             "model__random_state": null,
-            "model__splitter": "best"
+            "model__splitter": "random"
         },
-        "random_state": 101,
-        "suboptimal": "pending"
+        "random_state": 101
     },
     "decision tree - random search (v10)": {
         "Mean Absolute Error Accuracy": 55865.420033319475,
@@ -56,8 +42,6 @@
         "Root Mean Squared Error": 70640.6868784404,
         "Score": 0.5582571300439971,
         "Training Time": 0.18300557136535645,
-        "date": "2022-11-03 21:19:06.533628",
-        "first run": "2022-11-03 21:19:06.535007",
         "best params": {
             "model__ccp_alpha": 1,
             "model__criterion": "friedman_mse",
@@ -72,6 +56,8 @@
             "model__splitter": "random"
         },
         "best score": 0.5582571300439971,
+        "date": "2022-11-03 21:19:06.533628",
+        "first run": "2022-11-03 21:19:06.535007",
         "params": {
             "model__ccp_alpha": 1,
             "model__criterion": "friedman_mse",
@@ -255,9 +241,9 @@
         "Root Mean Squared Error": 87763.23549853494,
         "Score": 0.32687875693294177,
         "Training Time": 0.28690123558044434,
+        "best params": "MULTIPLE PARAM OPTIONS",
         "date": "2022-10-18 23:48:02.696625",
         "first run": "2022-10-18 23:44:19.835809",
-        "best params": "MULTIPLE PARAM OPTIONS",
         "params": {
             "model__alpha": 1,
             "model__fit_intercept": true,
@@ -275,9 +261,9 @@
         "Root Mean Squared Error": 86559.38931282765,
         "Score": 0.3265113362749439,
         "Training Time": 0.09189772605895996,
+        "best params": "MULTIPLE PARAM OPTIONS",
         "date": "2022-10-18 23:49:36.437220",
         "first run": "2022-10-18 23:48:41.539572",
-        "best params": "MULTIPLE PARAM OPTIONS",
         "params": {
             "model__alpha": 0.01,
             "model__fit_intercept": true,
@@ -295,9 +281,9 @@
         "Root Mean Squared Error": 87820.97103649996,
         "Score": 0.32122428255851376,
         "Training Time": 0.028859615325927734,
+        "best params": "MULTIPLE PARAM OPTIONS",
         "date": "2022-10-18 23:56:43.784546",
         "first run": "2022-10-18 23:56:19.993042",
-        "best params": "MULTIPLE PARAM OPTIONS",
         "params": {
             "model__alpha": 10,
             "model__fit_intercept": true,
@@ -315,9 +301,9 @@
         "Root Mean Squared Error": 78684.66540745627,
         "Score": 0.44347826903665266,
         "Training Time": 0.14141321182250977,
+        "best params": "MULTIPLE PARAM OPTIONS",
         "date": "2022-10-19 11:11:49.868418",
         "first run": "2022-10-19 00:13:33.773722",
-        "best params": "MULTIPLE PARAM OPTIONS",
         "params": {
             "model__alpha": 0.001,
             "model__fit_intercept": true,
@@ -457,8 +443,6 @@
         "Root Mean Squared Error": 79651.89211816902,
         "Score": 0.4383177683788616,
         "Training Time": 0.0567471981048584,
-        "date": "2022-10-18 18:32:25.140893",
-        "first run": "2022-10-18 18:32:17.850765",
         "best params": {
             "model__alpha": 1,
             "model__fit_intercept": true,
@@ -468,6 +452,8 @@
             "model__tol": 0.01
         },
         "best score": 0.4383177683788616,
+        "date": "2022-10-18 18:32:25.140893",
+        "first run": "2022-10-18 18:32:17.850765",
         "params": {
             "model__alpha": 1,
             "model__fit_intercept": true,
@@ -486,8 +472,6 @@
         "Root Mean Squared Error": 87820.02962446518,
         "Score": 0.3212388349870918,
         "Training Time": 0.12839055061340332,
-        "date": "2022-10-18 23:27:06.553446",
-        "first run": "2022-10-18 23:27:06.555412",
         "best params": {
             "model__alpha": 0.001,
             "model__fit_intercept": true,
@@ -497,6 +481,8 @@
             "model__tol": 0.001
         },
         "best score": 0.3212388349870918,
+        "date": "2022-10-18 23:27:06.553446",
+        "first run": "2022-10-18 23:27:06.555412",
         "params": {
             "model__alpha": 0.001,
             "model__fit_intercept": true,
@@ -537,13 +523,13 @@
         "Root Mean Squared Error": 71166.72086969338,
         "Score": 0.5447438374726965,
         "Training Time": 999.0,
-        "date": "2022-10-19 14:27:35.067307",
-        "first run": "2022-10-19 01:41:10.125181",
         "best params": {
             "batch_size": 10,
             "epochs": 100
         },
         "best score": 0.5447438374726965,
+        "date": "2022-10-19 14:27:35.067307",
+        "first run": "2022-10-19 01:41:10.125181",
         "params": {
             "batch_size": 10,
             "epochs": 100
@@ -558,13 +544,13 @@
         "Root Mean Squared Error": 75394.40002714121,
         "Score": 0.49680316534001967,
         "Training Time": 999.0,
-        "date": "2022-11-06 22:30:24.182036",
-        "first run": "2022-11-06 22:30:24.184480",
         "best params": {
             "batch_size": 100,
             "epochs": 100
         },
         "best score": 0.49680316534001967,
+        "date": "2022-11-06 22:30:24.182036",
+        "first run": "2022-11-06 22:30:24.184480",
         "params": {
             "batch_size": 100,
             "epochs": 100
@@ -595,13 +581,13 @@
         "Root Mean Squared Error": 72587.0261723823,
         "Score": 0.5335793931556123,
         "Training Time": 999.0,
-        "date": "2022-10-30 14:06:54.134246",
-        "first run": "2022-10-30 14:06:54.136422",
         "best params": {
             "batch_size": 100,
             "epochs": 100
         },
         "best score": 0.5335793931556123,
+        "date": "2022-10-30 14:06:54.134246",
+        "first run": "2022-10-30 14:06:54.136422",
         "params": {
             "batch_size": 100,
             "epochs": 100
@@ -616,8 +602,6 @@
         "Root Mean Squared Error": 64362.26035733153,
         "Score": 0.6332903850637348,
         "Training Time": 39.140589475631714,
-        "date": "2022-11-07 13:16:14.311937",
-        "first run": "2022-11-07 13:16:14.317307",
         "best params": {
             "model__bootstrap": true,
             "model__ccp_alpha": 5,
@@ -638,6 +622,8 @@
             "model__warm_start": false
         },
         "best score": 0.6332903850637348,
+        "date": "2022-11-07 13:16:14.311937",
+        "first run": "2022-11-07 13:16:14.317307",
         "params": {
             "model__bootstrap": true,
             "model__ccp_alpha": 5,
@@ -667,8 +653,6 @@
         "Root Mean Squared Error": 63110.06906394756,
         "Score": 0.6474205204619896,
         "Training Time": 8.37245774269104,
-        "date": "2022-11-04 00:07:38.066725",
-        "first run": "2022-11-04 00:07:38.068364",
         "best params": {
             "model__bootstrap": true,
             "model__ccp_alpha": 0.0,
@@ -689,6 +673,8 @@
             "model__warm_start": false
         },
         "best score": 0.6474205204619896,
+        "date": "2022-11-04 00:07:38.066725",
+        "first run": "2022-11-04 00:07:38.068364",
         "params": {
             "model__bootstrap": true,
             "model__ccp_alpha": 0.0,
@@ -729,9 +715,9 @@
         "Root Mean Squared Error": 60231.847416360586,
         "Score": 0.6829553615082685,
         "Training Time": 5.500423431396484,
+        "best params": "MULTIPLE PARAM OPTIONS",
         "date": "2022-10-13 14:18:26.765461",
         "first run": "2022-10-13 13:42:33.640185",
-        "best params": "MULTIPLE PARAM OPTIONS",
         "params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -797,8 +783,6 @@
         "Root Mean Squared Error": 68798.95750535809,
         "Score": 0.5745332385988913,
         "Training Time": 3.3037590980529785,
-        "date": "2022-10-18 19:31:55.115003",
-        "first run": "2022-10-18 19:16:54.647950",
         "best params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -807,6 +791,8 @@
             "model__verbosity": 1
         },
         "best score": 0.5820713372252954,
+        "date": "2022-10-18 19:31:55.115003",
+        "first run": "2022-10-18 19:16:54.647950",
         "params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -824,8 +810,6 @@
         "Root Mean Squared Error": 57748.722508792795,
         "Score": 0.704754522021779,
         "Training Time": 5.790279865264893,
-        "date": "2022-10-18 18:58:50.708444",
-        "first run": "2022-10-18 18:58:50.710438",
         "best params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -834,6 +818,8 @@
             "model__verbosity": 1
         },
         "best score": 0.704754522021779,
+        "date": "2022-10-18 18:58:50.708444",
+        "first run": "2022-10-18 18:58:50.710438",
         "params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -851,8 +837,6 @@
         "Root Mean Squared Error": 67118.8596645957,
         "Score": 0.60352211634886,
         "Training Time": 2.653132677078247,
-        "date": "2022-10-18 22:02:51.281873",
-        "first run": "2022-10-18 22:02:51.284270",
         "best params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -861,6 +845,8 @@
             "model__verbosity": 1
         },
         "best score": 0.60352211634886,
+        "date": "2022-10-18 22:02:51.281873",
+        "first run": "2022-10-18 22:02:51.284270",
         "params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -878,8 +864,6 @@
         "Root Mean Squared Error": 56741.74171270488,
         "Score": 0.710594188729091,
         "Training Time": 2.3376071453094482,
-        "date": "2022-10-19 12:47:50.767724",
-        "first run": "2022-10-19 00:23:46.326282",
         "best params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -888,6 +872,8 @@
             "model__verbosity": 1
         },
         "best score": 0.710594188729091,
+        "date": "2022-10-19 12:47:50.767724",
+        "first run": "2022-10-19 00:23:46.326282",
         "params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -905,8 +891,6 @@
         "Root Mean Squared Error": 56837.01141626709,
         "Score": 0.7140288714054385,
         "Training Time": 4.448234558105469,
-        "date": "2022-11-07 13:16:27.425012",
-        "first run": "2022-11-06 22:13:02.393884",
         "best params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -915,6 +899,8 @@
             "model__verbosity": 1
         },
         "best score": 0.7140288714054385,
+        "date": "2022-11-07 13:16:27.425012",
+        "first run": "2022-11-06 22:13:02.393884",
         "params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -932,8 +918,6 @@
         "Root Mean Squared Error": 57492.345002232425,
         "Score": 0.7073963309687036,
         "Training Time": 4.27869987487793,
-        "date": "2022-10-25 20:12:31.575473",
-        "first run": "2022-10-25 20:12:31.576998",
         "best params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -942,6 +926,8 @@
             "model__verbosity": 1
         },
         "best score": 0.7073963309687036,
+        "date": "2022-10-25 20:12:31.575473",
+        "first run": "2022-10-25 20:12:31.576998",
         "params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -959,8 +945,6 @@
         "Root Mean Squared Error": 57094.004254034844,
         "Score": 0.711436944735224,
         "Training Time": 3.795569658279419,
-        "date": "2022-10-25 20:26:17.666309",
-        "first run": "2022-10-25 20:26:17.667566",
         "best params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -969,6 +953,8 @@
             "model__verbosity": 1
         },
         "best score": 0.711436944735224,
+        "date": "2022-10-25 20:26:17.666309",
+        "first run": "2022-10-25 20:26:17.667566",
         "params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -986,8 +972,6 @@
         "Root Mean Squared Error": 56138.027553686865,
         "Score": 0.7210193896029233,
         "Training Time": 2.7190158367156982,
-        "date": "2022-10-30 13:45:08.761048",
-        "first run": "2022-10-30 13:45:08.764931",
         "best params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
@@ -996,6 +980,8 @@
             "model__verbosity": 1
         },
         "best score": 0.7210193896029233,
+        "date": "2022-10-30 13:45:08.761048",
+        "first run": "2022-10-30 13:45:08.764931",
         "params": {
             "model__max_depth": 10,
             "model__n_estimators": 100,
