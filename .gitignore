@@ -20,3 +20,5 @@ old/*
 *old.*
 offline/
 .ipynb_checkpoints/
+/process/z_envs/_*.*
+#/process/z_envs/_envs.json
