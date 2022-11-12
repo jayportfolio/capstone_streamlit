@@ -2,7 +2,6 @@ import math
 
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import Ridge
 from sklearn.model_selection import train_test_split
 
 from sklearn.pipeline import Pipeline
@@ -12,6 +11,9 @@ from time import time
 import json
 from datetime import datetime
 
+from sklearn.linear_model import Ridge
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
 
 
@@ -255,6 +257,21 @@ def create_train_test_data_XXX(df_orig, categories, RANDOM_STATE=[], p_train_siz
 
         return X_train1, X_test1, y_train1, y_test1, X_train_index, X_test_index, y_train_index, y_test_index
 
+from sklearn.ensemble import RandomForestRegressor
+
+def get_chosen_model(key):
+    models = {
+        "XG Boost".lower(): XGBRegressor(seed=20),
+        "Linear Regression (Ridge)".lower(): Ridge(),
+        "knn": KNeighborsRegressor(),
+        "decision tree": DecisionTreeRegressor(),
+        "random forest": RandomForestRegressor(),
+    }
+    try:
+        return models.get(key.lower())
+    except:
+        raise ValueError(f'no model found for key: {key}')
+
 
 def get_hyperparameters(key, use_gpu):
     if key.lower() == "XG Boost".lower():
@@ -335,6 +352,60 @@ def get_hyperparameters(key, use_gpu):
             # 'normalize' was deprecated in version 1.0 and will be removed in 1.2.If normalization is needed please use sklearn.preprocessing.StandardScaler instead.
             # 'normalize': [True, False],
         }
+    elif key.lower() == 'knn':
+
+        hyperparameters = {
+            #'objective': 'reg:squarederror',
+            #'max_depth': [1, 3, 6, 10, 30],
+            #'n_estimators': 100,
+            #'tree_method': ['auto', 'approx', 'hist', 'exact'],
+            'algorithm' : ['auto','ball_tree','kd_tree','brute'],
+            'leaf_size' : [3.30,300,3000],
+            'metric' : ['minkowski','precomputed'],
+            #'metric_params' : 'abc',
+            'n_jobs' : [-1,1,2],
+            'n_neighbors' : [3,4,5,7,9,13,21,35],
+            'p' : [1,2],
+            'weights' : ['uniform','distance']
+            #'verbosity': 1
+        }
+    elif key.lower() == 'decision tree':
+
+        hyperparameters = {
+            'splitter': ['best', 'random'],
+            'random_state': None,
+            'min_weight_fraction_leaf': [0.0, 0.1, 0.25, 0.5],  #, 1, 5],
+            'min_samples_split': [2, 4, 8, 50, 100, 200, 500],  # , .5, 1]
+            'min_samples_leaf': [1, 0.25, 0.5, 1.5, 2, 4, 8, 50],
+            'min_impurity_decrease': [0.0, 0.1, 0.25, 1, 5],
+            'max_leaf_nodes': [None, 2, 5, 10, 50, 100, 200, 500],  # 1]
+            'max_features': [None, 1.0, 'sqrt', 'log2', .5, .25, .1, 2],
+            'max_depth': [None, 1, 2, 5, 10, 50],
+            # 'criterion': ['gini','entropy','log_loss'], gini and entropy apply to classifier, not regressor
+            'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],  #,'log_loss'],
+            'ccp_alpha': [0.0, 0.05, 0.1, 0.25, 1, 5],  # Cost Complexity Pruning, ref 13.3.1
+
+        }
+        
+    elif key.lower() == 'random forest':
+        hyperparameters = {'bootstrap': True,
+         'ccp_alpha': [0.0, 0.05, 0.1, 0.25, 1, 5],
+         'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+         'max_depth': [None, 1, 2, 5, 10, 50],
+         'max_features': [None, 1.0, 'sqrt', 'log2', .5, .25, .1, 2],
+         'max_leaf_nodes': [None, 2, 5, 10, 50,100,200,500],
+         'max_samples': None,
+         'min_impurity_decrease': [0.0, 0.1, 0.25, 1, 5],
+         'min_samples_leaf': [1, 0.25, 0.5, 1.5, 2, 4, 8, 50],
+         'min_samples_split': [2, 4, 8, 50,100,200,500],
+         'min_weight_fraction_leaf': [0.0, 0.1, 0.25, 0.5],
+         'n_estimators': 100,
+         'n_jobs': None,
+         'oob_score': False,
+         'random_state': None,
+         'verbose': 0,
+         'warm_start': False
+        }
     else:
         raise ValueError("couldn't find hyperparameters for:", key)
 
@@ -409,17 +480,6 @@ def get_results():
         raw_audit = f.read()
     results_json = json.loads(raw_audit)
     return results_json
-
-
-def get_chosen_model(key):
-    models = {
-        "XG Boost".lower(): XGBRegressor(seed=20),
-        "Linear Regression (Ridge)".lower(): Ridge(),
-    }
-    try:
-        return models.get(key.lower())
-    except:
-        raise ValueError(f'no model found for key: {key}')
 
 
 def update_results(saved_results_json, new_results, key, directory='../../../results/', aim='maximize'):
