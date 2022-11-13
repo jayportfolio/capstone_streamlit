@@ -199,6 +199,10 @@ def create_train_test_data(df_orig, categories, RANDOM_STATE=[], p_train_size=0.
         for column in categories:
             df = pd.concat([df, pd.get_dummies(df[column], prefix=column)], axis=1)
             df.drop([column], axis=1, inplace=True)  # now drop the original column (you don't need it anymore),
+    else:
+        #one_hot_max_size
+        for column in categories:
+            df[column] = pd.to_numeric(df[column], 'coerce').dropna().astype('category')
 
     ins = df.pop('index')
     df.insert(1, 'index2', ins)
@@ -271,8 +275,8 @@ def get_chosen_model(key):
         "knn": KNeighborsRegressor(),
         "decision tree": DecisionTreeRegressor(),
         "random forest": RandomForestRegressor(),
-        #"CatBoost".lower(): CatBoostRegressor(objective='RMSE'),
-        "CatBoost".lower(): CatBoostRegressor(objective='R2'),
+        "CatBoost".lower(): CatBoostRegressor(objective='RMSE'),
+        #"CatBoost".lower(): CatBoostRegressor(objective='R2'),
     }
     try:
         return models.get(key.lower())
