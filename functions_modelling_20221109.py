@@ -201,8 +201,9 @@ def create_train_test_data(df_orig, categories, RANDOM_STATE=[], p_train_size=0.
             df.drop([column], axis=1, inplace=True)  # now drop the original column (you don't need it anymore),
     else:
         #one_hot_max_size
-        for column in categories:
-            df[column] = pd.to_numeric(df[column], 'coerce').dropna().astype('category')
+        #for column in categories:
+        #    df[column] = df[column].astype('category')
+        pass
 
     ins = df.pop('index')
     df.insert(1, 'index2', ins)
