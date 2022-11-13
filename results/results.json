@@ -1,4 +1,25 @@
 {
+    "catboost - random search (v06)": {
+        "Mean Absolute Error Accuracy": 44382.39861471555,
+        "Mean Squared Error Accuracy": 3314076966.4912834,
+        "R square Accuracy": 0.706625534228424,
+        "Root Mean Squared Error": 57568.020345425146,
+        "_params": {
+            "model__depth": 8
+        },
+        "_score": -7443.356823520165,
+        "_train time": 48.4374790986379,
+        "best params": {
+            "model__learning_rate": 0.1
+        },
+        "best score": -7394.2722739697265,
+        "best time": 48.4374790986379,
+        "date": "2022-11-13 00:33:25.380628",
+        "first run": "2022-11-13 00:13:48.870697",
+        "random_state": 101,
+        "run_env": "local",
+        "suboptimal": "suboptimal"
+    },
     "decision tree - random search (v02)": {
         "Mean Absolute Error Accuracy": 74554.95855918912,
         "Mean Squared Error Accuracy": 8269820617.092809,
@@ -695,21 +716,21 @@
         "suboptimal": "pending"
     },
     "random forest - random search (v06)": {
-        "Mean Absolute Error Accuracy": 53443.189552559976,
-        "Mean Squared Error Accuracy": 4447274658.96656,
-        "R square Accuracy": 0.6063106438366375,
-        "Root Mean Squared Error": 66687.88989739111,
+        "Mean Absolute Error Accuracy": 54063.63435745351,
+        "Mean Squared Error Accuracy": 4521013205.910447,
+        "R square Accuracy": 0.5997830323673907,
+        "Root Mean Squared Error": 67238.48009815843,
         "_params": {
             "model__bootstrap": true,
-            "model__ccp_alpha": 0.05,
-            "model__criterion": "poisson",
-            "model__max_depth": 10,
-            "model__max_features": 0.5,
-            "model__max_leaf_nodes": 100,
+            "model__ccp_alpha": 0.0,
+            "model__criterion": "squared_error",
+            "model__max_depth": 50,
+            "model__max_features": 2,
+            "model__max_leaf_nodes": null,
             "model__max_samples": null,
-            "model__min_impurity_decrease": 0.1,
-            "model__min_samples_leaf": 4,
-            "model__min_samples_split": 50,
+            "model__min_impurity_decrease": 0.0,
+            "model__min_samples_leaf": 50,
+            "model__min_samples_split": 100,
             "model__min_weight_fraction_leaf": 0.0,
             "model__n_estimators": 100,
             "model__n_jobs": null,
@@ -718,8 +739,8 @@
             "model__verbose": 0,
             "model__warm_start": false
         },
-        "_score": 0.6063106438366375,
-        "_train time": 5.147294998168945,
+        "_score": 0.5997830323673907,
+        "_train time": 4.806857268015544,
         "best params": {
             "model__bootstrap": true,
             "model__ccp_alpha": 5,
@@ -740,11 +761,11 @@
             "model__warm_start": false
         },
         "best score": 0.6332903850637348,
-        "best time": 2.582745393117269,
-        "date": "2022-11-13 01:12:18.813185",
+        "best time": 5.147294998168945,
+        "date": "2022-11-13 09:51:11.113828",
         "first run": "2022-11-07 13:16:14.317307",
         "random_state": 101,
-        "run_env": "gradient",
+        "run_env": "local",
         "suboptimal": "suboptimal"
     },
     "random forest - random search (v10)": {

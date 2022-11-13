@@ -15,6 +15,9 @@ from sklearn.linear_model import Ridge
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
+from catboost import CatBoostRegressor
+from sklearn.linear_model import Ridge
+from sklearn.ensemble import RandomForestRegressor
 
 
 def test_module():
@@ -23,7 +26,7 @@ def test_module():
     elif False:
         trial_df = pd.read_csv('data/final/df_listings_v09.csv')
         feature_engineer(trial_df, version=3)
-    elif True:
+    elif False:
         new_10 = make_result(score=10, time=0.1)
         new_20 = make_result(score=20, time=0.2)
         new_5 = make_result(score=5, time=0.05)
@@ -40,6 +43,8 @@ def test_module():
         update_results(updated, make_result(score=20, time=0.004, vary='_vary'), key='TEST', directory='./offline/')
         update_results(updated, make_result(score=20, time=0.5), key='TEST', directory='./offline/')
         update_results(updated, make_result(score=20, time=0.004), key='TEST', directory='./offline/')
+    elif True:
+        get_hyperparameters('catboost', False)
     else:
         pass
 
@@ -181,7 +186,7 @@ def feature_engineer(df, version: int) -> pd.DataFrame:
     return df
 
 
-def create_train_test_data(df_orig, categories, RANDOM_STATE=[], p_train_size=0.9, return_index=False, drop_nulls=True):
+def create_train_test_data(df_orig, categories, RANDOM_STATE=[], p_train_size=0.9, return_index=False, drop_nulls=True, no_dummies=False):
     df = df_orig.copy()
 
     if drop_nulls:
@@ -190,9 +195,10 @@ def create_train_test_data(df_orig, categories, RANDOM_STATE=[], p_train_size=0.
     if return_index:
         df.reset_index(inplace=True)
 
-    for column in categories:
-        df = pd.concat([df, pd.get_dummies(df[column], prefix=column)], axis=1)
-        df.drop([column], axis=1, inplace=True)  # now drop the original column (you don't need it anymore),
+    if not no_dummies:
+        for column in categories:
+            df = pd.concat([df, pd.get_dummies(df[column], prefix=column)], axis=1)
+            df.drop([column], axis=1, inplace=True)  # now drop the original column (you don't need it anymore),
 
     ins = df.pop('index')
     df.insert(1, 'index2', ins)
@@ -257,7 +263,6 @@ def create_train_test_data_XXX(df_orig, categories, RANDOM_STATE=[], p_train_siz
 
         return X_train1, X_test1, y_train1, y_test1, X_train_index, X_test_index, y_train_index, y_test_index
 
-from sklearn.ensemble import RandomForestRegressor
 
 def get_chosen_model(key):
     models = {
@@ -266,6 +271,8 @@ def get_chosen_model(key):
         "knn": KNeighborsRegressor(),
         "decision tree": DecisionTreeRegressor(),
         "random forest": RandomForestRegressor(),
+        #"CatBoost".lower(): CatBoostRegressor(objective='RMSE'),
+        "CatBoost".lower(): CatBoostRegressor(objective='R2'),
     }
     try:
         return models.get(key.lower())
@@ -273,61 +280,11 @@ def get_chosen_model(key):
         raise ValueError(f'no model found for key: {key}')
 
 
-def get_hyperparameters(key, use_gpu):
+def get_hyperparameters(key, use_gpu, prefix='./'):
     if key.lower() == "XG Boost".lower():
-        '''
-        Unused:
-            # 'base_score': None,
-            # 'callbacks': None,
-            # 'colsample_bylevel': None,
-            # 'colsample_bynode': None,
-            # 'colsample_bytree': None,
-            # 'enable_categorical': False,
-            # 'eval_metric': None,
-            # 'gpu_id': None,
-            # 'grow_policy': None,
-            # 'importance_type': None,
-            # 'interaction_constraints': None,
-            # 'max_bin': None,
-            # 'max_cat_to_onehot': None,
-            # 'max_leaves': None,
-            ###'missing': nan,
-            # 'monotone_constraints': None,
-            # 'num_parallel_tree': None,
-            # 'predictor': None,
-            # 'random_state': None,
-            # 'reg_alpha': None,
-            # 'reg_lambda': None,
-            # 'sampling_method': None,
-            # 'scale_pos_weight': None,
-            # 'tree_method': None,
-            #'tree_method': ['auto', 'approx', 'hist', 'gpu_hist', 'exact'],
-            # 'validate_parameters': None,
+        with open(prefix + f'process/z_envs/hyperparameters/{key.lower()}.json') as f:
+            hyperparameters = json.loads(f.read())
 
-        '''
-        hyperparameters = {
-
-            'booster': ['gbtree', 'gblinear', 'dart'],
-            # gbtree and dart use tree based models while gblinear uses linear functions.
-
-            'n_estimators': [75, 50, 125, 100, 150],  # 100, 1000],
-            'early_stopping_rounds': [None],
-
-            ### For Tree Booster
-            'tree_method': ['auto', 'approx', 'hist'],  # pseudo optimsied, #, 'exact'], #, 'gpu_hist'],
-            'learning_rate': [None],  # pseudo optimised, also 0.3. Others: 0.01, 0.1, 0.2, 0.3, 0.4],
-            'gamma': [None, 1, 10, 100, 1000, 10000, 100000],
-            'max_depth': [6, 1, 3, 8],
-            'min_child_weight': [1, 0.1, 0.5, 2, 5],  # None,
-            'max_delta_step': [0, 0.3, 0.1, 0.01, 0.9, 2.5],  # None,
-            'subsample': [1, 0, 0.1, 0.5],  # None,
-
-            'objective': ['reg:squarederror', 'reg:squaredlogerror'],
-
-            'n_jobs': 3,
-            # 'verbosity': 3 if debug_mode else 2 if quick_mode else 1 #  Valid values are 0 (silent), 1 (warning), 2 (info), 3 (debug).
-            'verbosity': 0
-        }
         if use_gpu:
             # hyperparameters['tree_method'].append('gpuhist')
             ###hyperparameters['n_estimators'].extend([250, 300, 500, 750, 1000])
@@ -335,6 +292,12 @@ def get_hyperparameters(key, use_gpu):
             # hyperparameters['learning_rate'].extend([0.3, 0.01, 0.1, 0.2, 0.3, 0.4])
             # hyperparameters['early_stopping_rounds'].extend([1, 5, 10, 100])
             pass
+
+    elif key.lower() in ['catboost','random forest']:
+
+        with open(prefix + f'process/z_envs/hyperparameters/{key.lower()}.json') as f:
+            hyperparameters = json.loads(f.read())
+
 
     elif key.lower() == "Linear Regression (Ridge)".lower():
 
@@ -386,26 +349,7 @@ def get_hyperparameters(key, use_gpu):
             'ccp_alpha': [0.0, 0.05, 0.1, 0.25, 1, 5],  # Cost Complexity Pruning, ref 13.3.1
 
         }
-        
-    elif key.lower() == 'random forest':
-        hyperparameters = {'bootstrap': True,
-         'ccp_alpha': [0.0, 0.05, 0.1, 0.25, 1, 5],
-         'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
-         'max_depth': [None, 1, 2, 5, 10, 50],
-         'max_features': [None, 1.0, 'sqrt', 'log2', .5, .25, .1, 2],
-         'max_leaf_nodes': [None, 2, 5, 10, 50,100,200,500],
-         'max_samples': None,
-         'min_impurity_decrease': [0.0, 0.1, 0.25, 1, 5],
-         'min_samples_leaf': [1, 0.25, 0.5, 1.5, 2, 4, 8, 50],
-         'min_samples_split': [2, 4, 8, 50,100,200,500],
-         'min_weight_fraction_leaf': [0.0, 0.1, 0.25, 0.5],
-         'n_estimators': 100,
-         'n_jobs': None,
-         'oob_score': False,
-         'random_state': None,
-         'verbose': 0,
-         'warm_start': False
-        }
+
     else:
         raise ValueError("couldn't find hyperparameters for:", key)
 
