@@ -22,4 +22,4 @@ offline/
 .ipynb_checkpoints/
 /process/z_envs/_*.*
 #/process/z_envs/_envs.json
-process/E_train model/iteration06/catboost_info/
+process/E_train_model/iteration06/catboost_info/

@@ -1,10 +1,11 @@
 import random
 
+import pandas as pd
 import streamlit as st
 import pickle
 
-from functions_20221019B import this_test_data, get_source_dataframe
-# from functions_models import build_model
+#from functions_20221019B import this_test_data, get_source_dataframe
+from functions_20221109 import this_test_data, get_source_dataframe
 
 import numpy as np
 
@@ -13,8 +14,8 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 df, X_test, y_test = None, None, None
 rand_index = -1
 
-ALGORITHM = 'Decision Tree'
-VERSION = '05'
+DEFAULT_MODEL = 'Decision Tree'
+DATA_VERSION = '06'
 
 
 def main():
@@ -66,30 +67,82 @@ def main():
                 print("File does not exist:", deletable_file)
             # Showing the message instead of throwig an error
 
-    alg = [
-        'optimised_model_XG Boost_v05',
-        'optimised_model_Linear Regression (Ridge)_v05',
-        'optimised_model_Neural Network_v05',
-        'Decision Tree', 'Linear Regression', 'Deep Neural Network', 'Linear Regression (Keras)',
-        'HistGradientBoostingRegressor']
-    ALGORITHM = st.selectbox('Which algorithm?', alg)
+    available_models = [
+        'optimised_model_CatBoost_v06',
+        'optimised_model_Decision Tree_v06',
+        'optimised_model_KNN_v06',
+        'optimised_model_Linear Regression (Ridge)_v06',
+        'optimised_model_Neural Network_v06',
+        'optimised_model_XGBoost_v06',
+        # 'Decision Tree',
+        # 'Linear Regression',
+        # 'Deep Neural Network',
+        # 'Linear Regression (Keras)',
+        # 'HistGradientBoostingRegressor'
+    ]
+    selected_model = st.selectbox('Which model do you want to use?', available_models)
 
     try:
-        # model = pickle.load(open(f'model_{ALGORITHM}.pkl', 'rb'))
-        # model = pickle.load(open(f'models/optimised_model_{ALGORITHM}.pkl', 'rb'))
-        # model = pickle.load(open('models/optimised_model_Linear Regression (Ridge)_v05.pkl', 'rb'))
-        model_path = f'models/{ALGORITHM}.pkl'
+        model_path = f'models/{selected_model}.pkl'
         model = pickle.load(open(model_path, 'rb'))
-        # raise ValueError
     except:
         raise ValueError(f'no model: {model_path}')
 
     manual_parameters = st.checkbox('Use manual parameters instead of sample')
     if not manual_parameters:
-        X_test, y_test = this_test_data(VERSION=VERSION, test_data_only=True)
+        X_test, y_test = this_test_data(VERSION=DATA_VERSION, test_data_only=True)
         test_size = len(y_test)
 
-        if st.button('randomise!'):
+    else:
+        lati = st.slider("Input Your latitude", 51.00, 52.00)
+        longi = st.slider("Input your longitude", -0.5, 0.3)
+        beds = st.slider("Input number of bedrooms", 0, 6)
+        baths = st.slider("Input number of bathrooms", 0, 6)
+
+        inputs = [[lati, longi, beds, baths]]
+
+    if st.button('Predict',):
+
+        if not manual_parameters:
+            try:
+                random_instance_plus = np.loadtxt("random_instance_plus.csv", delimiter=",")
+                rand_index = int(random_instance_plus[0])
+                expected = random_instance_plus[1]
+                inputs = [random_instance_plus[2:]]
+            except:
+                # raise ValueError()
+                rand_index = random.randint(0, test_size - 1)
+                inputs = [X_test[rand_index]]
+                random_instance = inputs
+                expected = y_test[rand_index]
+                np.savetxt("random_instance.csv", random_instance, delimiter=",")
+                random_instance_plus = [rand_index, expected]
+                random_instance_plus.extend(random_instance)
+                print("random_instance_plus:", random_instance_plus)
+                np.savetxt("random_instance_plus.csv", random_instance_plus, delimiter=",")
+
+            st.text(f'Actual value of property {rand_index}: {expected}')
+
+        print("inputs:", inputs)
+
+        result = model.predict(inputs)
+        updated_res = result.flatten().astype(float)
+        st.success('The predicted price for this property is £ {}'.format(updated_res[0]))
+        st.warning('The actual price for this property is £ {}'.format(expected))
+
+
+    if st.checkbox('Get multiple predictions (entire test set)'):
+        X_train, X_test, y_train, y_test = this_test_data(VERSION=DATA_VERSION)
+        acc = model.score(X_test, y_test)
+        st.write('Accuracy of test set: ', acc)
+
+        multiple_predictions = np.vstack((y_test.flatten(), model.predict(X_test).flatten())).T
+        multiple_predictions_df = pd.DataFrame(multiple_predictions, columns=['Actual Price','Predicted Price'])
+        st.write(multiple_predictions_df)
+        print(type(multiple_predictions_df ))
+
+    if not manual_parameters:
+        if st.button('Get a different random property!'):
             rand_index = random.randint(0, test_size - 1)
             inputs = [X_test[rand_index]]
 
@@ -105,59 +158,10 @@ def main():
             print("random_instance_plus:", random_instance_plus)
             np.savetxt("random_instance_plus.csv", [random_instance_plus], delimiter=",")
 
-    else:
-        lati = st.slider("Input Your latitude", 51.00, 52.00)
-        longi = st.slider("Input your longitude", -0.5, 0.3)
-        beds = st.slider("Input number of bedrooms", 0, 6)
-        baths = st.slider("Input number of bathrooms", 0, 6)
-
-        inputs = [[lati, longi, beds, baths]]
-
-    if st.button('Predict'):
-
-        if not manual_parameters:
-            try:
-                random_instance_plus = np.loadtxt("random_instance_plus.csv", delimiter=",")
-                rand_index = random_instance_plus[0]
-                expected = random_instance_plus[1]
-                inputs = [random_instance_plus[2:]]
-            except:
-                # raise ValueError()
-                rand_index = random.randint(0, test_size - 1)
-                inputs = [X_test[rand_index]]
-                random_instance = inputs
-                expected = y_test[rand_index]
-                np.savetxt("random_instance.csv", random_instance, delimiter=",")
-                random_instance_plus = [rand_index, expected]
-                random_instance_plus.extend(random_instance)
-                print("random_instance_plus:", random_instance_plus)
-                np.savetxt("random_instance_plus.csv", random_instance_plus, delimiter=",")
-
-            st.text(f'sample variables ({rand_index}): {inputs[0]}')
-            st.text(f'Expected prediction: {expected}')
-
-        print("inputs:", inputs)
-
-        result = model.predict(inputs)
-        updated_res = result.flatten().astype(float)
-        st.success('The predicted price for this property is {}'.format(updated_res))
-
-    df = get_source_dataframe(IN_COLAB=False, VERSION=VERSION, folder_prefix='')
-    if st.checkbox('Show dataframe'):
-        df, df_type = get_source_dataframe(IN_COLAB=False, VERSION=VERSION, folder_prefix='')
+    df = get_source_dataframe(IN_COLAB=False, VERSION=DATA_VERSION, folder_prefix='')
+    if st.checkbox('Show the underlying dataframe'):
+        df, df_type = get_source_dataframe(IN_COLAB=False, VERSION=DATA_VERSION, folder_prefix='')
         st.write(df)
-
-    if st.checkbox('Get multiple predictions'):
-        st.write(model.predict(X_test).flatten())
-
-    if st.checkbox('Show predictions and accuracy'):
-        X_train, X_test, y_train, y_test = this_test_data(VERSION=VERSION)
-        acc = model.score(X_test, y_test)
-        st.write('Accuracy: ', acc)
-        pred_dtc = model.predict(X_test)
-        # cm_dtc = confusion_matrix(y_test, pred_dtc)
-        # st.write('Confusion matrix: ', cm_dtc)
-        st.write('Predictions: ', pred_dtc)
 
 
 if __name__ == '__main__':
