@@ -68,8 +68,8 @@ def main():
             # Showing the message instead of throwig an error
 
     available_models = [
-        'optimised_model_CatBoost_v06',
         'optimised_model_Decision Tree_v06',
+        'optimised_model_CatBoost_v06',
         'optimised_model_KNN_v06',
         'optimised_model_Linear Regression (Ridge)_v06',
         'optimised_model_Neural Network_v06',
@@ -158,9 +158,11 @@ def main():
             print("random_instance_plus:", random_instance_plus)
             np.savetxt("random_instance_plus.csv", [random_instance_plus], delimiter=",")
 
-    df = get_source_dataframe(IN_COLAB=False, VERSION=DATA_VERSION, folder_prefix='')
+    #df = get_source_dataframe(IN_COLAB=False, VERSION=DATA_VERSION, folder_prefix='')
     if st.checkbox('Show the underlying dataframe'):
-        df, df_type = get_source_dataframe(IN_COLAB=False, VERSION=DATA_VERSION, folder_prefix='')
+        #df, df_type = get_source_dataframe(IN_COLAB=False, VERSION=DATA_VERSION, folder_prefix='')
+        df, df_type = get_source_dataframe(IN_COLAB=True, VERSION=DATA_VERSION, folder_prefix='')
+        print("claiming to be colab so I can use the cloud version of data and save space")
         st.write(df)
 
 
