@@ -59,14 +59,14 @@
             "model__ccp_alpha": 0.05,
             "model__criterion": "absolute_error",
             "model__max_depth": null,
-            "model__max_features": 1.0,
             "model__max_leaf_nodes": null,
             "model__min_impurity_decrease": 0.25,
             "model__min_samples_leaf": 50,
             "model__min_samples_split": 2,
             "model__min_weight_fraction_leaf": 0.0,
             "model__random_state": null,
-            "model__splitter": "best"
+            "model__splitter": "best",
+            "model_ldf_max_features": 1.0
         },
         "best score": 0.6021388596208164,
         "best time": 20.446107705434162,
@@ -692,20 +692,21 @@
         "suboptimal": "pending"
     },
     "neural network - random search [input11, d^20-500-500-20-5, dense1] (v06)": {
-        "Mean Absolute Error Accuracy": 52689.052345343305,
-        "Mean Squared Error Accuracy": 4442920184.587973,
-        "R square Accuracy": 0.6066961181655233,
-        "Root Mean Squared Error": 66655.2337374041,
+        "Mean Absolute Error Accuracy": 53239.05207979266,
+        "Mean Squared Error Accuracy": 4537725954.748687,
+        "R square Accuracy": 0.5983035574452424,
+        "Root Mean Squared Error": 67362.64509911029,
         "_params": {
             "model__batch_size": 100,
             "model__epochs": 500,
             "model__loss": "mse",
             "model__model__activation": "sigmoid",
             "model__model__initializer": "normal",
-            "model__optimizer": "adam"
+            "model__optimizer": "rmsprop"
         },
-        "_score": 0.6066961181655233,
-        "_train time": 1019.6230691671371,
+        "_score": 0.5983035574452424,
+        "_train time": 312.99132108688354,
+        "best is shared": true,
         "best params": {
             "model__batch_size": 100,
             "model__epochs": 500,
@@ -714,10 +715,12 @@
             "model__model__initializer": "normal",
             "model__optimizer": "adam"
         },
-        "best score": 0.6066961181655233,
-        "date": "2022-11-11 01:20:17.646731",
+        "best score": 0.5566961181655233,
+        "best time": 312.99132108688354,
+        "date": "2022-11-14 17:09:59.063570",
         "first run": "2022-11-11 01:20:17.647823",
         "random_state": 101,
+        "run_env": "gradient",
         "suboptimal": "pending"
     },
     "random forest - random search (v06)": {
