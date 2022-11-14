@@ -20,6 +20,7 @@ DATA_VERSION = '06'
 
 def main():
     global X_test, y_test, rand_index
+    fake_being_in_colab = True
 
     st.markdown(
         "<h1 style='text-align: center; color: White;background-color:#e84343'>London Property Prices Predictor</h1>",
@@ -90,7 +91,8 @@ def main():
 
     manual_parameters = st.checkbox('Use manual parameters instead of sample')
     if not manual_parameters:
-        X_test, y_test = this_test_data(VERSION=DATA_VERSION, test_data_only=True)
+        X_test, y_test = this_test_data(VERSION=DATA_VERSION, test_data_only=True, IN_COLAB=fake_being_in_colab)
+
         test_size = len(y_test)
 
     else:
@@ -161,7 +163,7 @@ def main():
     #df = get_source_dataframe(IN_COLAB=False, VERSION=DATA_VERSION, folder_prefix='')
     if st.checkbox('Show the underlying dataframe'):
         #df, df_type = get_source_dataframe(IN_COLAB=False, VERSION=DATA_VERSION, folder_prefix='')
-        df, df_type = get_source_dataframe(IN_COLAB=True, VERSION=DATA_VERSION, folder_prefix='')
+        df, df_type = get_source_dataframe(IN_COLAB=fake_being_in_colab, VERSION=DATA_VERSION, folder_prefix='')
         print("claiming to be colab so I can use the cloud version of data and save space")
         st.write(df)
 

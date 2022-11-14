@@ -59,7 +59,7 @@ def get_source_dataframe(IN_COLAB, VERSION, rows=0, folder_prefix='../../../'):
     return inDF, retrieval_type
 
 
-def this_test_data(VERSION, test_data_only=False, drop_nulls=True):
+def this_test_data(VERSION, test_data_only=False, drop_nulls=True, IN_COLAB=False):
     suffix = "_no_nulls" if drop_nulls else ""
 
     try:
@@ -69,8 +69,10 @@ def this_test_data(VERSION, test_data_only=False, drop_nulls=True):
 
         X_test = np.loadtxt(f"train_test/X_test{suffix}.csv", delimiter=",")
         y_test = np.loadtxt(f"train_test/y_test{suffix}.csv", delimiter=",")
-    except:
-        df, retrieval_type = get_source_dataframe(IN_COLAB=False, VERSION=VERSION, folder_prefix='')
+    except Exception as e:
+        print('ENDED UP IN GENERAL EXCEPTION', e)
+        print(e)
+        df, retrieval_type = get_source_dataframe(IN_COLAB=IN_COLAB, VERSION=VERSION, folder_prefix='')
 
         if drop_nulls:
             df.dropna(inplace=True)
