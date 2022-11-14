@@ -106,7 +106,7 @@ def this_test_data(VERSION, test_data_only=False, drop_nulls=True):
 
 
 def tt_split(VERSION, df, RANDOM_STATE=101, LABEL='Price'):
-    columns, booleans, floats, categories = get_columns(version=VERSION)
+    columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 
     for column in categories:
         df = pd.concat([df, pd.get_dummies(df[column], prefix=column)], axis=1)
