@@ -1,0 +1,38 @@
+Fitting 2 folds for each of 10 candidates, totalling 20 fits
+[CV 1/2] END model__batch_size=10000, model__epochs=500, model__loss=mse, model__model__activation=relu, model__model__initializer=normal, model__optimizer=adam, model__verbose=0;, score=(train=0.483, test=0.481) total time=   4.7s
+[CV 2/2] END model__batch_size=10000, model__epochs=500, model__loss=mse, model__model__activation=relu, model__model__initializer=normal, model__optimizer=adam, model__verbose=0;, score=(train=0.464, test=0.461) total time=   4.7s
+
+[CV 1/2] END model__batch_size=10000, model__epochs=5000, model__loss=mse, model__model__activation=relu, model__model__initializer=normal, model__optimizer=adam, model__verbose=0;, score=(train=0.587, test=0.579) total time=  42.2s
+[CV 2/2] END model__batch_size=10000, model__epochs=5000, model__loss=mse, model__model__activation=relu, model__model__initializer=normal, model__optimizer=adam, model__verbose=0;, score=(train=-15.819, test=-15.592) total time=  41.3s
+
+[CV 1/2] END model__batch_size=50, model__epochs=10, model__loss=mse, model__model__activation=relu, model__model__initializer=normal, model__optimizer=adam, model__verbose=0;, score=(train=0.501, test=0.498) total time=   8.1s
+[CV 2/2] END model__batch_size=50, model__epochs=10, model__loss=mse, model__model__activation=relu, model__model__initializer=normal, model__optimizer=adam, model__verbose=0;, score=(train=0.502, test=0.497) total time=   8.4s
+
+[CV 1/2] END model__batch_size=100, model__epochs=5000, model__loss=mse, model__model__activation=relu, model__model__initializer=normal, model__optimizer=adam, model__verbose=0;, score=(train=0.762, test=0.625) total time=30.2min
+
+--
+
+[CV 1/2] END model__batch_size=100, model__epochs=1000, model__loss=mse, model__model__activation=relu, model__model__initializer=normal, model__optimizer=rmsprop, model__verbose=0;, score=(train=0.585, test=0.575) total time= 6.4min
+[CV 2/2] END model__batch_size=100, model__epochs=1000, model__loss=mse, model__model__activation=relu, model__model__initializer=normal, model__optimizer=rmsprop, model__verbose=0;, score=(train=0.615, test=0.605) total time= 6.0min
+
+[CV 1/2] END model__batch_size=100, model__epochs=100, model__loss=mse, model__model__activation=relu, model__model__initializer=normal, model__optimizer=rmsprop, model__verbose=0;, score=(train=0.509, test=0.504) total time=  36.5s
+[CV 2/2] END model__batch_size=100, model__epochs=100, model__loss=mse, model__model__activation=relu, model__model__initializer=normal, model__optimizer=rmsprop, model__verbose=0;, score=(train=0.514, test=0.509) total time=  37.0s
+
+
+==
+
+[CV 1/2] END model__batch_size=100, model__epochs=500, model__loss=mse, model__model__activation=sigmoid, model__model__initializer=normal, model__optimizer=adam, model__verbose=0;, score=(train=0.595, test=0.585) total time= 3.1min
+[CV 2/2] END model__batch_size=100, model__epochs=500, model__loss=mse, model__model__activation=sigmoid, model__model__initializer=normal, model__optimizer=adam, model__verbose=0;, score=(train=0.593, test=0.586) total time= 3.0min
+
+
+--
+
+
+[CV 1/2] END model__batch_size=10000, model__epochs=100, model__loss=mse, model__model__activation=sigmoid, model__model__initializer=normal, model__optimizer=rmsprop, model__verbose=0;, score=(train=-0.176, test=-0.207) total time=   1.8s
+[CV 2/2] END model__batch_size=10000, model__epochs=100, model__loss=mse, model__model__activation=sigmoid, model__model__initializer=normal, model__optimizer=rmsprop, model__verbose=0;, score=(train=-0.579, test=-0.600) total time=   1.3s
+
+[CV 1/2] END model__batch_size=1000, model__epochs=1000, model__loss=mse, model__model__activation=sigmoid, model__model__initializer=normal, model__optimizer=rmsprop, model__verbose=0;, score=(train=0.566, test=0.560) total time=  39.2s
+[CV 2/2] END model__batch_size=1000, model__epochs=1000, model__loss=mse, model__model__activation=sigmoid, model__model__initializer=normal, model__optimizer=rmsprop, model__verbose=0;, score=(train=0.516, test=0.511) total time=  38.7s
+
+[CV 1/2] END model__batch_size=100, model__epochs=5000, model__loss=mse, model__model__activation=sigmoid, model__model__initializer=normal, model__optimizer=rmsprop, model__verbose=0;, score=(train=0.700, test=0.630) total time=30.4min
+[CV 2/2] END model__batch_size=100, model__epochs=5000, model__loss=mse, model__model__activation=sigmoid, model__model__initializer=normal, model__optimizer=rmsprop, model__verbose=0;, score=(train=0.707, test=0.629) total time=30.2min
