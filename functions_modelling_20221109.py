@@ -20,30 +20,70 @@ from sklearn.linear_model import Ridge
 from sklearn.ensemble import RandomForestRegressor
 
 
+def assert_ok(updated, expected__json_filename, testname=""):
+    from deepdiff import DeepDiff
+
+    with open(expected__json_filename) as f:
+        expected1 = json.loads(f.read())
+
+        answer = DeepDiff(updated, expected1)
+        failed = []
+        for key00, keys in answer.items():
+            if key00 == 'values_changed':
+                for key, value in keys.items():
+                    if key not in ["root['TEST']['date']", "root['TEST']['first run']"]:
+                        failed.append(key)
+            else:
+                failed.append(key00)
+        if failed != []:
+            print(testname, ":", failed, 'should be empty')
+            print()
+            print("updated json")
+            print(updated)
+        assert failed == []
+
+
 def test_module():
     if False:
         pass
     elif False:
         trial_df = pd.read_csv('data/final/df_listings_v09.csv')
         feature_engineer(trial_df, version=3)
-    elif False:
-        new_10 = make_result(score=10, time=0.1)
-        new_20 = make_result(score=20, time=0.2)
-        new_5 = make_result(score=5, time=0.05)
-        new_1 = make_result(score=1, time=0.01)
-        updated = {}
-        update_results(updated, new_10, key='TEST', directory='./offline/')
-        update_results(updated, new_5, key='TEST', directory='./offline/')
-        update_results(updated, new_20, key='TEST', directory='./offline/')
-        update_results(updated, new_1, key='TEST', directory='./offline/')
-        update_results(updated, make_result(score=20, time=0.2), key='TEST', directory='./offline/')
-        update_results(updated, make_result(score=20, time=0.2, vary='_vary'), key='TEST', directory='./offline/')
-
-        update_results(updated, make_result(score=20, time=0.5, vary='_vary'), key='TEST', directory='./offline/')
-        update_results(updated, make_result(score=20, time=0.004, vary='_vary'), key='TEST', directory='./offline/')
-        update_results(updated, make_result(score=20, time=0.5), key='TEST', directory='./offline/')
-        update_results(updated, make_result(score=20, time=0.004), key='TEST', directory='./offline/')
     elif True:
+        using_test_framework = True
+
+        updated = {}
+        update_results(updated, make_result(score=10, time=0.1), key='TEST', directory='./offline/')
+        if using_test_framework: assert_ok(updated, 'offline/results_test_results/expected1.json', testname='test 1')
+
+        update_results(updated, make_result(score=5, time=0.05), key='TEST', directory='./offline/')
+        if using_test_framework: assert_ok(updated, 'offline/results_test_results/expected2.json', testname='test 2')
+
+        update_results(updated, make_result(score=20, time=0.2), key='TEST', directory='./offline/')
+        if using_test_framework: assert_ok(updated, 'offline/results_test_results/expected3.json', testname='test 3')
+
+        update_results(updated,  make_result(score=1, time=0.01), key='TEST', directory='./offline/')
+        if using_test_framework: assert_ok(updated, 'offline/results_test_results/expected4.json', testname='test 4')
+
+        update_results(updated, make_result(score=20, time=0.2), key='TEST', directory='./offline/')
+        if using_test_framework: assert_ok(updated, 'offline/results_test_results/expected5.json', testname='test 5')
+
+        update_results(updated, make_result(score=20, time=0.2, vary='_vary'), key='TEST', directory='./offline/')
+        if using_test_framework: assert_ok(updated, 'offline/results_test_results/expected6.json', testname='test 6')
+
+        update_results(updated, make_result(score=20, time=200.0, vary='_vary'), key='TEST', directory='./offline/')
+        if using_test_framework: assert_ok(updated, 'offline/results_test_results/expected7.json', testname='test 7')
+
+        update_results(updated, make_result(score=20, time=0.00002, vary='_vary'), key='TEST', directory='./offline/')
+        if using_test_framework: assert_ok(updated, 'offline/results_test_results/expected8.json', testname='test 8')
+
+        update_results(updated, make_result(score=20, time=0.02), key='TEST', directory='./offline/')
+        if using_test_framework: assert_ok(updated, 'offline/results_test_results/expected9.json', testname='test 9')
+
+        update_results(updated, make_result(score=20, time=0.00002), key='TEST', directory='./offline/')
+        if using_test_framework: assert_ok(updated, 'offline/results_test_results/expected10.json', testname='test 10')
+
+    elif False:
         get_hyperparameters('catboost', False)
     else:
         pass
@@ -200,8 +240,8 @@ def create_train_test_data(df_orig, categories, RANDOM_STATE=[], p_train_size=0.
             df = pd.concat([df, pd.get_dummies(df[column], prefix=column)], axis=1)
             df.drop([column], axis=1, inplace=True)  # now drop the original column (you don't need it anymore),
     else:
-        #one_hot_max_size
-        #for column in categories:
+        # one_hot_max_size
+        # for column in categories:
         #    df[column] = df[column].astype('category')
         pass
 
@@ -277,7 +317,7 @@ def get_chosen_model(key):
         "decision tree": DecisionTreeRegressor(),
         "random forest": RandomForestRegressor(),
         "CatBoost".lower(): CatBoostRegressor(objective='RMSE'),
-        #"CatBoost".lower(): CatBoostRegressor(objective='R2'),
+        # "CatBoost".lower(): CatBoostRegressor(objective='R2'),
     }
     try:
         return models.get(key.lower())
@@ -298,51 +338,34 @@ def get_hyperparameters(key, use_gpu, prefix='./'):
             # hyperparameters['early_stopping_rounds'].extend([1, 5, 10, 100])
             pass
 
-    elif key.lower() in ['catboost','random forest']:
+    elif key.lower() in ['catboost', 'random forest', "Linear Regression (Ridge)".lower()]:
 
         with open(prefix + f'process/z_envs/hyperparameters/{key.lower()}.json') as f:
             hyperparameters = json.loads(f.read())
 
-
-    elif key.lower() == "Linear Regression (Ridge)".lower():
-
-        #'alpha', 'copy_X', 'fit_intercept', 'max_iter', 'normalize', 'positive', 'random_state', 'solver', 'tol'
-        hyperparameters = {
-            'alpha': [0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
-            'fit_intercept': [True, False],
-            'max_iter': [100, 1000, 10000, 100000, 1000000],
-            'positive': [True, False],
-            #'copy_X': [True, False],
-            'solver': ['auto', 'svd', 'cholesky', 'lsqr', 'sparse_cg', 'sag', 'saga', 'lbfgs'],
-            'tol': [0.00001, 0.0001, 0.001, 0.01],
-            'random_state': [101],
-
-            # 'normalize' was deprecated in version 1.0 and will be removed in 1.2.If normalization is needed please use sklearn.preprocessing.StandardScaler instead.
-            # 'normalize': [True, False],
-        }
     elif key.lower() == 'knn':
 
         hyperparameters = {
-            #'objective': 'reg:squarederror',
-            #'max_depth': [1, 3, 6, 10, 30],
-            #'n_estimators': 100,
-            #'tree_method': ['auto', 'approx', 'hist', 'exact'],
-            'algorithm' : ['auto','ball_tree','kd_tree','brute'],
-            'leaf_size' : [3.30,300,3000],
-            'metric' : ['minkowski','precomputed'],
-            #'metric_params' : 'abc',
-            'n_jobs' : [-1,1,2],
-            'n_neighbors' : [3,4,5,7,9,13,21,35],
-            'p' : [1,2],
-            'weights' : ['uniform','distance']
-            #'verbosity': 1
+            # 'objective': 'reg:squarederror',
+            # 'max_depth': [1, 3, 6, 10, 30],
+            # 'n_estimators': 100,
+            # 'tree_method': ['auto', 'approx', 'hist', 'exact'],
+            'algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute'],
+            'leaf_size': [3.30, 300, 3000],
+            'metric': ['minkowski', 'precomputed'],
+            # 'metric_params' : 'abc',
+            'n_jobs': [-1, 1, 2],
+            'n_neighbors': [3, 4, 5, 7, 9, 13, 21, 35],
+            'p': [1, 2],
+            'weights': ['uniform', 'distance']
+            # 'verbosity': 1
         }
     elif key.lower() == 'decision tree':
 
         hyperparameters = {
             'splitter': ['best', 'random'],
             'random_state': None,
-            'min_weight_fraction_leaf': [0.0, 0.1, 0.25, 0.5],  #, 1, 5],
+            'min_weight_fraction_leaf': [0.0, 0.1, 0.25, 0.5],  # , 1, 5],
             'min_samples_split': [2, 4, 8, 50, 100, 200, 500],  # , .5, 1]
             'min_samples_leaf': [1, 0.25, 0.5, 1.5, 2, 4, 8, 50],
             'min_impurity_decrease': [0.0, 0.1, 0.25, 1, 5],
@@ -350,7 +373,7 @@ def get_hyperparameters(key, use_gpu, prefix='./'):
             'max_features': [None, 1.0, 'sqrt', 'log2', .5, .25, .1, 2],
             'max_depth': [None, 1, 2, 5, 10, 50],
             # 'criterion': ['gini','entropy','log_loss'], gini and entropy apply to classifier, not regressor
-            'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],  #,'log_loss'],
+            'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],  # ,'log_loss'],
             'ccp_alpha': [0.0, 0.05, 0.1, 0.25, 1, 5],  # Cost Complexity Pruning, ref 13.3.1
 
         }
@@ -459,51 +482,40 @@ def update_results(saved_results_json, new_results, key, directory='../../../res
     new_results['first run'] = first_run_date
 
     if key not in saved_results_json:
-        new_results['best params'] = new_results['_params']
-        new_results['best score'] = new_results['_score']
-        new_results['best time'] = new_results['_train time']
-        new_results['suboptimal'] = 'pending'
-
+        put_new_in_best(new_results)
         this_model_is_best = True
     elif max_score > new_results['_score']:
-        new_results['suboptimal'] = 'suboptimal'
-        new_results['best params'] = old_results['best params']
-        new_results['best score'] = old_results['best score']
-        new_results['best time'] = old_results['_train time']
+        put_old_best_in_best(new_results, old_results)
 
         this_model_is_best = False
     elif max_score == new_results['_score']:
 
-        if old_results['best params'] == new_results['_params'] or old_results['best time'] > new_results['_train time'] * 3:
-            new_results['best params'] = old_results['best params']
-            new_results['best score'] = old_results['best score']
-            new_results['best time'] = old_results['_train time']
-            new_results['suboptimal'] = 'pending'
+        if old_results['best params'] == new_results['_params'] and new_results['_train time'] <= old_results['best time']:
 
-            this_model_is_best = False
-
-        elif old_results['best time'] * 3 < new_results['_train time'] :
-            new_results['best params'] = new_results['_params']
-            new_results['best score'] = new_results['_score']
-            new_results['best time'] = new_results['_train time']
-            new_results['suboptimal'] = 'pending'
+            put_new_in_best(new_results)
 
             this_model_is_best = True
 
+        elif old_results['best params'] != new_results['_params'] and new_results['_train time'] <= old_results['best time']:
+
+            put_new_in_best(new_results)
+            new_results['best is shared'] = True
+
+            this_model_is_best = True
+
+        elif old_results['best params'] == new_results['_params'] or old_results['best time'] > new_results['_train time'] * 3:
+            put_old_best_in_best(new_results, old_results) ## was best2
+
+            this_model_is_best = False
+
         else:
-            new_results['best params'] = old_results['best params']
-            new_results['best score'] = old_results['best score']
-            new_results['best time'] = old_results['_train time']
-            new_results['suboptimal'] = 'pending'
+            put_old_best_in_best(new_results, old_results) ## was best2
             new_results['best is shared'] = True
 
             this_model_is_best = False
 
     else:
-        new_results['best params'] = new_results['_params']
-        new_results['best score'] = new_results['_score']
-        new_results['best time'] = new_results['_train time']
-        new_results['suboptimal'] = 'pending'
+        put_new_in_best(new_results)
 
         this_model_is_best = True
 
@@ -516,46 +528,25 @@ def update_results(saved_results_json, new_results, key, directory='../../../res
     return this_model_is_best
 
 
-def update_resultsXXX(saved_results_json, new_results, key):
-    first_run_date = str(datetime.now())
-    try:
-        first_run_date = saved_results_json[key]['date']
-        first_run_date = saved_results_json[key]['first run']
-    except:
-        pass
+def put_old_best_in_best2XXX(new_results, old_results):
+    new_results['best params'] = old_results['best params']
+    new_results['best score'] = old_results['best score']
+    new_results['best time'] = old_results['_train time']
+    new_results['suboptimal'] = 'pending'
 
-    max_score = -1000
-    try:
-        max_score = saved_results_json[key]['_score']
-        max_score = saved_results_json[key]['best score']
-    except:
-        pass
 
-    new_results['first run'] = first_run_date
+def put_old_best_in_best(new_results, old_results):
+    new_results['best params'] = old_results['best params']
+    new_results['best score'] = old_results['best score']
+    new_results['best time'] = old_results['_train time']
+    new_results['suboptimal'] = 'suboptimal'
 
-    if key not in saved_results_json:
-        new_results['best params'] = new_results['_params']
-        new_results['best score'] = new_results['_score']
-        new_results['suboptimal'] = 'pending'
-    elif max_score > saved_results_json[key]['_score']:
-        new_results['suboptimal'] = 'suboptimal'
-    elif max_score == saved_results_json[key]['_score']:
-        if saved_results_json[key]['_params'] != new_results['_params']:
-            new_results['best params'] = 'MULTIPLE PARAM OPTIONS'
-        else:
-            new_results['best params'] = saved_results_json[key]['_params']
-            new_results['best score'] = saved_results_json[key]['_score']
-            new_results['suboptimal'] = 'pending'
-    else:
-        new_results['best params'] = saved_results_json[key]['_params']
-        new_results['best score'] = saved_results_json[key]['_score']
-        new_results['suboptimal'] = 'pending'
 
-    saved_results_json[key] = new_results
-
-    results_filename = '../../../results/results.json'
-    with open(results_filename, 'w') as file:
-        file.write(json.dumps(saved_results_json, indent=4, sort_keys=True))
+def put_new_in_best(new_results):
+    new_results['best params'] = new_results['_params']
+    new_results['best score'] = new_results['_score']
+    new_results['best time'] = new_results['_train time']
+    new_results['suboptimal'] = 'pending'
 
 
 if __name__ == '__main__':
