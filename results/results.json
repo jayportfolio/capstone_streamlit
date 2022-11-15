@@ -471,6 +471,39 @@
         "first run": "2022-10-11 00:00:00.000000",
         "random_state": 101
     },
+    "neural network - grid search [input11, d^20-500-500-20-5, dense1] (v06)": {
+        "Mean Absolute Error Accuracy": 54997.13208489123,
+        "Mean Squared Error Accuracy": 4790727364.652283,
+        "R square Accuracy": 0.5759069280910043,
+        "Root Mean Squared Error": 69215.08047132708,
+        "_params": {
+            "model__batch_size": 2112,
+            "model__epochs": 1000,
+            "model__loss": "mse",
+            "model__model__activation": "relu",
+            "model__model__initializer": "normal",
+            "model__optimizer": "adam",
+            "model__verbose": 0
+        },
+        "_score": 0.5759069280910043,
+        "_train time": 31.472463846206665,
+        "best params": {
+            "model__batch_size": 2112,
+            "model__epochs": 1000,
+            "model__loss": "mse",
+            "model__model__activation": "relu",
+            "model__model__initializer": "normal",
+            "model__optimizer": "adam",
+            "model__verbose": 0
+        },
+        "best score": 0.5759069280910043,
+        "best time": 31.472463846206665,
+        "date": "2022-11-15 20:25:17.448323",
+        "first run": "2022-11-15 20:25:17.449455",
+        "random_state": 101,
+        "run_env": "gradient",
+        "suboptimal": "pending"
+    },
     "neural network - random search [i64,norm,d64^6,d1] (v11)": {
         "Mean Absolute Error Accuracy": 57201.73817414457,
         "Mean Squared Error Accuracy": 5268876368.550115,
