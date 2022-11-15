@@ -251,23 +251,23 @@
         "random_state": 101
     },
     "linear regression (ridge) (v06)": {
-        "Mean Absolute Error Accuracy": 63601.87602196039,
-        "Mean Squared Error Accuracy": 6135076774.07938,
-        "R square Accuracy": 0.45690009940574006,
-        "Root Mean Squared Error": 78326.73090381967,
+        "Mean Absolute Error Accuracy": 63603.171933667014,
+        "Mean Squared Error Accuracy": 6135212780.8945265,
+        "R square Accuracy": 0.4568880595746986,
+        "Root Mean Squared Error": 78327.59910079285,
         "_method": "random search",
         "_params": {
-            "model__alpha": 0.01,
+            "model__alpha": 1,
             "model__copy_X": false,
             "model__fit_intercept": true,
-            "model__max_iter": 100,
+            "model__max_iter": 10000,
             "model__positive": false,
             "model__random_state": 101,
-            "model__solver": "sag",
-            "model__tol": 0.001
+            "model__solver": "lsqr",
+            "model__tol": 0.0001
         },
-        "_score": 0.45690009940574006,
-        "_train time": 0.16428740819295248,
+        "_score": 0.4568880595746986,
+        "_train time": 0.017526626586914062,
         "best method": "random search",
         "best params": {
             "model__alpha": 0.01,
@@ -282,7 +282,7 @@
         "best run date": "2022-11-15 21:55:55.839453",
         "best score": 0.45690009940574006,
         "best time": 0.16428740819295248,
-        "date": "2022-11-15 21:55:55.839453",
+        "date": "2022-11-15 22:15:27.930436",
         "first run": "2022-11-15 21:02:22.079702",
         "random_state": 101,
         "run_env": "local",
@@ -300,7 +300,7 @@
         "silver run date": "2022-11-15 21:49:29.431292",
         "silver score": 0.45689955499425794,
         "silver time": 0.25191505750020343,
-        "suboptimal": "pending"
+        "suboptimal": "suboptimal"
     },
     "linear regression (ridge) - random search (v02)": {
         "Mean Absolute Error Accuracy": 71267.87543973039,
