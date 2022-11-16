@@ -285,6 +285,48 @@
         "first run": "2022-10-11 00:00:00.000000",
         "random_state": 101
     },
+    "light gradient boosting (v06)": {
+        "Mean Absolute Error Accuracy": 56113.3570084384,
+        "Mean Squared Error Accuracy": 4764618204.403697,
+        "R square Accuracy": 0.5782182084315399,
+        "Root Mean Squared Error": 69026.21389301095,
+        "_method": "random search",
+        "_params": {
+            "model__boosting_type": "gbdt",
+            "model__colsample_bytree": 0.6,
+            "model__is_unbalance": true,
+            "model__learning_rate": 0.05,
+            "model__metric": "auc",
+            "model__min_child_samples": 20,
+            "model__n_estimators": 64,
+            "model__num_iterations": 50,
+            "model__num_leaves": 20,
+            "model__verbose": 1
+        },
+        "_score": 0.5782182084315399,
+        "_train time": 0.6857337951660156,
+        "best method": "random search",
+        "best params": {
+            "model__boosting_type": "gbdt",
+            "model__colsample_bytree": 0.6,
+            "model__is_unbalance": true,
+            "model__learning_rate": 0.05,
+            "model__metric": "auc",
+            "model__min_child_samples": 20,
+            "model__n_estimators": 64,
+            "model__num_iterations": 50,
+            "model__num_leaves": 20,
+            "model__verbose": 1
+        },
+        "best run date": "2022-11-16 13:49:11.580931",
+        "best score": 0.5782182084315399,
+        "best time": 0.6857337951660156,
+        "date": "2022-11-16 13:49:11.580931",
+        "first run": "2022-11-16 13:49:11.581923",
+        "random_state": 101,
+        "run_env": "local",
+        "suboptimal": "pending"
+    },
     "linear regression (ridge) (v06)": {
         "Mean Absolute Error Accuracy": 63601.874995444356,
         "Mean Squared Error Accuracy": 6135076718.216859,
