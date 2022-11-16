@@ -1,2 +1,3 @@
 loss,params,iteration,estimators,train_time
-0.0,"{'boosting_type': 'goss', 'class_weight': None, 'colsample_bytree': 0.9538730639340216, 'learning_rate': 0.14771222373334933, 'min_child_samples': 265, 'num_leaves': 69, 'reg_alpha': 0.622270595150734, 'reg_lambda': 0.5458137723678362, 'subsample': 1.0}",1,1,16.938844975999928
+0.0,"{'boosting_type': 'goss', 'class_weight': None, 'colsample_bytree': 0.9538730639340216, 'learning_rate': 0.14771222373334933, 'min_child_samples': 265, 'num_leaves': 69, 'reg_alpha': 0.622270595150734, 'reg_lambda': 0.5458137723678362, 'subsample': 1.0}",1,1,3.9352233256213367
+0.0,"{'boosting_type': 'dart', 'class_weight': None, 'colsample_bytree': 0.6365089169952516, 'learning_rate': 0.05511675247792646, 'min_child_samples': 420, 'num_leaves': 79, 'reg_alpha': 0.26691964907090837, 'reg_lambda': 0.728180270593032, 'subsample': 0.6200081525576333}",2,1,4324.133625893854
