@@ -1,10 +1,11 @@
 __pycache__/
+venv/
 .idea/
 /guide/dnn_model/
 /iris.csv
 /streamlitty_1.py
-/testing_model_building.py
-/testing_as_notebook.ipynb
+/process/Ex_train_model_exploration/testing_model_building.py
+/process/Ex_train_model_exploration/testing_as_notebook.ipynb
 #/data/quick_split/
 /data/final_split/data.csv
 /models/m*
