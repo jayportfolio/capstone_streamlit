@@ -549,22 +549,14 @@
         "random_state": 101
     },
     "neural network (v06)": {
-        "Mean Absolute Error Accuracy": 53239.05207979266,
-        "Mean Squared Error Accuracy": 4537725954.748687,
-        "R square Accuracy": 0.5983035574452424,
-        "Root Mean Squared Error": 67362.64509911029,
-        "_method": "random search [input11, d^20-500-500-20-5, dense1]",
-        "_params": {
-            "model__batch_size": 100,
-            "model__epochs": 500,
-            "model__loss": "mse",
-            "model__model__activation": "sigmoid",
-            "model__model__initializer": "normal",
-            "model__optimizer": "rmsprop"
-        },
-        "_score": 0.5983035574452424,
-        "_train time": 312.99132108688354,
-        "best is shared": true,
+        "Mean Absolute Error Accuracy": 415136.886075011,
+        "Mean Squared Error Accuracy": 183664355467.2019,
+        "R square Accuracy": -15.258654434184194,
+        "Root Mean Squared Error": 428560.79553221137,
+        "_method": "simplest findable model + normalise, MSE loss",
+        "_params": "not available",
+        "_score": -15.258654434184194,
+        "_train time": 999,
         "best method": "random search [input11, d^20-500-500-20-5, dense1]",
         "best params": {
             "model__batch_size": 100,
@@ -574,13 +566,19 @@
             "model__model__initializer": "normal",
             "model__optimizer": "adam"
         },
+        "best run date": "2000-01-01 17:09:59.063570",
         "best score": 0.5566961181655233,
         "best time": 312.99132108688354,
-        "date": "2022-11-14 17:09:59.063570",
+        "date": "2022-11-20 00:35:55.108414",
         "first run": "2022-11-11 01:20:17.647823",
         "random_state": 101,
         "run_env": "gradient",
-        "suboptimal": "pending"
+        "silver method": "simplest findable model + normalise, MSE loss",
+        "silver params": "not available",
+        "silver run date": "2022-11-20 00:35:55.108414",
+        "silver score": -15.258654434184194,
+        "silver time": 999,
+        "suboptimal": "suboptimal"
     },
     "neural network - random search [i64,norm,d64^6,d1] (v11)": {
         "Mean Absolute Error Accuracy": 57201.73817414457,
