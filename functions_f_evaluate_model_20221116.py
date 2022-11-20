@@ -213,7 +213,7 @@ def put_old_best_in_best(new_results, old_results):
         new_results['silver run date'] = old_results['silver run date']
 
     new_results['best score'] = old_results['best score']
-    new_results['best time'] = old_results['_train time']
+    new_results['best time'] = old_results['best time']
     new_results['best params'] = old_results['best params']
     new_results['best method'] = old_results['best method']
     new_results['best run date'] = old_results['best run date']
