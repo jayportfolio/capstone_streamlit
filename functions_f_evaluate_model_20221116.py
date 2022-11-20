@@ -31,6 +31,8 @@ def make_result(score, time, method, vary=""):
 
 
 def update_results(key, saved_results_json, new_results):
+
+    raise EnvironmentError("this isn't the right update_results method")
     try:
         first_run_date = str(datetime.now())
         first_run_date = saved_results_json[key]['date']
@@ -144,6 +146,8 @@ def update_results(saved_results_json, new_results, key, directory='../../../res
         pass
 
     new_results['first run'] = first_run_date
+
+    new_results['best is shared'] = False
 
     if key not in saved_results_json:
         put_new_in_best(new_results, saved_results_json)
@@ -294,6 +298,11 @@ def test_module():
         updated = {}
         update_results(updated, make_result(score=10, time=0.1, method="method"), key='TEST', directory='./offline/')
         if using_test_framework: assert_ok(updated, 'offline/results_test_results/expected1.json', testname='test 1')
+
+        update_results(updated, make_result(score=9, time=0.09, method="method"), key='TEST', directory='./offline/')
+        if using_test_framework: assert_ok(updated, 'offline/results_test_results/expected1B.json', testname='test 1B')
+        #update_results(updated, make_result(score=11, time=0.11, method="method"), key='TEST', directory='./offline/')
+        #if using_test_framework: assert_ok(updated, 'offline/results_test_results/expected1C.json', testname='test 1C')
 
         update_results(updated, make_result(score=5, time=0.05, method="method"), key='TEST', directory='./offline/')
         if using_test_framework: assert_ok(updated, 'offline/results_test_results/expected2.json', testname='test 2')
