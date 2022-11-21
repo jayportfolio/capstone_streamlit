@@ -165,6 +165,43 @@
         "random_state": 101,
         "suboptimal": "pending"
     },
+    "knn (v06)": {
+        "Mean Absolute Error Accuracy": 41436.366724570405,
+        "Mean Squared Error Accuracy": 3173733520.3606796,
+        "R square Accuracy": 0.7190492600348584,
+        "Root Mean Squared Error": 56335.899037475916,
+        "_method": "random search",
+        "_params": {
+            "model__algorithm": "brute",
+            "model__leaf_size": 3000,
+            "model__metric": "minkowski",
+            "model__n_jobs": -1,
+            "model__n_neighbors": 13,
+            "model__p": 1,
+            "model__weights": "distance"
+        },
+        "_score": 0.7190492600348584,
+        "_train time": 0.01838819185892741,
+        "best is shared": false,
+        "best method": "random search",
+        "best params": {
+            "model__algorithm": "brute",
+            "model__leaf_size": 3000,
+            "model__metric": "minkowski",
+            "model__n_jobs": -1,
+            "model__n_neighbors": 13,
+            "model__p": 1,
+            "model__weights": "distance"
+        },
+        "best run date": "2022-11-21 17:07:32.228547",
+        "best score": 0.7190492600348584,
+        "best time": 0.01838819185892741,
+        "date": "2022-11-21 17:07:32.228547",
+        "first run": "2022-11-21 17:07:32.229750",
+        "random_state": 101,
+        "run_env": "gradient",
+        "suboptimal": "pending"
+    },
     "knn - basic (v01)": {
         "Mean Absolute Error Accuracy": 55623.65893824485,
         "Mean Squared Error Accuracy": 5345846038.636742,
@@ -208,39 +245,6 @@
         "date": "2022-10-12 17:37:11.760678",
         "first run": "2022-10-12 00:00:00.000000",
         "random_state": 101
-    },
-    "knn - random search (v06)": {
-        "Mean Absolute Error Accuracy": 41435.71557804282,
-        "Mean Squared Error Accuracy": 3173381332.25707,
-        "R square Accuracy": 0.7190804370406407,
-        "Root Mean Squared Error": 56332.77316320465,
-        "_params": {
-            "model__algorithm": "ball_tree",
-            "model__leaf_size": 300,
-            "model__metric": "minkowski",
-            "model__n_jobs": 2,
-            "model__n_neighbors": 13,
-            "model__p": 1,
-            "model__weights": "distance"
-        },
-        "_score": 0.7190804370406407,
-        "_train time": 0.017719825108846027,
-        "best params": {
-            "model__algorithm": "auto",
-            "model__leaf_size": 3000,
-            "model__metric": "minkowski",
-            "model__n_jobs": -1,
-            "model__n_neighbors": 13,
-            "model__p": 1,
-            "model__weights": "distance"
-        },
-        "best score": 0.719102700967218,
-        "best time": 0.041981140772501625,
-        "date": "2022-11-14 11:04:06.340350",
-        "first run": "2022-11-06 22:02:46.049381",
-        "random_state": 101,
-        "run_env": "gradient",
-        "suboptimal": "suboptimal"
     },
     "knn - random search (v10)": {
         "Mean Absolute Error Accuracy": 57566.899870473564,
