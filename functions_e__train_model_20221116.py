@@ -1,16 +1,19 @@
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
-from sklearn.linear_model import Ridge
+from sklearn.linear_model import Ridge, LinearRegression
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
 from catboost import CatBoostRegressor
 from sklearn.linear_model import Ridge
-from sklearn.ensemble import RandomForestRegressor
-
+from sklearn.ensemble import RandomForestRegressor, HistGradientBoostingRegressor
 
 from time import time
+import json
+
+from functions_d3__prepare_store_data_20221116 import this_test_data
+
 
 def make_modelling_pipeline(model, DATA_DETAIL):
     if 'no scale' in DATA_DETAIL:
@@ -46,7 +49,7 @@ def build_model(algorithm, drop_nulls=False):
         import tensorflow as tf
 
         from tensorflow import keras
-        from tensorflow.keras import layers
+        from keras import layers
 
         print(tf.__version__)
 
@@ -98,7 +101,7 @@ def build_model(algorithm, drop_nulls=False):
         import tensorflow as tf
 
         from tensorflow import keras
-        from tensorflow.keras import layers
+        from keras import layers
 
         print(tf.__version__)
 

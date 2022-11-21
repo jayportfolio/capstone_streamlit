@@ -52,13 +52,23 @@ The test data is used to evaluate the effectiveness of my trained model.
 ### Machine Learning Prototype
 [Machine Learning Notebook](../../process/E_train_model/iteration06/it06_00_submission_prototype_model_capstone_step8_A_ML.ipynb)
 
-For my Machine Learning prototype I am submitting my catboost model.
+For my Machine Learning prototype I am submitting my KNN model.
 
 ### Deep Learning Prototype
 
 I have trained a neural network which predict property prices.
 
 [Neural Network notebook](../../process/E_train_model/iteration06/it06_00_submission_prototype_model_capstone_step8_B_DL.ipynb)
+
+## Prototype Results
+
+Prototyping has shown KNN to be one of the best performing models for predicting property prices using my data.
+
+Neural Networks performs adequately but less well, and will require more investigation as to whether it is a viable model for this project.
+
+[Prototype Results](../../results/summary_benchmark_v06.ipynb)
+
+N.B. CatBoost also performs well, and will require further investigation to see if hypertuning, better/more data or other modifications can produce better results than KNN.
 
 ## Appendix
 
