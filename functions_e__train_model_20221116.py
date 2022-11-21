@@ -5,7 +5,6 @@ from sklearn.linear_model import Ridge, LinearRegression
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
-from catboost import CatBoostRegressor
 from sklearn.linear_model import Ridge
 from sklearn.ensemble import RandomForestRegressor, HistGradientBoostingRegressor
 
@@ -150,24 +149,30 @@ def build_model(algorithm, drop_nulls=False):
     return model
 
 def get_chosen_model(key):
-    import lightgbm as lgb
-    from lightgbm import LGBMRegressor
-    from lightgbm import DaskLGBMRegressor
 
-    models = {
-        "XG Boost".lower(): XGBRegressor(seed=20),
-        "Linear Regression (Ridge)".lower(): Ridge(),
-        "knn": KNeighborsRegressor(),
-        "decision tree": DecisionTreeRegressor(),
-        "random forest": RandomForestRegressor(),
-        "CatBoost".lower(): CatBoostRegressor(objective='RMSE'),
-        # "CatBoost".lower(): CatBoostRegressor(objective='R2'),
-        "Light Gradient Boosting".lower(): LGBMRegressor()
-    }
-    try:
-        return models.get(key.lower())
-    except:
-        raise ValueError(f'no model found for key: {key}')
+    if key.lower() == 'catboost':
+        from catboost import CatBoostRegressor
+        CatBoostRegressor(objective='RMSE'),
+    elif key.lower() == 'light gradient boosting':
+        import lightgbm as lgb
+        from lightgbm import LGBMRegressor
+        from lightgbm import DaskLGBMRegressor
+        return LGBMRegressor()
+    else:
+        models = {
+            "XG Boost".lower(): XGBRegressor(seed=20),
+            "Linear Regression (Ridge)".lower(): Ridge(),
+            "knn": KNeighborsRegressor(),
+            "decision tree": DecisionTreeRegressor(),
+            "random forest": RandomForestRegressor(),
+            #"CatBoost".lower(): 
+            #XXX "CatBoost".lower(): CatBoostRegressor(objective='R2'),
+            #"Light Gradient Boosting".lower(): 
+        }
+        try:
+            return models.get(key.lower())
+        except:
+            raise ValueError(f'no model found for key: {key}')
 
 
 def get_hyperparameters(key, use_gpu, prefix='./'):
