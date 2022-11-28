@@ -30,9 +30,12 @@ Advocates for the usage of RF (random forest) and GBM (gradient boosting machine
 
 I have decided to apply two of the researched notebooks I found to my dataset 
 
-### Application 1:
+### Application 1A and Application 1B:
 
 This uses Linear Regression to predict property prices for a Kaggle challenge.
+
+* 1A This model attempts (poorly) to use simple Linear Regression to predict property price, using the most strongly correlated feature I have to price: Number of Bedrooms
+* 1B This model uses Multiple Linear Regression to use all the features I have available to predict property price
 
 #### The original work
 https://colab.research.google.com/drive/1DXkpo9PmH9_HiCSz9NQlZ9vGQtMIYqmF
