@@ -8,9 +8,12 @@ I am using machine learning to predict the price of London properties.
 I am using regression ML models for my project as I will be predicting continuous values.
 
 I have looked at a number of models. Some were quickly trialled and discarded as being unsuitable for the task.
+* Logistic Regression was immediately discarded since I am solving a regression problem rather than a classification problem.
 * Linear Regression in particular was shown to be ill-suited for training my model with my dataset and making predictions.
+    * The relationship between the features and the label is more nuanced than strictly linear, making it difficult for Linear Regression to extract accurate predictions.
+        * EDA makes it clear some features are polynomial (latitude and longitude are quadratic, because distance from centre is linear). Using polynomial linear regression could be used to account for this but would add to complexity and risk overfitting without careful hyperparameter tuning.
+    * Many of the features are correlated, which makes Linear Regression especially unsuitable
 * Decision Trees was discarded quickly in favour of Random Forests, to allow for diversity of feature choice and redecing the degree of overfitting which is common with Decision Trees
-* Support Vector machines were not considered after initial study, as they 
 
 Other models were initially seen as unsuitable, but upon further examination brought back into consideration:
 * Neural networks were originally assessed as ill-performing on the task. It transpired that poor results were due to lack of processing power which preventing the model from training long enough to produce good results.
@@ -22,14 +25,18 @@ This left a few good contender models for the project:
   * This model works well.
     * One theory of why this model works so well for this data is because of its clustering-style approach to prediction, which mimics the human subliminal tendency to assume that properties which can be described the same way are worth the same price. 
 * Random Forests
-  * This has the advantage of decision trees but suffers less from over-fitting. 
+  * This has the advantage of decision trees but suffers less from over-fitting.
+  * It is less susceptible to outliers than some other models in my portfolio
+  * If an appropriate implementation of Random Forests can be obtained, it could be used on data instances which have missing data
   * It also provides the ability to track feature importances it decided upon, which is in turn useful for next-iteration data exploration.  
 * CatBoost 
   * This boosting algorithm capitalises upon any advantages it discovers from previous rounds of training, and allows less obvious traits in data to be exploited
+  * The aggregation of many weak learners into a strong learner may produce the strongest model of all, if increasing numbers of features are used
+  * It doesn't work well on sparse data, but that is not an issue for my dataset, because my data collection was oriented towards collecting extremely dense structured data
   * Like Random Forests, it allows calculated feature importance to be obtained. 
 * XG Boost and LGB:
-  * Both great models, but at this stage surpassed by the catboost model.
-    * I plan to continue investigating them both, but may discard if CatBoost remains consistently superior
+  * These are both great models, but at this stage surpassed by the catboost model.
+  * I plan to continue investigating them both, but may discard them if CatBoost remains consistently superior
 * Neural Networks and Deep Learning
   * Has the most potential to produce great predictive power if given enough computational power.
   * As such, remains in the mix for my final modelling solution.
