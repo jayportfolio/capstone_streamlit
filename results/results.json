@@ -413,13 +413,13 @@
         "suboptimal": "pending"
     },
     "linear regression (ridge) (v09)": {
-        "Mean Absolute Error Accuracy": 63350.669104077395,
-        "Mean Squared Error Accuracy": 6101371758.300816,
-        "R square Accuracy": 0.4598837932359796,
-        "Root Mean Squared Error": 78111.27804805664,
+        "Mean Absolute Error Accuracy": 63349.47348944249,
+        "Mean Squared Error Accuracy": 6101320425.226782,
+        "R square Accuracy": 0.4598883374313387,
+        "Root Mean Squared Error": 78110.94945797793,
         "_method": "random search",
         "_params": {
-            "model__alpha": 10,
+            "model__alpha": 0.0001,
             "model__copy_X": false,
             "model__fit_intercept": true,
             "model__max_iter": 1000,
@@ -428,11 +428,29 @@
             "model__solver": "sag",
             "model__tol": 0.001
         },
-        "_score": 0.4598837932359796,
-        "_train time": 0.4773983160654704,
+        "_score": 0.4598883374313387,
+        "_train time": 0.25263214111328125,
         "best is shared": false,
         "best method": "random search",
         "best params": {
+            "model__alpha": 0.0001,
+            "model__copy_X": false,
+            "model__fit_intercept": true,
+            "model__max_iter": 1000,
+            "model__positive": false,
+            "model__random_state": 101,
+            "model__solver": "sag",
+            "model__tol": 0.001
+        },
+        "best run date": "2022-11-29 19:51:49.096191",
+        "best score": 0.4598883374313387,
+        "best time": 0.25263214111328125,
+        "date": "2022-11-29 19:51:49.096191",
+        "first run": "2022-11-29 15:13:33.267574",
+        "random_state": 101,
+        "run_env": "gradient",
+        "silver method": "random search",
+        "silver params": {
             "model__alpha": 10,
             "model__copy_X": false,
             "model__fit_intercept": true,
@@ -442,13 +460,9 @@
             "model__solver": "sag",
             "model__tol": 0.001
         },
-        "best run date": "2022-11-29 15:13:33.264357",
-        "best score": 0.4598837932359796,
-        "best time": 0.4773983160654704,
-        "date": "2022-11-29 15:13:33.264357",
-        "first run": "2022-11-29 15:13:33.267574",
-        "random_state": 101,
-        "run_env": "local",
+        "silver run date": "2022-11-29 15:13:33.264357",
+        "silver score": 0.4598837932359796,
+        "silver time": 0.4773983160654704,
         "suboptimal": "pending"
     },
     "linear regression (ridge) - random search (v02)": {
