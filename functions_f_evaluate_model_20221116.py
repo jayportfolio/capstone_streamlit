@@ -228,11 +228,12 @@ def put_old_best_in_best(new_results, old_results):
 def put_new_in_best(new_results, old_results):
     # if 'best score' in new_results and ('silver params' not in new_results or new_results['best score'] > new_results['silver score']):
     if 'best params' in old_results and new_results['_params'] == old_results['best params']:
-        new_results['silver score'] = old_results['silver score']
-        new_results['silver params'] = old_results['silver params']
-        new_results['silver time'] = old_results['silver time']
-        new_results['silver method'] = old_results['silver method']
-        new_results['silver run date'] = old_results['silver run date']
+        if 'silver score' in old_results:
+            new_results['silver score'] = old_results['silver score']
+            new_results['silver params'] = old_results['silver params']
+            new_results['silver time'] = old_results['silver time']
+            new_results['silver method'] = old_results['silver method']
+            new_results['silver run date'] = old_results['silver run date']
     elif 'best score' in old_results and ('silver params' not in old_results or old_results['best score'] > old_results['silver score']):
         new_results['silver score'] = old_results['best score']
         new_results['silver params'] = old_results['best params']

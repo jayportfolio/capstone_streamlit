@@ -618,6 +618,27 @@
         "random_state": 101,
         "suboptimal": "pending"
     },
+    "neural network m01 simple (v06)": {
+        "Mean Absolute Error Accuracy": 63299.2506160775,
+        "Mean Squared Error Accuracy": 6064118415.342007,
+        "R square Accuracy": 0.46318159823545646,
+        "Root Mean Squared Error": 77872.44965545906,
+        "_method": "recommended simple model/mse +norm +epochs=5 +learn=0.3",
+        "_params": "recommended simple model/mse +norm +epochs=5 +learn=0.3",
+        "_score": 0.46318159823545646,
+        "_train time": 14.14,
+        "best is shared": false,
+        "best method": "recommended simple model/mse +norm +epochs=5 +learn=0.3",
+        "best params": "recommended simple model/mse +norm +epochs=5 +learn=0.3",
+        "best run date": "2022-11-29 00:34:55.316999",
+        "best score": 0.46318159823545646,
+        "best time": 14.14,
+        "date": "2022-11-29 00:34:55.316999",
+        "first run": "2022-11-29 00:34:55.320506",
+        "random_state": 101,
+        "run_env": "local",
+        "suboptimal": "pending"
+    },
     "neural network simplified (v06)": {
         "Mean Absolute Error Accuracy": 59373.052887066624,
         "Mean Squared Error Accuracy": 5531509335.791807,
