@@ -188,45 +188,10 @@ def get_hyperparameters(key, use_gpu, prefix='./'):
             # hyperparameters['early_stopping_rounds'].extend([1, 5, 10, 100])
             pass
 
-    elif key.lower() in ['catboost', 'random forest', "Linear Regression (Ridge)".lower(), "Light Gradient Boosting".lower()]:
+    elif key.lower() in ['catboost', 'random forest', "Linear Regression (Ridge)".lower(), "Light Gradient Boosting".lower(),'knn','decision tree']:
 
         with open(prefix + f'process/z_envs/hyperparameters/{key.lower()}.json') as f:
             hyperparameters = json.loads(f.read())
-
-    elif key.lower() == 'knn':
-
-        hyperparameters = {
-            # 'objective': 'reg:squarederror',
-            # 'max_depth': [1, 3, 6, 10, 30],
-            # 'n_estimators': 100,
-            # 'tree_method': ['auto', 'approx', 'hist', 'exact'],
-            'algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute'],
-            'leaf_size': [3.30, 300, 3000],
-            'metric': ['minkowski', 'precomputed'],
-            # 'metric_params' : 'abc',
-            'n_jobs': [-1, 1, 2],
-            'n_neighbors': [3, 4, 5, 7, 9, 13, 21, 35],
-            'p': [1, 2],
-            'weights': ['uniform', 'distance']
-            # 'verbosity': 1
-        }
-    elif key.lower() == 'decision tree':
-
-        hyperparameters = {
-            'splitter': ['best', 'random'],
-            'random_state': None,
-            'min_weight_fraction_leaf': [0.0, 0.1, 0.25, 0.5],  # , 1, 5],
-            'min_samples_split': [2, 4, 8, 50, 100, 200, 500],  # , .5, 1]
-            'min_samples_leaf': [1, 0.25, 0.5, 1.5, 2, 4, 8, 50],
-            'min_impurity_decrease': [0.0, 0.1, 0.25, 1, 5],
-            'max_leaf_nodes': [None, 2, 5, 10, 50, 100, 200, 500],  # 1]
-            'max_features': [None, 1.0, 'sqrt', 'log2', .5, .25, .1, 2],
-            'max_depth': [None, 1, 2, 5, 10, 50],
-            # 'criterion': ['gini','entropy','log_loss'], gini and entropy apply to classifier, not regressor
-            'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],  # ,'log_loss'],
-            'ccp_alpha': [0.0, 0.05, 0.1, 0.25, 1, 5],  # Cost Complexity Pruning, ref 13.3.1
-
-        }
 
     else:
         raise ValueError("couldn't find hyperparameters for:", key)

@@ -412,6 +412,45 @@
         "silver time": 0.017526626586914062,
         "suboptimal": "pending"
     },
+    "linear regression (ridge) (v09)": {
+        "Mean Absolute Error Accuracy": 63350.669104077395,
+        "Mean Squared Error Accuracy": 6101371758.300816,
+        "R square Accuracy": 0.4598837932359796,
+        "Root Mean Squared Error": 78111.27804805664,
+        "_method": "random search",
+        "_params": {
+            "model__alpha": 10,
+            "model__copy_X": false,
+            "model__fit_intercept": true,
+            "model__max_iter": 1000,
+            "model__positive": false,
+            "model__random_state": 101,
+            "model__solver": "sag",
+            "model__tol": 0.001
+        },
+        "_score": 0.4598837932359796,
+        "_train time": 0.4773983160654704,
+        "best is shared": false,
+        "best method": "random search",
+        "best params": {
+            "model__alpha": 10,
+            "model__copy_X": false,
+            "model__fit_intercept": true,
+            "model__max_iter": 1000,
+            "model__positive": false,
+            "model__random_state": 101,
+            "model__solver": "sag",
+            "model__tol": 0.001
+        },
+        "best run date": "2022-11-29 15:13:33.264357",
+        "best score": 0.4598837932359796,
+        "best time": 0.4773983160654704,
+        "date": "2022-11-29 15:13:33.264357",
+        "first run": "2022-11-29 15:13:33.267574",
+        "random_state": 101,
+        "run_env": "local",
+        "suboptimal": "pending"
+    },
     "linear regression (ridge) - random search (v02)": {
         "Mean Absolute Error Accuracy": 71267.87543973039,
         "Mean Squared Error Accuracy": 7702385505.171303,
@@ -491,68 +530,6 @@
         "date": "2022-10-19 11:11:49.868418",
         "first run": "2022-10-19 00:13:33.773722",
         "random_state": 101
-    },
-    "linear regression (ridge) - random search (v09)": {
-        "Mean Absolute Error Accuracy": 63373.580624727714,
-        "Mean Squared Error Accuracy": 6107157603.129775,
-        "R square Accuracy": 0.4593716086509818,
-        "Root Mean Squared Error": 78148.30518398831,
-        "_params": {
-            "model__alpha": 0.001,
-            "model__fit_intercept": true,
-            "model__max_iter": 1000,
-            "model__positive": false,
-            "model__solver": "sag",
-            "model__tol": 0.01
-        },
-        "_score": 0.4593716086509818,
-        "_train time": 0.42380237579345703,
-        "best is shared": true,
-        "best params": {
-            "model__alpha": 0.1,
-            "model__fit_intercept": true,
-            "model__max_iter": 1000,
-            "model__positive": false,
-            "model__solver": "auto",
-            "model__tol": 0.001
-        },
-        "best score": 0.4598744935750083,
-        "best time": 0.018968820571899414,
-        "date": "2022-10-25 20:04:05.283980",
-        "first run": "2022-10-25 18:45:29.442946",
-        "random_state": 101,
-        "suboptimal": "pending"
-    },
-    "linear regression (ridge) - random search (v10)": {
-        "Mean Absolute Error Accuracy": 62596.481163878874,
-        "Mean Squared Error Accuracy": 5978227010.241611,
-        "R square Accuracy": 0.470785026079915,
-        "Root Mean Squared Error": 77318.9951450587,
-        "_params": {
-            "model__alpha": 1,
-            "model__fit_intercept": true,
-            "model__max_iter": 100,
-            "model__positive": false,
-            "model__solver": "svd",
-            "model__tol": 0.01
-        },
-        "_score": 0.470785026079915,
-        "_train time": 0.468597412109375,
-        "best is shared": true,
-        "best params": {
-            "model__alpha": 1,
-            "model__fit_intercept": true,
-            "model__max_iter": 100,
-            "model__positive": false,
-            "model__solver": "svd",
-            "model__tol": 0.01
-        },
-        "best score": 0.470785026079915,
-        "best time": 0.468597412109375,
-        "date": "2022-11-06 13:06:19.023655",
-        "first run": "2022-10-25 20:13:50.269348",
-        "random_state": 101,
-        "suboptimal": "pending"
     },
     "linear regression - basic (v01)": {
         "Mean Absolute Error Accuracy": 72921.55809491842,
