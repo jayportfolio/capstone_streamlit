@@ -249,7 +249,7 @@
         "first run": "2022-10-12 18:00:00.000000",
         "random_state": 101
     },
-    "decision tree - random search (v10)": {
+    "decision tree - random search (vx10)": {
         "Mean Absolute Error Accuracy": 55865.420033319475,
         "Mean Squared Error Accuracy": 4990106642.657863,
         "R square Accuracy": 0.5582571300439971,
@@ -469,7 +469,7 @@
         "first run": "2022-10-12 00:00:00.000000",
         "random_state": 101
     },
-    "knn - random search (v10)": {
+    "knn - random search (vx10)": {
         "Mean Absolute Error Accuracy": 57566.899870473564,
         "Mean Squared Error Accuracy": 5266126938.137675,
         "R square Accuracy": 0.533822783000381,
@@ -511,6 +511,43 @@
         "date": "2022-10-11 21:22:35.293865",
         "first run": "2022-10-11 00:00:00.000000",
         "random_state": 101
+    },
+    "knn (v10)": {
+        "Mean Absolute Error Accuracy": 61764.24972969473,
+        "Mean Squared Error Accuracy": 5822338150.186446,
+        "R square Accuracy": 0.48458488996383786,
+        "Root Mean Squared Error": 76304.24726177729,
+        "_method": "random search",
+        "_params": {
+            "model__algorithm": "kd_tree",
+            "model__leaf_size": 30,
+            "model__metric": "minkowski",
+            "model__n_jobs": 2,
+            "model__n_neighbors": 35,
+            "model__p": 1,
+            "model__weights": "uniform"
+        },
+        "_score": 0.48458488996383786,
+        "_train time": 0.2917901674906413,
+        "best is shared": false,
+        "best method": "random search",
+        "best params": {
+            "model__algorithm": "kd_tree",
+            "model__leaf_size": 30,
+            "model__metric": "minkowski",
+            "model__n_jobs": 2,
+            "model__n_neighbors": 35,
+            "model__p": 1,
+            "model__weights": "uniform"
+        },
+        "best run date": "2022-11-30 15:12:50.989371",
+        "best score": 0.48458488996383786,
+        "best time": 0.2917901674906413,
+        "date": "2022-11-30 15:12:50.989371",
+        "first run": "2022-11-30 15:12:50.990833",
+        "random_state": 101,
+        "run_env": "gradient",
+        "suboptimal": "pending"
     },
     "light gradient boosting (v06)": {
         "Mean Absolute Error Accuracy": 44080.97264322202,
@@ -1213,7 +1250,7 @@
         "run_env": "gradient",
         "suboptimal": "pending"
     },
-    "random forest - random search (v10)": {
+    "random forest - random search (vx10)": {
         "Mean Absolute Error Accuracy": 49941.97226042142,
         "Mean Squared Error Accuracy": 3982880817.256231,
         "R square Accuracy": 0.6474205204619896,

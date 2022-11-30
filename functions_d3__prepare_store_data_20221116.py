@@ -24,7 +24,12 @@ def create_train_test_data(df_orig, categories, RANDOM_STATE=[], p_train_size=0.
         #    df[column] = df[column].astype('category')
         pass
 
-    ins = df.pop('index')
+    try:
+        ins = df.pop('index')
+    except:
+        # we must be at version 11
+        ins = df.pop('iddd')
+
     df.insert(1, 'index2', ins)
     df.insert(0, 'index', ins)
 
