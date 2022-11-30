@@ -1,27 +1,67 @@
 {
     "catboost (v06)": {
-        "Mean Absolute Error Accuracy": 43622.749758356986,
-        "Mean Squared Error Accuracy": 3212635545.3867235,
-        "R square Accuracy": 0.7156055075436387,
-        "Root Mean Squared Error": 56680.11596130272,
-        "_method": "random search",
+        "Mean Absolute Error Accuracy": 48157.41525820493,
+        "Mean Squared Error Accuracy": 3866557208.987712,
+        "R square Accuracy": 0.657717920545769,
+        "Root Mean Squared Error": 62181.646882241,
+        "_method": "random search(no dummies)",
         "_params": {
-            "model__depth": 8,
-            "model__l2_leaf_reg": 1,
-            "model__learning_rate": 0.1
+            "depth": 6,
+            "l2_leaf_reg": 7,
+            "learning_rate": 1
         },
-        "_score": 0.7156055075436387,
-        "_train time": 12.256545225779215,
+        "_score": 0.657717920545769,
+        "_train time": 999,
+        "best is shared": false,
         "best method": "random search",
         "best params": {
             "model__depth": 8,
             "model__l2_leaf_reg": 1,
             "model__learning_rate": 0.1
         },
+        "best run date": "1999-11-13 15:26:55.706567",
         "best score": 0.7156055075436387,
         "best time": 12.256545225779215,
-        "date": "2022-11-13 15:26:55.706567",
+        "date": "2022-11-30 11:11:24.872664",
         "first run": "2022-11-13 00:13:48.870697",
+        "random_state": 101,
+        "run_env": "gradient",
+        "silver method": "random search(no dummies)",
+        "silver params": {
+            "depth": 6,
+            "l2_leaf_reg": 7,
+            "learning_rate": 1
+        },
+        "silver run date": "2022-11-30 11:11:24.872664",
+        "silver score": 0.657717920545769,
+        "silver time": 999,
+        "suboptimal": "suboptimal"
+    },
+    "catboost (v09)": {
+        "Mean Absolute Error Accuracy": 48121.96765021964,
+        "Mean Squared Error Accuracy": 3833754208.2956886,
+        "R square Accuracy": 0.6606217646329858,
+        "Root Mean Squared Error": 61917.31751534209,
+        "_method": "random search(no dummies)",
+        "_params": {
+            "depth": 6,
+            "l2_leaf_reg": 7,
+            "learning_rate": 1
+        },
+        "_score": 0.6606217646329858,
+        "_train time": 999,
+        "best is shared": false,
+        "best method": "random search(no dummies)",
+        "best params": {
+            "depth": 6,
+            "l2_leaf_reg": 7,
+            "learning_rate": 1
+        },
+        "best run date": "2022-11-30 11:13:10.373397",
+        "best score": 0.6606217646329858,
+        "best time": 999,
+        "date": "2022-11-30 11:13:10.373397",
+        "first run": "2022-11-30 11:13:10.413936",
         "random_state": 101,
         "run_env": "gradient",
         "suboptimal": "pending"
