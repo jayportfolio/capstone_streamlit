@@ -1054,6 +1054,27 @@
         "run_env": "gradient",
         "suboptimal": "pending"
     },
+    "neural network m12 mega (v10)": {
+        "Mean Absolute Error Accuracy": 60608.61748264847,
+        "Mean Squared Error Accuracy": 6125546.52130699,
+        "R square Accuracy": 0.45774375296117575,
+        "Root Mean Squared Error": 78265.8707311622,
+        "_method": "loss=1980.19 valloss=4981.53 +valsplit=0.1 stop=294/400 ",
+        "_params": "mse +epochs=400 +learn=0.0003",
+        "_score": 0.45774375296117575,
+        "_train time": 1220.09,
+        "best is shared": false,
+        "best method": "loss=1980.19 valloss=4981.53 +valsplit=0.1 stop=294/400 ",
+        "best params": "mse +epochs=400 +learn=0.0003",
+        "best run date": "2022-11-30 15:26:58.214969",
+        "best score": 0.45774375296117575,
+        "best time": 1220.09,
+        "date": "2022-11-30 15:26:58.214969",
+        "first run": "2022-11-30 15:26:58.247281",
+        "random_state": 101,
+        "run_env": "gradient",
+        "suboptimal": "pending"
+    },
     "neural network simplified (v06)": {
         "Mean Absolute Error Accuracy": 59373.052887066624,
         "Mean Squared Error Accuracy": 5531509335.791807,
@@ -1243,6 +1264,106 @@
         "random_state": 101,
         "suboptimal": "pending"
     },
+    "xg boost (v02) rs": {
+        "Mean Absolute Error Accuracy": 45160.15766663868,
+        "Mean Squared Error Accuracy": 3627875443.187743,
+        "R square Accuracy": 0.6829553615082685,
+        "Root Mean Squared Error": 60231.847416360586,
+        "_params": {
+            "model__max_depth": 10,
+            "model__n_estimators": 100,
+            "model__objective": "reg:squarederror",
+            "model__tree_method": "auto",
+            "model__verbosity": 1
+        },
+        "_score": 0.6829553615082685,
+        "_train time": 5.500423431396484,
+        "best params": "MULTIPLE PARAM OPTIONS",
+        "date": "2022-10-13 14:18:26.765461",
+        "first run": "2022-10-13 13:42:33.640185",
+        "random_state": 101
+    },
+    "xg boost (v03) rs": {
+        "Mean Absolute Error Accuracy": 51147.26096652696,
+        "Mean Squared Error Accuracy": 4733296553.824069,
+        "R square Accuracy": 0.5745332385988913,
+        "Root Mean Squared Error": 68798.95750535809,
+        "_params": {
+            "model__max_depth": 10,
+            "model__n_estimators": 100,
+            "model__objective": "reg:squarederror",
+            "model__tree_method": "approx",
+            "model__verbosity": 1
+        },
+        "_score": 0.5745332385988913,
+        "_train time": 3.3037590980529785,
+        "best params": {
+            "model__max_depth": 10,
+            "model__n_estimators": 100,
+            "model__objective": "reg:squarederror",
+            "model__tree_method": "approx",
+            "model__verbosity": 1
+        },
+        "best score": 0.5820713372252954,
+        "date": "2022-10-18 19:31:55.115003",
+        "first run": "2022-10-18 19:16:54.647950",
+        "random_state": 101,
+        "suboptimal": "pending"
+    },
+    "xg boost (v04) rs": {
+        "Mean Absolute Error Accuracy": 50419.209714196695,
+        "Mean Squared Error Accuracy": 4504941322.675693,
+        "R square Accuracy": 0.60352211634886,
+        "Root Mean Squared Error": 67118.8596645957,
+        "_params": {
+            "model__max_depth": 10,
+            "model__n_estimators": 100,
+            "model__objective": "reg:squarederror",
+            "model__tree_method": "approx",
+            "model__verbosity": 1
+        },
+        "_score": 0.60352211634886,
+        "_train time": 2.653132677078247,
+        "best params": {
+            "model__max_depth": 10,
+            "model__n_estimators": 100,
+            "model__objective": "reg:squarederror",
+            "model__tree_method": "approx",
+            "model__verbosity": 1
+        },
+        "best score": 0.60352211634886,
+        "date": "2022-10-18 22:02:51.281873",
+        "first run": "2022-10-18 22:02:51.284270",
+        "random_state": 101,
+        "suboptimal": "pending"
+    },
+    "xg boost (v05) rs": {
+        "Mean Absolute Error Accuracy": 42229.0017522372,
+        "Mean Squared Error Accuracy": 3219625252.591313,
+        "R square Accuracy": 0.710594188729091,
+        "Root Mean Squared Error": 56741.74171270488,
+        "_params": {
+            "model__max_depth": 10,
+            "model__n_estimators": 100,
+            "model__objective": "reg:squarederror",
+            "model__tree_method": "approx",
+            "model__verbosity": 1
+        },
+        "_score": 0.710594188729091,
+        "_train time": 2.3376071453094482,
+        "best params": {
+            "model__max_depth": 10,
+            "model__n_estimators": 100,
+            "model__objective": "reg:squarederror",
+            "model__tree_method": "approx",
+            "model__verbosity": 1
+        },
+        "best score": 0.710594188729091,
+        "date": "2022-10-19 12:47:50.767724",
+        "first run": "2022-10-19 00:23:46.326282",
+        "random_state": 101,
+        "suboptimal": "pending"
+    },
     "xg boost (v06)": {
         "Mean Absolute Error Accuracy": 45988.280764927484,
         "Mean Squared Error Accuracy": 3528869693.6814113,
@@ -1407,117 +1528,6 @@
         "run_env": "gradient",
         "suboptimal": "pending"
     },
-    "xg boost - basic (v02)": {
-        "Mean Absolute Error Accuracy": 48536.5190564137,
-        "Mean Squared Error Accuracy": 3979587053.666782,
-        "R square Accuracy": 0.6522188375719088,
-        "Root Mean Squared Error": 63083.96827773901,
-        "_score": 0.6522188375719088,
-        "_train time": 3.163120985031128,
-        "date": "2022-10-13 12:58:02.988578",
-        "first run": "2022-10-13 12:47:43.630000",
-        "random_state": 101
-    },
-    "xg boost (v02) rs": {
-        "Mean Absolute Error Accuracy": 45160.15766663868,
-        "Mean Squared Error Accuracy": 3627875443.187743,
-        "R square Accuracy": 0.6829553615082685,
-        "Root Mean Squared Error": 60231.847416360586,
-        "_params": {
-            "model__max_depth": 10,
-            "model__n_estimators": 100,
-            "model__objective": "reg:squarederror",
-            "model__tree_method": "auto",
-            "model__verbosity": 1
-        },
-        "_score": 0.6829553615082685,
-        "_train time": 5.500423431396484,
-        "best params": "MULTIPLE PARAM OPTIONS",
-        "date": "2022-10-13 14:18:26.765461",
-        "first run": "2022-10-13 13:42:33.640185",
-        "random_state": 101
-    },
-    "xg boost (v03) rs": {
-        "Mean Absolute Error Accuracy": 51147.26096652696,
-        "Mean Squared Error Accuracy": 4733296553.824069,
-        "R square Accuracy": 0.5745332385988913,
-        "Root Mean Squared Error": 68798.95750535809,
-        "_params": {
-            "model__max_depth": 10,
-            "model__n_estimators": 100,
-            "model__objective": "reg:squarederror",
-            "model__tree_method": "approx",
-            "model__verbosity": 1
-        },
-        "_score": 0.5745332385988913,
-        "_train time": 3.3037590980529785,
-        "best params": {
-            "model__max_depth": 10,
-            "model__n_estimators": 100,
-            "model__objective": "reg:squarederror",
-            "model__tree_method": "approx",
-            "model__verbosity": 1
-        },
-        "best score": 0.5820713372252954,
-        "date": "2022-10-18 19:31:55.115003",
-        "first run": "2022-10-18 19:16:54.647950",
-        "random_state": 101,
-        "suboptimal": "pending"
-    },
-    "xg boost (v04) rs": {
-        "Mean Absolute Error Accuracy": 50419.209714196695,
-        "Mean Squared Error Accuracy": 4504941322.675693,
-        "R square Accuracy": 0.60352211634886,
-        "Root Mean Squared Error": 67118.8596645957,
-        "_params": {
-            "model__max_depth": 10,
-            "model__n_estimators": 100,
-            "model__objective": "reg:squarederror",
-            "model__tree_method": "approx",
-            "model__verbosity": 1
-        },
-        "_score": 0.60352211634886,
-        "_train time": 2.653132677078247,
-        "best params": {
-            "model__max_depth": 10,
-            "model__n_estimators": 100,
-            "model__objective": "reg:squarederror",
-            "model__tree_method": "approx",
-            "model__verbosity": 1
-        },
-        "best score": 0.60352211634886,
-        "date": "2022-10-18 22:02:51.281873",
-        "first run": "2022-10-18 22:02:51.284270",
-        "random_state": 101,
-        "suboptimal": "pending"
-    },
-    "xg boost (v05) rs": {
-        "Mean Absolute Error Accuracy": 42229.0017522372,
-        "Mean Squared Error Accuracy": 3219625252.591313,
-        "R square Accuracy": 0.710594188729091,
-        "Root Mean Squared Error": 56741.74171270488,
-        "_params": {
-            "model__max_depth": 10,
-            "model__n_estimators": 100,
-            "model__objective": "reg:squarederror",
-            "model__tree_method": "approx",
-            "model__verbosity": 1
-        },
-        "_score": 0.710594188729091,
-        "_train time": 2.3376071453094482,
-        "best params": {
-            "model__max_depth": 10,
-            "model__n_estimators": 100,
-            "model__objective": "reg:squarederror",
-            "model__tree_method": "approx",
-            "model__verbosity": 1
-        },
-        "best score": 0.710594188729091,
-        "date": "2022-10-19 12:47:50.767724",
-        "first run": "2022-10-19 00:23:46.326282",
-        "random_state": 101,
-        "suboptimal": "pending"
-    },
     "xg boost (v11) rs": {
         "Mean Absolute Error Accuracy": 42603.01166652504,
         "Mean Squared Error Accuracy": 3151478137.6185055,
@@ -1544,5 +1554,16 @@
         "first run": "2022-10-30 13:45:08.764931",
         "random_state": 101,
         "suboptimal": "pending"
+    },
+    "xg boost - basic (v02)": {
+        "Mean Absolute Error Accuracy": 48536.5190564137,
+        "Mean Squared Error Accuracy": 3979587053.666782,
+        "R square Accuracy": 0.6522188375719088,
+        "Root Mean Squared Error": 63083.96827773901,
+        "_score": 0.6522188375719088,
+        "_train time": 3.163120985031128,
+        "date": "2022-10-13 12:58:02.988578",
+        "first run": "2022-10-13 12:47:43.630000",
+        "random_state": 101
     }
 }
