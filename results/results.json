@@ -1403,33 +1403,6 @@
         "random_state": 101,
         "suboptimal": "pending"
     },
-    "xg boost - random search (v09)": {
-        "Mean Absolute Error Accuracy": 43377.72424512803,
-        "Mean Squared Error Accuracy": 3305369733.8557196,
-        "R square Accuracy": 0.7073963309687036,
-        "Root Mean Squared Error": 57492.345002232425,
-        "_params": {
-            "model__max_depth": 10,
-            "model__n_estimators": 100,
-            "model__objective": "reg:squarederror",
-            "model__tree_method": "approx",
-            "model__verbosity": 1
-        },
-        "_score": 0.7073963309687036,
-        "_train time": 4.27869987487793,
-        "best params": {
-            "model__max_depth": 10,
-            "model__n_estimators": 100,
-            "model__objective": "reg:squarederror",
-            "model__tree_method": "approx",
-            "model__verbosity": 1
-        },
-        "best score": 0.7073963309687036,
-        "date": "2022-10-25 20:12:31.575473",
-        "first run": "2022-10-25 20:12:31.576998",
-        "random_state": 101,
-        "suboptimal": "pending"
-    },
     "xg boost - random search (v10)": {
         "Mean Absolute Error Accuracy": 43382.0019048833,
         "Mean Squared Error Accuracy": 3259725321.759749,
