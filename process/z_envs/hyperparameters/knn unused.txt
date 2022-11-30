@@ -6,3 +6,6 @@
 # 'tree_method': ['auto', 'approx', 'hist', 'exact'],
 # 'metric_params': 'abc',
 # 'verbosity': 1
+
+
+#	"metric": ["minkowski", "precomputed"],
