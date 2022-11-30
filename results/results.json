@@ -1418,7 +1418,7 @@
         "first run": "2022-10-13 12:47:43.630000",
         "random_state": 101
     },
-    "xg boost - random search (v02)": {
+    "xg boost (v02) rs": {
         "Mean Absolute Error Accuracy": 45160.15766663868,
         "Mean Squared Error Accuracy": 3627875443.187743,
         "R square Accuracy": 0.6829553615082685,
@@ -1437,7 +1437,7 @@
         "first run": "2022-10-13 13:42:33.640185",
         "random_state": 101
     },
-    "xg boost - random search (v03)": {
+    "xg boost (v03) rs": {
         "Mean Absolute Error Accuracy": 51147.26096652696,
         "Mean Squared Error Accuracy": 4733296553.824069,
         "R square Accuracy": 0.5745332385988913,
@@ -1464,7 +1464,7 @@
         "random_state": 101,
         "suboptimal": "pending"
     },
-    "xg boost - random search (v04)": {
+    "xg boost (v04) rs": {
         "Mean Absolute Error Accuracy": 50419.209714196695,
         "Mean Squared Error Accuracy": 4504941322.675693,
         "R square Accuracy": 0.60352211634886,
@@ -1491,7 +1491,7 @@
         "random_state": 101,
         "suboptimal": "pending"
     },
-    "xg boost - random search (v05)": {
+    "xg boost (v05) rs": {
         "Mean Absolute Error Accuracy": 42229.0017522372,
         "Mean Squared Error Accuracy": 3219625252.591313,
         "R square Accuracy": 0.710594188729091,
@@ -1518,34 +1518,7 @@
         "random_state": 101,
         "suboptimal": "pending"
     },
-    "xg boost - random search (v10)": {
-        "Mean Absolute Error Accuracy": 43382.0019048833,
-        "Mean Squared Error Accuracy": 3259725321.759749,
-        "R square Accuracy": 0.711436944735224,
-        "Root Mean Squared Error": 57094.004254034844,
-        "_params": {
-            "model__max_depth": 10,
-            "model__n_estimators": 100,
-            "model__objective": "reg:squarederror",
-            "model__tree_method": "approx",
-            "model__verbosity": 1
-        },
-        "_score": 0.711436944735224,
-        "_train time": 3.795569658279419,
-        "best params": {
-            "model__max_depth": 10,
-            "model__n_estimators": 100,
-            "model__objective": "reg:squarederror",
-            "model__tree_method": "approx",
-            "model__verbosity": 1
-        },
-        "best score": 0.711436944735224,
-        "date": "2022-10-25 20:26:17.666309",
-        "first run": "2022-10-25 20:26:17.667566",
-        "random_state": 101,
-        "suboptimal": "pending"
-    },
-    "xg boost - random search (v11)": {
+    "xg boost (v11) rs": {
         "Mean Absolute Error Accuracy": 42603.01166652504,
         "Mean Squared Error Accuracy": 3151478137.6185055,
         "R square Accuracy": 0.7210193896029233,
