@@ -161,6 +161,8 @@ def get_chosen_model(key):
     else:
         models = {
             "XG Boost".lower(): XGBRegressor(seed=20),
+            "XG Boost (tree)".lower(): XGBRegressor(),
+            "XG Boost (linear)".lower(): XGBRegressor(),
             "Linear Regression (Ridge)".lower(): Ridge(),
             "knn": KNeighborsRegressor(),
             "decision tree": DecisionTreeRegressor(),
@@ -188,7 +190,8 @@ def get_hyperparameters(key, use_gpu, prefix='./'):
             # hyperparameters['early_stopping_rounds'].extend([1, 5, 10, 100])
             pass
 
-    elif key.lower() in ['catboost', 'random forest', "Linear Regression (Ridge)".lower(), "Light Gradient Boosting".lower(),'knn','decision tree']:
+    elif key.lower() in ['catboost', 'random forest', "Linear Regression (Ridge)".lower(), "Light Gradient Boosting".lower(),
+                         'knn','decision tree','xg boost (tree)','xg boost (linear)']:
 
         with open(prefix + f'process/z_envs/hyperparameters/{key.lower()}.json') as f:
             hyperparameters = json.loads(f.read())
