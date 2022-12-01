@@ -10,3 +10,6 @@
             # 'normalize' was deprecated in version 1.0 and will be removed in 1.2.If normalization is needed please use sklearn.preprocessing.StandardScaler instead.
             # 'normalize': [True, False],
 }
+
+
+	"solver": ["auto", "svd", "cholesky", "lsqr", "sparse_cg", "sag", "saga", "lbfgs"],
