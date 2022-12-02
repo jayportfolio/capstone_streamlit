@@ -1,85 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>Head here</head>
-<body>
-<h1>Results from Linear Regression (Ridge)</h1><h3>Tuned Models ranked by performance</h3><table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>params2</th>
-      <th>rank_test_score</th>
-      <th>mean_test_score</th>
-      <th>mean_fit_time</th>
-      <th>mean_score_time</th>
-      <th>params</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.001/sparse_cg/101/False/1000/True/True/0.0001</td>
-      <td>1</td>
-      <td>0.468503</td>
-      <td>0.472952</td>
-      <td>0.041417</td>
-      <td>{'model__tol': 0.001, 'model__solver': 'sparse_cg', 'model__random_state': 101, 'model__positive': False, 'model__max_iter': 1000, 'model__fit_intercept': True, 'model__copy_X': True, 'model__alpha': 0.0001}</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.001/svd/101/False/1000000/True/True/0.0001</td>
-      <td>2</td>
-      <td>0.468502</td>
-      <td>1.462872</td>
-      <td>0.048131</td>
-      <td>{'model__tol': 0.001, 'model__solver': 'svd', 'model__random_state': 101, 'model__positive': False, 'model__max_iter': 1000000, 'model__fit_intercept': True, 'model__copy_X': True, 'model__alpha': 0.0001}</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.01/auto/101/False/1000000/True/True/0.0001</td>
-      <td>2</td>
-      <td>0.468502</td>
-      <td>0.240705</td>
-      <td>0.027659</td>
-      <td>{'model__tol': 0.01, 'model__solver': 'auto', 'model__random_state': 101, 'model__positive': False, 'model__max_iter': 1000000, 'model__fit_intercept': True, 'model__copy_X': True, 'model__alpha': 0.0001}</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1e-05/sag/101/False/100/True/False/1e-05</td>
-      <td>4</td>
-      <td>0.468502</td>
-      <td>3.922359</td>
-      <td>0.030795</td>
-      <td>{'model__tol': 1e-05, 'model__solver': 'sag', 'model__random_state': 101, 'model__positive': False, 'model__max_iter': 100, 'model__fit_intercept': True, 'model__copy_X': False, 'model__alpha': 1e-05}</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.01/sparse_cg/101/False/1000/True/False/0.001</td>
-      <td>5</td>
-      <td>0.468457</td>
-      <td>0.377820</td>
-      <td>0.030062</td>
-      <td>{'model__tol': 0.01, 'model__solver': 'sparse_cg', 'model__random_state': 101, 'model__positive': False, 'model__max_iter': 1000, 'model__fit_intercept': True, 'model__copy_X': False, 'model__alpha': 0.001}</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>0.0001/cholesky/101/False/100000/True/True/1000</td>
-      <td>6</td>
-      <td>0.467618</td>
-      <td>0.209750</td>
-      <td>0.025619</td>
-      <td>{'model__tol': 0.0001, 'model__solver': 'cholesky', 'model__random_state': 101, 'model__positive': False, 'model__max_iter': 100000, 'model__fit_intercept': True, 'model__copy_X': True, 'model__alpha': 1000}</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>0.01/sparse_cg/101/False/100000/True/False/1000</td>
-      <td>7</td>
-      <td>0.467572</td>
-      <td>0.343524</td>
-      <td>0.034732</td>
-      <td>{'model__tol': 0.01, 'model__solver': 'sparse_cg', 'model__random_state': 101, 'model__positive': False, 'model__max_iter': 100000, 'model__fit_intercept': True, 'model__copy_X': False, 'model__alpha': 1000}</td>
-    </tr>
-  </tbody>
-</table><hr><h3>Tuned Models ranked by performance, with parameter details</h3><table border="1" class="dataframe">
+<h1>Results from Linear Regression (Ridge)</h1><h3>Summary</h3>0.4707818387829007 is new best score (it's better than 0.4708062463710102)<hr><h3>Summary</h3>not updated saved model, the previous run was better<hr><h3>None</h3>0.4707818387829007 is worse than or equal to '0.4708062463710102<hr><h3>Tuned Models ranked by performance, with parameter details</h3><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -116,356 +35,107 @@
     <tr>
       <th>1</th>
       <td>0.468503</td>
-      <td>0.472952</td>
-      <td>0.041417</td>
-      <td>0.001</td>
-      <td>sparse_cg</td>
-      <td>101</td>
-      <td>False</td>
-      <td>1000</td>
-      <td>True</td>
-      <td>True</td>
-      <td>0.0001</td>
-      <td>0.001/sparse_cg/101/False/1000/True/True/0.0001</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.468502</td>
-      <td>1.462872</td>
-      <td>0.048131</td>
-      <td>0.001</td>
+      <td>0.273845</td>
+      <td>0.009153</td>
+      <td>0.01</td>
       <td>svd</td>
       <td>101</td>
       <td>False</td>
-      <td>1000000</td>
+      <td>100000</td>
       <td>True</td>
       <td>True</td>
-      <td>0.0001</td>
-      <td>0.001/svd/101/False/1000000/True/True/0.0001</td>
+      <td>10</td>
+      <td>0.01/svd/101/False/100000/True/True/10</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.468502</td>
-      <td>0.240705</td>
-      <td>0.027659</td>
+      <td>0.468503</td>
+      <td>0.252600</td>
+      <td>0.007238</td>
       <td>0.01</td>
-      <td>auto</td>
-      <td>101</td>
-      <td>False</td>
-      <td>1000000</td>
-      <td>True</td>
-      <td>True</td>
-      <td>0.0001</td>
-      <td>0.01/auto/101/False/1000000/True/True/0.0001</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.468502</td>
-      <td>3.922359</td>
-      <td>0.030795</td>
-      <td>0.00001</td>
-      <td>sag</td>
+      <td>svd</td>
       <td>101</td>
       <td>False</td>
       <td>100</td>
       <td>True</td>
-      <td>False</td>
-      <td>0.00001</td>
-      <td>1e-05/sag/101/False/100/True/False/1e-05</td>
+      <td>True</td>
+      <td>100</td>
+      <td>0.01/svd/101/False/100/True/True/100</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>0.468457</td>
-      <td>0.377820</td>
-      <td>0.030062</td>
-      <td>0.01</td>
-      <td>sparse_cg</td>
+      <th>2</th>
+      <td>0.468503</td>
+      <td>0.216481</td>
+      <td>0.007291</td>
+      <td>0.0001</td>
+      <td>svd</td>
       <td>101</td>
       <td>False</td>
       <td>1000</td>
       <td>True</td>
-      <td>False</td>
-      <td>0.001</td>
-      <td>0.01/sparse_cg/101/False/1000/True/False/0.001</td>
+      <td>True</td>
+      <td>100</td>
+      <td>0.0001/svd/101/False/1000/True/True/100</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>0.467618</td>
-      <td>0.209750</td>
-      <td>0.025619</td>
-      <td>0.0001</td>
+      <th>4</th>
+      <td>0.468502</td>
+      <td>0.070162</td>
+      <td>0.012378</td>
+      <td>0.001</td>
       <td>cholesky</td>
       <td>101</td>
       <td>False</td>
+      <td>100</td>
+      <td>True</td>
+      <td>True</td>
+      <td>0.001</td>
+      <td>0.001/cholesky/101/False/100/True/True/0.001</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.468502</td>
+      <td>0.462080</td>
+      <td>0.011756</td>
+      <td>0.001</td>
+      <td>svd</td>
+      <td>101</td>
+      <td>False</td>
       <td>100000</td>
       <td>True</td>
-      <td>True</td>
+      <td>False</td>
+      <td>0.0001</td>
+      <td>0.001/svd/101/False/100000/True/False/0.0001</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.468502</td>
+      <td>0.479358</td>
+      <td>0.007814</td>
+      <td>0.0001</td>
+      <td>saga</td>
+      <td>101</td>
+      <td>False</td>
       <td>1000</td>
-      <td>0.0001/cholesky/101/False/100000/True/True/1000</td>
+      <td>True</td>
+      <td>False</td>
+      <td>10</td>
+      <td>0.0001/saga/101/False/1000/True/False/10</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.467572</td>
-      <td>0.343524</td>
-      <td>0.034732</td>
-      <td>0.01</td>
-      <td>sparse_cg</td>
+      <td>0.468501</td>
+      <td>0.463967</td>
+      <td>0.006078</td>
+      <td>0.001</td>
+      <td>sag</td>
       <td>101</td>
       <td>False</td>
-      <td>100000</td>
+      <td>1000000</td>
       <td>True</td>
       <td>False</td>
-      <td>1000</td>
-      <td>0.01/sparse_cg/101/False/100000/True/False/1000</td>
+      <td>1</td>
+      <td>0.001/sag/101/False/1000000/True/False/1</td>
     </tr>
   </tbody>
-</table><hr><h3>None</h3>Best Model Details<hr><h3></h3>Best Index:4<br><hr><h3></h3>Best Score:0.4685028174803074<br><hr><h3></h3>Best Params: {'model__tol': 0.001, 'model__solver': 'sparse_cg', 'model__random_state': 101, 'model__positive': False, 'model__max_iter': 1000, 'model__fit_intercept': True, 'model__copy_X': True, 'model__alpha': 0.0001}<br><hr><h3>Comparing model predictions to actual property values</h3><img src="artifacts/linear regression (ridge) (v10)_best_model_correlation.png"/><hr><h3>Best and worst models obtained by tuning</h3><img src="artifacts/linear regression (ridge) (v10)_best_and_worst.png"/><hr><h3>Summary</h3><table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>_score</th>
-      <th>R square Accuracy</th>
-      <th>Mean Absolute Error Accuracy</th>
-      <th>Mean Squared Error Accuracy</th>
-      <th>Root Mean Squared Error</th>
-      <th>_train time</th>
-      <th>random_state</th>
-      <th>date</th>
-      <th>_params</th>
-      <th>_method</th>
-      <th>run_env</th>
-      <th>first run</th>
-      <th>best is shared</th>
-      <th>silver score</th>
-      <th>silver time</th>
-      <th>silver params</th>
-      <th>silver method</th>
-      <th>silver run date</th>
-      <th>best score</th>
-      <th>best time</th>
-      <th>best params</th>
-      <th>best method</th>
-      <th>best run date</th>
-      <th>suboptimal</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>model__tol</th>
-      <td>0.470774</td>
-      <td>0.470774</td>
-      <td>62598.967712</td>
-      <td>5.978356e+09</td>
-      <td>77319.829315</td>
-      <td>0.472952</td>
-      <td>101</td>
-      <td>2022-12-01 18:07:44.364204</td>
-      <td>0.001</td>
-      <td>random search</td>
-      <td>local</td>
-      <td>2022-12-01 14:21:36.707990</td>
-      <td>False</td>
-      <td>0.470806</td>
-      <td>0.329806</td>
-      <td>0.001</td>
-      <td>random search</td>
-      <td>2022-12-01 14:22:52.980547</td>
-      <td>0.470806</td>
-      <td>0.089642</td>
-      <td>0.001</td>
-      <td>random search</td>
-      <td>2022-12-01 15:02:10.080074</td>
-      <td>suboptimal</td>
-    </tr>
-    <tr>
-      <th>model__solver</th>
-      <td>0.470774</td>
-      <td>0.470774</td>
-      <td>62598.967712</td>
-      <td>5.978356e+09</td>
-      <td>77319.829315</td>
-      <td>0.472952</td>
-      <td>101</td>
-      <td>2022-12-01 18:07:44.364204</td>
-      <td>sparse_cg</td>
-      <td>random search</td>
-      <td>local</td>
-      <td>2022-12-01 14:21:36.707990</td>
-      <td>False</td>
-      <td>0.470806</td>
-      <td>0.329806</td>
-      <td>lsqr</td>
-      <td>random search</td>
-      <td>2022-12-01 14:22:52.980547</td>
-      <td>0.470806</td>
-      <td>0.089642</td>
-      <td>lsqr</td>
-      <td>random search</td>
-      <td>2022-12-01 15:02:10.080074</td>
-      <td>suboptimal</td>
-    </tr>
-    <tr>
-      <th>model__random_state</th>
-      <td>0.470774</td>
-      <td>0.470774</td>
-      <td>62598.967712</td>
-      <td>5.978356e+09</td>
-      <td>77319.829315</td>
-      <td>0.472952</td>
-      <td>101</td>
-      <td>2022-12-01 18:07:44.364204</td>
-      <td>101</td>
-      <td>random search</td>
-      <td>local</td>
-      <td>2022-12-01 14:21:36.707990</td>
-      <td>False</td>
-      <td>0.470806</td>
-      <td>0.329806</td>
-      <td>101</td>
-      <td>random search</td>
-      <td>2022-12-01 14:22:52.980547</td>
-      <td>0.470806</td>
-      <td>0.089642</td>
-      <td>101</td>
-      <td>random search</td>
-      <td>2022-12-01 15:02:10.080074</td>
-      <td>suboptimal</td>
-    </tr>
-    <tr>
-      <th>model__positive</th>
-      <td>0.470774</td>
-      <td>0.470774</td>
-      <td>62598.967712</td>
-      <td>5.978356e+09</td>
-      <td>77319.829315</td>
-      <td>0.472952</td>
-      <td>101</td>
-      <td>2022-12-01 18:07:44.364204</td>
-      <td>False</td>
-      <td>random search</td>
-      <td>local</td>
-      <td>2022-12-01 14:21:36.707990</td>
-      <td>False</td>
-      <td>0.470806</td>
-      <td>0.329806</td>
-      <td>False</td>
-      <td>random search</td>
-      <td>2022-12-01 14:22:52.980547</td>
-      <td>0.470806</td>
-      <td>0.089642</td>
-      <td>False</td>
-      <td>random search</td>
-      <td>2022-12-01 15:02:10.080074</td>
-      <td>suboptimal</td>
-    </tr>
-    <tr>
-      <th>model__max_iter</th>
-      <td>0.470774</td>
-      <td>0.470774</td>
-      <td>62598.967712</td>
-      <td>5.978356e+09</td>
-      <td>77319.829315</td>
-      <td>0.472952</td>
-      <td>101</td>
-      <td>2022-12-01 18:07:44.364204</td>
-      <td>1000</td>
-      <td>random search</td>
-      <td>local</td>
-      <td>2022-12-01 14:21:36.707990</td>
-      <td>False</td>
-      <td>0.470806</td>
-      <td>0.329806</td>
-      <td>100000</td>
-      <td>random search</td>
-      <td>2022-12-01 14:22:52.980547</td>
-      <td>0.470806</td>
-      <td>0.089642</td>
-      <td>10000</td>
-      <td>random search</td>
-      <td>2022-12-01 15:02:10.080074</td>
-      <td>suboptimal</td>
-    </tr>
-    <tr>
-      <th>model__fit_intercept</th>
-      <td>0.470774</td>
-      <td>0.470774</td>
-      <td>62598.967712</td>
-      <td>5.978356e+09</td>
-      <td>77319.829315</td>
-      <td>0.472952</td>
-      <td>101</td>
-      <td>2022-12-01 18:07:44.364204</td>
-      <td>True</td>
-      <td>random search</td>
-      <td>local</td>
-      <td>2022-12-01 14:21:36.707990</td>
-      <td>False</td>
-      <td>0.470806</td>
-      <td>0.329806</td>
-      <td>True</td>
-      <td>random search</td>
-      <td>2022-12-01 14:22:52.980547</td>
-      <td>0.470806</td>
-      <td>0.089642</td>
-      <td>True</td>
-      <td>random search</td>
-      <td>2022-12-01 15:02:10.080074</td>
-      <td>suboptimal</td>
-    </tr>
-    <tr>
-      <th>model__copy_X</th>
-      <td>0.470774</td>
-      <td>0.470774</td>
-      <td>62598.967712</td>
-      <td>5.978356e+09</td>
-      <td>77319.829315</td>
-      <td>0.472952</td>
-      <td>101</td>
-      <td>2022-12-01 18:07:44.364204</td>
-      <td>True</td>
-      <td>random search</td>
-      <td>local</td>
-      <td>2022-12-01 14:21:36.707990</td>
-      <td>False</td>
-      <td>0.470806</td>
-      <td>0.329806</td>
-      <td>True</td>
-      <td>random search</td>
-      <td>2022-12-01 14:22:52.980547</td>
-      <td>0.470806</td>
-      <td>0.089642</td>
-      <td>False</td>
-      <td>random search</td>
-      <td>2022-12-01 15:02:10.080074</td>
-      <td>suboptimal</td>
-    </tr>
-    <tr>
-      <th>model__alpha</th>
-      <td>0.470774</td>
-      <td>0.470774</td>
-      <td>62598.967712</td>
-      <td>5.978356e+09</td>
-      <td>77319.829315</td>
-      <td>0.472952</td>
-      <td>101</td>
-      <td>2022-12-01 18:07:44.364204</td>
-      <td>0.0001</td>
-      <td>random search</td>
-      <td>local</td>
-      <td>2022-12-01 14:21:36.707990</td>
-      <td>False</td>
-      <td>0.470806</td>
-      <td>0.329806</td>
-      <td>0.001</td>
-      <td>random search</td>
-      <td>2022-12-01 14:22:52.980547</td>
-      <td>0.470806</td>
-      <td>0.089642</td>
-      <td>0.0001</td>
-      <td>random search</td>
-      <td>2022-12-01 15:02:10.080074</td>
-      <td>suboptimal</td>
-    </tr>
-  </tbody>
-</table><hr><h3>Summary</h3>not updated saved model, the previous run was better<hr><h3>None</h3>0.4707736069555163 is worse than or equal to '0.4708062463391607<hr>
-</body></html>
+</table><hr><h3>Best and worst models obtained by tuning</h3><img src="artifacts/linear_regression_(ridge)_(v10)_best_and_worst.png"/><hr><h3>Comparing model predictions to actual property values</h3><img src="artifacts/linear_regression_(ridge)_(v10)_best_model_correlation.png"/><hr>
