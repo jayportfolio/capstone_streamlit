@@ -1,0 +1,9 @@
+{
+	"algorithm": ["auto", "ball_tree", "kd_tree"],
+	"leaf_size": [3, 30, 60,90,300],
+	"metric": ["euclidean","minkowski"],
+	"n_jobs": [2],
+	"n_neighbors": [3, 4, 5, 7, 9],
+	"p": [1, 2],
+	"weights": ["uniform", "distance"]
+}

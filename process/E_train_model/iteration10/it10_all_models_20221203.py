@@ -84,7 +84,8 @@ import matplotlib.pyplot as plt
 import sys
 import os
 
-with open('../../z_envs/_envs.json') as f:
+#with open('../../z_envs/_envs.json') as f:
+with open('z_envs/_envs.json') as f:
     env_vars = json.loads(f.read())
 
 try:
