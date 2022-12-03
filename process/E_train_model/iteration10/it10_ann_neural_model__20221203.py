@@ -795,7 +795,7 @@ if this_model_is_best:
         new_model_decision = f"pickled new version of model\n{old_results_json[key]['_score']} is new best score (it's better than {old_best_score})"
         #print(results_json[key]['_score'], 'is an improvement on', results_json[key]['second best score'])
 else:
-    new_model_decision = f"not updated saved model, the previous run was better\n{old_results_json[key]['_score']} is worse than or equal to '{old_best_score}"
+    new_model_decision = f"not updated saved model, the previous run was better\n{old_results_json[key]['_score']} is worse than or equal to {old_best_score}"
 
 print(new_model_decision)
 
