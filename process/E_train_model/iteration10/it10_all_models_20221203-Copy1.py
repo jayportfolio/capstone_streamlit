@@ -11,7 +11,7 @@
 # * what fraction of the data we'll use for testing (0.1)
 # * if the data split will be randomised (it won't!)
 
-# In[36]:
+# In[69]:
 
 
 ALGORITHM = 'Linear Regression (Ridge)'
@@ -49,7 +49,19 @@ create_python_script = True
 # 
 # 
 
-# In[37]:
+# In[70]:
+
+'''
+get_ipython().run_line_magic('pip', 'install tabulate')
+
+if ALGORITHM == 'CatBoost':
+    get_ipython().run_line_magic('pip', 'install catboost')
+
+if ALGORITHM == 'Light Gradient Boosting':
+    get_ipython().run_line_magic('pip', 'install lightgbm')
+'''
+
+# In[71]:
 
 
 from sklearn.impute import SimpleImputer
@@ -72,7 +84,8 @@ import matplotlib.pyplot as plt
 import sys
 import os
 
-with open('../../z_envs/_envs.json') as f:
+#with open('../../z_envs/_envs.json') as f:
+with open('./z_envs/_envs.json') as f:
     env_vars = json.loads(f.read())
 
 try:
@@ -105,6 +118,12 @@ no_scaling = 'no scaling' in DATA_DETAIL
 #not_catboost = 'catboost' not in ALGORITHM.lower() or not no_dummies
 using_catboost = 'catboost' in ALGORITHM.lower()
 
+
+module_path = os.path.abspath(os.path.join('..', '..', '..'))
+if module_path not in sys.path:
+    #sys.path.append(module_path+"\\zfunctions")
+    sys.path.append(module_path)
+
 if run_env not in ['colab', 'gradient', 'cloud']:
     cloud_run = False
     from functions_b__get_the_data_20221116 import set_csv_directory
@@ -128,26 +147,13 @@ from functions_f_evaluate_model_20221116 import get_best_estimator_average_time,
 print(env_vars)
 
 
-# In[38]:
-
-
-if is_jupyter:
-    get_ipython().run_line_magic('pip', 'install tabulate')
-
-    if ALGORITHM == 'CatBoost':
-        get_ipython().run_line_magic('pip', 'install catboost')
-
-    if ALGORITHM == 'Light Gradient Boosting':
-        get_ipython().run_line_magic('pip', 'install lightgbm')
-
-
 # #### Include any overrides specific to the algorthm / python environment being used
 
-# In[39]:
+# In[72]:
 
 
-#running_locally = True
-running_locally = run_env == 'local'
+running_locally = True
+#running_locally = run_env == 'local'
 
 
 if 'forest' in ALGORITHM.lower():
@@ -174,7 +180,7 @@ if 'forest' in ALGORITHM.lower() or True:
 # 
 # 
 
-# In[40]:
+# In[73]:
 
 
 from sklearn.pipeline import Pipeline
@@ -197,14 +203,14 @@ starter_pipe
 # 
 # ## Stage: get the data
 
-# In[41]:
+# In[74]:
 
 
 columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 LABEL = 'Price'
 
 
-# In[42]:
+# In[75]:
 
 
 df, retrieval_type = get_source_dataframe(cloud_run, VERSION, folder_prefix='../../../', row_limit=None)
@@ -218,7 +224,7 @@ if retrieval_type != 'tidy':
     df = df[columns]
 
 
-# In[43]:
+# In[76]:
 
 
 print(colored(f"features", "blue"), "-> ", columns)
@@ -226,20 +232,20 @@ columns.insert(0, LABEL)
 print(colored(f"label", "green", None, ['bold']), "-> ", LABEL)
 
 
-# In[44]:
+# In[77]:
 
 
 df = preprocess(df, version=VERSION)
 df = df.dropna()
 
 
-# In[45]:
+# In[78]:
 
 
 df.head(5)
 
 
-# In[46]:
+# In[79]:
 
 
 X_train, X_test, y_train, y_test, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
@@ -262,7 +268,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 
 
 
-# In[47]:
+# In[80]:
 
 
 #imputer = SimpleImputer(strategy='mean')
@@ -270,13 +276,13 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 #X_train[6] = imputer.transform(X_train[6])
 
 
-# In[48]:
+# In[81]:
 
 
 starter_model = starter_pipe[-1]
 
 
-# In[49]:
+# In[82]:
 
 
 X_train
@@ -290,7 +296,7 @@ X_train
 # 
 # 
 
-# In[50]:
+# In[83]:
 
 
 options_block = get_hyperparameters(ALGORITHM, use_gpu, prefix='../../../')
@@ -325,7 +331,7 @@ print("cv:", cv, "n_jobs:", n_jobs, "refit:", refit, "n_iter:", n_iter, "verbose
 #param_options if not using_catboost else options_block
 
 
-# In[ ]:
+# In[84]:
 
 
 def fit_model_with_cross_validation(gs, X_train, y_train, fits):
@@ -406,7 +412,7 @@ else:
 crossval_runner
 
 
-# In[ ]:
+# In[84]:
 
 
 
@@ -418,7 +424,7 @@ crossval_runner
 # 
 # 
 
-# In[ ]:
+# In[85]:
 
 
 if not using_catboost:
@@ -436,19 +442,19 @@ else:
     print(cat_cv_results)
 
 
-# In[ ]:
+# In[85]:
 
 
 
 
 
-# In[ ]:
+# In[85]:
 
 
 
 
 
-# In[ ]:
+# In[86]:
 
 
 key = f'{ALGORITHM} (v{VERSION})'.lower()
@@ -467,7 +473,7 @@ if not using_catboost:
         total_fits = len(cv_results_df_sorted)
 
 if not using_catboost:
-    if is_jupyter:display(cv_results_df_sorted)
+    display(cv_results_df_sorted)
 
     orig_debug_mode, orig_display_df_cols = debug_mode, pd.get_option('display.max_columns')
     debug_mode = True
@@ -479,10 +485,10 @@ if not using_catboost:
     cv_results_df_summary = cv_results_df[debug_cols].head(7)
     cv_results_df_summary.set_index('rank_test_score', inplace=True)
 
-    if is_jupyter:display(cv_results_df_summary)
+    display(cv_results_df_summary)
 
 
-# In[ ]:
+# In[86]:
 
 
 
@@ -494,7 +500,7 @@ if not using_catboost:
 # 
 # 
 
-# In[ ]:
+# In[87]:
 
 
 if not using_catboost:
@@ -503,13 +509,13 @@ else:
     y_pred = starter_model.predict(pool_Xtest)
 
 
-# In[ ]:
+# In[87]:
 
 
 
 
 
-# In[ ]:
+# In[88]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -525,13 +531,13 @@ print('Mean Squared Error Accuracy', MSE)
 print('Root Mean Squared Error', RMSE)
 
 
-# In[ ]:
+# In[88]:
 
 
 
 
 
-# In[ ]:
+# In[89]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -551,13 +557,13 @@ combined['bedrooms'] = combined['bedrooms'].astype(int)
 combined
 
 
-# In[ ]:
+# In[89]:
 
 
 
 
 
-# In[ ]:
+# In[90]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -570,7 +576,7 @@ best_model_ax.set_xlabel('Actual')
 plt.show()
 
 
-# In[ ]:
+# In[91]:
 
 
 if not using_catboost:
@@ -626,7 +632,7 @@ if not using_catboost:
     best_model_scores[-1] = fitted_graph_model.score(X_test, y_test)
 
 
-# In[ ]:
+# In[92]:
 
 
 if not using_catboost:
@@ -652,7 +658,7 @@ if not using_catboost:
     plt.show()
 
 
-# In[ ]:
+# In[93]:
 
 
 if not using_catboost:
@@ -687,7 +693,7 @@ if not using_catboost:
     plt.show()
 
 
-# In[ ]:
+# In[93]:
 
 
 
@@ -699,7 +705,7 @@ if not using_catboost:
 # 
 # 
 
-# In[ ]:
+# In[94]:
 
 
 # <catboost.core.CatBoostRegressor object at 0x7fb167387490>
@@ -743,13 +749,13 @@ print(key)
 new_results
 
 
-# In[ ]:
+# In[95]:
 
 
 crossval_runner.best_estimator_  if not using_catboost else ''
 
 
-# In[ ]:
+# In[96]:
 
 
 if this_model_is_best:
@@ -771,7 +777,7 @@ print(new_model_decision)
 # ## Stage: Investigate the feature importances (if applicable)
 # 
 
-# In[ ]:
+# In[97]:
 
 
 if model_uses_feature_importances:
@@ -794,7 +800,7 @@ else:
     print(f'{ALGORITHM} does not have feature_importances, skipping')
 
 
-# In[ ]:
+# In[98]:
 
 
 if model_uses_feature_importances:
@@ -812,7 +818,7 @@ else:
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[ ]:
+# In[99]:
 
 
 from bs4 import BeautifulSoup
@@ -994,13 +1000,13 @@ def print_and_report(text_single, title):
 
 
 
-# In[ ]:
+# In[100]:
 
 
 print('Nearly finished...')
 
 
-# In[ ]:
+# In[101]:
 
 
 # !jupyter nbconvert --to script mycode.ipynb
@@ -1020,13 +1026,13 @@ if create_python_script and is_jupyter:
 #!mv ./folder/notebooks/*.py ./folder/python_scripts && \
 
 
-# In[ ]:
+# In[102]:
 
 
 print('Finished!')
 
 
-# In[ ]:
+# In[104]:
 
 
 
