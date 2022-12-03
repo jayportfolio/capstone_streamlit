@@ -17,26 +17,25 @@ def set_csv_directory(update_csv_directory):
     csv_directory = update_csv_directory
 
 
-def get_source_dataframe(IN_COLAB, VERSION, rows=0, folder_prefix='../../../'):
-    retrieval_type = None
+def get_source_dataframe(cloud_run, VERSION, row_limit=None, folder_prefix='../../../'):
 
     filename = f'df_listings_v{VERSION}.csv'
     remote_pathname = f'https://raw.githubusercontent.com/jayportfolio/capstone_streamlit/main/data/final/{filename}'
     df_pathname_raw = folder_prefix + f'data/source/{filename}'
     df_pathname_tidy = folder_prefix + f'data/final/{filename}'
 
-    if IN_COLAB:
-        inDF = pd.read_csv(remote_pathname, on_bad_lines='error', index_col=0)
+    if cloud_run:
+        df = pd.read_csv(remote_pathname, on_bad_lines='error', index_col=0)
         retrieval_type = 'tidy'
         print('loaded data from', folder_prefix + remote_pathname)
     else:
-        inDF = pd.read_csv(df_pathname_tidy, on_bad_lines='error', index_col=0)
+        df = pd.read_csv(df_pathname_tidy, on_bad_lines='error', index_col=0)
         retrieval_type = 'tidy'
         print('loaded data from', df_pathname_tidy)
 
-    if rows and rows > 0:
-        inDF = inDF[:rows]
-    return inDF, retrieval_type
+    if row_limit and row_limit > 0:
+        df = df[:row_limit]
+    return df, retrieval_type
 
 
 def get_combined_dataset(HOW, early_duplicates, row_limit=None, verbose=False, folder_prefix=''):
