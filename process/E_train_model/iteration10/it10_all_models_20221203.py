@@ -11,7 +11,7 @@
 # * what fraction of the data we'll use for testing (0.1)
 # * if the data split will be randomised (it won't!)
 
-# In[69]:
+# In[36]:
 
 
 ALGORITHM = 'Linear Regression (Ridge)'
@@ -49,19 +49,7 @@ create_python_script = True
 # 
 # 
 
-# In[70]:
-
-
-get_ipython().run_line_magic('pip', 'install tabulate')
-
-if ALGORITHM == 'CatBoost':
-    get_ipython().run_line_magic('pip', 'install catboost')
-
-if ALGORITHM == 'Light Gradient Boosting':
-    get_ipython().run_line_magic('pip', 'install lightgbm')
-
-
-# In[71]:
+# In[37]:
 
 
 from sklearn.impute import SimpleImputer
@@ -84,8 +72,7 @@ import matplotlib.pyplot as plt
 import sys
 import os
 
-#with open('../../z_envs/_envs.json') as f:
-with open('z_envs/_envs.json') as f:
+with open('../../z_envs/_envs.json') as f:
     env_vars = json.loads(f.read())
 
 try:
@@ -141,9 +128,22 @@ from functions_f_evaluate_model_20221116 import get_best_estimator_average_time,
 print(env_vars)
 
 
+# In[38]:
+
+
+if is_jupyter:
+    get_ipython().run_line_magic('pip', 'install tabulate')
+
+    if ALGORITHM == 'CatBoost':
+        get_ipython().run_line_magic('pip', 'install catboost')
+
+    if ALGORITHM == 'Light Gradient Boosting':
+        get_ipython().run_line_magic('pip', 'install lightgbm')
+
+
 # #### Include any overrides specific to the algorthm / python environment being used
 
-# In[72]:
+# In[39]:
 
 
 running_locally = True
@@ -174,7 +174,7 @@ if 'forest' in ALGORITHM.lower() or True:
 # 
 # 
 
-# In[73]:
+# In[40]:
 
 
 from sklearn.pipeline import Pipeline
@@ -197,14 +197,14 @@ starter_pipe
 # 
 # ## Stage: get the data
 
-# In[74]:
+# In[41]:
 
 
 columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 LABEL = 'Price'
 
 
-# In[75]:
+# In[42]:
 
 
 df, retrieval_type = get_source_dataframe(cloud_run, VERSION, folder_prefix='../../../', row_limit=None)
@@ -218,7 +218,7 @@ if retrieval_type != 'tidy':
     df = df[columns]
 
 
-# In[76]:
+# In[43]:
 
 
 print(colored(f"features", "blue"), "-> ", columns)
@@ -226,20 +226,20 @@ columns.insert(0, LABEL)
 print(colored(f"label", "green", None, ['bold']), "-> ", LABEL)
 
 
-# In[77]:
+# In[44]:
 
 
 df = preprocess(df, version=VERSION)
 df = df.dropna()
 
 
-# In[78]:
+# In[45]:
 
 
 df.head(5)
 
 
-# In[79]:
+# In[46]:
 
 
 X_train, X_test, y_train, y_test, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
@@ -262,7 +262,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 
 
 
-# In[80]:
+# In[47]:
 
 
 #imputer = SimpleImputer(strategy='mean')
@@ -270,13 +270,13 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 #X_train[6] = imputer.transform(X_train[6])
 
 
-# In[81]:
+# In[48]:
 
 
 starter_model = starter_pipe[-1]
 
 
-# In[82]:
+# In[49]:
 
 
 X_train
@@ -290,7 +290,7 @@ X_train
 # 
 # 
 
-# In[83]:
+# In[50]:
 
 
 options_block = get_hyperparameters(ALGORITHM, use_gpu, prefix='../../../')
@@ -325,7 +325,7 @@ print("cv:", cv, "n_jobs:", n_jobs, "refit:", refit, "n_iter:", n_iter, "verbose
 #param_options if not using_catboost else options_block
 
 
-# In[84]:
+# In[ ]:
 
 
 def fit_model_with_cross_validation(gs, X_train, y_train, fits):
@@ -406,7 +406,7 @@ else:
 crossval_runner
 
 
-# In[84]:
+# In[ ]:
 
 
 
@@ -418,7 +418,7 @@ crossval_runner
 # 
 # 
 
-# In[85]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -436,19 +436,19 @@ else:
     print(cat_cv_results)
 
 
-# In[85]:
+# In[ ]:
 
 
 
 
 
-# In[85]:
+# In[ ]:
 
 
 
 
 
-# In[86]:
+# In[ ]:
 
 
 key = f'{ALGORITHM} (v{VERSION})'.lower()
@@ -467,7 +467,7 @@ if not using_catboost:
         total_fits = len(cv_results_df_sorted)
 
 if not using_catboost:
-    display(cv_results_df_sorted)
+    if is_jupyter:display(cv_results_df_sorted)
 
     orig_debug_mode, orig_display_df_cols = debug_mode, pd.get_option('display.max_columns')
     debug_mode = True
@@ -479,10 +479,10 @@ if not using_catboost:
     cv_results_df_summary = cv_results_df[debug_cols].head(7)
     cv_results_df_summary.set_index('rank_test_score', inplace=True)
 
-    display(cv_results_df_summary)
+    if is_jupyter:display(cv_results_df_summary)
 
 
-# In[86]:
+# In[ ]:
 
 
 
@@ -494,7 +494,7 @@ if not using_catboost:
 # 
 # 
 
-# In[87]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -503,13 +503,13 @@ else:
     y_pred = starter_model.predict(pool_Xtest)
 
 
-# In[87]:
+# In[ ]:
 
 
 
 
 
-# In[88]:
+# In[ ]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -525,13 +525,13 @@ print('Mean Squared Error Accuracy', MSE)
 print('Root Mean Squared Error', RMSE)
 
 
-# In[88]:
+# In[ ]:
 
 
 
 
 
-# In[89]:
+# In[ ]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -551,13 +551,13 @@ combined['bedrooms'] = combined['bedrooms'].astype(int)
 combined
 
 
-# In[89]:
+# In[ ]:
 
 
 
 
 
-# In[90]:
+# In[ ]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -570,7 +570,7 @@ best_model_ax.set_xlabel('Actual')
 plt.show()
 
 
-# In[91]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -626,7 +626,7 @@ if not using_catboost:
     best_model_scores[-1] = fitted_graph_model.score(X_test, y_test)
 
 
-# In[92]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -652,7 +652,7 @@ if not using_catboost:
     plt.show()
 
 
-# In[93]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -687,7 +687,7 @@ if not using_catboost:
     plt.show()
 
 
-# In[93]:
+# In[ ]:
 
 
 
@@ -699,7 +699,7 @@ if not using_catboost:
 # 
 # 
 
-# In[94]:
+# In[ ]:
 
 
 # <catboost.core.CatBoostRegressor object at 0x7fb167387490>
@@ -743,13 +743,13 @@ print(key)
 new_results
 
 
-# In[95]:
+# In[ ]:
 
 
 crossval_runner.best_estimator_  if not using_catboost else ''
 
 
-# In[96]:
+# In[ ]:
 
 
 if this_model_is_best:
@@ -771,7 +771,7 @@ print(new_model_decision)
 # ## Stage: Investigate the feature importances (if applicable)
 # 
 
-# In[97]:
+# In[ ]:
 
 
 if model_uses_feature_importances:
@@ -794,7 +794,7 @@ else:
     print(f'{ALGORITHM} does not have feature_importances, skipping')
 
 
-# In[98]:
+# In[ ]:
 
 
 if model_uses_feature_importances:
@@ -812,7 +812,7 @@ else:
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[99]:
+# In[ ]:
 
 
 from bs4 import BeautifulSoup
@@ -994,13 +994,13 @@ def print_and_report(text_single, title):
 
 
 
-# In[100]:
+# In[ ]:
 
 
 print('Nearly finished...')
 
 
-# In[101]:
+# In[ ]:
 
 
 # !jupyter nbconvert --to script mycode.ipynb
@@ -1020,13 +1020,13 @@ if create_python_script and is_jupyter:
 #!mv ./folder/notebooks/*.py ./folder/python_scripts && \
 
 
-# In[102]:
+# In[ ]:
 
 
 print('Finished!')
 
 
-# In[104]:
+# In[ ]:
 
 
 
