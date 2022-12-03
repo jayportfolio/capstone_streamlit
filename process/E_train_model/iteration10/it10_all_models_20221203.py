@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-from IPython import get_ipython
-from rich.jupyter import display
 
 # <code style="background:blue;color:blue">**********************************************************************************************************</code>
 # 
@@ -13,23 +11,21 @@ from rich.jupyter import display
 # * what fraction of the data we'll use for testing (0.1)
 # * if the data split will be randomised (it won't!)
 
-# In[147]:
+# In[69]:
 
 
-#ALGORITHM = 'Linear Regression (Ridge)'
+ALGORITHM = 'Linear Regression (Ridge)'
 #ALGORITHM = 'KNN'
-ALGORITHM = 'Decision Tree'
+#ALGORITHM = 'Decision Tree'
 #ALGORITHM = 'Random Forest'
 #ALGORITHM = 'XG Boost (tree)'
 #ALGORITHM = 'CatBoost'
 #ALGORITHM = 'Light Gradient Boosting'
 
 ALGORITHM_DETAIL = 'random search'
-DATA_DETAIL = []
-#DATA_DETAIL = ['linear']
 #DATA_DETAIL = ['explore param']
 #DATA_DETAIL = ['no scale','no dummies']
-#DATA_DETAIL = ['no dummies']
+DATA_DETAIL = ['no dummies'] if 'catboost' in ALGORITHM.lower() else []
 #VERSION = '06'
 VERSION = '06'
 
@@ -44,6 +40,7 @@ print(f'DATA VERSION: {VERSION}')
 print(f'DATA_DETAIL: {DATA_DETAIL}')
 
 model_uses_feature_importances = 'tree' in ALGORITHM.lower() or 'forest' in ALGORITHM.lower() or 'boost' in ALGORITHM.lower()
+create_python_script = True
 
 
 # <code style="background:blue;color:blue">**********************************************************************************************************</code>
@@ -52,10 +49,19 @@ model_uses_feature_importances = 'tree' in ALGORITHM.lower() or 'forest' in ALGO
 # 
 # 
 
-# In[148]:
+# In[70]:
 
 
-# In[149]:
+get_ipython().run_line_magic('pip', 'install tabulate')
+
+if ALGORITHM == 'CatBoost':
+    get_ipython().run_line_magic('pip', 'install catboost')
+
+if ALGORITHM == 'Light Gradient Boosting':
+    get_ipython().run_line_magic('pip', 'install lightgbm')
+
+
+# In[71]:
 
 
 from sklearn.impute import SimpleImputer
@@ -75,6 +81,8 @@ import pickle
 import json
 from datetime import datetime
 import matplotlib.pyplot as plt
+import sys
+import os
 
 with open('../../z_envs/_envs.json') as f:
     env_vars = json.loads(f.read())
@@ -88,6 +96,11 @@ except:
         run_env = env_vars['notebook_environment']
     except:
         run_env = 'unknown'
+
+if "JPY_PARENT_PID" in os.environ:
+    is_jupyter = True
+else:
+    is_jupyter = False
 
 use_gpu = env_vars.get('use_gpu', False)
 debug_mode = env_vars.get('debug_mode', False)
@@ -104,14 +117,12 @@ no_scaling = 'no scaling' in DATA_DETAIL
 #not_catboost = 'catboost' not in ALGORITHM.lower() or not no_dummies
 using_catboost = 'catboost' in ALGORITHM.lower()
 
-if run_env not in ['colab', 'gradient', 'cloud'] or False:
+if run_env not in ['colab', 'gradient', 'cloud']:
     cloud_run = False
     from functions_b__get_the_data_20221116 import set_csv_directory
     set_csv_directory('final_split')
 else:
     cloud_run = True
-    import sys
-    import os
 
     module_path = os.path.abspath(os.path.join('..', '..', '..'))
     if module_path not in sys.path:
@@ -131,7 +142,7 @@ print(env_vars)
 
 # #### Include any overrides specific to the algorthm / python environment being used
 
-# In[150]:
+# In[72]:
 
 
 running_locally = True
@@ -162,7 +173,7 @@ if 'forest' in ALGORITHM.lower() or True:
 # 
 # 
 
-# In[151]:
+# In[73]:
 
 
 from sklearn.pipeline import Pipeline
@@ -185,14 +196,14 @@ starter_pipe
 # 
 # ## Stage: get the data
 
-# In[152]:
+# In[74]:
 
 
 columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 LABEL = 'Price'
 
 
-# In[153]:
+# In[75]:
 
 
 df, retrieval_type = get_source_dataframe(cloud_run, VERSION, folder_prefix='../../../', row_limit=None)
@@ -206,7 +217,7 @@ if retrieval_type != 'tidy':
     df = df[columns]
 
 
-# In[154]:
+# In[76]:
 
 
 print(colored(f"features", "blue"), "-> ", columns)
@@ -214,20 +225,20 @@ columns.insert(0, LABEL)
 print(colored(f"label", "green", None, ['bold']), "-> ", LABEL)
 
 
-# In[155]:
+# In[77]:
 
 
 df = preprocess(df, version=VERSION)
 df = df.dropna()
 
 
-# In[156]:
+# In[78]:
 
 
 df.head(5)
 
 
-# In[157]:
+# In[79]:
 
 
 X_train, X_test, y_train, y_test, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
@@ -250,7 +261,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 
 
 
-# In[158]:
+# In[80]:
 
 
 #imputer = SimpleImputer(strategy='mean')
@@ -258,16 +269,16 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 #X_train[6] = imputer.transform(X_train[6])
 
 
-# In[159]:
+# In[81]:
 
 
 starter_model = starter_pipe[-1]
 
 
-# In[159]:
+# In[82]:
 
 
-
+X_train
 
 
 # <code style="background:blue;color:blue">**********************************************************************************************************</code>
@@ -278,7 +289,7 @@ starter_model = starter_pipe[-1]
 # 
 # 
 
-# In[160]:
+# In[83]:
 
 
 options_block = get_hyperparameters(ALGORITHM, use_gpu, prefix='../../../')
@@ -313,7 +324,7 @@ print("cv:", cv, "n_jobs:", n_jobs, "refit:", refit, "n_iter:", n_iter, "verbose
 #param_options if not using_catboost else options_block
 
 
-# In[161]:
+# In[84]:
 
 
 def fit_model_with_cross_validation(gs, X_train, y_train, fits):
@@ -394,7 +405,7 @@ else:
 crossval_runner
 
 
-# In[161]:
+# In[84]:
 
 
 
@@ -406,7 +417,7 @@ crossval_runner
 # 
 # 
 
-# In[162]:
+# In[85]:
 
 
 if not using_catboost:
@@ -424,19 +435,19 @@ else:
     print(cat_cv_results)
 
 
-# In[162]:
+# In[85]:
 
 
 
 
 
-# In[162]:
+# In[85]:
 
 
 
 
 
-# In[163]:
+# In[86]:
 
 
 key = f'{ALGORITHM} (v{VERSION})'.lower()
@@ -470,7 +481,7 @@ if not using_catboost:
     display(cv_results_df_summary)
 
 
-# In[163]:
+# In[86]:
 
 
 
@@ -482,7 +493,7 @@ if not using_catboost:
 # 
 # 
 
-# In[164]:
+# In[87]:
 
 
 if not using_catboost:
@@ -491,13 +502,13 @@ else:
     y_pred = starter_model.predict(pool_Xtest)
 
 
-# In[164]:
+# In[87]:
 
 
 
 
 
-# In[165]:
+# In[88]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -513,13 +524,13 @@ print('Mean Squared Error Accuracy', MSE)
 print('Root Mean Squared Error', RMSE)
 
 
-# In[165]:
+# In[88]:
 
 
 
 
 
-# In[166]:
+# In[89]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -539,13 +550,13 @@ combined['bedrooms'] = combined['bedrooms'].astype(int)
 combined
 
 
-# In[166]:
+# In[89]:
 
 
 
 
 
-# In[167]:
+# In[90]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -558,7 +569,7 @@ best_model_ax.set_xlabel('Actual')
 plt.show()
 
 
-# In[168]:
+# In[91]:
 
 
 if not using_catboost:
@@ -614,7 +625,7 @@ if not using_catboost:
     best_model_scores[-1] = fitted_graph_model.score(X_test, y_test)
 
 
-# In[169]:
+# In[92]:
 
 
 if not using_catboost:
@@ -640,7 +651,7 @@ if not using_catboost:
     plt.show()
 
 
-# In[170]:
+# In[93]:
 
 
 if not using_catboost:
@@ -675,7 +686,7 @@ if not using_catboost:
     plt.show()
 
 
-# In[170]:
+# In[93]:
 
 
 
@@ -687,7 +698,7 @@ if not using_catboost:
 # 
 # 
 
-# In[171]:
+# In[94]:
 
 
 # <catboost.core.CatBoostRegressor object at 0x7fb167387490>
@@ -731,13 +742,13 @@ print(key)
 new_results
 
 
-# In[172]:
+# In[95]:
 
 
 crossval_runner.best_estimator_  if not using_catboost else ''
 
 
-# In[173]:
+# In[96]:
 
 
 if this_model_is_best:
@@ -759,7 +770,7 @@ print(new_model_decision)
 # ## Stage: Investigate the feature importances (if applicable)
 # 
 
-# In[174]:
+# In[97]:
 
 
 if model_uses_feature_importances:
@@ -782,7 +793,7 @@ else:
     print(f'{ALGORITHM} does not have feature_importances, skipping')
 
 
-# In[175]:
+# In[98]:
 
 
 if model_uses_feature_importances:
@@ -800,7 +811,7 @@ else:
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[177]:
+# In[99]:
 
 
 from bs4 import BeautifulSoup
@@ -811,8 +822,8 @@ def include_in_html_report(type, section_header=None, section_figure=None, secti
     # writePath_html = r'model_results/%s (html).html' % key
     # writePath_md = r'model_results/%s (md).md' % key
     results_root = '../../F_evaluate_model'
-    writePath_html = f'{results_root}/{key} (html).html'
-    writePath_md = f'{results_root}/{key} (md).md'
+    writePath_html = f'{results_root}/html/{key}.html'.replace(" ", "_").replace("(", "_").replace(")", "_")
+    writePath_md = f'{results_root}/markdown/{key}.md'
 
 #isinstance(ini_list2, list)
     if not section_content_list:
@@ -843,16 +854,16 @@ def include_in_html_report(type, section_header=None, section_figure=None, secti
         elif type=='graph':
             filename = key + "_" + section_content
             #section_figure.savefig(f'model_results/artifacts/{filename.replace(" ", "_")}')
-            section_figure.savefig(f'{results_root}/artifacts/{filename.replace(" ", "_")}')
+            section_figure.savefig(f'{results_root}/artifacts/{filename.replace(" ", "_").replace("(", "_").replace(")", "_")}')
 
             with open(writePath_html, 'a') as f1:
-                dfAsString = f'<img src="artifacts/{filename.replace(" ","_")}"/>'
+                dfAsString = f'<img src="../artifacts/{filename.replace(" ","_").replace("(", "_").replace(")", "_")}"/>'
                 f1.write(dfAsString)
 
             with open(writePath_md, 'a') as f2:
                 #dfAsString = f'(./model_results/artifacts/{filename}) \n'
                 #dfAsString = f'![detail](./artifacts/{filename.replace(" ","_")})'
-                dfAsString = f'![detail](artifacts/{filename.replace(" ","_")})'
+                dfAsString = f'![detail](../artifacts/{filename.replace(" ","_").replace("(", "_").replace(")", "_")})'
                 f2.write(dfAsString)
                 f2.write('\n')
         elif type=='json':
@@ -923,15 +934,17 @@ include_in_html_report(type="text", section_header="Summary", section_content=ne
 
 #include_in_html_report(type="dataframe",text_single="Tuned Models ranked by performance", content=cv_results_df_sorted)
 
-include_in_html_report(type='dataframe', section_header='Tuned Models ranked by performance, with parameter details', section_content=cv_results_df_summary)
+if not using_catboost:
+    include_in_html_report(type='dataframe', section_header='Tuned Models ranked by performance, with parameter details', section_content=cv_results_df_summary)
 
-include_in_html_report(type='graph', section_header='Best and worst models obtained by tuning', section_figure=worst_and_best_model_fig, section_content="best_and_worst.png")
+    include_in_html_report(type='graph', section_header='Best and worst models obtained by tuning', section_figure=worst_and_best_model_fig, section_content="best_and_worst.png")
 
-include_in_html_report(type='graph', section_header='Best Model: Comparing model predictions to actual property values', section_figure=best_model_fig, section_content='best_model_correlation.png')
+    include_in_html_report(type='graph', section_header='Best Model: Comparing model predictions to actual property values', section_figure=best_model_fig, section_content='best_model_correlation.png')
+else: #if using_catboost:
+    include_in_html_report(type="text", section_header="Model Specific Notes", section_content_list=["can't display hyperparameter comparison for catboost","can't display model performance graphs for catboost","can't display model performance graphs for catboost"])
 
 
 if model_uses_feature_importances:
-    print('model_uses_feature_importances')
     include_in_html_report("header", section_content=f"Feature Importances", section_figure=2)
     include_in_html_report(type="text", section_header="Feature Importances", section_content=feature_importances_output)
     include_in_html_report(type="graph", section_header=f"Feature Importances ({ALGORITHM})", section_figure=feature_importance_fig, section_content='best_model_feature_importances.png')
@@ -980,7 +993,13 @@ def print_and_report(text_single, title):
 
 
 
-# In[6]:
+# In[100]:
+
+
+print('Nearly finished...')
+
+
+# In[101]:
 
 
 # !jupyter nbconvert --to script mycode.ipynb
@@ -993,13 +1012,20 @@ def print_and_report(text_single, title):
 #         else:
 #             f.write(line)
 
-get_ipython().system("jupyter nbconvert --to script 'it10_all_models_20221203.ipynb'")
+if create_python_script and is_jupyter:
+    get_ipython().system("jupyter nbconvert --to script 'it10_all_models_20221203.ipynb'")
 
 #!jupyter nbconvert --to script 'it10_all_models_20221203.ipynb' &&  \
 #!mv ./folder/notebooks/*.py ./folder/python_scripts && \
 
 
-# In[176]:
+# In[102]:
+
+
+print('Finished!')
+
+
+# In[104]:
 
 
 

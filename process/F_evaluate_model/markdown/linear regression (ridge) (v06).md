@@ -1,48 +1,33 @@
-# Results from Decision Tree
+# Results from Linear Regression (Ridge)
 ### Dataset Version: 06
-Date run:2022-12-03 16:13:02.530300
+Date run:2022-12-03 18:04:47.131083
 
 ## Results
 ### Summary
 not updated saved model, the previous run was better
-0.5262006796106633 is worse than or equal to '0.5738846208267802
+0.456900104350899 is worse than or equal to '0.456900104350899
 
 ### Tuned Models ranked by performance, with parameter details
-|   rank_test_score |   mean_test_score |   mean_fit_time |   mean_score_time | param_model__splitter   | param_model__random_state   |   param_model__min_weight_fraction_leaf |   param_model__min_samples_split |   param_model__min_samples_leaf |   param_model__min_impurity_decrease |   param_model__max_leaf_nodes | param_model__max_features   |   param_model__max_depth | param_model__criterion   |   param_model__ccp_alpha | params2                                               |
-|------------------:|------------------:|----------------:|------------------:|:------------------------|:----------------------------|----------------------------------------:|---------------------------------:|--------------------------------:|-------------------------------------:|------------------------------:|:----------------------------|-------------------------:|:-------------------------|-------------------------:|:------------------------------------------------------|
-|                 1 |       0.483846    |       0.0318202 |        0.0054338  | random                  |                             |                                     0   |                              200 |                            1    |                                 5    |                               | 2                           |                          | squared_error            |                     1    | random/None/0.0/200/1/5/None/2/None/squared_error/1   |
-|                 2 |       0.373324    |      17.9574    |        0.00351461 | random                  |                             |                                     0   |                               50 |                            1    |                                 0    |                           100 | 1.0                         |                        5 | absolute_error           |                     0    | random/None/0.0/50/1/0.0/100/1.0/5/absolute_error/0.0 |
-|                 3 |       0.180404    |       0.034497  |        0.00319807 | best                    |                             |                                     0.1 |                              500 |                            2    |                                 0.25 |                            10 | sqrt                        |                        2 | friedman_mse             |                     0.05 | best/None/0.1/500/2/0.25/10/sqrt/2/friedman_mse/0.05  |
-|                 4 |       0.00576456  |       0.0171522 |        0.00301043 | random                  |                             |                                     0.1 |                                4 |                            0.25 |                                 0.25 |                             2 | log2                        |                        5 | friedman_mse             |                     0.1  | random/None/0.1/4/0.25/0.25/2/log2/5/friedman_mse/0.1 |
-|                 5 |      -5.87697e-05 |       0.0567882 |        0.015306   | best                    |                             |                                     0.5 |                                2 |                            1.5  |                                 0    |                           200 | sqrt                        |                        1 | friedman_mse             |                     0.1  | best/None/0.5/2/1.5/0.0/200/sqrt/1/friedman_mse/0.1   |
+|   rank_test_score |   mean_test_score |   mean_fit_time |   mean_score_time |   param_model__tol | param_model__solver   |   param_model__random_state | param_model__positive   |   param_model__max_iter | param_model__fit_intercept   | param_model__copy_X   |   param_model__alpha | params2                                        |
+|------------------:|------------------:|----------------:|------------------:|-------------------:|:----------------------|----------------------------:|:------------------------|------------------------:|:-----------------------------|:----------------------|---------------------:|:-----------------------------------------------|
+|                 1 |          0.444667 |       0.317938  |        0.00433477 |             0.001  | sag                   |                         101 | False                   |                   10000 | True                         | True                  |               0.001  | 0.001/sag/101/False/10000/True/True/0.001      |
+|                 2 |          0.444663 |       0.0325851 |        0.00440335 |             0.001  | auto                  |                         101 | False                   |                     100 | True                         | False                 |               0.1    | 0.001/auto/101/False/100/True/False/0.1        |
+|                 2 |          0.444663 |       0.0302182 |        0.00439866 |             0.01   | cholesky              |                         101 | False                   |                     100 | True                         | False                 |               0.1    | 0.01/cholesky/101/False/100/True/False/0.1     |
+|                 4 |          0.444663 |       0.047537  |        0.00571052 |             0.01   | svd                   |                         101 | False                   |                     100 | True                         | True                  |               0.001  | 0.01/svd/101/False/100/True/True/0.001         |
+|                 5 |          0.444663 |       0.0282466 |        0.0107243  |             0.0001 | auto                  |                         101 | False                   |                     100 | True                         | True                  |               0.001  | 0.0001/auto/101/False/100/True/True/0.001      |
+|                 6 |          0.444663 |       0.0338832 |        0.00357938 |             0.001  | auto                  |                         101 | False                   |                 1000000 | True                         | False                 |               0.0001 | 0.001/auto/101/False/1000000/True/False/0.0001 |
+|                 7 |          0.444663 |       0.0389217 |        0.00504923 |             0.0001 | sparse_cg             |                         101 | False                   |                   10000 | True                         | False                 |               1      | 0.0001/sparse_cg/101/False/10000/True/False/1  |
 ### Best and worst models obtained by tuning
-![detail](artifacts/decision_tree_(v06)_best_and_worst.png)
+![detail](../artifacts/linear_regression__ridge___v06__best_and_worst.png)
 ### Best Model: Comparing model predictions to actual property values
-![detail](artifacts/decision_tree_(v06)_best_model_correlation.png)
-## Feature Importances
-### Feature Importances
-1. features 0 (0.329668)		bedrooms
-2. features 3 (0.155161)		location.latitude
-3. features 4 (0.151515)		location.longitude
-4. features 8 (0.111426)		tenure.tenureType_FREEHOLD
-5. features 6 (0.071167)		longitude_deviation
-6. features 5 (0.063808)		latitude_deviation
-7. features 1 (0.057346)		bathrooms
-8. features 9 (0.027837)		tenure.tenureType_LEASEHOLD
-9. features 2 (0.022805)		nearestStation
-10. features 10 (0.009056)		tenure.tenureType_SHARE_OF_FREEHOLD
-11. features 7 (0.000212)		tenure.tenureType_COMMONHOLD
-
-
-### Feature Importances (Decision Tree)
-![detail](artifacts/decision_tree_(v06)_best_model_feature_importances.png)
+![detail](../artifacts/linear_regression__ridge___v06__best_model_correlation.png)
 ## Comparison with other models
 ### Comparison with version 06 performances
 |                                         |   best score |    best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                                                                                            |
 |:----------------------------------------|-------------:|-------------:|-------------------------------:|------------------------------:|--------------------:|--------------------------:|:---------------------------|:-----------------------------------------------------------------------------------------------------------------------|
 | xg boost (tree) (v06)                   |     0.725989 |  217.286     |                     42057.3    |                   3.09534e+09 |            0.725989 |                55635.8    | 2022-12-03 00:21:25.790717 | random search                                                                                                          |
 | knn (v06)                               |     0.719049 |    0.0179159 |                     41529.5    |                   3.21814e+09 |            0.715118 |                56728.7    | 2022-11-21 18:05:21.585382 | random search                                                                                                          |
-| catboost (v06)                          |     0.715606 |   12.2565    |                     55466.9    |                   4.83441e+09 |            0.57204  |                69529.9    | 1999-11-13 15:26:55.706567 | random search                                                                                                          |
+| catboost (v06)                          |     0.715606 |   12.2565    |                     51000      |                   4.30136e+09 |            0.619227 |                65584.8    | 1999-11-13 15:26:55.706567 | random search                                                                                                          |
 | light gradient boosting (v06)           |     0.706735 |   15.0439    |                     44081      |                   3.31284e+09 |            0.706735 |                57557.3    | 2022-11-16 13:59:52.612654 | random search                                                                                                          |
 | xg boost (v06)                          |     0.687611 |   11.4748    |                     45988.3    |                   3.52887e+09 |            0.687611 |                59404.3    | nan                        | random search                                                                                                          |
 | random forest (v06)                     |     0.666175 |    2.3926    |                     48257.4    |                   3.77102e+09 |            0.666175 |                61408.6    | nan                        | random search                                                                                                          |
@@ -64,7 +49,7 @@ not updated saved model, the previous run was better
 | xg boost (tree) (v06)                                    |     0.725989 |  217.286     |                     42057.3    |                   3.09534e+09 |            0.725989 |                55635.8    | 2022-12-03 00:21:25.790717 | random search                                                                                                          |
 | xg boost (v11) rs                                        |     0.721019 |  nan         |                     42603      |                   3.15148e+09 |            0.721019 |                56138      | nan                        | nan                                                                                                                    |
 | knn (v06)                                                |     0.719049 |    0.0179159 |                     41529.5    |                   3.21814e+09 |            0.715118 |                56728.7    | 2022-11-21 18:05:21.585382 | random search                                                                                                          |
-| catboost (v06)                                           |     0.715606 |   12.2565    |                     55466.9    |                   4.83441e+09 |            0.57204  |                69529.9    | 1999-11-13 15:26:55.706567 | random search                                                                                                          |
+| catboost (v06)                                           |     0.715606 |   12.2565    |                     51000      |                   4.30136e+09 |            0.619227 |                65584.8    | 1999-11-13 15:26:55.706567 | random search                                                                                                          |
 | xg boost (v05) rs                                        |     0.710594 |  nan         |                     42229      |                   3.21963e+09 |            0.710594 |                56741.7    | nan                        | nan                                                                                                                    |
 | light gradient boosting (v06)                            |     0.706735 |   15.0439    |                     44081      |                   3.31284e+09 |            0.706735 |                57557.3    | 2022-11-16 13:59:52.612654 | random search                                                                                                          |
 | xg boost (v09)                                           |     0.701117 |  119.281     |                     51922.6    |                   4.35555e+09 |            0.614431 |                65996.6    | 2022-11-30 10:16:33.388760 | random search                                                                                                          |
@@ -131,27 +116,21 @@ not updated saved model, the previous run was better
 | 35271294 |  370000 |          2 |           1 |         0.399307 |             51.4496 |            -0.140154 |             0.050152 |              0.035734 | LEASEHOLD           |
 | 44749111 |  475000 |          2 |           1 |         0.41055  |             51.37   |            -0.21241  |             0.12967  |              0.10799  | FREEHOLD            |
 ### Hyperparameter options for Randomized Grid Search
-model__splitter = ['best', 'random']
+model__alpha = [1e-05, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000]
 
-model__random_state = [None]
+model__fit_intercept = [True, False]
 
-model__min_weight_fraction_leaf = [0.0, 0.1, 0.25, 0.5]
+model__max_iter = [10000, 1000, 100, 100000, 1000000]
 
-model__min_samples_split = [2, 4, 8, 50, 100, 200, 500]
+model__positive = [False]
 
-model__min_samples_leaf = [1, 0.25, 0.5, 1.5, 2, 4, 8, 50]
+model__copy_X = [True, False]
 
-model__min_impurity_decrease = [0.0, 0.1, 0.25, 1, 5]
+model__solver = ['auto', 'svd', 'cholesky', 'lsqr', 'sparse_cg', 'sag', 'saga', 'lbfgs']
 
-model__max_leaf_nodes = [None, 2, 5, 10, 50, 100, 200, 500]
+model__tol = [1e-05, 0.0001, 0.001, 0.01]
 
-model__max_features = [None, 1.0, 'sqrt', 'log2', 0.5, 0.25, 0.1, 2]
-
-model__max_depth = [None, 1, 2, 5, 10, 50]
-
-model__criterion = ['squared_error', 'friedman_mse', 'absolute_error', 'poisson']
-
-model__ccp_alpha = [0.0, 0.05, 0.1, 0.25, 1, 5]
+model__random_state = [101]
 
 ### Environment Variables
 notebook_environment = local

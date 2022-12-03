@@ -645,7 +645,7 @@
         "_method": "random search",
         "_params": {
             "model__alpha": 0.001,
-            "model__copy_X": false,
+            "model__copy_X": true,
             "model__fit_intercept": true,
             "model__max_iter": 10000,
             "model__positive": false,
@@ -654,7 +654,7 @@
             "model__tol": 0.001
         },
         "_score": 0.456900104350899,
-        "_train time": 0.24377083778381348,
+        "_train time": 0.4546947479248047,
         "best is shared": true,
         "best method": "random search",
         "best params": {
@@ -670,7 +670,7 @@
         "best run date": "2022-11-15 22:31:23.866429",
         "best score": 0.456900104350899,
         "best time": 0.13149038950602213,
-        "date": "2022-12-03 15:24:11.254873",
+        "date": "2022-12-03 18:04:46.958158",
         "first run": "2022-11-15 21:02:22.079702",
         "random_state": 101,
         "run_env": "local",
