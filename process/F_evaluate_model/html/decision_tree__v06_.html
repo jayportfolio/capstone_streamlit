@@ -1,23 +1,29 @@
-<h1>Results from Linear Regression (Ridge)</h1><h3>Dataset Version: 06</h3>Date run:2022-12-03 19:28:39.605422<br><hr><h2>Results</h2><h3>Summary</h3>not updated saved model, the previous run was better
-0.45690010484542287 is worse than or equal to '0.45690010489487065<br><hr><h3>Tuned Models ranked by performance, with parameter details</h3><table border="1" class="dataframe">
+<h1>Results from Decision Tree</h1><h3>Dataset Version: 06</h3>Date run:2022-12-03 19:44:15.044925<br><hr><h2>Results</h2><h3>Summary</h3>pickled new version of model
+0.5937516586207761 is new best score (it's better than 0.5738846208267802)<br><hr><h3>Tuned Models ranked by performance, with parameter details</h3><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
       <th>mean_test_score</th>
       <th>mean_fit_time</th>
       <th>mean_score_time</th>
-      <th>param_model__tol</th>
-      <th>param_model__solver</th>
+      <th>param_model__splitter</th>
       <th>param_model__random_state</th>
-      <th>param_model__positive</th>
-      <th>param_model__max_iter</th>
-      <th>param_model__fit_intercept</th>
-      <th>param_model__copy_X</th>
-      <th>param_model__alpha</th>
+      <th>param_model__min_weight_fraction_leaf</th>
+      <th>param_model__min_samples_split</th>
+      <th>param_model__min_samples_leaf</th>
+      <th>param_model__min_impurity_decrease</th>
+      <th>param_model__max_leaf_nodes</th>
+      <th>param_model__max_features</th>
+      <th>param_model__max_depth</th>
+      <th>param_model__criterion</th>
+      <th>param_model__ccp_alpha</th>
       <th>params2</th>
     </tr>
     <tr>
       <th>rank_test_score</th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -35,111 +41,143 @@
   <tbody>
     <tr>
       <th>1</th>
-      <td>0.444667</td>
-      <td>0.138907</td>
-      <td>0.002407</td>
-      <td>0.001</td>
-      <td>sag</td>
-      <td>101</td>
-      <td>False</td>
-      <td>10000</td>
-      <td>True</td>
-      <td>False</td>
-      <td>0.0001</td>
-      <td>0.001/sag/101/False/10000/True/False/0.0001</td>
+      <td>0.578690</td>
+      <td>0.375586</td>
+      <td>0.003254</td>
+      <td>best</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>50</td>
+      <td>50</td>
+      <td>5</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>None</td>
+      <td>poisson</td>
+      <td>0.0</td>
+      <td>best/None/0.0/50/50/5/None/1.0/None/poisson/0.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.444666</td>
-      <td>0.016131</td>
-      <td>0.001966</td>
-      <td>0.0001</td>
-      <td>lsqr</td>
-      <td>101</td>
-      <td>False</td>
-      <td>100000</td>
-      <td>True</td>
-      <td>False</td>
+      <td>0.435677</td>
+      <td>61.509074</td>
+      <td>0.002588</td>
+      <td>best</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>500</td>
+      <td>4</td>
+      <td>5</td>
+      <td>500</td>
+      <td>1.0</td>
+      <td>5</td>
+      <td>absolute_error</td>
       <td>1</td>
-      <td>0.0001/lsqr/101/False/100000/True/False/1</td>
+      <td>best/None/0.0/500/4/5/500/1.0/5/absolute_error/1</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.444666</td>
-      <td>0.012530</td>
-      <td>0.001666</td>
-      <td>0.0001</td>
-      <td>lsqr</td>
-      <td>101</td>
-      <td>False</td>
-      <td>100000</td>
-      <td>True</td>
-      <td>False</td>
+      <td>0.410798</td>
+      <td>7.677713</td>
+      <td>0.002716</td>
+      <td>best</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>8</td>
+      <td>8</td>
+      <td>0.0</td>
+      <td>100</td>
+      <td>2</td>
+      <td>None</td>
+      <td>absolute_error</td>
       <td>0.1</td>
-      <td>0.0001/lsqr/101/False/100000/True/False/0.1</td>
+      <td>best/None/0.0/8/8/0.0/100/2/None/absolute_error/0.1</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.444666</td>
-      <td>0.013681</td>
-      <td>0.002386</td>
-      <td>0.0001</td>
-      <td>lsqr</td>
-      <td>101</td>
-      <td>False</td>
-      <td>1000</td>
-      <td>True</td>
-      <td>False</td>
-      <td>0.01</td>
-      <td>0.0001/lsqr/101/False/1000/True/False/0.01</td>
+      <td>0.324067</td>
+      <td>4.327405</td>
+      <td>0.017314</td>
+      <td>random</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>200</td>
+      <td>50</td>
+      <td>1</td>
+      <td>100</td>
+      <td>sqrt</td>
+      <td>10</td>
+      <td>absolute_error</td>
+      <td>0.05</td>
+      <td>random/None/0.0/200/50/1/100/sqrt/10/absolute_error/0.05</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.444664</td>
-      <td>0.081510</td>
-      <td>0.002003</td>
-      <td>0.0001</td>
-      <td>saga</td>
-      <td>101</td>
-      <td>False</td>
-      <td>100000</td>
-      <td>True</td>
-      <td>True</td>
+      <td>0.317452</td>
+      <td>10.602319</td>
+      <td>0.003071</td>
+      <td>best</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>200</td>
+      <td>50</td>
+      <td>0.25</td>
       <td>10</td>
-      <td>0.0001/saga/101/False/100000/True/True/10</td>
+      <td>log2</td>
+      <td>50</td>
+      <td>absolute_error</td>
+      <td>5</td>
+      <td>best/None/0.0/200/50/0.25/10/log2/50/absolute_error/5</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.444664</td>
-      <td>0.091534</td>
-      <td>0.001992</td>
-      <td>0.0001</td>
-      <td>saga</td>
-      <td>101</td>
-      <td>False</td>
-      <td>1000</td>
-      <td>True</td>
-      <td>False</td>
+      <td>0.315282</td>
+      <td>0.107745</td>
+      <td>0.007975</td>
+      <td>best</td>
+      <td>None</td>
+      <td>0.1</td>
+      <td>500</td>
       <td>1</td>
-      <td>0.0001/saga/101/False/1000/True/False/1</td>
+      <td>0.25</td>
+      <td>100</td>
+      <td>1.0</td>
+      <td>None</td>
+      <td>friedman_mse</td>
+      <td>0.0</td>
+      <td>best/None/0.1/500/1/0.25/100/1.0/None/friedman_mse/0.0</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.444664</td>
-      <td>0.075964</td>
-      <td>0.001954</td>
-      <td>0.0001</td>
-      <td>saga</td>
-      <td>101</td>
-      <td>False</td>
-      <td>100000</td>
-      <td>True</td>
-      <td>True</td>
-      <td>0.001</td>
-      <td>0.0001/saga/101/False/100000/True/True/0.001</td>
+      <td>0.305856</td>
+      <td>46.970277</td>
+      <td>0.002922</td>
+      <td>best</td>
+      <td>None</td>
+      <td>0.1</td>
+      <td>200</td>
+      <td>1</td>
+      <td>5</td>
+      <td>500</td>
+      <td>None</td>
+      <td>None</td>
+      <td>absolute_error</td>
+      <td>0.0</td>
+      <td>best/None/0.1/200/1/5/500/None/None/absolute_error/0.0</td>
     </tr>
   </tbody>
-</table><hr><h3>Best and worst models obtained by tuning</h3><img src="../artifacts/linear_regression__ridge___v06__best_and_worst.png"/><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/linear_regression__ridge___v06__best_model_correlation.png"/><hr><h2>Comparison with other models</h2><h3>Comparison with version 06 performances</h3><table border="1" class="dataframe">
+</table><hr><h3>Best and worst models obtained by tuning</h3><img src="../artifacts/decision_tree__v06__best_and_worst.png"/><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/decision_tree__v06__best_model_correlation.png"/><hr><h2>Feature Importances</h2><h3>Feature Importances</h3>1. features 0 (0.358231)		bedrooms
+2. features 4 (0.209880)		location.longitude
+3. features 5 (0.158455)		latitude_deviation
+4. features 6 (0.093408)		longitude_deviation
+5. features 3 (0.058415)		location.latitude
+6. features 9 (0.056688)		tenure.tenureType_LEASEHOLD
+7. features 1 (0.042338)		bathrooms
+8. features 8 (0.016642)		tenure.tenureType_FREEHOLD
+9. features 2 (0.003790)		nearestStation
+10. features 10 (0.002152)		tenure.tenureType_SHARE_OF_FREEHOLD
+11. features 7 (0.000000)		tenure.tenureType_COMMONHOLD
+<br><hr><h3>Feature Importances (Decision Tree)</h3><img src="../artifacts/decision_tree__v06__best_model_feature_importances.png"/><hr><h2>Comparison with other models</h2><h3>Comparison with version 06 performances</h3><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -243,6 +281,17 @@
       <td>loss=4386.51 valloss=4438.8 +valsplit=0.1 stop=201/400</td>
     </tr>
     <tr>
+      <th>decision tree (v06)</th>
+      <td>0.593752</td>
+      <td>1.030902</td>
+      <td>53671.35712</td>
+      <td>4589146050.251164</td>
+      <td>0.593752</td>
+      <td>67743.236196</td>
+      <td>2022-12-03 19:44:13.536639</td>
+      <td>random search</td>
+    </tr>
+    <tr>
       <th>neural network m05 rec deep (v06)</th>
       <td>0.580348</td>
       <td>604.9</td>
@@ -252,17 +301,6 @@
       <td>70.124149</td>
       <td>2022-11-29 11:41:39.682217</td>
       <td>loss=4908.71 valloss=4603.08 stop=214/500</td>
-    </tr>
-    <tr>
-      <th>decision tree (v06)</th>
-      <td>0.573885</td>
-      <td>0.057369</td>
-      <td>58530.790066</td>
-      <td>5352229309.772656</td>
-      <td>0.526201</td>
-      <td>73158.931852</td>
-      <td>2022-11-15 22:58:42.493872</td>
-      <td>random search</td>
     </tr>
     <tr>
       <th>neural network (v06)</th>
@@ -589,6 +627,17 @@
       <td>loss=4386.51 valloss=4438.8 +valsplit=0.1 stop=201/400</td>
     </tr>
     <tr>
+      <th>decision tree (v06)</th>
+      <td>0.593752</td>
+      <td>1.030902</td>
+      <td>53671.35712</td>
+      <td>4589146050.251164</td>
+      <td>0.593752</td>
+      <td>67743.236196</td>
+      <td>2022-12-03 19:44:13.536639</td>
+      <td>random search</td>
+    </tr>
+    <tr>
       <th>neural network m13 mega (v10)</th>
       <td>0.583716</td>
       <td>142.89</td>
@@ -631,17 +680,6 @@
       <td>68954.421241</td>
       <td>2022-12-01 11:52:45.011704</td>
       <td>loss=4.85e+04 valloss=5.34e+04 +valsplit=0.1 stop=156/400</td>
-    </tr>
-    <tr>
-      <th>decision tree (v06)</th>
-      <td>0.573885</td>
-      <td>0.057369</td>
-      <td>58530.790066</td>
-      <td>5352229309.772656</td>
-      <td>0.526201</td>
-      <td>73158.931852</td>
-      <td>2022-11-15 22:58:42.493872</td>
-      <td>random search</td>
     </tr>
     <tr>
       <th>neural network m12 mega (v09)</th>
@@ -1106,6 +1144,6 @@
       <td>FREEHOLD</td>
     </tr>
   </tbody>
-</table><hr><h3>Hyperparameter options for Randomized Grid Search</h3>{'model__alpha': [1e-05, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000], 'model__fit_intercept': [True, False], 'model__max_iter': [10000, 1000, 100, 100000, 1000000], 'model__positive': [False], 'model__copy_X': [True, False], 'model__solver': ['auto', 'svd', 'cholesky', 'lsqr', 'sparse_cg', 'sag', 'saga', 'lbfgs'], 'model__tol': [1e-05, 0.0001, 0.001, 0.01], 'model__random_state': [101]}
+</table><hr><h3>Hyperparameter options for Randomized Grid Search</h3>{'model__splitter': ['best', 'random'], 'model__random_state': [None], 'model__min_weight_fraction_leaf': [0.0, 0.1, 0.25, 0.5], 'model__min_samples_split': [2, 4, 8, 50, 100, 200, 500], 'model__min_samples_leaf': [1, 0.25, 0.5, 1.5, 2, 4, 8, 50], 'model__min_impurity_decrease': [0.0, 0.1, 0.25, 1, 5], 'model__max_leaf_nodes': [None, 2, 5, 10, 50, 100, 200, 500], 'model__max_features': [None, 1.0, 'sqrt', 'log2', 0.5, 0.25, 0.1, 2], 'model__max_depth': [None, 1, 2, 5, 10, 50], 'model__criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'], 'model__ccp_alpha': [0.0, 0.05, 0.1, 0.25, 1, 5]}
 <hr><h3>Environment Variables</h3>{'notebook_environment': 'gradient', 'use_gpu': True, 'debug_mode': False, 'quick_mode': False, 'quick_override_cv_splits': 2, 'quick_override_n_iter': 10, 'quick_override_n_jobs': 3}
 <hr>

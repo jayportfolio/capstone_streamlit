@@ -1,26 +1,43 @@
-# Results from Linear Regression (Ridge)
+# Results from Decision Tree
 ### Dataset Version: 06
-Date run:2022-12-03 19:28:39.605422
+Date run:2022-12-03 19:44:15.044925
 
 ## Results
 ### Summary
-not updated saved model, the previous run was better
-0.45690010484542287 is worse than or equal to '0.45690010489487065
+pickled new version of model
+0.5937516586207761 is new best score (it's better than 0.5738846208267802)
 
 ### Tuned Models ranked by performance, with parameter details
-|   rank_test_score |   mean_test_score |   mean_fit_time |   mean_score_time |   param_model__tol | param_model__solver   |   param_model__random_state | param_model__positive   |   param_model__max_iter | param_model__fit_intercept   | param_model__copy_X   |   param_model__alpha | params2                                      |
-|------------------:|------------------:|----------------:|------------------:|-------------------:|:----------------------|----------------------------:|:------------------------|------------------------:|:-----------------------------|:----------------------|---------------------:|:---------------------------------------------|
-|                 1 |          0.444667 |       0.138907  |        0.00240723 |             0.001  | sag                   |                         101 | False                   |                   10000 | True                         | False                 |               0.0001 | 0.001/sag/101/False/10000/True/False/0.0001  |
-|                 2 |          0.444666 |       0.016131  |        0.00196584 |             0.0001 | lsqr                  |                         101 | False                   |                  100000 | True                         | False                 |               1      | 0.0001/lsqr/101/False/100000/True/False/1    |
-|                 3 |          0.444666 |       0.0125302 |        0.00166623 |             0.0001 | lsqr                  |                         101 | False                   |                  100000 | True                         | False                 |               0.1    | 0.0001/lsqr/101/False/100000/True/False/0.1  |
-|                 4 |          0.444666 |       0.0136813 |        0.00238593 |             0.0001 | lsqr                  |                         101 | False                   |                    1000 | True                         | False                 |               0.01   | 0.0001/lsqr/101/False/1000/True/False/0.01   |
-|                 5 |          0.444664 |       0.0815104 |        0.0020028  |             0.0001 | saga                  |                         101 | False                   |                  100000 | True                         | True                  |              10      | 0.0001/saga/101/False/100000/True/True/10    |
-|                 6 |          0.444664 |       0.0915341 |        0.00199183 |             0.0001 | saga                  |                         101 | False                   |                    1000 | True                         | False                 |               1      | 0.0001/saga/101/False/1000/True/False/1      |
-|                 7 |          0.444664 |       0.0759642 |        0.00195408 |             0.0001 | saga                  |                         101 | False                   |                  100000 | True                         | True                  |               0.001  | 0.0001/saga/101/False/100000/True/True/0.001 |
+|   rank_test_score |   mean_test_score |   mean_fit_time |   mean_score_time | param_model__splitter   | param_model__random_state   |   param_model__min_weight_fraction_leaf |   param_model__min_samples_split |   param_model__min_samples_leaf |   param_model__min_impurity_decrease |   param_model__max_leaf_nodes | param_model__max_features   |   param_model__max_depth | param_model__criterion   |   param_model__ccp_alpha | params2                                                  |
+|------------------:|------------------:|----------------:|------------------:|:------------------------|:----------------------------|----------------------------------------:|---------------------------------:|--------------------------------:|-------------------------------------:|------------------------------:|:----------------------------|-------------------------:|:-------------------------|-------------------------:|:---------------------------------------------------------|
+|                 1 |          0.57869  |        0.375586 |        0.00325394 | best                    |                             |                                     0   |                               50 |                              50 |                                 5    |                               | 1.0                         |                          | poisson                  |                     0    | best/None/0.0/50/50/5/None/1.0/None/poisson/0.0          |
+|                 2 |          0.435677 |       61.5091   |        0.00258787 | best                    |                             |                                     0   |                              500 |                               4 |                                 5    |                           500 | 1.0                         |                        5 | absolute_error           |                     1    | best/None/0.0/500/4/5/500/1.0/5/absolute_error/1         |
+|                 3 |          0.410798 |        7.67771  |        0.00271559 | best                    |                             |                                     0   |                                8 |                               8 |                                 0    |                           100 | 2                           |                          | absolute_error           |                     0.1  | best/None/0.0/8/8/0.0/100/2/None/absolute_error/0.1      |
+|                 4 |          0.324067 |        4.3274   |        0.0173144  | random                  |                             |                                     0   |                              200 |                              50 |                                 1    |                           100 | sqrt                        |                       10 | absolute_error           |                     0.05 | random/None/0.0/200/50/1/100/sqrt/10/absolute_error/0.05 |
+|                 5 |          0.317452 |       10.6023   |        0.00307083 | best                    |                             |                                     0   |                              200 |                              50 |                                 0.25 |                            10 | log2                        |                       50 | absolute_error           |                     5    | best/None/0.0/200/50/0.25/10/log2/50/absolute_error/5    |
+|                 6 |          0.315282 |        0.107745 |        0.00797462 | best                    |                             |                                     0.1 |                              500 |                               1 |                                 0.25 |                           100 | 1.0                         |                          | friedman_mse             |                     0    | best/None/0.1/500/1/0.25/100/1.0/None/friedman_mse/0.0   |
+|                 7 |          0.305856 |       46.9703   |        0.00292214 | best                    |                             |                                     0.1 |                              200 |                               1 |                                 5    |                           500 |                             |                          | absolute_error           |                     0    | best/None/0.1/200/1/5/500/None/None/absolute_error/0.0   |
 ### Best and worst models obtained by tuning
-![detail](../artifacts/linear_regression__ridge___v06__best_and_worst.png)
+![detail](../artifacts/decision_tree__v06__best_and_worst.png)
 ### Best Model: Comparing model predictions to actual property values
-![detail](../artifacts/linear_regression__ridge___v06__best_model_correlation.png)
+![detail](../artifacts/decision_tree__v06__best_model_correlation.png)
+## Feature Importances
+### Feature Importances
+1. features 0 (0.358231)		bedrooms
+2. features 4 (0.209880)		location.longitude
+3. features 5 (0.158455)		latitude_deviation
+4. features 6 (0.093408)		longitude_deviation
+5. features 3 (0.058415)		location.latitude
+6. features 9 (0.056688)		tenure.tenureType_LEASEHOLD
+7. features 1 (0.042338)		bathrooms
+8. features 8 (0.016642)		tenure.tenureType_FREEHOLD
+9. features 2 (0.003790)		nearestStation
+10. features 10 (0.002152)		tenure.tenureType_SHARE_OF_FREEHOLD
+11. features 7 (0.000000)		tenure.tenureType_COMMONHOLD
+
+
+### Feature Importances (Decision Tree)
+![detail](../artifacts/decision_tree__v06__best_model_feature_importances.png)
 ## Comparison with other models
 ### Comparison with version 06 performances
 |                                         |   best score |    best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                                                                                            |
@@ -33,8 +50,8 @@ not updated saved model, the previous run was better
 | random forest (v06)                     |     0.666175 |    2.3926    |                     48257.4    |                   3.77102e+09 |            0.666175 |                61408.6    | nan                        | random search                                                                                                          |
 | neural network m11 mega (v06)           |     0.612318 | 2569.45      |                        50.3061 |                4379.41        |            0.612318 |                   66.1771 | 2022-11-29 12:57:16.459719 | loss=2833.6 valloss=4034.41 stop=619/1000                                                                              |
 | neural network m12 mega (v06)           |     0.594032 |  813.27      |                        53.2628 |                4585.98        |            0.594032 |                   67.7199 | 2022-11-29 17:08:44.480482 | loss=4386.51 valloss=4438.8 +valsplit=0.1 stop=201/400                                                                 |
+| decision tree (v06)                     |     0.593752 |    1.0309    |                     53671.4    |                   4.58915e+09 |            0.593752 |                67743.2    | 2022-12-03 19:44:13.536639 | random search                                                                                                          |
 | neural network m05 rec deep (v06)       |     0.580348 |  604.9       |                        55.3406 |                4917.4         |            0.564694 |                   70.1241 | 2022-11-29 11:41:39.682217 | loss=4908.71 valloss=4603.08 stop=214/500                                                                              |
-| decision tree (v06)                     |     0.573885 |    0.0573687 |                     58530.8    |                   5.35223e+09 |            0.526201 |                73158.9    | 2022-11-15 22:58:42.493872 | random search                                                                                                          |
 | neural network (v06)                    |     0.556696 |  312.991     |                     66710.7    |                   6.64686e+09 |            0.411595 |                81528.3    | 2000-01-01 17:09:59.063570 | random search [input11, d^20-500-500-20-5, dense1]                                                                     |
 | neural network m03 2 layers+wider (v06) |     0.549647 |  275.71      |                        61.8363 |                6027.78        |            0.466399 |                   77.6388 | 2022-11-29 10:13:10.517896 | mse +epochs=500 +learn=0.003 +loss=5229.0478515625                                                                     |
 | neural network m01 simple (v06)         |     0.541221 |   36.2       |                        61.6495 |                5753.34        |            0.490693 |                   75.8507 | 2022-11-29 09:13:15.856770 | recommended simple model/mse +norm +epochs=50 +learn=0.003 +endloss=5610.65771484375 +stop=17 +endloss=5511.7373046875 |
@@ -66,11 +83,11 @@ not updated saved model, the previous run was better
 | xg boost (v04) rs                                        |     0.603522 |  nan         |                     50419.2    |                   4.50494e+09 |            0.603522 |                67118.9    | nan                        | nan                                                                                                                    |
 | decision tree (v09)                                      |     0.596457 |    0.105919  |                     51852.7    |                   4.55859e+09 |            0.596457 |                67517.3    | 2022-11-29 20:03:38.094060 | random search                                                                                                          |
 | neural network m12 mega (v06)                            |     0.594032 |  813.27      |                        53.2628 |                4585.98        |            0.594032 |                   67.7199 | 2022-11-29 17:08:44.480482 | loss=4386.51 valloss=4438.8 +valsplit=0.1 stop=201/400                                                                 |
+| decision tree (v06)                                      |     0.593752 |    1.0309    |                     53671.4    |                   4.58915e+09 |            0.593752 |                67743.2    | 2022-12-03 19:44:13.536639 | random search                                                                                                          |
 | neural network m13 mega (v10)                            |     0.583716 |  142.89      |                     54668.9    |                   4.94809e+09 |            0.561977 |                70342.6    | 2022-12-01 10:27:39.663081 | loss=3878948096.0 valloss=4822886400.0 +valsplit=0.1 stop=38/400                                                       |
 | xg boost (v03) rs                                        |     0.582071 |  nan         |                     51147.3    |                   4.7333e+09  |            0.574533 |                68799      | nan                        | nan                                                                                                                    |
 | neural network m05 rec deep (v06)                        |     0.580348 |  604.9       |                        55.3406 |                4917.4         |            0.564694 |                   70.1241 | 2022-11-29 11:41:39.682217 | loss=4908.71 valloss=4603.08 stop=214/500                                                                              |
 | neural network m14 mega (v10)                            |     0.579095 | 1129.09      |                     53124      |                   4.75471e+09 |            0.579095 |                68954.4    | 2022-12-01 11:52:45.011704 | loss=4.85e+04 valloss=5.34e+04 +valsplit=0.1 stop=156/400                                                              |
-| decision tree (v06)                                      |     0.573885 |    0.0573687 |                     58530.8    |                   5.35223e+09 |            0.526201 |                73158.9    | 2022-11-15 22:58:42.493872 | random search                                                                                                          |
 | neural network m12 mega (v09)                            |     0.570335 |  556.62      |                        55.1583 |                4853.68        |            0.570335 |                   69.6683 | 2022-11-29 21:03:09.676165 | loss=4869.67 valloss=4726.34 +valsplit=0.1 stop=83/400                                                                 |
 | neural network m12 mega (v10)                            |     0.567453 |  240.1       |                     55444      |                   4.88623e+06 |            0.567453 |                69901.6    | 2022-12-01 09:57:17.586487 | loss=4790.75 valloss=4998.79 +valsplit=0.1 stop=66/400                                                                 |
 | decision tree - random search (vx10)                     |     0.558257 |  nan         |                     55865.4    |                   4.99011e+09 |            0.558257 |                70640.7    | nan                        | nan                                                                                                                    |
@@ -116,21 +133,27 @@ not updated saved model, the previous run was better
 | 35271294 |  370000 |          2 |           1 |         0.399307 |             51.4496 |            -0.140154 |             0.050152 |              0.035734 | LEASEHOLD           |
 | 44749111 |  475000 |          2 |           1 |         0.41055  |             51.37   |            -0.21241  |             0.12967  |              0.10799  | FREEHOLD            |
 ### Hyperparameter options for Randomized Grid Search
-model__alpha = [1e-05, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000]
+model__splitter = ['best', 'random']
 
-model__fit_intercept = [True, False]
+model__random_state = [None]
 
-model__max_iter = [10000, 1000, 100, 100000, 1000000]
+model__min_weight_fraction_leaf = [0.0, 0.1, 0.25, 0.5]
 
-model__positive = [False]
+model__min_samples_split = [2, 4, 8, 50, 100, 200, 500]
 
-model__copy_X = [True, False]
+model__min_samples_leaf = [1, 0.25, 0.5, 1.5, 2, 4, 8, 50]
 
-model__solver = ['auto', 'svd', 'cholesky', 'lsqr', 'sparse_cg', 'sag', 'saga', 'lbfgs']
+model__min_impurity_decrease = [0.0, 0.1, 0.25, 1, 5]
 
-model__tol = [1e-05, 0.0001, 0.001, 0.01]
+model__max_leaf_nodes = [None, 2, 5, 10, 50, 100, 200, 500]
 
-model__random_state = [101]
+model__max_features = [None, 1.0, 'sqrt', 'log2', 0.5, 0.25, 0.1, 2]
+
+model__max_depth = [None, 1, 2, 5, 10, 50]
+
+model__criterion = ['squared_error', 'friedman_mse', 'absolute_error', 'poisson']
+
+model__ccp_alpha = [0.0, 0.05, 0.1, 0.25, 1, 5]
 
 ### Environment Variables
 notebook_environment = gradient
