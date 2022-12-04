@@ -559,7 +559,7 @@ ALGORITHM_DETAIL
 trainable_model.summary()
 
 
-# In[ ]:
+# In[14]:
 
 
 val_split = 0.1
@@ -592,7 +592,7 @@ pipe_end = time()
 estimated_time = round((pipe_end - pipe_start), 2)
 
 
-# In[ ]:
+# In[15]:
 
 
 #ALGORITHM_DETAIL.replace("epochs=", f"epochs={len(hist)}/")
@@ -604,7 +604,7 @@ estimated_time = round((pipe_end - pipe_start), 2)
 # 
 # 
 
-# In[ ]:
+# In[16]:
 
 
 hist = pd.DataFrame(history.history)
@@ -638,19 +638,19 @@ print(ALGORITHM_DETAIL)
 hist.tail()
 
 
-# In[ ]:
+# In[16]:
 
 
 
 
 
-# In[ ]:
+# In[16]:
 
 
 
 
 
-# In[ ]:
+# In[17]:
 
 
 def plot_loss(history):
@@ -678,13 +678,13 @@ def plot_loss(history):
 loss_fig, loss_ax = plot_loss(history)
 
 
-# In[ ]:
+# In[18]:
 
 
 y_pred = trainable_model.predict(X_test)
 
 
-# In[ ]:
+# In[19]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -700,7 +700,7 @@ print('Mean Squared Error Accuracy', MSE)
 print('Root Mean Squared Error', RMSE)
 
 
-# In[ ]:
+# In[20]:
 
 
 if debug_mode:
@@ -712,7 +712,7 @@ if debug_mode:
     print(y_test.shape)
 
 
-# In[ ]:
+# In[21]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -732,7 +732,7 @@ combined['bedrooms'] = combined['bedrooms'].astype(int)
 combined
 
 
-# In[ ]:
+# In[22]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -751,7 +751,7 @@ plt.show()
 # 
 # 
 
-# In[ ]:
+# In[23]:
 
 
 cv_best_model_fit_time = estimated_time
@@ -791,7 +791,7 @@ print(key)
 print(ALGORITHM_DETAIL)
 
 
-# In[ ]:
+# In[24]:
 
 
 if this_model_is_best:
@@ -800,7 +800,7 @@ if this_model_is_best:
         new_model_decision = f"pickled new version of model\n{old_results_json[key]['_score']} is new best score (it's better than {old_best_score})"
         #print(results_json[key]['_score'], 'is an improvement on', results_json[key]['second best score'])
 else:
-    new_model_decision = f"not updated saved model, the previous run was better\n{old_results_json[key]['_score']} is worse than or equal to '{old_best_score}"
+    new_model_decision = f"not updated saved model, the previous run was better\n{old_results_json[key]['_score']} is worse than or equal to {old_best_score}"
 
 print(new_model_decision)
 
@@ -809,7 +809,7 @@ print(new_model_decision)
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[ ]:
+# In[29]:
 
 
 from bs4 import BeautifulSoup
@@ -848,7 +848,7 @@ def include_in_html_report(type, section_header=None, section_figure=None, secti
                 f1.write(dfAsString)
             with open(writePath_md, 'a') as f2:
                 dfAsString = section_content.to_markdown()
-                f2.write(dfAsString + '\n')
+                f2.write(dfAsString + '\n\n')
         elif type=='graph':
             filename = key + "_" + section_content
             #section_figure.savefig(f'model_results/artifacts/{filename.replace(" ", "_")}')
@@ -863,7 +863,7 @@ def include_in_html_report(type, section_header=None, section_figure=None, secti
                 #dfAsString = f'![detail](./artifacts/{filename.replace(" ","_")})'
                 dfAsString = f'![detail](../artifacts/{filename.replace(" ","_").replace("(", "_").replace(")", "_")})'
                 f2.write(dfAsString)
-                f2.write('\n')
+                f2.write('\n\n')
         elif type=='json':
 
             # html_content_parsed = [[cell.text for cell in row("td")]
@@ -1015,26 +1015,26 @@ def print_and_report(text_single, title):
 
 
 
-# In[ ]:
+# In[26]:
 
 
 print('Nearly finished...')
 
 
-# In[ ]:
+# In[27]:
 
 
 if create_python_script and is_jupyter:
     get_ipython().system("jupyter nbconvert --to script 'it10_ann_neural_model__20221203.ipynb'")
 
 
-# In[ ]:
+# In[28]:
 
 
 print('Finished!')
 
 
-# In[ ]:
+# In[28]:
 
 
 

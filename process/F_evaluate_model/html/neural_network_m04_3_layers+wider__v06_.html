@@ -1,5 +1,5 @@
-<h1>Results from Neural Network m03 2 layers+wider</h1><h3>Dataset Version: 06</h3>Date run: 2022-12-04 06:56:27.881670<br>Start time: 2022-12-04 06:29:55.432258<br>End time: 2022-12-04 06:56:27.881581<br><hr><h2>Results</h2><h3>Summary</h3>not updated saved model, the previous run was better
-0.44513109220254277 is worse than or equal to 0.5496465809002433<br><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/neural_network_m03_2_layers+wider__v06__best_ann_model.png"/><hr><h3>Model Specific Notes</h3>can't display hyperparameter comparison for neural network<br>can't display model performance graphs for neural network<br>can't display model performance graphs for neural network<br><hr><h3>Neural Network Loss - Head</h3><table border="1" class="dataframe">
+<h1>Results from Neural Network m04 3 layers+wider</h1><h3>Dataset Version: 06</h3>Date run: 2022-12-04 06:38:01.815721<br>Start time: 2022-12-04 06:34:05.555608<br>End time: 2022-12-04 06:38:01.815712<br><hr><h2>Results</h2><h3>Summary</h3>not updated saved model, the previous run was better
+0.4452741740868206 is worse than or equal to '0.520933065817208<br><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/neural_network_m04_3_layers+wider__v06__best_ann_model.png"/><hr><h3>Model Specific Notes</h3>can't display hyperparameter comparison for neural network<br>can't display model performance graphs for neural network<br>can't display model performance graphs for neural network<br><hr><h3>Neural Network Loss - Head</h3><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -11,32 +11,32 @@
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.862708e+11</td>
-      <td>1.737392e+11</td>
+      <td>3.527189e+10</td>
+      <td>1.080678e+10</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.413298e+11</td>
-      <td>1.034660e+11</td>
+      <td>1.027135e+10</td>
+      <td>9.773618e+09</td>
       <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>6.407055e+10</td>
-      <td>3.210903e+10</td>
+      <td>9.138329e+09</td>
+      <td>8.536942e+09</td>
       <td>2</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.798680e+10</td>
-      <td>1.159606e+10</td>
+      <td>8.261671e+09</td>
+      <td>8.013636e+09</td>
       <td>3</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.091434e+10</td>
-      <td>1.082610e+10</td>
+      <td>7.920398e+09</td>
+      <td>7.712040e+09</td>
       <td>4</td>
     </tr>
   </tbody>
@@ -51,37 +51,37 @@
   </thead>
   <tbody>
     <tr>
-      <th>374</th>
-      <td>6.524126e+09</td>
-      <td>6.544451e+09</td>
-      <td>374</td>
+      <th>40</th>
+      <td>6.569554e+09</td>
+      <td>6.550568e+09</td>
+      <td>40</td>
     </tr>
     <tr>
-      <th>375</th>
-      <td>6.523472e+09</td>
-      <td>6.551719e+09</td>
-      <td>375</td>
+      <th>41</th>
+      <td>6.561532e+09</td>
+      <td>6.542407e+09</td>
+      <td>41</td>
     </tr>
     <tr>
-      <th>376</th>
-      <td>6.523744e+09</td>
-      <td>6.545537e+09</td>
-      <td>376</td>
+      <th>42</th>
+      <td>6.556138e+09</td>
+      <td>6.641571e+09</td>
+      <td>42</td>
     </tr>
     <tr>
-      <th>377</th>
-      <td>6.523114e+09</td>
-      <td>6.548164e+09</td>
-      <td>377</td>
+      <th>43</th>
+      <td>6.563411e+09</td>
+      <td>6.655805e+09</td>
+      <td>43</td>
     </tr>
     <tr>
-      <th>378</th>
-      <td>6.523176e+09</td>
-      <td>6.545309e+09</td>
-      <td>378</td>
+      <th>44</th>
+      <td>6.555088e+09</td>
+      <td>6.589607e+09</td>
+      <td>44</td>
     </tr>
   </tbody>
-</table><hr><img src="../artifacts/neural_network_m03_2_layers+wider__v06__end_loss.png"/><hr><h3>Model Structure</h3>>Model: "sequential"
+</table><hr><img src="../artifacts/neural_network_m04_3_layers+wider__v06__end_loss.png"/><hr><h3>Model Structure</h3>>Model: "sequential"
 >________________________________________________________________________________________________________________________________________________________________
 > Layer (type)                                                           Output Shape                                                    Param #                 
 >
@@ -91,11 +91,13 @@
 >                                                                                                                                                                
 > dense_1 (Dense)                                                        (None, 30)                                                      360                     
 >                                                                                                                                                                
-> dense_2 (Dense)                                                        (None, 1)                                                       31                      
+> dense_2 (Dense)                                                        (None, 40)                                                      1240                    
+>                                                                                                                                                                
+> dense_3 (Dense)                                                        (None, 1)                                                       41                      
 >                                                                                                                                                                
 >
->Total params: 546
->Trainable params: 523
+>Total params: 1,796
+>Trainable params: 1,773
 >Nontrainable params: 23
 >________________________________________________________________________________________________________________________________________________________________
 <br><hr><h2>Comparison with other models</h2><h3>Comparison with version 06 performances</h3><table border="1" class="dataframe">
@@ -238,10 +240,10 @@
       <th>neural network m03 2 layers+wider (v06)</th>
       <td>0.549647</td>
       <td>275.71</td>
-      <td>64376.517431</td>
-      <td>6268024253.295089</td>
-      <td>0.445131</td>
-      <td>79170.854822</td>
+      <td>85184.106723</td>
+      <td>10258724898.307497</td>
+      <td>0.091859</td>
+      <td>101285.363692</td>
       <td>2022-11-29 10:13:10.517896</td>
       <td>mse +epochs=500 +learn=0.003 +loss=5229.0478515625</td>
     </tr>
@@ -650,10 +652,10 @@
       <th>neural network m03 2 layers+wider (v06)</th>
       <td>0.549647</td>
       <td>275.71</td>
-      <td>64376.517431</td>
-      <td>6268024253.295089</td>
-      <td>0.445131</td>
-      <td>79170.854822</td>
+      <td>85184.106723</td>
+      <td>10258724898.307497</td>
+      <td>0.091859</td>
+      <td>101285.363692</td>
       <td>2022-11-29 10:13:10.517896</td>
       <td>mse +epochs=500 +learn=0.003 +loss=5229.0478515625</td>
     </tr>
