@@ -15,19 +15,19 @@
 
 
 #ALGORITHM = 'Linear Regression (Ridge)'
-#ALGORITHM = 'KNN'
+ALGORITHM = 'KNN'
 #ALGORITHM = 'Decision Tree'
 #ALGORITHM = 'Random Forest'
-ALGORITHM = 'XG Boost (tree)'
+#ALGORITHM = 'XG Boost (tree)'
 #ALGORITHM = 'CatBoost'
 #ALGORITHM = 'Light Gradient Boosting'
 
 ALGORITHM_DETAIL = 'random search'
 #DATA_DETAIL = ['no scale','no dummies']
-DATA_DETAIL = ['explore param']
-#DATA_DETAIL = ['no dummies'] if 'catboost' in ALGORITHM.lower() else []
+#DATA_DETAIL = ['explore param']
+DATA_DETAIL = ['no dummies'] if 'catboost' in ALGORITHM.lower() else []
 #VERSION = '06'
-VERSION = '06'
+VERSION = '10'
 
 RANDOM_STATE = 101
 TRAINING_SIZE = 0.9
@@ -166,7 +166,9 @@ if running_locally:
         OVERRIDE_N_ITER = 15
     else:
         OVERRIDE_N_ITER = 5
-
+        
+if ALGORITHM.lower() in ['xg boost','xg boost (linear)','xg boost (tree)']:
+        OVERRIDE_N_ITER = 20
 
 if 'forest' in ALGORITHM.lower() or True:
     OVERRIDE_VERBOSE = 2
@@ -297,8 +299,6 @@ X_train
 # In[38]:
 
 
-options_block.items()
-param_options
 
 
 # In[40]:

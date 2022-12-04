@@ -8,4 +8,4 @@ python it10_all_models_20221203.py
 
 or
 
-python it10_ann_neural_model__20221203.py.py 
+python it10_ann_neural_model__20221203.py

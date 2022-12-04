@@ -555,7 +555,7 @@ ALGORITHM_DETAIL
 
 # In[13]:
 
-
+print("selected_neural_network",selected_neural_network)
 trainable_model.summary()
 
 
