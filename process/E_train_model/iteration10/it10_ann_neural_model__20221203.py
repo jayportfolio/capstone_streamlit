@@ -12,7 +12,7 @@
 # * what fraction of the data we'll use for testing (0.1)
 # * if the data split will be randomised (it won't!)
 
-# In[83]:
+# In[1]:
 
 
 #ALGORITHM = 'Neural Network'
@@ -30,6 +30,7 @@ TRAINING_SIZE = 0.9
 CROSS_VALIDATION_SCORING = 'r2'
 
 price_divisor = 1
+
 
 #selected_neural_network='simplest'
 #selected_neural_network='quite simple'
@@ -76,6 +77,8 @@ selected_nn_code = 'm01 simple'
 
 ALGORITHM = ALGORITHM.replace("[TYPE]", selected_nn_code)
 
+create_python_script = True
+
 
 # <code style="background:blue;color:blue">**********************************************************************************************************</code>
 # 
@@ -83,13 +86,13 @@ ALGORITHM = ALGORITHM.replace("[TYPE]", selected_nn_code)
 # 
 # 
 
-# In[84]:
+# In[2]:
 
 
 #! pip install scikeras
 
 
-# In[85]:
+# In[3]:
 
 
 from sklearn.impute import SimpleImputer
@@ -105,12 +108,14 @@ from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 from sklearn.metrics import r2_score
 import seaborn as sns
 import pickle
+from datetime import datetime
 
 import json
-from datetime import datetime
 import matplotlib.pyplot as plt
 import sys
 import os
+
+start_timestamp = datetime.now()
 
 with open('../../z_envs/_envs.json') as f:
     env_vars = json.loads(f.read())
@@ -170,7 +175,7 @@ print(env_vars)
 
 # #### Include any overrides specific to the algorthm / python environment being used
 
-# In[86]:
+# In[4]:
 
 
 #running_locally = True
@@ -183,7 +188,7 @@ running_locally = run_env == 'local'
 # 
 # 
 
-# In[87]:
+# In[5]:
 
 
 from sklearn.pipeline import Pipeline
@@ -470,14 +475,14 @@ def make_simple_ann(key, inputs=-1):
 # ## Stage: get the data
 # 
 
-# In[88]:
+# In[6]:
 
 
 columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 LABEL = 'Price'
 
 
-# In[89]:
+# In[7]:
 
 
 df, retrieval_type = get_source_dataframe(cloud_run, VERSION, folder_prefix='../../../', row_limit=None)
@@ -491,7 +496,7 @@ if retrieval_type != 'tidy':
     df = df[columns]
 
 
-# In[90]:
+# In[8]:
 
 
 print(colored(f"features", "blue"), "-> ", columns)
@@ -499,14 +504,14 @@ columns.insert(0, LABEL)
 print(colored(f"label", "green", None, ['bold']), "-> ", LABEL)
 
 
-# In[91]:
+# In[9]:
 
 
 df = preprocess(df, version=VERSION)
 df = df.dropna()
 
 
-# In[92]:
+# In[10]:
 
 
 df['Price'] = df['Price'] / price_divisor # potentially making the price smaller to make the ANN perform better
@@ -514,7 +519,7 @@ df['Price'] = df['Price'] / price_divisor # potentially making the price smaller
 df.head(30)
 
 
-# In[93]:
+# In[11]:
 
 
 X_train, X_test, y_train, y_test, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
@@ -540,7 +545,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 # 
 # 
 
-# In[94]:
+# In[12]:
 
 
 trainable_model, ALGORITHM_DETAIL, chosen_epochs, chosen_params = make_simple_ann(selected_neural_network)
@@ -548,13 +553,13 @@ trainable_model, ALGORITHM_DETAIL, chosen_epochs, chosen_params = make_simple_an
 ALGORITHM_DETAIL
 
 
-# In[95]:
+# In[13]:
 
 
 trainable_model.summary()
 
 
-# In[96]:
+# In[14]:
 
 
 val_split = 0.1
@@ -587,7 +592,7 @@ pipe_end = time()
 estimated_time = round((pipe_end - pipe_start), 2)
 
 
-# In[97]:
+# In[15]:
 
 
 #ALGORITHM_DETAIL.replace("epochs=", f"epochs={len(hist)}/")
@@ -599,7 +604,7 @@ estimated_time = round((pipe_end - pipe_start), 2)
 # 
 # 
 
-# In[98]:
+# In[16]:
 
 
 hist = pd.DataFrame(history.history)
@@ -633,19 +638,19 @@ print(ALGORITHM_DETAIL)
 hist.tail()
 
 
-# In[98]:
+# In[ ]:
 
 
 
 
 
-# In[98]:
+# In[ ]:
 
 
 
 
 
-# In[99]:
+# In[17]:
 
 
 def plot_loss(history):
@@ -673,13 +678,13 @@ def plot_loss(history):
 loss_fig, loss_ax = plot_loss(history)
 
 
-# In[100]:
+# In[18]:
 
 
 y_pred = trainable_model.predict(X_test)
 
 
-# In[101]:
+# In[19]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -695,7 +700,7 @@ print('Mean Squared Error Accuracy', MSE)
 print('Root Mean Squared Error', RMSE)
 
 
-# In[102]:
+# In[20]:
 
 
 if debug_mode:
@@ -707,7 +712,7 @@ if debug_mode:
     print(y_test.shape)
 
 
-# In[103]:
+# In[21]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -727,7 +732,7 @@ combined['bedrooms'] = combined['bedrooms'].astype(int)
 combined
 
 
-# In[104]:
+# In[22]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -746,7 +751,7 @@ plt.show()
 # 
 # 
 
-# In[105]:
+# In[23]:
 
 
 cv_best_model_fit_time = estimated_time
@@ -786,7 +791,7 @@ print(key)
 print(ALGORITHM_DETAIL)
 
 
-# In[106]:
+# In[24]:
 
 
 if this_model_is_best:
@@ -795,7 +800,7 @@ if this_model_is_best:
         new_model_decision = f"pickled new version of model\n{old_results_json[key]['_score']} is new best score (it's better than {old_best_score})"
         #print(results_json[key]['_score'], 'is an improvement on', results_json[key]['second best score'])
 else:
-    new_model_decision = f"not updated saved model, the previous run was better\n{old_results_json[key]['_score']} is worse than or equal to {old_best_score}"
+    new_model_decision = f"not updated saved model, the previous run was better\n{old_results_json[key]['_score']} is worse than or equal to '{old_best_score}"
 
 print(new_model_decision)
 
@@ -804,7 +809,7 @@ print(new_model_decision)
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[109]:
+# In[31]:
 
 
 from bs4 import BeautifulSoup
@@ -907,8 +912,9 @@ def include_in_html_report(type, section_header=None, section_figure=None, secti
 
         elif type=='text':
             with open(writePath_html, 'a') as f1:
+                f1.write("<br/><br/>")
                 for each_line in section_content_list:
-                    f1.write(each_line + '<br>')
+                    f1.write(each_line.replace('>',"<br/>"))
             with open(writePath_md, 'a') as f2:
                 for each_line in section_content_list:
                     f2.write(each_line + '\n\n')
@@ -919,7 +925,14 @@ def include_in_html_report(type, section_header=None, section_figure=None, secti
 
 include_in_html_report("header", section_content=f"Results from {ALGORITHM}", section_figure=1)
 
-include_in_html_report(type="text", section_header=f"Dataset Version: {VERSION}", section_content=f"Date run:{datetime.now()}")
+end_timestamp = datetime.now()
+
+include_in_html_report(type="text", section_header=f"Dataset Version: {VERSION}", section_content_list=[
+    f"Date run: {datetime.now()}"
+    "",
+    f"Start time: {start_timestamp}",
+    f"End time: {end_timestamp}",
+])
 
 include_in_html_report("header", section_content=f"Results", section_figure=2)
 
@@ -1003,22 +1016,27 @@ def print_and_report(text_single, title):
 
 
 
-# In[110]:
+# In[26]:
 
 
 print('Nearly finished...')
 
 
-# In[111]:
+# In[27]:
 
 
-create_python_script = True
 if create_python_script and is_jupyter:
     get_ipython().system("jupyter nbconvert --to script 'it10_ann_neural_model__20221203.ipynb'")
+
+
+# In[28]:
+
+
+print('Finished!')
 
 
 # In[ ]:
 
 
-print('Finished!')
+
 

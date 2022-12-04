@@ -18,9 +18,9 @@
 #ALGORITHM = 'KNN'
 #ALGORITHM = 'Decision Tree'
 #ALGORITHM = 'Random Forest'
-#ALGORITHM = 'XG Boost (tree)'
+ALGORITHM = 'XG Boost (tree)'
 #ALGORITHM = 'CatBoost'
-ALGORITHM = 'Light Gradient Boosting'
+#ALGORITHM = 'Light Gradient Boosting'
 
 ALGORITHM_DETAIL = 'random search'
 #DATA_DETAIL = ['explore param']

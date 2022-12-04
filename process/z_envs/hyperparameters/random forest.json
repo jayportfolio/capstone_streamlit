@@ -9,7 +9,7 @@
 	"min_impurity_decrease": [null, 0.0, 0.1, 0.25, 1, 5],
 	"min_samples_leaf": [null, 1, 0.25, 0.5, 1.5, 2, 4, 8, 50],
 	"min_samples_split": [null, 2, 4, 8, 50, 100],
-	"min_weight_fraction_leaf": [null, 0.0, 0.1, 0.25, 0.5],
+	"min_weight_fraction_leaf": [0.0, 0.1, 0.25, 0.5],
 	"n_estimators": [50, 100],
 	"n_jobs": null,
 	"oob_score": false,
