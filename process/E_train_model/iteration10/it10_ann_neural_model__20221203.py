@@ -39,15 +39,15 @@ price_divisor = 1
 
 
 # ---- FIRST NEURAL NETWORK STRUCTURE DEFINITION ---- #
-selected_neural_network = 'recommended simple v1'
-selected_nn_code = 'm01 simple'
+#selected_neural_network = 'recommended simple v1'
+#selected_nn_code = 'm01 simple'
 
 # ---- 2nd NEURAL NETWORK STRUCTURE DEFINITION ---- #
 #selected_neural_network = selected_nn_code = "m02 two layers"
 
 
 # ---- 3rd NEURAL NETWORK STRUCTURE DEFINITION ---- #
-#selected_neural_network = selected_nn_code = "m03 2 layers+wider"
+selected_neural_network = selected_nn_code = "m03 2 layers+wider"
 
 
 # ---- 4th NEURAL NETWORK STRUCTURE DEFINITION ---- #
@@ -559,7 +559,7 @@ ALGORITHM_DETAIL
 trainable_model.summary()
 
 
-# In[14]:
+# In[ ]:
 
 
 val_split = 0.1
@@ -592,7 +592,7 @@ pipe_end = time()
 estimated_time = round((pipe_end - pipe_start), 2)
 
 
-# In[15]:
+# In[ ]:
 
 
 #ALGORITHM_DETAIL.replace("epochs=", f"epochs={len(hist)}/")
@@ -604,7 +604,7 @@ estimated_time = round((pipe_end - pipe_start), 2)
 # 
 # 
 
-# In[16]:
+# In[ ]:
 
 
 hist = pd.DataFrame(history.history)
@@ -650,7 +650,7 @@ hist.tail()
 
 
 
-# In[17]:
+# In[ ]:
 
 
 def plot_loss(history):
@@ -678,13 +678,13 @@ def plot_loss(history):
 loss_fig, loss_ax = plot_loss(history)
 
 
-# In[18]:
+# In[ ]:
 
 
 y_pred = trainable_model.predict(X_test)
 
 
-# In[19]:
+# In[ ]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -700,7 +700,7 @@ print('Mean Squared Error Accuracy', MSE)
 print('Root Mean Squared Error', RMSE)
 
 
-# In[20]:
+# In[ ]:
 
 
 if debug_mode:
@@ -712,7 +712,7 @@ if debug_mode:
     print(y_test.shape)
 
 
-# In[21]:
+# In[ ]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -732,7 +732,7 @@ combined['bedrooms'] = combined['bedrooms'].astype(int)
 combined
 
 
-# In[22]:
+# In[ ]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -751,7 +751,7 @@ plt.show()
 # 
 # 
 
-# In[23]:
+# In[ ]:
 
 
 cv_best_model_fit_time = estimated_time
@@ -791,7 +791,7 @@ print(key)
 print(ALGORITHM_DETAIL)
 
 
-# In[24]:
+# In[ ]:
 
 
 if this_model_is_best:
@@ -809,7 +809,7 @@ print(new_model_decision)
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[31]:
+# In[ ]:
 
 
 from bs4 import BeautifulSoup
@@ -912,9 +912,8 @@ def include_in_html_report(type, section_header=None, section_figure=None, secti
 
         elif type=='text':
             with open(writePath_html, 'a') as f1:
-                f1.write("<br/><br/>")
                 for each_line in section_content_list:
-                    f1.write(each_line.replace('>',"<br/>"))
+                    f1.write(each_line + '<br>')
             with open(writePath_md, 'a') as f2:
                 for each_line in section_content_list:
                     f2.write(each_line + '\n\n')
@@ -1016,20 +1015,20 @@ def print_and_report(text_single, title):
 
 
 
-# In[26]:
+# In[ ]:
 
 
 print('Nearly finished...')
 
 
-# In[27]:
+# In[ ]:
 
 
 if create_python_script and is_jupyter:
     get_ipython().system("jupyter nbconvert --to script 'it10_ann_neural_model__20221203.ipynb'")
 
 
-# In[28]:
+# In[ ]:
 
 
 print('Finished!')
