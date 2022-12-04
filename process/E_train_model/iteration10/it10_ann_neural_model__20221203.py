@@ -47,14 +47,14 @@ price_divisor = 1
 
 
 # ---- 3rd NEURAL NETWORK STRUCTURE DEFINITION ---- #
-selected_neural_network = selected_nn_code = "m03 2 layers+wider"
+#selected_neural_network = selected_nn_code = "m03 2 layers+wider"
 
 
 # ---- 4th NEURAL NETWORK STRUCTURE DEFINITION ---- #
 #selected_neural_network = selected_nn_code = "m04 3 layers+wider"
 
 # ---- 5th NEURAL NETWORK STRUCTURE DEFINITION ---- #
-#selected_neural_network = selected_nn_code = "m05 rec deep"
+selected_neural_network = selected_nn_code = "m05 rec deep"
 
 # ---- 6th NEURAL NETWORK STRUCTURE DEFINITION ---- #
 #selected_neural_network = selected_nn_code = "m05 my deep"
