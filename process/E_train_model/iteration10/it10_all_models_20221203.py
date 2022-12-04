@@ -11,14 +11,14 @@
 # * what fraction of the data we'll use for testing (0.1)
 # * if the data split will be randomised (it won't!)
 
-# In[36]:
+# In[1]:
 
 
 #ALGORITHM = 'Linear Regression (Ridge)'
 #ALGORITHM = 'KNN'
 #ALGORITHM = 'Decision Tree'
-#ALGORITHM = 'Random Forest'
-ALGORITHM = 'XG Boost (tree)'
+ALGORITHM = 'Random Forest'
+#ALGORITHM = 'XG Boost (tree)'
 #ALGORITHM = 'CatBoost'
 #ALGORITHM = 'Light Gradient Boosting'
 
@@ -49,7 +49,7 @@ create_python_script = True
 # 
 # 
 
-# In[37]:
+# In[2]:
 
 
 from sklearn.impute import SimpleImputer
@@ -71,6 +71,8 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import sys
 import os
+
+start_timestamp = datetime.now()
 
 with open('../../z_envs/_envs.json') as f:
     env_vars = json.loads(f.read())
@@ -128,7 +130,7 @@ from functions_f_evaluate_model_20221116 import get_best_estimator_average_time,
 print(env_vars)
 
 
-# In[38]:
+# In[3]:
 
 
 if is_jupyter:
@@ -143,7 +145,7 @@ if is_jupyter:
 
 # #### Include any overrides specific to the algorthm / python environment being used
 
-# In[39]:
+# In[4]:
 
 
 #running_locally = True
@@ -152,8 +154,10 @@ running_locally = run_env == 'local'
 
 if 'forest' in ALGORITHM.lower():
     #OVERRIDE_N_ITER = 5
+    OVERRIDE_N_ITER = 25
     if use_gpu:
-        OVERRIDE_JOBS = 8
+        #OVERRIDE_JOBS = 8
+        OVERRIDE_JOBS = 4
 
 if running_locally:
     if ALGORITHM.lower() in ['random forest','xg boost','xg boost (linear)','xg boost (tree)' ]:
@@ -174,7 +178,7 @@ if 'forest' in ALGORITHM.lower() or True:
 # 
 # 
 
-# In[40]:
+# In[5]:
 
 
 from sklearn.pipeline import Pipeline
@@ -197,14 +201,14 @@ starter_pipe
 # 
 # ## Stage: get the data
 
-# In[41]:
+# In[6]:
 
 
 columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 LABEL = 'Price'
 
 
-# In[42]:
+# In[7]:
 
 
 df, retrieval_type = get_source_dataframe(cloud_run, VERSION, folder_prefix='../../../', row_limit=None)
@@ -218,7 +222,7 @@ if retrieval_type != 'tidy':
     df = df[columns]
 
 
-# In[43]:
+# In[8]:
 
 
 print(colored(f"features", "blue"), "-> ", columns)
@@ -226,20 +230,20 @@ columns.insert(0, LABEL)
 print(colored(f"label", "green", None, ['bold']), "-> ", LABEL)
 
 
-# In[44]:
+# In[9]:
 
 
 df = preprocess(df, version=VERSION)
 df = df.dropna()
 
 
-# In[45]:
+# In[10]:
 
 
 df.head(5)
 
 
-# In[46]:
+# In[11]:
 
 
 X_train, X_test, y_train, y_test, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
@@ -262,7 +266,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 
 
 
-# In[47]:
+# In[12]:
 
 
 #imputer = SimpleImputer(strategy='mean')
@@ -270,13 +274,13 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 #X_train[6] = imputer.transform(X_train[6])
 
 
-# In[48]:
+# In[13]:
 
 
 starter_model = starter_pipe[-1]
 
 
-# In[49]:
+# In[14]:
 
 
 X_train
@@ -290,7 +294,7 @@ X_train
 # 
 # 
 
-# In[50]:
+# In[15]:
 
 
 options_block = get_hyperparameters(ALGORITHM, use_gpu, prefix='../../../')
@@ -325,7 +329,7 @@ print("cv:", cv, "n_jobs:", n_jobs, "refit:", refit, "n_iter:", n_iter, "verbose
 #param_options if not using_catboost else options_block
 
 
-# In[ ]:
+# In[16]:
 
 
 def fit_model_with_cross_validation(gs, X_train, y_train, fits):
@@ -418,7 +422,7 @@ crossval_runner
 # 
 # 
 
-# In[ ]:
+# In[17]:
 
 
 if not using_catboost:
@@ -448,7 +452,7 @@ else:
 
 
 
-# In[ ]:
+# In[18]:
 
 
 key = f'{ALGORITHM} (v{VERSION})'.lower()
@@ -494,7 +498,7 @@ if not using_catboost:
 # 
 # 
 
-# In[ ]:
+# In[19]:
 
 
 if not using_catboost:
@@ -509,7 +513,7 @@ else:
 
 
 
-# In[ ]:
+# In[20]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -531,7 +535,7 @@ print('Root Mean Squared Error', RMSE)
 
 
 
-# In[ ]:
+# In[21]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -557,7 +561,7 @@ combined
 
 
 
-# In[ ]:
+# In[22]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -570,7 +574,7 @@ best_model_ax.set_xlabel('Actual')
 plt.show()
 
 
-# In[ ]:
+# In[23]:
 
 
 if not using_catboost:
@@ -626,7 +630,7 @@ if not using_catboost:
     best_model_scores[-1] = fitted_graph_model.score(X_test, y_test)
 
 
-# In[ ]:
+# In[24]:
 
 
 if not using_catboost:
@@ -652,7 +656,7 @@ if not using_catboost:
     plt.show()
 
 
-# In[ ]:
+# In[25]:
 
 
 if not using_catboost:
@@ -699,7 +703,7 @@ if not using_catboost:
 # 
 # 
 
-# In[ ]:
+# In[26]:
 
 
 # <catboost.core.CatBoostRegressor object at 0x7fb167387490>
@@ -761,7 +765,7 @@ if this_model_is_best:
         new_model_decision = f"pickled new version of model\n{old_results_json[key]['_score']} is new best score (it's better than {old_best_score})"
         #print(results_json[key]['_score'], 'is an improvement on', results_json[key]['second best score'])
 else:
-    new_model_decision = f"not updated saved model, the previous run was better\n{old_results_json[key]['_score']} is worse than or equal to {old_best_score}"
+    new_model_decision = f"not updated saved model, the previous run was better\n{old_results_json[key]['_score']} is worse than or equal to '{old_best_score}"
 
 print(new_model_decision)
 
@@ -927,8 +931,14 @@ def include_in_html_report(type, section_header=None, section_figure=None, secti
 
 include_in_html_report("header", section_content=f"Results from {ALGORITHM}", section_figure=1)
 
-include_in_html_report(type="text", section_header=f"Dataset Version: {VERSION}", section_content=f"Date run:{datetime.now()}")
+end_timestamp = datetime.now()
 
+include_in_html_report(type="text", section_header=f"Dataset Version: {VERSION}", section_content_list=[
+    f"Date run: {datetime.now()}"
+    "",
+    f"Start time: {start_timestamp}",
+    f"End time: {end_timestamp}",
+])
 include_in_html_report("header", section_content=f"Results", section_figure=2)
 
 include_in_html_report(type="text", section_header="Summary", section_content=new_model_decision)
