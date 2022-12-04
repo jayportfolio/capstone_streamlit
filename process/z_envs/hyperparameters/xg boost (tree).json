@@ -2,7 +2,7 @@
 
             "booster": ["gbtree","dart"],
 
-            "n_estimators": [100, 200, 500, 1000],
+            "n_estimators": [100, 200, 500],
 
             "learning_rate": [null, 0.3, 0.1, 0.01],
             "lambda": [null, 1, 10, 100, 1000, 10000, 100000],
@@ -11,6 +11,13 @@
             "subsample": [1, 0.5, 0.75, 0.9],
             "colsample_bytree":[1, 0.5, 0.75, 0.9],
 
+            "min_sample_split": [null, 2,20,200,2000],
+            "max_leaf_nodes": [null, 2,20,200,2000],
+            "min_samples_leaf": [null, 2,20,200,2000],
+            "max_samples":[null, 1, 0.5, 0.75, 0.9],
+            "max_features": [null, 2,4,8,16,32,64],
+    
+    
             "objective": ["reg:squarederror", "reg:squaredlogerror"],
             "n_jobs": 3,
             "verbosity": 1

@@ -11,21 +11,21 @@
 # * what fraction of the data we'll use for testing (0.1)
 # * if the data split will be randomised (it won't!)
 
-# In[1]:
+# In[18]:
 
 
 #ALGORITHM = 'Linear Regression (Ridge)'
 #ALGORITHM = 'KNN'
 #ALGORITHM = 'Decision Tree'
-ALGORITHM = 'Random Forest'
-#ALGORITHM = 'XG Boost (tree)'
+#ALGORITHM = 'Random Forest'
+ALGORITHM = 'XG Boost (tree)'
 #ALGORITHM = 'CatBoost'
 #ALGORITHM = 'Light Gradient Boosting'
 
 ALGORITHM_DETAIL = 'random search'
-#DATA_DETAIL = ['explore param']
 #DATA_DETAIL = ['no scale','no dummies']
-DATA_DETAIL = ['no dummies'] if 'catboost' in ALGORITHM.lower() else []
+DATA_DETAIL = ['explore param']
+#DATA_DETAIL = ['no dummies'] if 'catboost' in ALGORITHM.lower() else []
 #VERSION = '06'
 VERSION = '06'
 
@@ -49,7 +49,7 @@ create_python_script = True
 # 
 # 
 
-# In[2]:
+# In[19]:
 
 
 from sklearn.impute import SimpleImputer
@@ -130,7 +130,7 @@ from functions_f_evaluate_model_20221116 import get_best_estimator_average_time,
 print(env_vars)
 
 
-# In[3]:
+# In[20]:
 
 
 if is_jupyter:
@@ -145,7 +145,7 @@ if is_jupyter:
 
 # #### Include any overrides specific to the algorthm / python environment being used
 
-# In[4]:
+# In[21]:
 
 
 #running_locally = True
@@ -178,7 +178,7 @@ if 'forest' in ALGORITHM.lower() or True:
 # 
 # 
 
-# In[5]:
+# In[22]:
 
 
 from sklearn.pipeline import Pipeline
@@ -201,14 +201,14 @@ starter_pipe
 # 
 # ## Stage: get the data
 
-# In[6]:
+# In[23]:
 
 
 columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 LABEL = 'Price'
 
 
-# In[7]:
+# In[24]:
 
 
 df, retrieval_type = get_source_dataframe(cloud_run, VERSION, folder_prefix='../../../', row_limit=None)
@@ -222,7 +222,7 @@ if retrieval_type != 'tidy':
     df = df[columns]
 
 
-# In[8]:
+# In[25]:
 
 
 print(colored(f"features", "blue"), "-> ", columns)
@@ -230,20 +230,20 @@ columns.insert(0, LABEL)
 print(colored(f"label", "green", None, ['bold']), "-> ", LABEL)
 
 
-# In[9]:
+# In[26]:
 
 
 df = preprocess(df, version=VERSION)
 df = df.dropna()
 
 
-# In[10]:
+# In[27]:
 
 
 df.head(5)
 
 
-# In[11]:
+# In[28]:
 
 
 X_train, X_test, y_train, y_test, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
@@ -266,7 +266,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 
 
 
-# In[12]:
+# In[29]:
 
 
 #imputer = SimpleImputer(strategy='mean')
@@ -274,13 +274,13 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 #X_train[6] = imputer.transform(X_train[6])
 
 
-# In[13]:
+# In[30]:
 
 
 starter_model = starter_pipe[-1]
 
 
-# In[14]:
+# In[31]:
 
 
 X_train
@@ -294,7 +294,14 @@ X_train
 # 
 # 
 
-# In[15]:
+# In[38]:
+
+
+options_block.items()
+param_options
+
+
+# In[40]:
 
 
 options_block = get_hyperparameters(ALGORITHM, use_gpu, prefix='../../../')
@@ -304,12 +311,18 @@ if 'explore param' in DATA_DETAIL:
         for key2, value in param_options.items():
             #print(key2, value, vary)
             if key2 != vary and key2 != 'model__' + vary:
-                param_options[key2] = [param_options[key2][0]]
+                try:
+                    param_options[key2] = [param_options[key2][0]]
+                except:
+                    # value probably wasn't an list of options
+                    param_options[key2] = [param_options[key2]]
         return param_options
 
     #options_block = automl_step(options_block, "model__epochs")
-    explore_param = "alpha"
+    explore_param = "n_estimators"
     options_block = automl_step(options_block, explore_param)
+    
+    ALGORITHM_DETAIL = 'grid search (implied)'
 
 param_options, cv, n_jobs, refit, n_iter, verbose = get_cv_params(options_block, debug_mode=debug_mode,
                                                                   override_cv=OVERRIDE_CV,
@@ -329,7 +342,7 @@ print("cv:", cv, "n_jobs:", n_jobs, "refit:", refit, "n_iter:", n_iter, "verbose
 #param_options if not using_catboost else options_block
 
 
-# In[16]:
+# In[48]:
 
 
 def fit_model_with_cross_validation(gs, X_train, y_train, fits):
@@ -352,7 +365,8 @@ def fit_model_with_cross_validation(gs, X_train, y_train, fits):
 
 
 if not using_catboost:
-    if ALGORITHM_DETAIL == 'grid search':
+    if ALGORITHM_DETAIL == 'grid search' or ALGORITHM_DETAIL == 'grid search (implied)':
+        print('grid search (or implied)')
         crossval_runner = GridSearchCV(
             estimator=starter_pipe,
             param_grid=param_options,
@@ -363,6 +377,7 @@ if not using_catboost:
             #error_score='raise'
         )
     else:
+        print('random search')
         crossval_runner = RandomizedSearchCV(
             estimator=starter_pipe,
             param_distributions=param_options,
@@ -410,10 +425,11 @@ else:
 crossval_runner
 
 
-# In[ ]:
+# In[54]:
 
 
-
+if ALGORITHM_DETAIL == 'grid search' or ALGORITHM_DETAIL == 'grid search (implied)':
+    print(crossval_runner.best_params_)
 
 
 # <code style="background:blue;color:blue">**********************************************************************************************************</code>
@@ -422,7 +438,7 @@ crossval_runner
 # 
 # 
 
-# In[17]:
+# In[55]:
 
 
 if not using_catboost:
@@ -452,7 +468,7 @@ else:
 
 
 
-# In[18]:
+# In[56]:
 
 
 key = f'{ALGORITHM} (v{VERSION})'.lower()
@@ -498,7 +514,7 @@ if not using_catboost:
 # 
 # 
 
-# In[19]:
+# In[57]:
 
 
 if not using_catboost:
@@ -513,7 +529,7 @@ else:
 
 
 
-# In[20]:
+# In[58]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -535,7 +551,7 @@ print('Root Mean Squared Error', RMSE)
 
 
 
-# In[21]:
+# In[59]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -561,7 +577,7 @@ combined
 
 
 
-# In[22]:
+# In[60]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -574,7 +590,7 @@ best_model_ax.set_xlabel('Actual')
 plt.show()
 
 
-# In[23]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -630,7 +646,7 @@ if not using_catboost:
     best_model_scores[-1] = fitted_graph_model.score(X_test, y_test)
 
 
-# In[24]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -656,7 +672,7 @@ if not using_catboost:
     plt.show()
 
 
-# In[25]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -703,7 +719,7 @@ if not using_catboost:
 # 
 # 
 
-# In[26]:
+# In[ ]:
 
 
 # <catboost.core.CatBoostRegressor object at 0x7fb167387490>
