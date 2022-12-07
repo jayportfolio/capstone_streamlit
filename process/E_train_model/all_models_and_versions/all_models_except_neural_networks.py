@@ -11,7 +11,7 @@
 # * what fraction of the data we'll use for testing (0.1)
 # * if the data split will be randomised (it won't!)
 
-# In[38]:
+# In[1]:
 
 
 ALGORITHM = 'Linear Regression (Ridge)'
@@ -49,7 +49,7 @@ create_python_script = True
 # 
 # 
 
-# In[39]:
+# In[2]:
 
 
 from sklearn.impute import SimpleImputer
@@ -73,6 +73,11 @@ import sys
 import os
 
 start_timestamp = datetime.now()
+
+module_path = os.path.abspath(os.path.join('..', '..', '..'))
+if module_path not in sys.path:
+    #sys.path.append(module_path+"\\zfunctions")
+    sys.path.append(module_path)
 
 with open('../../z_envs/_envs.json') as f:
     env_vars = json.loads(f.read())
@@ -107,11 +112,6 @@ no_scaling = 'no scaling' in DATA_DETAIL
 #not_catboost = 'catboost' not in ALGORITHM.lower() or not no_dummies
 using_catboost = 'catboost' in ALGORITHM.lower()
 
-module_path = os.path.abspath(os.path.join('..', '..', '..'))
-if module_path not in sys.path:
-    #sys.path.append(module_path+"\\zfunctions")
-    sys.path.append(module_path)
-
 if run_env not in ['colab', 'gradient', 'cloud']:
     cloud_run = False
     from functions_b__get_the_data_20221116 import set_csv_directory
@@ -130,7 +130,7 @@ from functions_f_evaluate_model_20221116 import get_best_estimator_average_time,
 print(env_vars)
 
 
-# In[40]:
+# In[3]:
 
 
 if is_jupyter:
@@ -145,7 +145,7 @@ if is_jupyter:
 
 # #### Include any overrides specific to the algorthm / python environment being used
 
-# In[41]:
+# In[4]:
 
 
 #running_locally = True
@@ -180,7 +180,7 @@ if 'forest' in ALGORITHM.lower() or True:
 # 
 # 
 
-# In[42]:
+# In[5]:
 
 
 from sklearn.pipeline import Pipeline
@@ -203,14 +203,14 @@ starter_pipe
 # 
 # ## Stage: get the data
 
-# In[43]:
+# In[6]:
 
 
 columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 LABEL = 'Price'
 
 
-# In[44]:
+# In[7]:
 
 
 df, retrieval_type = get_source_dataframe(cloud_run, VERSION, folder_prefix='../../../', row_limit=None)
@@ -224,7 +224,7 @@ if retrieval_type != 'tidy':
     df = df[columns]
 
 
-# In[45]:
+# In[8]:
 
 
 print(colored(f"features", "blue"), "-> ", columns)
@@ -232,20 +232,20 @@ columns.insert(0, LABEL)
 print(colored(f"label", "green", None, ['bold']), "-> ", LABEL)
 
 
-# In[46]:
+# In[9]:
 
 
 df = preprocess(df, version=VERSION)
 df = df.dropna()
 
 
-# In[47]:
+# In[10]:
 
 
 df.head(5)
 
 
-# In[48]:
+# In[11]:
 
 
 X_train, X_test, y_train, y_test, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
@@ -268,7 +268,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 
 
 
-# In[49]:
+# In[12]:
 
 
 #imputer = SimpleImputer(strategy='mean')
@@ -276,13 +276,13 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 #X_train[6] = imputer.transform(X_train[6])
 
 
-# In[50]:
+# In[13]:
 
 
 starter_model = starter_pipe[-1]
 
 
-# In[51]:
+# In[14]:
 
 
 X_train
@@ -296,13 +296,13 @@ X_train
 # 
 # 
 
-# In[51]:
+# In[ ]:
 
 
 
 
 
-# In[52]:
+# In[15]:
 
 
 options_block = get_hyperparameters(ALGORITHM, use_gpu, prefix='../../../')
@@ -343,7 +343,7 @@ print("cv:", cv, "n_jobs:", n_jobs, "refit:", refit, "n_iter:", n_iter, "verbose
 #param_options if not using_catboost else options_block
 
 
-# In[53]:
+# In[16]:
 
 
 def fit_model_with_cross_validation(gs, X_train, y_train, fits):
@@ -426,7 +426,7 @@ else:
 crossval_runner
 
 
-# In[54]:
+# In[17]:
 
 
 if ALGORITHM_DETAIL == 'grid search' or ALGORITHM_DETAIL == 'grid search (implied)':
@@ -439,7 +439,7 @@ if ALGORITHM_DETAIL == 'grid search' or ALGORITHM_DETAIL == 'grid search (implie
 # 
 # 
 
-# In[55]:
+# In[18]:
 
 
 if not using_catboost:
@@ -457,19 +457,19 @@ else:
     print(cat_cv_results)
 
 
-# In[55]:
+# In[ ]:
 
 
 
 
 
-# In[55]:
+# In[ ]:
 
 
 
 
 
-# In[56]:
+# In[19]:
 
 
 key = f'{ALGORITHM} (v{VERSION})'.lower()
@@ -503,7 +503,7 @@ if not using_catboost:
     if is_jupyter:display(cv_results_df_summary)
 
 
-# In[56]:
+# In[ ]:
 
 
 
@@ -515,7 +515,7 @@ if not using_catboost:
 # 
 # 
 
-# In[57]:
+# In[20]:
 
 
 if not using_catboost:
@@ -524,13 +524,13 @@ else:
     y_pred = starter_model.predict(pool_Xtest)
 
 
-# In[57]:
+# In[ ]:
 
 
 
 
 
-# In[58]:
+# In[21]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -546,13 +546,13 @@ print('Mean Squared Error Accuracy', MSE)
 print('Root Mean Squared Error', RMSE)
 
 
-# In[58]:
+# In[ ]:
 
 
 
 
 
-# In[59]:
+# In[22]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -572,13 +572,13 @@ combined['bedrooms'] = combined['bedrooms'].astype(int)
 combined
 
 
-# In[59]:
+# In[ ]:
 
 
 
 
 
-# In[60]:
+# In[23]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -591,7 +591,7 @@ best_model_ax.set_xlabel('Actual')
 plt.show()
 
 
-# In[ ]:
+# In[24]:
 
 
 if not using_catboost:
@@ -647,33 +647,66 @@ if not using_catboost:
     best_model_scores[-1] = fitted_graph_model.score(X_test, y_test)
 
 
-# In[ ]:
+# In[36]:
 
 
 if not using_catboost:
-    for i in best_model_scores.keys():
-        if i >= 0:
-            plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=3)
-            plt.scatter(y_test, best_model_predictions[i])
-            # plt.title(str(i) + " " + str(round(best_model_scores[i], 4)) + " for " + str(best_models[i]))
-            if len(best_models[i].keys()) < 30:
-                plt.title(str(i) + " " + str(round(best_model_scores[i], 4)) + " for " + str(best_models[i]))
-            else:
-                plt.title(str(i) + " " + str(round(best_model_scores[i], 4)) + " for entry " + str(i))
-            plt.show()
+    evolution_of_models_fig, evolution_of_models_axes = plt.subplots(nrows=len(best_model_scores.keys()), figsize=(15, 45))
 
-    plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=3)
-    plt.scatter(y_test, best_model_predictions[-1])
-    # plt.title(str(i) + " " + str(round(best_model_scores[i], 4)) + " for " + str(best_models[i]))
+    ax_index=-1
+    #for i in best_model_scores.keys():
+    for i, ax_index in zip(best_model_scores.keys(), range(0, len(best_model_scores.keys()))):
+        #ax_index += 1
+        #print(len(best_model_scores.keys()))
+        #print('i',i, "ax_index",ax_index)
+        if i >= 0:
+            # plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=3)
+            # plt.scatter(y_test, best_model_predictions[i])
+            # # plt.title(str(i) + " " + str(round(best_model_scores[i], 4)) + " for " + str(best_models[i]))
+            # if len(best_models[i].keys()) < 30:
+            #     plt.title(str(i) + " " + str(round(best_model_scores[i], 4)) + " for " + str(best_models[i]))
+            # else:
+            #     plt.title(str(i) + " " + str(round(best_model_scores[i], 4)) + " for entry " + str(i))
+            # plt.show()
+
+            #>>>
+
+            plt.subplots_adjust(hspace=0.2)
+            plt.subplots_adjust(wspace=0.2)
+
+            #.flatten()
+            #coordinates = evolution_of_models_axes[i]
+
+            if len(best_models[i].keys()) < 30:
+                eom_title = str(i) + " " + str(round(best_model_scores[i], 4)) + " for " + str(best_models[i])
+            else:
+                eom_title = str(i) + " " + str(round(best_model_scores[i], 4)) + " for entry " + str(i)
+
+            print (ax_index)
+            sns.lineplot(x=[y_test.min(), y_test.max()], y=[y_test.min(), y_test.max()], ax=evolution_of_models_axes[ax_index], color='red')
+            sns.scatterplot(x=y_test.flatten(), y=best_model_predictions[0].flatten(), ax=evolution_of_models_axes[ax_index],
+                            s=100).set(title=eom_title)
+
+
+            #<<<
+
+    #plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=3)
+    #plt.scatter(y_test, best_model_predictions[-1])
+
     if len(best_models[i].keys()) < 30:
-        plt.title(str(i) + " " + str(round(best_model_scores[-1], 4)) + " for " + str(best_models[-1]))
+        eom_title = str(i) + " " + str(round(best_model_scores[-1], 4)) + " for (worst)" + str(best_models[-1])
     else:
-        plt.title(str(i) + " " + str(round(best_model_scores[-1], 4)) + " for (worst) entry " + str(i))
+        eom_title = str(i) + " " + str(round(best_model_scores[-1], 4)) + " for (worst) entry " + str(i)
+
+    print (ax_index)
+    sns.lineplot(x=[y_test.min(), y_test.max()], y=[y_test.min(), y_test.max()], ax=evolution_of_models_axes[ax_index], color='red')
+    sns.scatterplot(x=y_test.flatten(), y=best_model_predictions[-1].flatten(), ax=evolution_of_models_axes[ax_index],
+                    s=100).set(title=eom_title)
 
     plt.show()
 
 
-# In[ ]:
+# In[26]:
 
 
 if not using_catboost:
@@ -704,7 +737,7 @@ if not using_catboost:
     #title='best (orange) vs worst (black)')
 
 
-    best_model_fig.tight_layout()
+    worst_and_best_model_fig.tight_layout()
     plt.show()
 
 
@@ -720,7 +753,7 @@ if not using_catboost:
 # 
 # 
 
-# In[ ]:
+# In[27]:
 
 
 # <catboost.core.CatBoostRegressor object at 0x7fb167387490>
@@ -764,13 +797,13 @@ print(key)
 new_results
 
 
-# In[ ]:
+# In[28]:
 
 
 crossval_runner.best_estimator_  if not using_catboost else ''
 
 
-# In[ ]:
+# In[29]:
 
 
 if this_model_is_best:
@@ -792,7 +825,7 @@ print(new_model_decision)
 # ## Stage: Investigate the feature importances (if applicable)
 # 
 
-# In[ ]:
+# In[30]:
 
 
 if model_uses_feature_importances:
@@ -815,7 +848,7 @@ else:
     print(f'{ALGORITHM} does not have feature_importances, skipping')
 
 
-# In[ ]:
+# In[31]:
 
 
 if model_uses_feature_importances:
@@ -833,7 +866,7 @@ else:
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[ ]:
+# In[32]:
 
 
 from bs4 import BeautifulSoup
@@ -1002,6 +1035,8 @@ include_in_html_report(type="dataframe", section_header="Data Sample", section_c
 
 include_in_html_report(type="json", section_header="Hyperparameter options for Randomized Grid Search", section_content=f"{param_options if not using_catboost else options_block}")
 
+include_in_html_report(type="graph", section_header=f"Range of hyperparameter results", section_figure=evolution_of_models_fig,
+    section_content='evolution_of_models_fig.png')
 
 include_in_html_report(type="dict", section_header="Environment Variables", section_content=env_vars)
 
@@ -1021,17 +1056,17 @@ def print_and_report(text_single, title):
 
 
 
-# In[ ]:
+# In[33]:
 
 
 print('Nearly finished...')
 
 
-# In[ ]:
+# In[34]:
 
 
 # !jupyter nbconvert --to script mycode.ipynb
-# with open('all_models_except_neural_networks.ipynb', 'r') as f:
+# with open('it10_all_models_20221203.ipynb', 'r') as f:
 #     lines = f.readlines()
 # with open('mycode.py', 'w') as f:
 #     for line in lines:
@@ -1041,13 +1076,13 @@ print('Nearly finished...')
 #             f.write(line)
 
 if create_python_script and is_jupyter:
-    get_ipython().system("jupyter nbconvert --to script 'all_models_except_neural_networks.ipynb'")
+    get_ipython().system("jupyter nbconvert --to script 'all_models_except_neural_networks.ipynb.ipynb'")
 
-#!jupyter nbconvert --to script 'all_models_except_neural_networks.ipynb' &&  \
+#!jupyter nbconvert --to script 'it10_all_models_20221203.ipynb' &&  \
 #!mv ./folder/notebooks/*.py ./folder/python_scripts && \
 
 
-# In[ ]:
+# In[35]:
 
 
 print('Finished!')
