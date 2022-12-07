@@ -47,7 +47,7 @@ price_divisor = 1
 
 
 # ---- 3rd NEURAL NETWORK STRUCTURE DEFINITION ---- #
-selected_neural_network = selected_nn_code = "m03 2 layers+wider"
+#selected_neural_network = selected_nn_code = "m03 2 layers+wider"
 
 
 # ---- 4th NEURAL NETWORK STRUCTURE DEFINITION ---- #
@@ -65,7 +65,7 @@ selected_neural_network = selected_nn_code = "m03 2 layers+wider"
 #selected_neural_network = selected_nn_code = "m11 mega"
 
 # ---- 8th NEURAL NETWORK STRUCTURE DEFINITION ---- #
-#selected_neural_network = selected_nn_code = "m12 mega"
+selected_neural_network = selected_nn_code = "m12 mega"
 
 # ---- 9th NEURAL NETWORK STRUCTURE DEFINITION ---- #
 #selected_neural_network = selected_nn_code = "m13 mega"
@@ -86,10 +86,20 @@ create_python_script = True
 # 
 # 
 
-# In[2]:
+# In[28]:
 
 
-#! pip install scikeras
+import os
+
+if "JPY_PARENT_PID" in os.environ:
+    is_jupyter = True
+else:
+    is_jupyter = False
+
+
+if is_jupyter:
+    #! pip install scikeras
+    get_ipython().system('pip install tabulate')
 
 
 # In[3]:
@@ -565,12 +575,13 @@ trainable_model.summary()
 
 val_split = 0.1
 min_delta=0 #10, #50, #10, #50,
+val_delta_patience = 25 # 10
 
 # https://keras.io/api/callbacks/early_stopping/
 callback = tf.keras.callbacks.EarlyStopping(
     monitor="val_loss", #"loss", #"val_loss",
     min_delta=min_delta, 
-    patience=10,
+    patience=val_delta_patience,
     verbose=1,
     mode="min",
     baseline=None,
@@ -605,7 +616,7 @@ estimated_time = round((pipe_end - pipe_start), 2)
 # 
 # 
 
-# In[16]:
+# In[17]:
 
 
 hist = pd.DataFrame(history.history)
@@ -615,9 +626,9 @@ early_end_lossX = hist.iloc[-1]['loss']
 early_end_loss = hist['loss'].min()
 early_end_valloss = hist['val_loss'].min()
 
-more_detail = f"loss={round(early_end_loss,2)} valloss={round(early_end_valloss,2)}"
+#more_detail = f"loss={round(early_end_loss,2)} valloss={round(early_end_valloss,2)}"
 more_detail = f"loss={early_end_loss:.2e} valloss={early_end_valloss:.2e}"
-more_detail += f' +valsplit={val_split}'
+more_detail += f' +valsplit={val_split} +patn={val_delta_patience}'
 
 # f"{x:.2e}"
 
@@ -639,19 +650,19 @@ print(ALGORITHM_DETAIL)
 hist.tail()
 
 
-# In[16]:
+# In[ ]:
 
 
 
 
 
-# In[16]:
+# In[ ]:
 
 
 
 
 
-# In[17]:
+# In[18]:
 
 
 def plot_loss(history):
@@ -679,13 +690,13 @@ def plot_loss(history):
 loss_fig, loss_ax = plot_loss(history)
 
 
-# In[18]:
+# In[19]:
 
 
 y_pred = trainable_model.predict(X_test)
 
 
-# In[19]:
+# In[20]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -701,7 +712,7 @@ print('Mean Squared Error Accuracy', MSE)
 print('Root Mean Squared Error', RMSE)
 
 
-# In[20]:
+# In[21]:
 
 
 if debug_mode:
@@ -713,7 +724,7 @@ if debug_mode:
     print(y_test.shape)
 
 
-# In[21]:
+# In[22]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -733,7 +744,7 @@ combined['bedrooms'] = combined['bedrooms'].astype(int)
 combined
 
 
-# In[ ]:
+# In[23]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -752,7 +763,7 @@ plt.show()
 # 
 # 
 
-# In[ ]:
+# In[24]:
 
 
 cv_best_model_fit_time = estimated_time
@@ -792,7 +803,7 @@ print(key)
 print(ALGORITHM_DETAIL)
 
 
-# In[ ]:
+# In[25]:
 
 
 if this_model_is_best:
@@ -810,7 +821,7 @@ print(new_model_decision)
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[ ]:
+# In[29]:
 
 
 from bs4 import BeautifulSoup
@@ -1016,20 +1027,20 @@ def print_and_report(text_single, title):
 
 
 
-# In[ ]:
+# In[30]:
 
 
 print('Nearly finished...')
 
 
-# In[ ]:
+# In[33]:
 
 
 if create_python_script and is_jupyter:
     get_ipython().system("jupyter nbconvert --to script 'neural_networks_model.ipynb'")
 
 
-# In[ ]:
+# In[32]:
 
 
 print('Finished!')

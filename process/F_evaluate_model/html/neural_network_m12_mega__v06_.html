@@ -1,0 +1,1077 @@
+<h1>Results from Neural Network m12 mega</h1><h3>Dataset Version: 06</h3>Date run: 2022-12-07 15:08:23.781655<br>Start time: 2022-12-07 14:56:37.415790<br>End time: 2022-12-07 15:08:23.781642<br><hr><h2>Results</h2><h3>Summary</h3>not updated saved model, the previous run was better
+0.5744634188403892 is worse than or equal to 0.594031637907064<br><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/neural_network_m12_mega__v06__best_ann_model.png"/><hr><h3>Model Specific Notes</h3>can't display hyperparameter comparison for neural network<br>can't display model performance graphs for neural network<br>can't display model performance graphs for neural network<br><hr><h3>Neural Network Loss - Head</h3><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>loss</th>
+      <th>val_loss</th>
+      <th>epoch</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.856733e+10</td>
+      <td>8.051272e+09</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.926142e+09</td>
+      <td>7.354278e+09</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.438944e+09</td>
+      <td>7.405911e+09</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7.164968e+09</td>
+      <td>6.854419e+09</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6.801081e+09</td>
+      <td>6.629552e+09</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table><hr><br><hr><h3>Neural Network Loss - Tail</h3><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>loss</th>
+      <th>val_loss</th>
+      <th>epoch</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>205</th>
+      <td>4.960314e+09</td>
+      <td>5.031095e+09</td>
+      <td>205</td>
+    </tr>
+    <tr>
+      <th>206</th>
+      <td>4.949963e+09</td>
+      <td>4.880546e+09</td>
+      <td>206</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>4.989599e+09</td>
+      <td>4.992994e+09</td>
+      <td>207</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>4.964699e+09</td>
+      <td>4.864280e+09</td>
+      <td>208</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>4.958746e+09</td>
+      <td>4.897804e+09</td>
+      <td>209</td>
+    </tr>
+  </tbody>
+</table><hr><img src="../artifacts/neural_network_m12_mega__v06__end_loss.png"/><hr><h3>Model Structure</h3>>Model: "sequential"
+>________________________________________________________________________________________________________________________________________________________________
+> Layer (type)                                                           Output Shape                                                    Param #                 
+>
+> dense (Dense)                                                          (None, 128)                                                     1536                    
+>                                                                                                                                                                
+> dense_1 (Dense)                                                        (None, 256)                                                     33024                   
+>                                                                                                                                                                
+> dense_2 (Dense)                                                        (None, 512)                                                     131584                  
+>                                                                                                                                                                
+> dense_3 (Dense)                                                        (None, 1024)                                                    525312                  
+>                                                                                                                                                                
+> dense_4 (Dense)                                                        (None, 1024)                                                    1049600                 
+>                                                                                                                                                                
+> dense_5 (Dense)                                                        (None, 512)                                                     524800                  
+>                                                                                                                                                                
+> dense_6 (Dense)                                                        (None, 256)                                                     131328                  
+>                                                                                                                                                                
+> dense_7 (Dense)                                                        (None, 1)                                                       257                     
+>                                                                                                                                                                
+>
+>Total params: 2,397,441
+>Trainable params: 2,397,441
+>Nontrainable params: 0
+>________________________________________________________________________________________________________________________________________________________________
+<br><hr><h2>Comparison with other models</h2><h3>Comparison with version 06 performances</h3><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>best score</th>
+      <th>best time</th>
+      <th>Mean Absolute Error Accuracy</th>
+      <th>Mean Squared Error Accuracy</th>
+      <th>R square Accuracy</th>
+      <th>Root Mean Squared Error</th>
+      <th>best run date</th>
+      <th>best method</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>random forest (v06)</th>
+      <td>0.730879</td>
+      <td>31.812936</td>
+      <td>56782.762299</td>
+      <td>4877863148.373796</td>
+      <td>0.568193</td>
+      <td>69841.700641</td>
+      <td>2022-12-04 06:12:36.585726</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>xg boost (tree) (v06)</th>
+      <td>0.727132</td>
+      <td>134.174901</td>
+      <td>41210.351288</td>
+      <td>3082428096.006462</td>
+      <td>0.727132</td>
+      <td>55519.619019</td>
+      <td>2022-12-07 09:43:37.103009</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>knn (v06)</th>
+      <td>0.719049</td>
+      <td>0.017916</td>
+      <td>41531.119915</td>
+      <td>3218096364.819358</td>
+      <td>0.715122</td>
+      <td>56728.267776</td>
+      <td>2022-11-21 18:05:21.585382</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>catboost (v06)</th>
+      <td>0.715606</td>
+      <td>12.256545</td>
+      <td>51000.047694</td>
+      <td>4301362532.917062</td>
+      <td>0.619227</td>
+      <td>65584.773636</td>
+      <td>1999-11-13 15:26:55.706567</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>light gradient boosting (v06)</th>
+      <td>0.706735</td>
+      <td>15.043873</td>
+      <td>44080.972643</td>
+      <td>3312839956.633489</td>
+      <td>0.706735</td>
+      <td>57557.275445</td>
+      <td>2022-11-16 13:59:52.612654</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>xg boost (v06)</th>
+      <td>0.687611</td>
+      <td>11.474795</td>
+      <td>45988.280765</td>
+      <td>3528869693.681411</td>
+      <td>0.687611</td>
+      <td>59404.290196</td>
+      <td>NaN</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>neural network m11 mega (v06)</th>
+      <td>0.612318</td>
+      <td>2569.45</td>
+      <td>56035.854723</td>
+      <td>4929943923.096645</td>
+      <td>0.563583</td>
+      <td>70213.559396</td>
+      <td>2022-11-29 12:57:16.459719</td>
+      <td>loss=2833.6 valloss=4034.41 stop=619/1000</td>
+    </tr>
+    <tr>
+      <th>neural network m12 mega (v06)</th>
+      <td>0.594032</td>
+      <td>813.27</td>
+      <td>54967.975952</td>
+      <td>4807033830.676171</td>
+      <td>0.574463</td>
+      <td>69332.77602</td>
+      <td>2022-11-29 17:08:44.480482</td>
+      <td>loss=4386.51 valloss=4438.8 +valsplit=0.1 stop=201/400</td>
+    </tr>
+    <tr>
+      <th>decision tree (v06)</th>
+      <td>0.593752</td>
+      <td>1.030902</td>
+      <td>68471.047675</td>
+      <td>7150051338.360572</td>
+      <td>0.367051</td>
+      <td>84557.976196</td>
+      <td>2022-12-03 19:44:13.536639</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>neural network m05 rec deep (v06)</th>
+      <td>0.580348</td>
+      <td>604.9</td>
+      <td>59357.533817</td>
+      <td>5470834738.338646</td>
+      <td>0.515701</td>
+      <td>73965.091349</td>
+      <td>2022-11-29 11:41:39.682217</td>
+      <td>loss=4908.71 valloss=4603.08 stop=214/500</td>
+    </tr>
+    <tr>
+      <th>neural network (v06)</th>
+      <td>0.556696</td>
+      <td>312.991321</td>
+      <td>66710.702966</td>
+      <td>6646858211.119819</td>
+      <td>0.411595</td>
+      <td>81528.266332</td>
+      <td>2000-01-01 17:09:59.063570</td>
+      <td>random search [input11, d^20-500-500-20-5, dense1]</td>
+    </tr>
+    <tr>
+      <th>neural network m03 2 layers+wider (v06)</th>
+      <td>0.549647</td>
+      <td>275.71</td>
+      <td>64376.517431</td>
+      <td>6268024253.295089</td>
+      <td>0.445131</td>
+      <td>79170.854822</td>
+      <td>2022-11-29 10:13:10.517896</td>
+      <td>mse +epochs=500 +learn=0.003 +loss=5229.0478515625</td>
+    </tr>
+    <tr>
+      <th>neural network m01 simple (v06)</th>
+      <td>0.541221</td>
+      <td>36.2</td>
+      <td>80597.58465</td>
+      <td>9313930610.003286</td>
+      <td>0.175496</td>
+      <td>96508.707431</td>
+      <td>2022-11-29 09:13:15.856770</td>
+      <td>recommended simple model/mse +norm +epochs=50 +learn=0.003 +endloss=5610.65771484375 +stop=17 +endloss=5511.7373046875</td>
+    </tr>
+    <tr>
+      <th>neural network simplified (v06)</th>
+      <td>0.540642</td>
+      <td>999</td>
+      <td>59373.052887</td>
+      <td>5531509335.791807</td>
+      <td>0.51033</td>
+      <td>74374.117378</td>
+      <td>2022-11-20 20:03:40.645221</td>
+      <td>recommended simple model + normalise, mse</td>
+    </tr>
+    <tr>
+      <th>decision tree - (v06)</th>
+      <td>0.524696</td>
+      <td>NaN</td>
+      <td>57094.069341</td>
+      <td>5369228892.195786</td>
+      <td>0.524696</td>
+      <td>73275.022294</td>
+      <td>NaN</td>
+      <td>random search-no scale</td>
+    </tr>
+    <tr>
+      <th>neural network m04 3 layers+wider (v06)</th>
+      <td>0.520933</td>
+      <td>395.14</td>
+      <td>64421.234531</td>
+      <td>6266407942.292152</td>
+      <td>0.445274</td>
+      <td>79160.646424</td>
+      <td>2022-11-29 11:21:09.812732</td>
+      <td>loss=5415.7 valloss=5095.94 stop=166/500</td>
+    </tr>
+    <tr>
+      <th>neural network m02 two layers (v06)</th>
+      <td>0.516773</td>
+      <td>112.54</td>
+      <td>64363.094125</td>
+      <td>6262090339.685114</td>
+      <td>0.445656</td>
+      <td>79133.370582</td>
+      <td>2022-11-29 09:31:18.853517</td>
+      <td>mse +norm +epochs=50 +learn=0.003 +endloss=5785.6953125</td>
+    </tr>
+    <tr>
+      <th>linear regression (ridge) (v06)</th>
+      <td>0.4569</td>
+      <td>0.28695</td>
+      <td>63603.059705</td>
+      <td>6135206763.74439</td>
+      <td>0.456889</td>
+      <td>78327.560691</td>
+      <td>2022-12-03 19:20:52.874336</td>
+      <td>random search</td>
+    </tr>
+  </tbody>
+</table><hr><h3>Comparison with all model performances</h3><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>best score</th>
+      <th>best time</th>
+      <th>Mean Absolute Error Accuracy</th>
+      <th>Mean Squared Error Accuracy</th>
+      <th>R square Accuracy</th>
+      <th>Root Mean Squared Error</th>
+      <th>best run date</th>
+      <th>best method</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>random forest (v06)</th>
+      <td>0.730879</td>
+      <td>31.812936</td>
+      <td>56782.762299</td>
+      <td>4877863148.373796</td>
+      <td>0.568193</td>
+      <td>69841.700641</td>
+      <td>2022-12-04 06:12:36.585726</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>xg boost (tree) (v06)</th>
+      <td>0.727132</td>
+      <td>134.174901</td>
+      <td>41210.351288</td>
+      <td>3082428096.006462</td>
+      <td>0.727132</td>
+      <td>55519.619019</td>
+      <td>2022-12-07 09:43:37.103009</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>xg boost (v11) rs</th>
+      <td>0.721019</td>
+      <td>NaN</td>
+      <td>42603.011667</td>
+      <td>3151478137.618505</td>
+      <td>0.721019</td>
+      <td>56138.027554</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>knn (v06)</th>
+      <td>0.719049</td>
+      <td>0.017916</td>
+      <td>41531.119915</td>
+      <td>3218096364.819358</td>
+      <td>0.715122</td>
+      <td>56728.267776</td>
+      <td>2022-11-21 18:05:21.585382</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>catboost (v06)</th>
+      <td>0.715606</td>
+      <td>12.256545</td>
+      <td>51000.047694</td>
+      <td>4301362532.917062</td>
+      <td>0.619227</td>
+      <td>65584.773636</td>
+      <td>1999-11-13 15:26:55.706567</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>xg boost (v05) rs</th>
+      <td>0.710594</td>
+      <td>NaN</td>
+      <td>42229.001752</td>
+      <td>3219625252.591313</td>
+      <td>0.710594</td>
+      <td>56741.741713</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>light gradient boosting (v06)</th>
+      <td>0.706735</td>
+      <td>15.043873</td>
+      <td>44080.972643</td>
+      <td>3312839956.633489</td>
+      <td>0.706735</td>
+      <td>57557.275445</td>
+      <td>2022-11-16 13:59:52.612654</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>xg boost (v09)</th>
+      <td>0.701117</td>
+      <td>119.28102</td>
+      <td>51922.608639</td>
+      <td>4355546020.138196</td>
+      <td>0.614431</td>
+      <td>65996.560669</td>
+      <td>2022-11-30 10:16:33.388760</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>catboost (v09)</th>
+      <td>0.700506</td>
+      <td>2.82</td>
+      <td>44531.3556</td>
+      <td>3383205112.663283</td>
+      <td>0.700506</td>
+      <td>58165.32569</td>
+      <td>2022-11-30 13:34:39.793583</td>
+      <td>random search(no dummies)</td>
+    </tr>
+    <tr>
+      <th>catboost (v10)</th>
+      <td>0.694651</td>
+      <td>4.77</td>
+      <td>44874.996907</td>
+      <td>3449348436.406789</td>
+      <td>0.694651</td>
+      <td>58731.153883</td>
+      <td>2022-11-30 14:14:50.145713</td>
+      <td>random search(no dummies)</td>
+    </tr>
+    <tr>
+      <th>catboost (v11)</th>
+      <td>0.689818</td>
+      <td>12.81</td>
+      <td>45407.2565</td>
+      <td>3503940324.932943</td>
+      <td>0.689818</td>
+      <td>59194.090287</td>
+      <td>2022-11-30 16:14:29.405177</td>
+      <td>random search(no dummies)</td>
+    </tr>
+    <tr>
+      <th>xg boost (v06)</th>
+      <td>0.687611</td>
+      <td>11.474795</td>
+      <td>45988.280765</td>
+      <td>3528869693.681411</td>
+      <td>0.687611</td>
+      <td>59404.290196</td>
+      <td>NaN</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>xg boost (v10)</th>
+      <td>0.681785</td>
+      <td>9.309589</td>
+      <td>46626.687574</td>
+      <td>3594689512.156493</td>
+      <td>0.681785</td>
+      <td>59955.729602</td>
+      <td>2022-11-30 14:45:52.207314</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>random forest - random search (vx10)</th>
+      <td>0.647421</td>
+      <td>NaN</td>
+      <td>49941.97226</td>
+      <td>3982880817.256231</td>
+      <td>0.647421</td>
+      <td>63110.069064</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>knn (v09)</th>
+      <td>0.644916</td>
+      <td>0.112408</td>
+      <td>48389.098294</td>
+      <td>4157374530.888747</td>
+      <td>0.631974</td>
+      <td>64477.705689</td>
+      <td>2022-11-30 12:53:42.390150</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>neural network m11 mega (v06)</th>
+      <td>0.612318</td>
+      <td>2569.45</td>
+      <td>56035.854723</td>
+      <td>4929943923.096645</td>
+      <td>0.563583</td>
+      <td>70213.559396</td>
+      <td>2022-11-29 12:57:16.459719</td>
+      <td>loss=2833.6 valloss=4034.41 stop=619/1000</td>
+    </tr>
+    <tr>
+      <th>xg boost (tree) (v11)</th>
+      <td>0.603614</td>
+      <td>14.210391</td>
+      <td>52330.434568</td>
+      <td>4477737747.935365</td>
+      <td>0.603614</td>
+      <td>66915.900561</td>
+      <td>2022-11-30 20:18:59.876471</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>xg boost (v04) rs</th>
+      <td>0.603522</td>
+      <td>NaN</td>
+      <td>50419.209714</td>
+      <td>4504941322.675693</td>
+      <td>0.603522</td>
+      <td>67118.859665</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>decision tree (v09)</th>
+      <td>0.596457</td>
+      <td>0.105919</td>
+      <td>51852.66478</td>
+      <td>4558586052.717332</td>
+      <td>0.596457</td>
+      <td>67517.301877</td>
+      <td>2022-11-29 20:03:38.094060</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>neural network m12 mega (v06)</th>
+      <td>0.594032</td>
+      <td>813.27</td>
+      <td>54967.975952</td>
+      <td>4807033830.676171</td>
+      <td>0.574463</td>
+      <td>69332.77602</td>
+      <td>2022-11-29 17:08:44.480482</td>
+      <td>loss=4386.51 valloss=4438.8 +valsplit=0.1 stop=201/400</td>
+    </tr>
+    <tr>
+      <th>decision tree (v06)</th>
+      <td>0.593752</td>
+      <td>1.030902</td>
+      <td>68471.047675</td>
+      <td>7150051338.360572</td>
+      <td>0.367051</td>
+      <td>84557.976196</td>
+      <td>2022-12-03 19:44:13.536639</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>neural network m13 mega (v10)</th>
+      <td>0.583716</td>
+      <td>142.89</td>
+      <td>54668.92487</td>
+      <td>4948088299.4757</td>
+      <td>0.561977</td>
+      <td>70342.649221</td>
+      <td>2022-12-01 10:27:39.663081</td>
+      <td>loss=3878948096.0 valloss=4822886400.0 +valsplit=0.1 stop=38/400</td>
+    </tr>
+    <tr>
+      <th>xg boost (v03) rs</th>
+      <td>0.582071</td>
+      <td>NaN</td>
+      <td>51147.260967</td>
+      <td>4733296553.824069</td>
+      <td>0.574533</td>
+      <td>68798.957505</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>neural network m05 rec deep (v06)</th>
+      <td>0.580348</td>
+      <td>604.9</td>
+      <td>59357.533817</td>
+      <td>5470834738.338646</td>
+      <td>0.515701</td>
+      <td>73965.091349</td>
+      <td>2022-11-29 11:41:39.682217</td>
+      <td>loss=4908.71 valloss=4603.08 stop=214/500</td>
+    </tr>
+    <tr>
+      <th>neural network m14 mega (v10)</th>
+      <td>0.579095</td>
+      <td>1129.09</td>
+      <td>53123.957462</td>
+      <td>4754712208.689863</td>
+      <td>0.579095</td>
+      <td>68954.421241</td>
+      <td>2022-12-01 11:52:45.011704</td>
+      <td>loss=4.85e+04 valloss=5.34e+04 +valsplit=0.1 stop=156/400</td>
+    </tr>
+    <tr>
+      <th>neural network m12 mega (v09)</th>
+      <td>0.570335</td>
+      <td>556.62</td>
+      <td>55.158283</td>
+      <td>4853.675243</td>
+      <td>0.570335</td>
+      <td>69.668323</td>
+      <td>2022-11-29 21:03:09.676165</td>
+      <td>loss=4869.67 valloss=4726.34 +valsplit=0.1 stop=83/400</td>
+    </tr>
+    <tr>
+      <th>neural network m12 mega (v10)</th>
+      <td>0.567453</td>
+      <td>240.1</td>
+      <td>55444.019939</td>
+      <td>4886231.935939</td>
+      <td>0.567453</td>
+      <td>69901.587507</td>
+      <td>2022-12-01 09:57:17.586487</td>
+      <td>loss=4790.75 valloss=4998.79 +valsplit=0.1 stop=66/400</td>
+    </tr>
+    <tr>
+      <th>decision tree - random search (vx10)</th>
+      <td>0.558257</td>
+      <td>NaN</td>
+      <td>55865.420033</td>
+      <td>4990106642.657863</td>
+      <td>0.558257</td>
+      <td>70640.686878</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>neural network (v06)</th>
+      <td>0.556696</td>
+      <td>312.991321</td>
+      <td>66710.702966</td>
+      <td>6646858211.119819</td>
+      <td>0.411595</td>
+      <td>81528.266332</td>
+      <td>2000-01-01 17:09:59.063570</td>
+      <td>random search [input11, d^20-500-500-20-5, dense1]</td>
+    </tr>
+    <tr>
+      <th>neural network m03 2 layers+wider (v06)</th>
+      <td>0.549647</td>
+      <td>275.71</td>
+      <td>64376.517431</td>
+      <td>6268024253.295089</td>
+      <td>0.445131</td>
+      <td>79170.854822</td>
+      <td>2022-11-29 10:13:10.517896</td>
+      <td>mse +epochs=500 +learn=0.003 +loss=5229.0478515625</td>
+    </tr>
+    <tr>
+      <th>neural network m01 simple (v06)</th>
+      <td>0.541221</td>
+      <td>36.2</td>
+      <td>80597.58465</td>
+      <td>9313930610.003286</td>
+      <td>0.175496</td>
+      <td>96508.707431</td>
+      <td>2022-11-29 09:13:15.856770</td>
+      <td>recommended simple model/mse +norm +epochs=50 +learn=0.003 +endloss=5610.65771484375 +stop=17 +endloss=5511.7373046875</td>
+    </tr>
+    <tr>
+      <th>neural network m02 two layers (v09)</th>
+      <td>0.540824</td>
+      <td>178.62</td>
+      <td>57717.542602</td>
+      <td>5187036.047527</td>
+      <td>0.540824</td>
+      <td>72021.080577</td>
+      <td>2022-11-30 13:34:57.703544</td>
+      <td>loss=5424.62 valloss=5263.41 +valsplit=0.1 stop=52/500</td>
+    </tr>
+    <tr>
+      <th>neural network simplified (v06)</th>
+      <td>0.540642</td>
+      <td>999</td>
+      <td>59373.052887</td>
+      <td>5531509335.791807</td>
+      <td>0.51033</td>
+      <td>74374.117378</td>
+      <td>2022-11-20 20:03:40.645221</td>
+      <td>recommended simple model + normalise, mse</td>
+    </tr>
+    <tr>
+      <th>knn - random search (vx10)</th>
+      <td>0.533823</td>
+      <td>0.049768</td>
+      <td>57566.89987</td>
+      <td>5266126938.137675</td>
+      <td>0.533823</td>
+      <td>72568.084845</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>neural network - random search [i64,norm,d64^6,d1] (v11)</th>
+      <td>0.533579</td>
+      <td>NaN</td>
+      <td>57201.738174</td>
+      <td>5268876368.550115</td>
+      <td>0.533579</td>
+      <td>72587.026172</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>decision tree - (v06)</th>
+      <td>0.524696</td>
+      <td>NaN</td>
+      <td>57094.069341</td>
+      <td>5369228892.195786</td>
+      <td>0.524696</td>
+      <td>73275.022294</td>
+      <td>NaN</td>
+      <td>random search-no scale</td>
+    </tr>
+    <tr>
+      <th>neural network m04 3 layers+wider (v06)</th>
+      <td>0.520933</td>
+      <td>395.14</td>
+      <td>64421.234531</td>
+      <td>6266407942.292152</td>
+      <td>0.445274</td>
+      <td>79160.646424</td>
+      <td>2022-11-29 11:21:09.812732</td>
+      <td>loss=5415.7 valloss=5095.94 stop=166/500</td>
+    </tr>
+    <tr>
+      <th>neural network m02 two layers (v06)</th>
+      <td>0.516773</td>
+      <td>112.54</td>
+      <td>64363.094125</td>
+      <td>6262090339.685114</td>
+      <td>0.445656</td>
+      <td>79133.370582</td>
+      <td>2022-11-29 09:31:18.853517</td>
+      <td>mse +norm +epochs=50 +learn=0.003 +endloss=5785.6953125</td>
+    </tr>
+    <tr>
+      <th>neural network m01 simple (v09)</th>
+      <td>0.508847</td>
+      <td>188.63</td>
+      <td>60215.315359</td>
+      <td>5548257.869072</td>
+      <td>0.508847</td>
+      <td>74486.628794</td>
+      <td>2022-11-30 13:08:10.248178</td>
+      <td>loss=5724.92 valloss=5608.12 +valsplit=0.1 stop=42/50</td>
+    </tr>
+    <tr>
+      <th>knn (v10)</th>
+      <td>0.484585</td>
+      <td>0.29179</td>
+      <td>61764.24973</td>
+      <td>5822338150.186446</td>
+      <td>0.484585</td>
+      <td>76304.247262</td>
+      <td>2022-11-30 15:12:50.989371</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>xg boost (v11)</th>
+      <td>0.484341</td>
+      <td>1.663234</td>
+      <td>61556.686774</td>
+      <td>5825092993.841407</td>
+      <td>0.484341</td>
+      <td>76322.296833</td>
+      <td>2022-11-30 16:55:55.436173</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>xg boost (linear) (v11)</th>
+      <td>0.484341</td>
+      <td>12.681655</td>
+      <td>62224.321741</td>
+      <td>5901034500.694016</td>
+      <td>0.477618</td>
+      <td>76818.191209</td>
+      <td>2022-11-30 19:47:04.498556</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>linear regression (ridge) (v10)</th>
+      <td>0.470806</td>
+      <td>0.239057</td>
+      <td>62596.206431</td>
+      <td>5977987697.000203</td>
+      <td>0.470806</td>
+      <td>77317.447559</td>
+      <td>2022-12-01 19:50:08.050622</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>knn (v11)</th>
+      <td>0.465113</td>
+      <td>0.618877</td>
+      <td>62944.705459</td>
+      <td>6042299808.369307</td>
+      <td>0.465113</td>
+      <td>77732.231464</td>
+      <td>2022-11-30 16:20:53.948815</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>linear regression (ridge) (v09)</th>
+      <td>0.459888</td>
+      <td>0.252632</td>
+      <td>63349.473489</td>
+      <td>6101320425.226782</td>
+      <td>0.459888</td>
+      <td>78110.949458</td>
+      <td>2022-11-29 19:51:49.096191</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>linear regression (ridge) (v06)</th>
+      <td>0.4569</td>
+      <td>0.28695</td>
+      <td>63603.059705</td>
+      <td>6135206763.74439</td>
+      <td>0.456889</td>
+      <td>78327.560691</td>
+      <td>2022-12-03 19:20:52.874336</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>random forest (v09)</th>
+      <td>0.254902</td>
+      <td>4.46726</td>
+      <td>75769.623829</td>
+      <td>8416934462.036383</td>
+      <td>0.254902</td>
+      <td>91743.852448</td>
+      <td>2022-11-29 20:45:43.360554</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>decision tree - random search (v02)</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>74554.958559</td>
+      <td>8269820617.092809</td>
+      <td>0.27729</td>
+      <td>90938.554074</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>knn - basic (v01)</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>55623.658938</td>
+      <td>5345846038.636742</td>
+      <td>0.546891</td>
+      <td>73115.292782</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>knn - basic (v02)</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>52181.509425</td>
+      <td>4756132768.229192</td>
+      <td>0.584356</td>
+      <td>68964.721186</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>knn - random search (v01)</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>52593.853617</td>
+      <td>4861549135.852183</td>
+      <td>0.587939</td>
+      <td>69724.810045</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>knn - random search (v02)</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>49441.229311</td>
+      <td>4262784354.54101</td>
+      <td>0.62747</td>
+      <td>65290.001949</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>knn - scaled (v01)</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>52147.370488</td>
+      <td>4867444312.242618</td>
+      <td>0.58744</td>
+      <td>69767.071834</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>linear regression (ridge) - random search (v02)</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>71267.87544</td>
+      <td>7702385505.171303</td>
+      <td>0.326879</td>
+      <td>87763.235499</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>linear regression (ridge) - random search (v03)</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>70746.660452</td>
+      <td>7492527878.209663</td>
+      <td>0.326511</td>
+      <td>86559.389313</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>linear regression (ridge) - random search (v04)</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>71834.403182</td>
+      <td>7712522953.793764</td>
+      <td>0.321224</td>
+      <td>87820.971036</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>linear regression (ridge) - random search (v05)</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>63770.695868</td>
+      <td>6191276570.283344</td>
+      <td>0.443478</td>
+      <td>78684.665407</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>linear regression - basic (v01)</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>72921.558095</td>
+      <td>8297985798.70861</td>
+      <td>0.29667</td>
+      <td>91093.280755</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>xg boost (v02) rs</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>45160.157667</td>
+      <td>3627875443.187743</td>
+      <td>0.682955</td>
+      <td>60231.847416</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>xg boost - basic (v02)</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>48536.519056</td>
+      <td>3979587053.666782</td>
+      <td>0.652219</td>
+      <td>63083.968278</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table><hr><h2>Appendix</h2><h3>Data Sample</h3><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Price</th>
+      <th>bedrooms</th>
+      <th>bathrooms</th>
+      <th>nearestStation</th>
+      <th>location.latitude</th>
+      <th>location.longitude</th>
+      <th>latitude_deviation</th>
+      <th>longitude_deviation</th>
+      <th>tenure.tenureType</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>14520525</th>
+      <td>550000.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>0.274316</td>
+      <td>51.529950</td>
+      <td>-0.207020</td>
+      <td>0.030230</td>
+      <td>0.102600</td>
+      <td>LEASEHOLD</td>
+    </tr>
+    <tr>
+      <th>27953107</th>
+      <td>400000.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0.305845</td>
+      <td>51.549390</td>
+      <td>-0.482600</td>
+      <td>0.049670</td>
+      <td>0.378180</td>
+      <td>LEASEHOLD</td>
+    </tr>
+    <tr>
+      <th>33593487</th>
+      <td>579950.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.438045</td>
+      <td>51.447180</td>
+      <td>-0.338770</td>
+      <td>0.052540</td>
+      <td>0.234350</td>
+      <td>FREEHOLD</td>
+    </tr>
+    <tr>
+      <th>35271294</th>
+      <td>370000.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.399307</td>
+      <td>51.449568</td>
+      <td>-0.140154</td>
+      <td>0.050152</td>
+      <td>0.035734</td>
+      <td>LEASEHOLD</td>
+    </tr>
+    <tr>
+      <th>44749111</th>
+      <td>475000.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.410550</td>
+      <td>51.370050</td>
+      <td>-0.212410</td>
+      <td>0.129670</td>
+      <td>0.107990</td>
+      <td>FREEHOLD</td>
+    </tr>
+  </tbody>
+</table><hr><h3>FIX THIS!!</h3>FIX THIS!<br><hr><h3>Environment Variables</h3>{'notebook_environment': 'gradient', 'use_gpu': True, 'debug_mode': False, 'quick_mode': False, 'quick_override_cv_splits': 2, 'quick_override_n_iter': 10, 'quick_override_n_jobs': 3}
+<hr><h3>Useful info</h3>Tensorflow version: 2.9.1<br><hr>

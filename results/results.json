@@ -1140,21 +1140,21 @@
         "suboptimal": "suboptimal"
     },
     "neural network m12 mega (v06)": {
-        "Mean Absolute Error Accuracy": 53.26281031877806,
-        "Mean Squared Error Accuracy": 4585.983290665589,
-        "R square Accuracy": 0.594031637907064,
-        "Root Mean Squared Error": 67.71988844250697,
-        "_method": "loss=4386.51 valloss=4438.8 +valsplit=0.1 stop=201/400 ",
+        "Mean Absolute Error Accuracy": 54967.97595173351,
+        "Mean Squared Error Accuracy": 4807033830.676171,
+        "R square Accuracy": 0.5744634188403892,
+        "Root Mean Squared Error": 69332.77602026456,
+        "_method": "loss=4.95e+09 valloss=4.83e+09 +valsplit=0.1 +patn=25 stop=210/400 ",
         "_params": "mse +epochs=400 +learn=0.0003",
-        "_score": 0.594031637907064,
-        "_train time": 813.27,
+        "_score": 0.5744634188403892,
+        "_train time": 701.19,
         "best is shared": false,
         "best method": "loss=4386.51 valloss=4438.8 +valsplit=0.1 stop=201/400 ",
         "best params": "mse +epochs=400 +learn=0.0003",
         "best run date": "2022-11-29 17:08:44.480482",
         "best score": 0.594031637907064,
         "best time": 813.27,
-        "date": "2022-11-29 17:08:44.480482",
+        "date": "2022-12-07 15:08:22.867761",
         "first run": "2022-11-29 14:57:19.333225",
         "random_state": 101,
         "run_env": "gradient",
@@ -1163,7 +1163,7 @@
         "silver run date": "2022-11-29 14:57:19.331629",
         "silver score": 0.5905601062802208,
         "silver time": 1714.15,
-        "suboptimal": "pending"
+        "suboptimal": "suboptimal"
     },
     "neural network m12 mega (v09)": {
         "Mean Absolute Error Accuracy": 55.158283239997814,
