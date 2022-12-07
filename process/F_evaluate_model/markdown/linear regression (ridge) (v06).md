@@ -1,26 +1,26 @@
 # Results from Linear Regression (Ridge)
 ### Dataset Version: 06
-Date run: 2022-12-07 08:04:55.314367
+Date run: 2022-12-07 08:12:34.305325
 
-Start time: 2022-12-07 07:54:44.675372
+Start time: 2022-12-07 08:12:16.037165
 
-End time: 2022-12-07 08:04:55.314253
+End time: 2022-12-07 08:12:34.305160
 
 ## Results
 ### Summary
 not updated saved model, the previous run was better
-0.4568945654457299 is worse than or equal to '0.45690010489487065
+0.456888592235293 is worse than or equal to '0.45690010489487065
 
 ### Tuned Models ranked by performance, with parameter details
-|   rank_test_score |   mean_test_score |   mean_fit_time |   mean_score_time |   param_model__tol | param_model__solver   |   param_model__random_state | param_model__positive   |   param_model__max_iter | param_model__fit_intercept   | param_model__copy_X   |   param_model__alpha | params2                                             |
-|------------------:|------------------:|----------------:|------------------:|-------------------:|:----------------------|----------------------------:|:------------------------|------------------------:|:-----------------------------|:----------------------|---------------------:|:----------------------------------------------------|
-|                 1 |          0.444667 |       0.435375  |        0.00617043 |             0.001  | sag                   |                         101 | False                   |                    1000 | True                         | False                 |              10      | 0.001/sag/101/False/1000/True/False/10              |
-|                 2 |          0.444664 |       0.231104  |        0.00759236 |             0.0001 | saga                  |                         101 | False                   |                     100 | True                         | False                 |               0.1    | 0.0001/saga/101/False/100/True/False/0.1            |
-|                 3 |          0.444664 |       0.285535  |        0.00341455 |             0.0001 | saga                  |                         101 | False                   |                  100000 | True                         | True                  |               0.01   | 0.0001/saga/101/False/100000/True/True/0.01         |
-|                 4 |          0.444663 |       0.0287785 |        0.00523297 |             0.001  | auto                  |                         101 | False                   |                    1000 | True                         | False                 |               0.1    | 0.001/auto/101/False/1000/True/False/0.1            |
-|                 5 |          0.444662 |       0.0369453 |        0.00637221 |             0.001  | lsqr                  |                         101 | False                   |                  100000 | True                         | False                 |               1      | 0.001/lsqr/101/False/100000/True/False/1            |
-|                 6 |        -15.2623   |       0.0335481 |        0.00462786 |             0.01   | sparse_cg             |                         101 | False                   |                 1000000 | False                        | False                 |               0.0001 | 0.01/sparse_cg/101/False/1000000/False/False/0.0001 |
-|                 7 |        -15.2623   |       0.464368  |        0.00337195 |             1e-05  | saga                  |                         101 | False                   |                    1000 | False                        | False                 |               0.01   | 1e-05/saga/101/False/1000/False/False/0.01          |
+|   rank_test_score |   mean_test_score |   mean_fit_time |   mean_score_time |   param_model__tol | param_model__solver   |   param_model__random_state | param_model__positive   |   param_model__max_iter | param_model__fit_intercept   | param_model__copy_X   |   param_model__alpha | params2                                       |
+|------------------:|------------------:|----------------:|------------------:|-------------------:|:----------------------|----------------------------:|:------------------------|------------------------:|:-----------------------------|:----------------------|---------------------:|:----------------------------------------------|
+|                 1 |          0.444666 |       0.0139121 |        0.00192451 |             0.0001 | lsqr                  |                         101 | False                   |                  100000 | True                         | False                 |                0.001 | 0.0001/lsqr/101/False/100000/True/False/0.001 |
+|                 2 |          0.444664 |       0.0724354 |        0.0019873  |             0.0001 | saga                  |                         101 | False                   |                   10000 | True                         | False                 |                0.01  | 0.0001/saga/101/False/10000/True/False/0.01   |
+|                 3 |          0.444664 |       0.0209387 |        0.00203721 |             0.001  | svd                   |                         101 | False                   |                   10000 | True                         | False                 |               10     | 0.001/svd/101/False/10000/True/False/10       |
+|                 3 |          0.444664 |       0.0107918 |        0.00187548 |             0.0001 | auto                  |                         101 | False                   |                  100000 | True                         | False                 |               10     | 0.0001/auto/101/False/100000/True/False/10    |
+|                 3 |          0.444664 |       0.0297371 |        0.00199811 |             0.0001 | svd                   |                         101 | False                   |                  100000 | True                         | False                 |               10     | 0.0001/svd/101/False/100000/True/False/10     |
+|                 3 |          0.444664 |       0.0229452 |        0.00337013 |             1e-05  | svd                   |                         101 | False                   |                    1000 | True                         | True                  |               10     | 1e-05/svd/101/False/1000/True/True/10         |
+|                 7 |          0.444663 |       0.0108413 |        0.00166376 |             1e-05  | auto                  |                         101 | False                   |                    1000 | True                         | True                  |                1     | 1e-05/auto/101/False/1000/True/True/1         |
 ### Best and worst models obtained by tuning
 ![detail](../artifacts/linear_regression__ridge___v06__best_and_worst.png)
 ### Best Model: Comparing model predictions to actual property values
@@ -46,7 +46,7 @@ not updated saved model, the previous run was better
 | decision tree - (v06)                   |     0.524696 |  nan         |                     57094.1    |                   5.36923e+09 |            0.524696 |                73275      | nan                        | random search-no scale                                                                                                 |
 | neural network m04 3 layers+wider (v06) |     0.520933 |  395.14      |                     64421.2    |                   6.26641e+09 |            0.445274 |                79160.6    | 2022-11-29 11:21:09.812732 | loss=5415.7 valloss=5095.94 stop=166/500                                                                               |
 | neural network m02 two layers (v06)     |     0.516773 |  112.54      |                     64363.1    |                   6.26209e+09 |            0.445656 |                79133.4    | 2022-11-29 09:31:18.853517 | mse +norm +epochs=50 +learn=0.003 +endloss=5785.6953125                                                                |
-| linear regression (ridge) (v06)         |     0.4569   |    0.28695   |                     63603      |                   6.13514e+09 |            0.456895 |                78327.1    | 2022-12-03 19:20:52.874336 | random search                                                                                                          |
+| linear regression (ridge) (v06)         |     0.4569   |    0.28695   |                     63603.1    |                   6.13521e+09 |            0.456889 |                78327.6    | 2022-12-03 19:20:52.874336 | random search                                                                                                          |
 ### Comparison with all model performances
 |                                                          |   best score |    best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                                                                                            |
 |:---------------------------------------------------------|-------------:|-------------:|-------------------------------:|------------------------------:|--------------------:|--------------------------:|:---------------------------|:-----------------------------------------------------------------------------------------------------------------------|
@@ -95,7 +95,7 @@ not updated saved model, the previous run was better
 | linear regression (ridge) (v10)                          |     0.470806 |    0.239057  |                     62596.2    |                   5.97799e+09 |            0.470806 |                77317.4    | 2022-12-01 19:50:08.050622 | random search                                                                                                          |
 | knn (v11)                                                |     0.465113 |    0.618877  |                     62944.7    |                   6.0423e+09  |            0.465113 |                77732.2    | 2022-11-30 16:20:53.948815 | random search                                                                                                          |
 | linear regression (ridge) (v09)                          |     0.459888 |    0.252632  |                     63349.5    |                   6.10132e+09 |            0.459888 |                78110.9    | 2022-11-29 19:51:49.096191 | random search                                                                                                          |
-| linear regression (ridge) (v06)                          |     0.4569   |    0.28695   |                     63603      |                   6.13514e+09 |            0.456895 |                78327.1    | 2022-12-03 19:20:52.874336 | random search                                                                                                          |
+| linear regression (ridge) (v06)                          |     0.4569   |    0.28695   |                     63603.1    |                   6.13521e+09 |            0.456889 |                78327.6    | 2022-12-03 19:20:52.874336 | random search                                                                                                          |
 | random forest (v09)                                      |     0.254902 |    4.46726   |                     75769.6    |                   8.41693e+09 |            0.254902 |                91743.9    | 2022-11-29 20:45:43.360554 | random search                                                                                                          |
 | decision tree - random search (v02)                      |   nan        |  nan         |                     74555      |                   8.26982e+09 |            0.27729  |                90938.6    | nan                        | nan                                                                                                                    |
 | knn - basic (v01)                                        |   nan        |  nan         |                     55623.7    |                   5.34585e+09 |            0.546891 |                73115.3    | nan                        | nan                                                                                                                    |
@@ -139,9 +139,9 @@ model__random_state = [101]
 ### Range of hyperparameter results
 ![detail](../artifacts/linear_regression__ridge___v06__evolution_of_models_fig.png)
 ### Environment Variables
-notebook_environment = local
+notebook_environment = gradient
 
-use_gpu = False
+use_gpu = True
 
 debug_mode = False
 
