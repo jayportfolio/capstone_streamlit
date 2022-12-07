@@ -11,16 +11,16 @@
 # * what fraction of the data we'll use for testing (0.1)
 # * if the data split will be randomised (it won't!)
 
-# In[1]:
+# In[38]:
 
 
-ALGORITHM = 'Linear Regression (Ridge)'
+#ALGORITHM = 'Linear Regression (Ridge)'
 #ALGORITHM = 'KNN'
 #ALGORITHM = 'Decision Tree'
 #ALGORITHM = 'Random Forest'
 #ALGORITHM = 'XG Boost (tree)'
 #ALGORITHM = 'CatBoost'
-#ALGORITHM = 'Light Gradient Boosting'
+ALGORITHM = 'Light Gradient Boosting'
 
 ALGORITHM_DETAIL = 'random search'
 #DATA_DETAIL = ['no scale','no dummies']
@@ -49,7 +49,7 @@ create_python_script = True
 # 
 # 
 
-# In[2]:
+# In[39]:
 
 
 from sklearn.impute import SimpleImputer
@@ -130,7 +130,7 @@ from functions_f_evaluate_model_20221116 import get_best_estimator_average_time,
 print(env_vars)
 
 
-# In[3]:
+# In[40]:
 
 
 if is_jupyter:
@@ -145,7 +145,7 @@ if is_jupyter:
 
 # #### Include any overrides specific to the algorthm / python environment being used
 
-# In[4]:
+# In[41]:
 
 
 #running_locally = True
@@ -154,7 +154,7 @@ running_locally = run_env == 'local'
 
 if 'forest' in ALGORITHM.lower():
     #OVERRIDE_N_ITER = 5
-    OVERRIDE_N_ITER = 25
+    OVERRIDE_N_ITER = 50
     if use_gpu:
         #OVERRIDE_JOBS = 8
         OVERRIDE_JOBS = 4
@@ -180,7 +180,7 @@ if 'forest' in ALGORITHM.lower() or True:
 # 
 # 
 
-# In[5]:
+# In[42]:
 
 
 from sklearn.pipeline import Pipeline
@@ -203,14 +203,14 @@ starter_pipe
 # 
 # ## Stage: get the data
 
-# In[6]:
+# In[43]:
 
 
 columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 LABEL = 'Price'
 
 
-# In[7]:
+# In[44]:
 
 
 df, retrieval_type = get_source_dataframe(cloud_run, VERSION, folder_prefix='../../../', row_limit=None)
@@ -224,7 +224,7 @@ if retrieval_type != 'tidy':
     df = df[columns]
 
 
-# In[8]:
+# In[45]:
 
 
 print(colored(f"features", "blue"), "-> ", columns)
@@ -232,20 +232,20 @@ columns.insert(0, LABEL)
 print(colored(f"label", "green", None, ['bold']), "-> ", LABEL)
 
 
-# In[9]:
+# In[46]:
 
 
 df = preprocess(df, version=VERSION)
 df = df.dropna()
 
 
-# In[10]:
+# In[47]:
 
 
 df.head(5)
 
 
-# In[11]:
+# In[48]:
 
 
 X_train, X_test, y_train, y_test, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
@@ -268,7 +268,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 
 
 
-# In[12]:
+# In[49]:
 
 
 #imputer = SimpleImputer(strategy='mean')
@@ -276,13 +276,13 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 #X_train[6] = imputer.transform(X_train[6])
 
 
-# In[13]:
+# In[50]:
 
 
 starter_model = starter_pipe[-1]
 
 
-# In[14]:
+# In[51]:
 
 
 X_train
@@ -302,7 +302,7 @@ X_train
 
 
 
-# In[15]:
+# In[52]:
 
 
 options_block = get_hyperparameters(ALGORITHM, use_gpu, prefix='../../../')
@@ -343,7 +343,7 @@ print("cv:", cv, "n_jobs:", n_jobs, "refit:", refit, "n_iter:", n_iter, "verbose
 #param_options if not using_catboost else options_block
 
 
-# In[16]:
+# In[ ]:
 
 
 def fit_model_with_cross_validation(gs, X_train, y_train, fits):
@@ -426,7 +426,7 @@ else:
 crossval_runner
 
 
-# In[17]:
+# In[ ]:
 
 
 if ALGORITHM_DETAIL == 'grid search' or ALGORITHM_DETAIL == 'grid search (implied)':
@@ -439,7 +439,7 @@ if ALGORITHM_DETAIL == 'grid search' or ALGORITHM_DETAIL == 'grid search (implie
 # 
 # 
 
-# In[18]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -469,7 +469,7 @@ else:
 
 
 
-# In[19]:
+# In[ ]:
 
 
 key = f'{ALGORITHM} (v{VERSION})'.lower()
@@ -515,7 +515,7 @@ if not using_catboost:
 # 
 # 
 
-# In[20]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -530,7 +530,7 @@ else:
 
 
 
-# In[21]:
+# In[ ]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -552,7 +552,7 @@ print('Root Mean Squared Error', RMSE)
 
 
 
-# In[22]:
+# In[ ]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -578,7 +578,7 @@ combined
 
 
 
-# In[23]:
+# In[ ]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -591,7 +591,7 @@ best_model_ax.set_xlabel('Actual')
 plt.show()
 
 
-# In[24]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -647,7 +647,7 @@ if not using_catboost:
     best_model_scores[-1] = fitted_graph_model.score(X_test, y_test)
 
 
-# In[36]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -706,7 +706,7 @@ if not using_catboost:
     plt.show()
 
 
-# In[26]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -753,7 +753,7 @@ if not using_catboost:
 # 
 # 
 
-# In[27]:
+# In[ ]:
 
 
 # <catboost.core.CatBoostRegressor object at 0x7fb167387490>
@@ -797,13 +797,13 @@ print(key)
 new_results
 
 
-# In[28]:
+# In[ ]:
 
 
 crossval_runner.best_estimator_  if not using_catboost else ''
 
 
-# In[29]:
+# In[ ]:
 
 
 if this_model_is_best:
@@ -825,7 +825,7 @@ print(new_model_decision)
 # ## Stage: Investigate the feature importances (if applicable)
 # 
 
-# In[30]:
+# In[ ]:
 
 
 if model_uses_feature_importances:
@@ -848,7 +848,7 @@ else:
     print(f'{ALGORITHM} does not have feature_importances, skipping')
 
 
-# In[31]:
+# In[ ]:
 
 
 if model_uses_feature_importances:
@@ -866,7 +866,7 @@ else:
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[32]:
+# In[ ]:
 
 
 from bs4 import BeautifulSoup
@@ -1056,13 +1056,13 @@ def print_and_report(text_single, title):
 
 
 
-# In[33]:
+# In[ ]:
 
 
 print('Nearly finished...')
 
 
-# In[34]:
+# In[ ]:
 
 
 # !jupyter nbconvert --to script mycode.ipynb
@@ -1076,13 +1076,13 @@ print('Nearly finished...')
 #             f.write(line)
 
 if create_python_script and is_jupyter:
-    get_ipython().system("jupyter nbconvert --to script 'all_models_except_neural_networks.ipynb.ipynb'")
+    get_ipython().system("jupyter nbconvert --to script 'all_models_except_neural_networks.ipynb'")
 
 #!jupyter nbconvert --to script 'it10_all_models_20221203.ipynb' &&  \
 #!mv ./folder/notebooks/*.py ./folder/python_scripts && \
 
 
-# In[35]:
+# In[ ]:
 
 
 print('Finished!')

@@ -1,6 +1,22 @@
 Details Here!
 
+
 ##### Running the python model trainer on cloud:
+
+cd /notebooks/process/E_train_model/all_models_and_versions
+
+`   
+
+or
+
+python it10_ann_neural_model__20221203.py
+
+
+-----
+
+Old version:
+
+Running the python model trainer on cloud:
 
 cd /notebooks/process/E_train_model/iteration10
 

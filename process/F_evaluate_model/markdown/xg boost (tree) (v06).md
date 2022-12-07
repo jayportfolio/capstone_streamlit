@@ -1,40 +1,43 @@
 # Results from XG Boost (tree)
 ### Dataset Version: 06
-Date run: 2022-12-04 08:20:33.878211
+Date run: 2022-12-07 09:43:39.684640
 
-Start time: 2022-12-04 07:34:53.302354
+Start time: 2022-12-07 08:57:07.775640
 
-End time: 2022-12-04 08:20:33.878085
+End time: 2022-12-07 09:43:39.684630
 
 ## Results
 ### Summary
-not updated saved model, the previous run was better
-0.6984415205541901 is worse than or equal to '0.7259889481123455
+pickled new version of model
+0.7271319570762387 is new best score (it's better than 0.7259889481123455)
 
 ### Tuned Models ranked by performance, with parameter details
-|   rank_test_score |   mean_test_score |   mean_fit_time |   mean_score_time | param_model__booster   |   param_model__colsample_bytree | param_model__lambda   | param_model__learning_rate   |   param_model__max_depth |   param_model__n_estimators |   param_model__n_jobs | param_model__objective   |   param_model__subsample | param_model__tree_method   |   param_model__verbosity | params2                                               |
-|------------------:|------------------:|----------------:|------------------:|:-----------------------|--------------------------------:|:----------------------|:-----------------------------|-------------------------:|----------------------------:|----------------------:|:-------------------------|-------------------------:|:---------------------------|-------------------------:|:------------------------------------------------------|
-|                 1 |          0.677228 |        14.8719  |         0.10968   | gbtree                 |                               1 |                       |                              |                        6 |                         500 |                     3 | reg:squarederror         |                        1 | auto                       |                        1 | gbtree/1/None/None/6/500/3/reg:squarederror/1/auto/1  |
-|                 2 |          0.675166 |         5.97071 |         0.0494262 | gbtree                 |                               1 |                       |                              |                        6 |                         200 |                     3 | reg:squarederror         |                        1 | auto                       |                        1 | gbtree/1/None/None/6/200/3/reg:squarederror/1/auto/1  |
-|                 3 |          0.672075 |        28.0206  |         0.114468  | gbtree                 |                               1 |                       |                              |                        6 |                        1000 |                     3 | reg:squarederror         |                        1 | auto                       |                        1 | gbtree/1/None/None/6/1000/3/reg:squarederror/1/auto/1 |
-|                 4 |          0.669211 |         3.02568 |         0.0261268 | gbtree                 |                               1 |                       |                              |                        6 |                         100 |                     3 | reg:squarederror         |                        1 | auto                       |                        1 | gbtree/1/None/None/6/100/3/reg:squarederror/1/auto/1  |
+|   rank_test_score |   mean_test_score |   mean_fit_time |   mean_score_time |   param_model__verbosity | param_model__tree_method   |   param_model__subsample | param_model__objective   |   param_model__n_jobs |   param_model__n_estimators |   param_model__min_samples_leaf |   param_model__min_sample_split |   param_model__max_samples |   param_model__max_leaf_nodes |   param_model__max_features |   param_model__max_depth |   param_model__learning_rate |   param_model__lambda |   param_model__colsample_bytree | param_model__booster   | params2                                                                     |
+|------------------:|------------------:|----------------:|------------------:|-------------------------:|:---------------------------|-------------------------:|:-------------------------|----------------------:|----------------------------:|--------------------------------:|--------------------------------:|---------------------------:|------------------------------:|----------------------------:|-------------------------:|-----------------------------:|----------------------:|--------------------------------:|:-----------------------|:----------------------------------------------------------------------------|
+|                 1 |          0.703428 |      357.707    |         2.44645   |                        1 | hist                       |                     0.5  | reg:squarederror         |                     3 |                         500 |                            2000 |                                 |                        1   |                            20 |                             |                       10 |                         0.1  |                     1 |                            0.9  | dart                   | 1/hist/0.5/reg:squarederror/3/500/2000/None/1/20/None/10/0.1/1/0.9/dart     |
+|                 2 |          0.697337 |       13.3685   |         0.173263  |                        1 | hist                       |                     0.75 | reg:squarederror         |                     3 |                         200 |                                 |                            2000 |                            |                             2 |                          16 |                       10 |                         0.1  |                   100 |                            1    | gbtree                 | 1/hist/0.75/reg:squarederror/3/200/None/2000/None/2/16/10/0.1/100/1/gbtree  |
+|                 3 |          0.690501 |        1.51293  |         0.0479833 |                        1 | hist                       |                     0.5  | reg:squarederror         |                     3 |                         100 |                             200 |                             200 |                        0.5 |                          2000 |                          64 |                       10 |                         0.3  |                    10 |                            0.9  | gbtree                 | 1/hist/0.5/reg:squarederror/3/100/200/200/0.5/2000/64/10/0.3/10/0.9/gbtree  |
+|                 4 |          0.689834 |        6.31256  |         0.43157   |                        1 | hist                       |                     0.9  | reg:squarederror         |                     3 |                         100 |                            2000 |                                 |                        0.9 |                          2000 |                           4 |                        8 |                         0.1  |                     1 |                            0.9  | dart                   | 1/hist/0.9/reg:squarederror/3/100/2000/None/0.9/2000/4/8/0.1/1/0.9/dart     |
+|                 5 |          0.681921 |      478.864    |         1.32084   |                        1 | auto                       |                     0.9  | reg:squarederror         |                     3 |                         500 |                               2 |                              20 |                        0.5 |                           200 |                          64 |                       10 |                              |                       |                            0.9  | dart                   | 1/auto/0.9/reg:squarederror/3/500/2/20/0.5/200/64/10/None/None/0.9/dart     |
+|                 6 |          0.677168 |       21.6869   |         0.291572  |                        1 | auto                       |                     0.9  | reg:squarederror         |                     3 |                         500 |                                 |                             200 |                        1   |                               |                           8 |                       10 |                         0.01 |                    10 |                            0.75 | gbtree                 | 1/auto/0.9/reg:squarederror/3/500/None/200/1/None/8/10/0.01/10/0.75/gbtree  |
+|                 7 |          0.667582 |        0.756444 |         0.0435766 |                        1 | hist                       |                     0.5  | reg:squarederror         |                     3 |                         200 |                             200 |                              20 |                            |                               |                          16 |                        6 |                         0.1  |                       |                            0.5  | gbtree                 | 1/hist/0.5/reg:squarederror/3/200/200/20/None/None/16/6/0.1/None/0.5/gbtree |
 ### Best and worst models obtained by tuning
 ![detail](../artifacts/xg_boost__tree___v06__best_and_worst.png)
 ### Best Model: Comparing model predictions to actual property values
 ![detail](../artifacts/xg_boost__tree___v06__best_model_correlation.png)
 ## Feature Importances
 ### Feature Importances
-1. features 9 (0.429971)		tenure.tenureType_LEASEHOLD
-2. features 0 (0.150394)		bedrooms
-3. features 1 (0.099094)		bathrooms
-4. features 8 (0.081491)		tenure.tenureType_FREEHOLD
-5. features 5 (0.071700)		latitude_deviation
-6. features 4 (0.059851)		location.longitude
-7. features 6 (0.040543)		longitude_deviation
-8. features 3 (0.028840)		location.latitude
-9. features 10 (0.017607)		tenure.tenureType_SHARE_OF_FREEHOLD
-10. features 2 (0.013337)		nearestStation
-11. features 7 (0.007172)		tenure.tenureType_COMMONHOLD
+1. features 9 (0.214327)		tenure.tenureType_LEASEHOLD
+2. features 0 (0.169639)		bedrooms
+3. features 4 (0.091915)		location.longitude
+4. features 8 (0.088230)		tenure.tenureType_FREEHOLD
+5. features 5 (0.082718)		latitude_deviation
+6. features 1 (0.073971)		bathrooms
+7. features 6 (0.072145)		longitude_deviation
+8. features 3 (0.064439)		location.latitude
+9. features 10 (0.062946)		tenure.tenureType_SHARE_OF_FREEHOLD
+10. features 7 (0.040570)		tenure.tenureType_COMMONHOLD
+11. features 2 (0.039098)		nearestStation
 
 
 ### Feature Importances (XG Boost (tree))
@@ -43,16 +46,16 @@ not updated saved model, the previous run was better
 ### Comparison with version 06 performances
 |                                         |   best score |    best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                                                                                            |
 |:----------------------------------------|-------------:|-------------:|-------------------------------:|------------------------------:|--------------------:|--------------------------:|:---------------------------|:-----------------------------------------------------------------------------------------------------------------------|
-| random forest (v06)                     |     0.730879 |   31.8129    |                     41719      |                   3.0401e+09  |            0.730879 |                55137.1    | 2022-12-04 06:12:36.585726 | random search                                                                                                          |
-| xg boost (tree) (v06)                   |     0.725989 |  217.286     |                     44533.1    |                   3.40653e+09 |            0.698442 |                58365.5    | 2022-12-03 00:21:25.790717 | random search                                                                                                          |
-| knn (v06)                               |     0.719049 |    0.0179159 |                     41529.5    |                   3.21814e+09 |            0.715118 |                56728.7    | 2022-11-21 18:05:21.585382 | random search                                                                                                          |
+| random forest (v06)                     |     0.730879 |   31.8129    |                     55624.3    |                   4.76219e+09 |            0.578433 |                69008.6    | 2022-12-04 06:12:36.585726 | random search                                                                                                          |
+| xg boost (tree) (v06)                   |     0.727132 |  134.175     |                     41210.4    |                   3.08243e+09 |            0.727132 |                55519.6    | 2022-12-07 09:43:37.103009 | random search                                                                                                          |
+| knn (v06)                               |     0.719049 |    0.0179159 |                     41531.1    |                   3.2181e+09  |            0.715122 |                56728.3    | 2022-11-21 18:05:21.585382 | random search                                                                                                          |
 | catboost (v06)                          |     0.715606 |   12.2565    |                     51000      |                   4.30136e+09 |            0.619227 |                65584.8    | 1999-11-13 15:26:55.706567 | random search                                                                                                          |
 | light gradient boosting (v06)           |     0.706735 |   15.0439    |                     44276.9    |                   3.35667e+09 |            0.702855 |                57936.8    | 2022-11-16 13:59:52.612654 | random search                                                                                                          |
 | xg boost (v06)                          |     0.687611 |   11.4748    |                     45988.3    |                   3.52887e+09 |            0.687611 |                59404.3    | nan                        | random search                                                                                                          |
-| neural network m11 mega (v06)           |     0.612318 | 2569.45      |                        50.3061 |                4379.41        |            0.612318 |                   66.1771 | 2022-11-29 12:57:16.459719 | loss=2833.6 valloss=4034.41 stop=619/1000                                                                              |
+| neural network m11 mega (v06)           |     0.612318 | 2569.45      |                     56035.9    |                   4.92994e+09 |            0.563583 |                70213.6    | 2022-11-29 12:57:16.459719 | loss=2833.6 valloss=4034.41 stop=619/1000                                                                              |
 | neural network m12 mega (v06)           |     0.594032 |  813.27      |                        53.2628 |                4585.98        |            0.594032 |                   67.7199 | 2022-11-29 17:08:44.480482 | loss=4386.51 valloss=4438.8 +valsplit=0.1 stop=201/400                                                                 |
-| decision tree (v06)                     |     0.593752 |    1.0309    |                     53671.4    |                   4.58915e+09 |            0.593752 |                67743.2    | 2022-12-03 19:44:13.536639 | random search                                                                                                          |
-| neural network m05 rec deep (v06)       |     0.580348 |  604.9       |                        55.3406 |                4917.4         |            0.564694 |                   70.1241 | 2022-11-29 11:41:39.682217 | loss=4908.71 valloss=4603.08 stop=214/500                                                                              |
+| decision tree (v06)                     |     0.593752 |    1.0309    |                     68471      |                   7.15005e+09 |            0.367051 |                84558      | 2022-12-03 19:44:13.536639 | random search                                                                                                          |
+| neural network m05 rec deep (v06)       |     0.580348 |  604.9       |                     59357.5    |                   5.47083e+09 |            0.515701 |                73965.1    | 2022-11-29 11:41:39.682217 | loss=4908.71 valloss=4603.08 stop=214/500                                                                              |
 | neural network (v06)                    |     0.556696 |  312.991     |                     66710.7    |                   6.64686e+09 |            0.411595 |                81528.3    | 2000-01-01 17:09:59.063570 | random search [input11, d^20-500-500-20-5, dense1]                                                                     |
 | neural network m03 2 layers+wider (v06) |     0.549647 |  275.71      |                     64376.5    |                   6.26802e+09 |            0.445131 |                79170.9    | 2022-11-29 10:13:10.517896 | mse +epochs=500 +learn=0.003 +loss=5229.0478515625                                                                     |
 | neural network m01 simple (v06)         |     0.541221 |   36.2       |                     80597.6    |                   9.31393e+09 |            0.175496 |                96508.7    | 2022-11-29 09:13:15.856770 | recommended simple model/mse +norm +epochs=50 +learn=0.003 +endloss=5610.65771484375 +stop=17 +endloss=5511.7373046875 |
@@ -60,14 +63,14 @@ not updated saved model, the previous run was better
 | decision tree - (v06)                   |     0.524696 |  nan         |                     57094.1    |                   5.36923e+09 |            0.524696 |                73275      | nan                        | random search-no scale                                                                                                 |
 | neural network m04 3 layers+wider (v06) |     0.520933 |  395.14      |                     64421.2    |                   6.26641e+09 |            0.445274 |                79160.6    | 2022-11-29 11:21:09.812732 | loss=5415.7 valloss=5095.94 stop=166/500                                                                               |
 | neural network m02 two layers (v06)     |     0.516773 |  112.54      |                     64363.1    |                   6.26209e+09 |            0.445656 |                79133.4    | 2022-11-29 09:31:18.853517 | mse +norm +epochs=50 +learn=0.003 +endloss=5785.6953125                                                                |
-| linear regression (ridge) (v06)         |     0.4569   |    0.28695   |                     63601.9    |                   6.13508e+09 |            0.4569   |                78326.7    | 2022-12-03 19:20:52.874336 | random search                                                                                                          |
+| linear regression (ridge) (v06)         |     0.4569   |    0.28695   |                     63603.1    |                   6.13521e+09 |            0.456889 |                78327.6    | 2022-12-03 19:20:52.874336 | random search                                                                                                          |
 ### Comparison with all model performances
 |                                                          |   best score |    best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                                                                                            |
 |:---------------------------------------------------------|-------------:|-------------:|-------------------------------:|------------------------------:|--------------------:|--------------------------:|:---------------------------|:-----------------------------------------------------------------------------------------------------------------------|
-| random forest (v06)                                      |     0.730879 |   31.8129    |                     41719      |                   3.0401e+09  |            0.730879 |                55137.1    | 2022-12-04 06:12:36.585726 | random search                                                                                                          |
-| xg boost (tree) (v06)                                    |     0.725989 |  217.286     |                     44533.1    |                   3.40653e+09 |            0.698442 |                58365.5    | 2022-12-03 00:21:25.790717 | random search                                                                                                          |
+| random forest (v06)                                      |     0.730879 |   31.8129    |                     55624.3    |                   4.76219e+09 |            0.578433 |                69008.6    | 2022-12-04 06:12:36.585726 | random search                                                                                                          |
+| xg boost (tree) (v06)                                    |     0.727132 |  134.175     |                     41210.4    |                   3.08243e+09 |            0.727132 |                55519.6    | 2022-12-07 09:43:37.103009 | random search                                                                                                          |
 | xg boost (v11) rs                                        |     0.721019 |  nan         |                     42603      |                   3.15148e+09 |            0.721019 |                56138      | nan                        | nan                                                                                                                    |
-| knn (v06)                                                |     0.719049 |    0.0179159 |                     41529.5    |                   3.21814e+09 |            0.715118 |                56728.7    | 2022-11-21 18:05:21.585382 | random search                                                                                                          |
+| knn (v06)                                                |     0.719049 |    0.0179159 |                     41531.1    |                   3.2181e+09  |            0.715122 |                56728.3    | 2022-11-21 18:05:21.585382 | random search                                                                                                          |
 | catboost (v06)                                           |     0.715606 |   12.2565    |                     51000      |                   4.30136e+09 |            0.619227 |                65584.8    | 1999-11-13 15:26:55.706567 | random search                                                                                                          |
 | xg boost (v05) rs                                        |     0.710594 |  nan         |                     42229      |                   3.21963e+09 |            0.710594 |                56741.7    | nan                        | nan                                                                                                                    |
 | light gradient boosting (v06)                            |     0.706735 |   15.0439    |                     44276.9    |                   3.35667e+09 |            0.702855 |                57936.8    | 2022-11-16 13:59:52.612654 | random search                                                                                                          |
@@ -79,15 +82,15 @@ not updated saved model, the previous run was better
 | xg boost (v10)                                           |     0.681785 |    9.30959   |                     46626.7    |                   3.59469e+09 |            0.681785 |                59955.7    | 2022-11-30 14:45:52.207314 | random search                                                                                                          |
 | random forest - random search (vx10)                     |     0.647421 |  nan         |                     49942      |                   3.98288e+09 |            0.647421 |                63110.1    | nan                        | nan                                                                                                                    |
 | knn (v09)                                                |     0.644916 |    0.112408  |                     48389.1    |                   4.15737e+09 |            0.631974 |                64477.7    | 2022-11-30 12:53:42.390150 | random search                                                                                                          |
-| neural network m11 mega (v06)                            |     0.612318 | 2569.45      |                        50.3061 |                4379.41        |            0.612318 |                   66.1771 | 2022-11-29 12:57:16.459719 | loss=2833.6 valloss=4034.41 stop=619/1000                                                                              |
+| neural network m11 mega (v06)                            |     0.612318 | 2569.45      |                     56035.9    |                   4.92994e+09 |            0.563583 |                70213.6    | 2022-11-29 12:57:16.459719 | loss=2833.6 valloss=4034.41 stop=619/1000                                                                              |
 | xg boost (tree) (v11)                                    |     0.603614 |   14.2104    |                     52330.4    |                   4.47774e+09 |            0.603614 |                66915.9    | 2022-11-30 20:18:59.876471 | random search                                                                                                          |
 | xg boost (v04) rs                                        |     0.603522 |  nan         |                     50419.2    |                   4.50494e+09 |            0.603522 |                67118.9    | nan                        | nan                                                                                                                    |
 | decision tree (v09)                                      |     0.596457 |    0.105919  |                     51852.7    |                   4.55859e+09 |            0.596457 |                67517.3    | 2022-11-29 20:03:38.094060 | random search                                                                                                          |
 | neural network m12 mega (v06)                            |     0.594032 |  813.27      |                        53.2628 |                4585.98        |            0.594032 |                   67.7199 | 2022-11-29 17:08:44.480482 | loss=4386.51 valloss=4438.8 +valsplit=0.1 stop=201/400                                                                 |
-| decision tree (v06)                                      |     0.593752 |    1.0309    |                     53671.4    |                   4.58915e+09 |            0.593752 |                67743.2    | 2022-12-03 19:44:13.536639 | random search                                                                                                          |
+| decision tree (v06)                                      |     0.593752 |    1.0309    |                     68471      |                   7.15005e+09 |            0.367051 |                84558      | 2022-12-03 19:44:13.536639 | random search                                                                                                          |
 | neural network m13 mega (v10)                            |     0.583716 |  142.89      |                     54668.9    |                   4.94809e+09 |            0.561977 |                70342.6    | 2022-12-01 10:27:39.663081 | loss=3878948096.0 valloss=4822886400.0 +valsplit=0.1 stop=38/400                                                       |
 | xg boost (v03) rs                                        |     0.582071 |  nan         |                     51147.3    |                   4.7333e+09  |            0.574533 |                68799      | nan                        | nan                                                                                                                    |
-| neural network m05 rec deep (v06)                        |     0.580348 |  604.9       |                        55.3406 |                4917.4         |            0.564694 |                   70.1241 | 2022-11-29 11:41:39.682217 | loss=4908.71 valloss=4603.08 stop=214/500                                                                              |
+| neural network m05 rec deep (v06)                        |     0.580348 |  604.9       |                     59357.5    |                   5.47083e+09 |            0.515701 |                73965.1    | 2022-11-29 11:41:39.682217 | loss=4908.71 valloss=4603.08 stop=214/500                                                                              |
 | neural network m14 mega (v10)                            |     0.579095 | 1129.09      |                     53124      |                   4.75471e+09 |            0.579095 |                68954.4    | 2022-12-01 11:52:45.011704 | loss=4.85e+04 valloss=5.34e+04 +valsplit=0.1 stop=156/400                                                              |
 | neural network m12 mega (v09)                            |     0.570335 |  556.62      |                        55.1583 |                4853.68        |            0.570335 |                   69.6683 | 2022-11-29 21:03:09.676165 | loss=4869.67 valloss=4726.34 +valsplit=0.1 stop=83/400                                                                 |
 | neural network m12 mega (v10)                            |     0.567453 |  240.1       |                     55444      |                   4.88623e+06 |            0.567453 |                69901.6    | 2022-12-01 09:57:17.586487 | loss=4790.75 valloss=4998.79 +valsplit=0.1 stop=66/400                                                                 |
@@ -106,10 +109,10 @@ not updated saved model, the previous run was better
 | knn (v10)                                                |     0.484585 |    0.29179   |                     61764.2    |                   5.82234e+09 |            0.484585 |                76304.2    | 2022-11-30 15:12:50.989371 | random search                                                                                                          |
 | xg boost (v11)                                           |     0.484341 |    1.66323   |                     61556.7    |                   5.82509e+09 |            0.484341 |                76322.3    | 2022-11-30 16:55:55.436173 | random search                                                                                                          |
 | xg boost (linear) (v11)                                  |     0.484341 |   12.6817    |                     62224.3    |                   5.90103e+09 |            0.477618 |                76818.2    | 2022-11-30 19:47:04.498556 | random search                                                                                                          |
-| linear regression (ridge) (v10)                          |     0.470806 |    0.239057  |                     62597.3    |                   5.97826e+09 |            0.470782 |                77319.2    | 2022-12-01 19:50:08.050622 | random search                                                                                                          |
+| linear regression (ridge) (v10)                          |     0.470806 |    0.239057  |                     62596.2    |                   5.97799e+09 |            0.470806 |                77317.4    | 2022-12-01 19:50:08.050622 | random search                                                                                                          |
 | knn (v11)                                                |     0.465113 |    0.618877  |                     62944.7    |                   6.0423e+09  |            0.465113 |                77732.2    | 2022-11-30 16:20:53.948815 | random search                                                                                                          |
 | linear regression (ridge) (v09)                          |     0.459888 |    0.252632  |                     63349.5    |                   6.10132e+09 |            0.459888 |                78110.9    | 2022-11-29 19:51:49.096191 | random search                                                                                                          |
-| linear regression (ridge) (v06)                          |     0.4569   |    0.28695   |                     63601.9    |                   6.13508e+09 |            0.4569   |                78326.7    | 2022-12-03 19:20:52.874336 | random search                                                                                                          |
+| linear regression (ridge) (v06)                          |     0.4569   |    0.28695   |                     63603.1    |                   6.13521e+09 |            0.456889 |                78327.6    | 2022-12-03 19:20:52.874336 | random search                                                                                                          |
 | random forest (v09)                                      |     0.254902 |    4.46726   |                     75769.6    |                   8.41693e+09 |            0.254902 |                91743.9    | 2022-11-29 20:45:43.360554 | random search                                                                                                          |
 | decision tree - random search (v02)                      |   nan        |  nan         |                     74555      |                   8.26982e+09 |            0.27729  |                90938.6    | nan                        | nan                                                                                                                    |
 | knn - basic (v01)                                        |   nan        |  nan         |                     55623.7    |                   5.34585e+09 |            0.546891 |                73115.3    | nan                        | nan                                                                                                                    |
@@ -134,28 +137,40 @@ not updated saved model, the previous run was better
 | 35271294 |  370000 |          2 |           1 |         0.399307 |             51.4496 |            -0.140154 |             0.050152 |              0.035734 | LEASEHOLD           |
 | 44749111 |  475000 |          2 |           1 |         0.41055  |             51.37   |            -0.21241  |             0.12967  |              0.10799  | FREEHOLD            |
 ### Hyperparameter options for Randomized Grid Search
-model__booster = ['gbtree']
+model__booster = ['gbtree', 'dart']
 
-model__n_estimators = [100, 200, 500, 1000]
+model__n_estimators = [100, 200, 500]
 
-model__learning_rate = [None]
+model__learning_rate = [None, 0.3, 0.1, 0.01]
 
-model__lambda = [None]
+model__lambda = [None, 1, 10, 100, 1000, 10000, 100000]
 
-model__tree_method = ['auto']
+model__tree_method = ['auto', 'hist']
 
-model__max_depth = [6]
+model__max_depth = [6, 3, 8, 10]
 
-model__subsample = [1]
+model__subsample = [1, 0.5, 0.75, 0.9]
 
-model__colsample_bytree = [1]
+model__colsample_bytree = [1, 0.5, 0.75, 0.9]
 
-model__objective = ['reg:squarederror']
+model__min_sample_split = [None, 2, 20, 200, 2000]
+
+model__max_leaf_nodes = [None, 2, 20, 200, 2000]
+
+model__min_samples_leaf = [None, 2, 20, 200, 2000]
+
+model__max_samples = [None, 1, 0.5, 0.75, 0.9]
+
+model__max_features = [None, 2, 4, 8, 16, 32, 64]
+
+model__objective = ['reg:squarederror', 'reg:squaredlogerror']
 
 model__n_jobs = [3]
 
 model__verbosity = [1]
 
+### Range of hyperparameter results
+![detail](../artifacts/xg_boost__tree___v06__evolution_of_models_fig.png)
 ### Environment Variables
 notebook_environment = gradient
 
