@@ -47,7 +47,7 @@ price_divisor = 1
 
 
 # ---- 3rd NEURAL NETWORK STRUCTURE DEFINITION ---- #
-#selected_neural_network = selected_nn_code = "m03 2 layers+wider"
+selected_neural_network = selected_nn_code = "m03 2 layers+wider"
 
 
 # ---- 4th NEURAL NETWORK STRUCTURE DEFINITION ---- #
@@ -56,8 +56,13 @@ price_divisor = 1
 # ---- 5th NEURAL NETWORK STRUCTURE DEFINITION ---- #
 #selected_neural_network = selected_nn_code = "m05 rec deep"
 
+# ---- 6th NEURAL NETWORK STRUCTURE DEFINITION ---- #
+#selected_neural_network = selected_nn_code = "m05 my deep"
+
+#selected_neural_network = selected_nn_code = ""
+
 # ---- 7th NEURAL NETWORK STRUCTURE DEFINITION ---- #
-selected_neural_network = selected_nn_code = "m11 mega"
+#selected_neural_network = selected_nn_code = "m11 mega"
 
 # ---- 8th NEURAL NETWORK STRUCTURE DEFINITION ---- #
 #selected_neural_network = selected_nn_code = "m12 mega"
@@ -145,17 +150,17 @@ no_scaling = 'no scaling' in DATA_DETAIL
 #not_catboost = 'catboost' not in ALGORITHM.lower() or not no_dummies
 using_catboost = 'catboost' in ALGORITHM.lower()
 
+module_path = os.path.abspath(os.path.join('..', '..', '..'))
+if module_path not in sys.path:
+    #sys.path.append(module_path+"\\zfunctions")
+    sys.path.append(module_path)
+
 if run_env not in ['colab', 'gradient', 'cloud']:
     cloud_run = False
     from functions_b__get_the_data_20221116 import set_csv_directory
     set_csv_directory('final_split')
 else:
     cloud_run = True
-
-    module_path = os.path.abspath(os.path.join('..', '..', '..'))
-    if module_path not in sys.path:
-        #sys.path.append(module_path+"\\zfunctions")
-        sys.path.append(module_path)
 
 from functions_0__common_20221116 import get_columns
 from functions_b__get_the_data_20221116 import get_combined_dataset, get_source_dataframe
@@ -550,6 +555,7 @@ ALGORITHM_DETAIL
 
 # In[13]:
 
+
 print("selected_neural_network",selected_neural_network)
 trainable_model.summary()
 
@@ -727,7 +733,7 @@ combined['bedrooms'] = combined['bedrooms'].astype(int)
 combined
 
 
-# In[22]:
+# In[ ]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -746,7 +752,7 @@ plt.show()
 # 
 # 
 
-# In[23]:
+# In[ ]:
 
 
 cv_best_model_fit_time = estimated_time
@@ -786,7 +792,7 @@ print(key)
 print(ALGORITHM_DETAIL)
 
 
-# In[24]:
+# In[ ]:
 
 
 if this_model_is_best:
@@ -804,7 +810,7 @@ print(new_model_decision)
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[29]:
+# In[ ]:
 
 
 from bs4 import BeautifulSoup
@@ -1010,26 +1016,26 @@ def print_and_report(text_single, title):
 
 
 
-# In[26]:
+# In[ ]:
 
 
 print('Nearly finished...')
 
 
-# In[27]:
+# In[ ]:
 
 
 if create_python_script and is_jupyter:
     get_ipython().system("jupyter nbconvert --to script 'neural_networks_model.ipynb'")
 
 
-# In[28]:
+# In[ ]:
 
 
 print('Finished!')
 
 
-# In[28]:
+# In[ ]:
 
 
 
