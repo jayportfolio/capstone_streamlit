@@ -639,23 +639,23 @@
         "suboptimal": "suboptimal"
     },
     "linear regression (ridge) (v06)": {
-        "Mean Absolute Error Accuracy": 63601.87489279019,
-        "Mean Squared Error Accuracy": 6135076712.630516,
-        "R square Accuracy": 0.45690010484542287,
-        "Root Mean Squared Error": 78326.73051155981,
+        "Mean Absolute Error Accuracy": 63603.318763965064,
+        "Mean Squared Error Accuracy": 6135244428.758685,
+        "R square Accuracy": 0.4568852579876099,
+        "Root Mean Squared Error": 78327.80112296453,
         "_method": "random search",
         "_params": {
-            "model__alpha": 0.0001,
-            "model__copy_X": false,
+            "model__alpha": 0.1,
+            "model__copy_X": true,
             "model__fit_intercept": true,
-            "model__max_iter": 10000,
+            "model__max_iter": 100000,
             "model__positive": false,
             "model__random_state": 101,
-            "model__solver": "sag",
-            "model__tol": 0.001
+            "model__solver": "cholesky",
+            "model__tol": 1e-05
         },
-        "_score": 0.45690010484542287,
-        "_train time": 0.24402141571044922,
+        "_score": 0.4568852579876099,
+        "_train time": 0.051888227462768555,
         "best is shared": false,
         "best method": "random search",
         "best params": {
@@ -671,10 +671,10 @@
         "best run date": "2022-12-03 19:20:52.874336",
         "best score": 0.45690010489487065,
         "best time": 0.28694963455200195,
-        "date": "2022-12-03 19:28:37.848562",
+        "date": "2022-12-04 09:26:32.347178",
         "first run": "2022-11-15 21:02:22.079702",
         "random_state": 101,
-        "run_env": "gradient",
+        "run_env": "local",
         "silver method": "random search",
         "silver params": {
             "model__alpha": 0.0001,
