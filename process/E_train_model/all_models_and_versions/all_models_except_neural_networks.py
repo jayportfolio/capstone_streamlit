@@ -1,26 +1,28 @@
-#!/usr/bin/env python
-# coding: utf-8
+for i in range(100):
+    print(i,"\n")
+    #!/usr/bin/env python
+    # coding: utf-8
 
-# <code style="background:blue;color:blue">**********************************************************************************************************</code>
-# 
-# ## Stage: Decide which algorithm and version of the data we are going to use for model training
-# 
-# Additionally, choose:
-# * if we'll skip scaling the data
-# * if we'll use full categories instead of dummies
-# * what fraction of the data we'll use for testing (0.1)
-# * if the data split will be randomised (it won't!)
+    # <code style="background:blue;color:blue">**********************************************************************************************************</code>
+    # 
+    # ## Stage: Decide which algorithm and version of the data we are going to use for model training
+    # 
+    # Additionally, choose:
+    # * if we'll skip scaling the data
+    # * if we'll use full categories instead of dummies
+    # * what fraction of the data we'll use for testing (0.1)
+    # * if the data split will be randomised (it won't!)
 
-# In[38]:
+    # In[38]:
 
-for i in range (100):
+
     #ALGORITHM = 'Linear Regression (Ridge)'
     #ALGORITHM = 'KNN'
     #ALGORITHM = 'Decision Tree'
-    #ALGORITHM = 'Random Forest'
+    ALGORITHM = 'Random Forest'
     #ALGORITHM = 'XG Boost (tree)'
     #ALGORITHM = 'CatBoost'
-    ALGORITHM = 'Light Gradient Boosting'
+    ##ALGORITHM = 'Light Gradient Boosting'
 
     ALGORITHM_DETAIL = 'random search'
     #DATA_DETAIL = ['no scale','no dummies']
@@ -44,10 +46,10 @@ for i in range (100):
 
 
     # <code style="background:blue;color:blue">**********************************************************************************************************</code>
-    #
+    # 
     # ## Stage: loading all dependencies
-    #
-    #
+    # 
+    # 
 
     # In[39]:
 
@@ -175,10 +177,10 @@ for i in range (100):
 
 
     # <code style="background:blue;color:blue">**********************************************************************************************************</code>
-    #
+    # 
     # ## Stage: defining the model pipeline
-    #
-    #
+    # 
+    # 
 
     # In[42]:
 
@@ -200,7 +202,7 @@ for i in range (100):
 
 
     # <code style="background:blue;color:blue">**********************************************************************************************************</code>
-    #
+    # 
     # ## Stage: get the data
 
     # In[43]:
@@ -289,12 +291,12 @@ for i in range (100):
 
 
     # <code style="background:blue;color:blue">**********************************************************************************************************</code>
-    #
+    # 
     # ## Stage:
     # * #### retrieve the hyperparameters for this model, and
     # * #### train the model
-    #
-    #
+    # 
+    # 
 
     # In[ ]:
 
@@ -434,10 +436,10 @@ for i in range (100):
 
 
     # <code style="background:blue;color:blue">**********************************************************************************************************</code>
-    #
+    # 
     # ## Stage: Get the results and print some graphs
-    #
-    #
+    # 
+    # 
 
     # In[ ]:
 
@@ -510,10 +512,10 @@ for i in range (100):
 
 
     # <code style="background:blue;color:blue">**************</code>
-    #
+    # 
     # #### Mini Stage: Make predictions
-    #
-    #
+    # 
+    # 
 
     # In[ ]:
 
@@ -748,10 +750,10 @@ for i in range (100):
 
 
     # <code style="background:blue;color:blue">**********************************************************************************************************</code>
-    #
+    # 
     # ## Stage: Evaluate the model
-    #
-    #
+    # 
+    # 
 
     # In[ ]:
 
@@ -821,9 +823,9 @@ for i in range (100):
 
 
     # <code style="background:blue;color:blue">**********************************************************************************************************</code>
-    #
+    # 
     # ## Stage: Investigate the feature importances (if applicable)
-    #
+    # 
 
     # In[ ]:
 
@@ -863,7 +865,7 @@ for i in range (100):
 
 
     # <code style="background:blue;color:blue">**********************************************************************************************************</code>
-    #
+    # 
     # ## Stage: Write the final report for this algorithm and dataset version
 
     # In[ ]:
