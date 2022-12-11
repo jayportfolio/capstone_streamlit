@@ -1,18 +1,18 @@
 # Results from Neural Network m01 simple
-### Dataset Version: 06
-Date run: 2022-12-11 18:09:00.667608
+### Dataset Version: 09
+Date run: 2022-12-11 18:16:40.756657
 
-Start time: 2022-12-11 18:06:12.213179
+Start time: 2022-12-11 18:13:54.292742
 
-End time: 2022-12-11 18:09:00.667518
+End time: 2022-12-11 18:16:40.756568
 
 ## Results
 ### Summary
 not updated saved model, the previous run was better
-0.36653595307452647 is worse than or equal to 0.5412206999165671
+0.3315965512678145 is worse than or equal to 0.5088474996930286
 
 ### Best Model: Comparing model predictions to actual property values
-![detail](../artifacts/neural_network_m01_simple__v06__best_ann_model.png)
+![detail](../artifacts/neural_network_m01_simple__v09__best_ann_model.png)
 
 ### Model Specific Notes
 can't display hyperparameter comparison for neural network
@@ -24,64 +24,56 @@ can't display model performance graphs for neural network
 ### Neural Network Loss - Head
 |    |        loss |    val_loss |   epoch |
 |---:|------------:|------------:|--------:|
-|  0 | 1.56944e+11 | 1.00551e+11 |       0 |
-|  1 | 4.97129e+10 | 1.80213e+10 |       1 |
-|  2 | 1.22689e+10 | 1.08159e+10 |       2 |
-|  3 | 1.0674e+10  | 1.06447e+10 |       3 |
-|  4 | 1.04966e+10 | 1.04459e+10 |       4 |
+|  0 | 1.79677e+11 | 1.57014e+11 |       0 |
+|  1 | 1.22269e+11 | 8.81574e+10 |       1 |
+|  2 | 5.86563e+10 | 3.49635e+10 |       2 |
+|  3 | 2.17471e+10 | 1.37848e+10 |       3 |
+|  4 | 1.1586e+10  | 1.08533e+10 |       4 |
 
 
 
 ### Neural Network Loss - Tail
 |    |        loss |    val_loss |   epoch |
 |---:|------------:|------------:|--------:|
-| 45 | 7.45064e+09 | 7.38532e+09 |      45 |
-| 46 | 7.43439e+09 | 7.37473e+09 |      46 |
-| 47 | 7.42156e+09 | 7.35708e+09 |      47 |
-| 48 | 7.40711e+09 | 7.34512e+09 |      48 |
-| 49 | 7.39246e+09 | 7.32924e+09 |      49 |
+| 45 | 7.83125e+09 | 7.75606e+09 |      45 |
+| 46 | 7.81178e+09 | 7.73423e+09 |      46 |
+| 47 | 7.79252e+09 | 7.71431e+09 |      47 |
+| 48 | 7.77342e+09 | 7.69922e+09 |      48 |
+| 49 | 7.754e+09   | 7.67615e+09 |      49 |
 
-![detail](../artifacts/neural_network_m01_simple__v06__end_loss.png)
+![detail](../artifacts/neural_network_m01_simple__v09__end_loss.png)
 
 ### Model Structure
->Model: "sequential_1"
+>Model: "sequential_3"
 >________________________________________________________________________________________________________________________________________________________________
 > Layer (type)                                                           Output Shape                                                    Param #                 
 >
-> dense_2 (Dense)                                                        (None, 11)                                                      132                     
+> dense_6 (Dense)                                                        (None, 21)                                                      462                     
 >                                                                                                                                                                
-> normalization_1 (Normalization)                                        (None, 11)                                                      23                      
+> normalization_3 (Normalization)                                        (None, 21)                                                      43                      
 >                                                                                                                                                                
-> dense_3 (Dense)                                                        (None, 1)                                                       12                      
+> dense_7 (Dense)                                                        (None, 1)                                                       22                      
 >                                                                                                                                                                
 >
->Total params: 167
->Trainable params: 144
->Nontrainable params: 23
+>Total params: 527
+>Trainable params: 484
+>Nontrainable params: 43
 >________________________________________________________________________________________________________________________________________________________________
 
 
 ## Comparison with other models
-### Comparison with version 06 performances
-|                                         |   best score |    best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                                                                                            |
-|:----------------------------------------|-------------:|-------------:|-------------------------------:|------------------------------:|--------------------:|--------------------------:|:---------------------------|:-----------------------------------------------------------------------------------------------------------------------|
-| xg boost (tree) (v06)                   |     0.727132 |  134.175     |                        41210.4 |                   3.08243e+09 |            0.727132 |                   55519.6 | 2022-12-07 09:43:37.103009 | random search                                                                                                          |
-| knn (v06)                               |     0.719049 |    0.0179159 |                        41531.1 |                   3.2181e+09  |            0.715122 |                   56728.3 | 2022-11-21 18:05:21.585382 | random search                                                                                                          |
-| catboost (v06)                          |     0.715606 |   12.2565    |                        51000   |                   4.30136e+09 |            0.619227 |                   65584.8 | 1999-11-13 15:26:55.706567 | random search                                                                                                          |
-| light gradient boosting (v06)           |     0.706735 |   15.0439    |                        44081   |                   3.31284e+09 |            0.706735 |                   57557.3 | 2022-11-16 13:59:52.612654 | random search                                                                                                          |
-| xg boost (v06)                          |     0.687611 |   11.4748    |                        45988.3 |                   3.52887e+09 |            0.687611 |                   59404.3 | nan                        | random search                                                                                                          |
-| decision tree (v06)                     |     0.616727 |    0.133738  |                        59431.1 |                   5.74359e+09 |            0.491556 |                   75786.5 | 2022-12-11 13:59:57.993851 | random search                                                                                                          |
-| neural network m11 mega (v06)           |     0.612318 | 2569.45      |                        56035.9 |                   4.92994e+09 |            0.563583 |                   70213.6 | 2022-11-29 12:57:16.459719 | loss=2833.6 valloss=4034.41 stop=619/1000                                                                              |
-| neural network m12 mega (v06)           |     0.594032 |  813.27      |                        54968   |                   4.80703e+09 |            0.574463 |                   69332.8 | 2022-11-29 17:08:44.480482 | loss=4386.51 valloss=4438.8 +valsplit=0.1 stop=201/400                                                                 |
-| random forest (v06)                     |     0.585876 |    1.76986   |                        60537   |                   5.63491e+09 |            0.501177 |                   75066   | 2022-12-11 12:04:23.528125 | random search                                                                                                          |
-| neural network m05 rec deep (v06)       |     0.580348 |  604.9       |                        59357.5 |                   5.47083e+09 |            0.515701 |                   73965.1 | 2022-11-29 11:41:39.682217 | loss=4908.71 valloss=4603.08 stop=214/500                                                                              |
-| neural network (v06)                    |     0.556696 |  312.991     |                        66710.7 |                   6.64686e+09 |            0.411595 |                   81528.3 | 2000-01-01 17:09:59.063570 | random search [input11, d^20-500-500-20-5, dense1]                                                                     |
-| neural network m03 2 layers+wider (v06) |     0.549647 |  275.71      |                        64376.5 |                   6.26802e+09 |            0.445131 |                   79170.9 | 2022-11-29 10:13:10.517896 | mse +epochs=500 +learn=0.003 +loss=5229.0478515625                                                                     |
-| neural network m01 simple (v06)         |     0.541221 |   36.2       |                        69132   |                   7.15587e+09 |            0.366536 |                   84592.4 | 2022-11-29 09:13:15.856770 | recommended simple model/mse +norm +epochs=50 +learn=0.003 +endloss=5610.65771484375 +stop=17 +endloss=5511.7373046875 |
-| neural network simplified (v06)         |     0.540642 |  999         |                        59373.1 |                   5.53151e+09 |            0.51033  |                   74374.1 | 2022-11-20 20:03:40.645221 | recommended simple model + normalise, mse                                                                              |
-| neural network m04 3 layers+wider (v06) |     0.520933 |  395.14      |                        64421.2 |                   6.26641e+09 |            0.445274 |                   79160.6 | 2022-11-29 11:21:09.812732 | loss=5415.7 valloss=5095.94 stop=166/500                                                                               |
-| neural network m02 two layers (v06)     |     0.516773 |  112.54      |                        64363.1 |                   6.26209e+09 |            0.445656 |                   79133.4 | 2022-11-29 09:31:18.853517 | mse +norm +epochs=50 +learn=0.003 +endloss=5785.6953125                                                                |
-| linear regression (ridge) (v06)         |     0.4569   |    0.28695   |                        63603.1 |                   6.13521e+09 |            0.456889 |                   78327.6 | 2022-12-03 19:20:52.874336 | random search                                                                                                          |
+### Comparison with version 09 performances
+|                                     |   best score |   best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                            |
+|:------------------------------------|-------------:|------------:|-------------------------------:|------------------------------:|--------------------:|--------------------------:|:---------------------------|:-------------------------------------------------------|
+| xg boost (v09)                      |     0.701117 |  119.281    |                     51922.6    |                   4.35555e+09 |            0.614431 |                65996.6    | 2022-11-30 10:16:33.388760 | random search                                          |
+| catboost (v09)                      |     0.700506 |    2.82     |                     44531.4    |                   3.38321e+09 |            0.700506 |                58165.3    | 2022-11-30 13:34:39.793583 | random search(no dummies)                              |
+| knn (v09)                           |     0.644916 |    0.112408 |                     48389.1    |                   4.15737e+09 |            0.631974 |                64477.7    | 2022-11-30 12:53:42.390150 | random search                                          |
+| decision tree (v09)                 |     0.619635 |    0.409451 |                     51319.1    |                   4.31524e+09 |            0.617999 |                65690.5    | 2022-12-11 14:59:07.675693 | random search                                          |
+| neural network m12 mega (v09)       |     0.570335 |  556.62     |                        55.1583 |                4853.68        |            0.570335 |                   69.6683 | 2022-11-29 21:03:09.676165 | loss=4869.67 valloss=4726.34 +valsplit=0.1 stop=83/400 |
+| neural network m02 two layers (v09) |     0.540824 |  178.62     |                     57717.5    |                   5.18704e+06 |            0.540824 |                72021.1    | 2022-11-30 13:34:57.703544 | loss=5424.62 valloss=5263.41 +valsplit=0.1 stop=52/500 |
+| neural network m01 simple (v09)     |     0.508847 |  188.63     |                     71376.9    |                   7.55056e+09 |            0.331597 |                86893.9    | 2022-11-30 13:08:10.248178 | loss=5724.92 valloss=5608.12 +valsplit=0.1 stop=42/50  |
+| linear regression (ridge) (v09)     |     0.459888 |    0.350431 |                     63349.5    |                   6.10132e+09 |            0.459888 |                78110.9    | 2022-12-11 14:36:43.474759 | random search                                          |
+| random forest (v09)                 |     0.254902 |    4.46726  |                     75769.6    |                   8.41693e+09 |            0.254902 |                91743.9    | 2022-11-29 20:45:43.360554 | random search                                          |
 
 ### Comparison with all model performances
 |                                                          |   best score |    best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                                                                                            |
@@ -123,7 +115,7 @@ can't display model performance graphs for neural network
 | neural network - random search [i64,norm,d64^6,d1] (v11) |     0.533579 |  nan         |                     57201.7    |                   5.26888e+09 |            0.533579 |                72587      | nan                        | nan                                                                                                                    |
 | neural network m04 3 layers+wider (v06)                  |     0.520933 |  395.14      |                     64421.2    |                   6.26641e+09 |            0.445274 |                79160.6    | 2022-11-29 11:21:09.812732 | loss=5415.7 valloss=5095.94 stop=166/500                                                                               |
 | neural network m02 two layers (v06)                      |     0.516773 |  112.54      |                     64363.1    |                   6.26209e+09 |            0.445656 |                79133.4    | 2022-11-29 09:31:18.853517 | mse +norm +epochs=50 +learn=0.003 +endloss=5785.6953125                                                                |
-| neural network m01 simple (v09)                          |     0.508847 |  188.63      |                     60215.3    |                   5.54826e+06 |            0.508847 |                74486.6    | 2022-11-30 13:08:10.248178 | loss=5724.92 valloss=5608.12 +valsplit=0.1 stop=42/50                                                                  |
+| neural network m01 simple (v09)                          |     0.508847 |  188.63      |                     71376.9    |                   7.55056e+09 |            0.331597 |                86893.9    | 2022-11-30 13:08:10.248178 | loss=5724.92 valloss=5608.12 +valsplit=0.1 stop=42/50                                                                  |
 | knn (v10)                                                |     0.484585 |    0.29179   |                     61764.2    |                   5.82234e+09 |            0.484585 |                76304.2    | 2022-11-30 15:12:50.989371 | random search                                                                                                          |
 | xg boost (v11)                                           |     0.484341 |    1.66323   |                     61556.7    |                   5.82509e+09 |            0.484341 |                76322.3    | 2022-11-30 16:55:55.436173 | random search                                                                                                          |
 | xg boost (linear) (v11)                                  |     0.484341 |   12.6817    |                     62224.3    |                   5.90103e+09 |            0.477618 |                76818.2    | 2022-11-30 19:47:04.498556 | random search                                                                                                          |
@@ -147,13 +139,13 @@ can't display model performance graphs for neural network
 
 ## Appendix
 ### Data Sample
-|          |   Price |   bedrooms |   bathrooms |   nearestStation |   location.latitude |   location.longitude |   latitude_deviation |   longitude_deviation | tenure.tenureType   |
-|---------:|--------:|-----------:|------------:|-----------------:|--------------------:|---------------------:|---------------------:|----------------------:|:--------------------|
-| 14520525 |  550000 |          3 |           1 |         0.274316 |             51.5299 |            -0.20702  |             0.03023  |              0.1026   | LEASEHOLD           |
-| 27953107 |  400000 |          2 |           2 |         0.305845 |             51.5494 |            -0.4826   |             0.04967  |              0.37818  | LEASEHOLD           |
-| 33593487 |  579950 |          2 |           1 |         0.438045 |             51.4472 |            -0.33877  |             0.05254  |              0.23435  | FREEHOLD            |
-| 35271294 |  370000 |          2 |           1 |         0.399307 |             51.4496 |            -0.140154 |             0.050152 |              0.035734 | LEASEHOLD           |
-| 44749111 |  475000 |          2 |           1 |         0.41055  |             51.37   |            -0.21241  |             0.12967  |              0.10799  | FREEHOLD            |
+|          |   Price |   bedrooms |   bathrooms |   nearestStation |   location.latitude |   location.longitude |   latitude_deviation |   longitude_deviation | tenure.tenureType   |   feature__balcony |   feature__chain free |   feature__no onward chain |   feature__off street parking |   feature__one bedroom |   feature__private balcony |   feature__share of freehold |   feature__three bedrooms |   feature__two bedrooms |   feature__two double bedrooms |
+|---------:|--------:|-----------:|------------:|-----------------:|--------------------:|---------------------:|---------------------:|----------------------:|:--------------------|-------------------:|----------------------:|---------------------------:|------------------------------:|-----------------------:|---------------------------:|-----------------------------:|--------------------------:|------------------------:|-------------------------------:|
+| 14520525 |  550000 |          3 |           1 |         0.274316 |             51.5299 |            -0.20702  |             0.03023  |              0.1026   | LEASEHOLD           |                  0 |                     0 |                          0 |                             0 |                      0 |                          1 |                            0 |                         0 |                       0 |                              0 |
+| 27953107 |  400000 |          2 |           2 |         0.305845 |             51.5494 |            -0.4826   |             0.04967  |              0.37818  | LEASEHOLD           |                  1 |                     0 |                          0 |                             0 |                      0 |                          0 |                            0 |                         0 |                       0 |                              1 |
+| 33593487 |  579950 |          2 |           1 |         0.438045 |             51.4472 |            -0.33877  |             0.05254  |              0.23435  | FREEHOLD            |                  0 |                     0 |                          1 |                             0 |                      0 |                          0 |                            0 |                         0 |                       0 |                              0 |
+| 35271294 |  370000 |          2 |           1 |         0.399307 |             51.4496 |            -0.140154 |             0.050152 |              0.035734 | LEASEHOLD           |                  1 |                     0 |                          0 |                             0 |                      0 |                          0 |                            0 |                         0 |                       0 |                              0 |
+| 44749111 |  475000 |          2 |           1 |         0.41055  |             51.37   |            -0.21241  |             0.12967  |              0.10799  | FREEHOLD            |                  0 |                     0 |                          0 |                             0 |                      0 |                          0 |                            0 |                         0 |                       0 |                              0 |
 
 ### FIX THIS!!
 FIX THIS!

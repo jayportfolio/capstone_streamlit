@@ -18,8 +18,8 @@ for i in range(3):
 
     #ALGORITHM = 'Linear Regression (Ridge)'
     #ALGORITHM = 'KNN'
-    ALGORITHM = 'Decision Tree'
-    #ALGORITHM = 'Random Forest'
+    #ALGORITHM = 'Decision Tree'
+    ALGORITHM = 'Random Forest'
     #ALGORITHM = 'XG Boost (tree)'
     #ALGORITHM = 'CatBoost'
     ##ALGORITHM = 'Light Gradient Boosting'
