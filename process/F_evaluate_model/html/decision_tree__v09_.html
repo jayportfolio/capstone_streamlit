@@ -1,38 +1,26 @@
-<h1>Results from Random Forest</h1><h3>Dataset Version: 06</h3>Date run: 2022-12-11 15:19:46.034670<br>Start time: 2022-12-11 14:24:30.809833<br>End time: 2022-12-11 15:19:46.034660<br><hr><h2>Results</h2><h3>Summary</h3>not updated saved model, the previous run was better
-0.5011771364927313 is worse than or equal to '0.5858756877506366<br><hr><h3>Tuned Models ranked by performance, with parameter details</h3><table border="1" class="dataframe">
+<h1>Results from Decision Tree</h1><h3>Dataset Version: 09</h3>Date run: 2022-12-11 15:04:41.688138<br>Start time: 2022-12-11 14:59:13.432556<br>End time: 2022-12-11 15:04:41.688127<br><hr><h2>Results</h2><h3>Summary</h3>not updated saved model, the previous run was better
+0.617998682443994 is worse than or equal to '0.6196350615136623<br><hr><h3>Tuned Models ranked by performance, with parameter details</h3><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
       <th>mean_test_score</th>
       <th>mean_fit_time</th>
       <th>mean_score_time</th>
-      <th>param_model__warm_start</th>
-      <th>param_model__verbose</th>
+      <th>param_model__splitter</th>
       <th>param_model__random_state</th>
-      <th>param_model__oob_score</th>
-      <th>param_model__n_jobs</th>
-      <th>param_model__n_estimators</th>
       <th>param_model__min_weight_fraction_leaf</th>
       <th>param_model__min_samples_split</th>
       <th>param_model__min_samples_leaf</th>
       <th>param_model__min_impurity_decrease</th>
-      <th>param_model__max_samples</th>
       <th>param_model__max_leaf_nodes</th>
       <th>param_model__max_features</th>
       <th>param_model__max_depth</th>
       <th>param_model__criterion</th>
       <th>param_model__ccp_alpha</th>
-      <th>param_model__bootstrap</th>
       <th>params2</th>
     </tr>
     <tr>
       <th>rank_test_score</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -53,185 +41,153 @@
   <tbody>
     <tr>
       <th>1</th>
-      <td>0.491834</td>
-      <td>6.295137</td>
-      <td>0.047381</td>
-      <td>False</td>
-      <td>0</td>
-      <td>101</td>
-      <td>True</td>
-      <td>None</td>
-      <td>50</td>
+      <td>0.602121</td>
+      <td>0.060388</td>
+      <td>0.004305</td>
+      <td>random</td>
+      <td>23</td>
       <td>0.0</td>
-      <td>4</td>
-      <td>4</td>
+      <td>2</td>
+      <td>8</td>
       <td>0.0</td>
-      <td>None</td>
-      <td>None</td>
+      <td>750</td>
       <td>1.0</td>
-      <td>5</td>
+      <td>None</td>
       <td>poisson</td>
-      <td>0.0</td>
-      <td>True</td>
-      <td>False/0/101/True/None/50/0.0/4/4/0.0/None/None/1.0/5/poisson/0.0/True</td>
+      <td>0.05</td>
+      <td>random/23/0.0/2/8/0.0/750/1.0/None/poisson/0.05</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.471966</td>
-      <td>1.321132</td>
-      <td>0.060337</td>
-      <td>False</td>
-      <td>0</td>
-      <td>4</td>
-      <td>True</td>
-      <td>None</td>
-      <td>50</td>
+      <td>0.590098</td>
+      <td>0.390495</td>
+      <td>0.006641</td>
+      <td>best</td>
+      <td>16</td>
       <td>0.0</td>
-      <td>4</td>
-      <td>4</td>
+      <td>50</td>
+      <td>1</td>
       <td>0.25</td>
       <td>None</td>
-      <td>500</td>
-      <td>log2</td>
-      <td>5</td>
+      <td>1.0</td>
+      <td>10</td>
       <td>friedman_mse</td>
-      <td>0.0</td>
-      <td>True</td>
-      <td>False/0/4/True/None/50/0.0/4/4/0.25/None/500/log2/5/friedman_mse/0.0/True</td>
+      <td>0.05</td>
+      <td>best/16/0.0/50/1/0.25/None/1.0/10/friedman_mse/0.05</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.462552</td>
-      <td>715.343839</td>
-      <td>0.040269</td>
-      <td>False</td>
-      <td>0</td>
-      <td>15</td>
-      <td>True</td>
-      <td>None</td>
-      <td>50</td>
+      <td>0.568870</td>
+      <td>60.835833</td>
+      <td>0.013323</td>
+      <td>best</td>
+      <td>8</td>
       <td>0.0</td>
-      <td>2</td>
-      <td>2</td>
-      <td>0.0</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-      <td>5</td>
+      <td>100</td>
+      <td>8</td>
+      <td>1</td>
+      <td>750</td>
+      <td>1.0</td>
+      <td>10</td>
       <td>absolute_error</td>
       <td>0.05</td>
-      <td>True</td>
-      <td>False/0/15/True/None/50/0.0/2/2/0.0/None/None/None/5/absolute_error/0.05/True</td>
+      <td>best/8/0.0/100/8/1/750/1.0/10/absolute_error/0.05</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.445452</td>
-      <td>0.641768</td>
-      <td>0.032046</td>
-      <td>False</td>
-      <td>0</td>
-      <td>4</td>
-      <td>True</td>
-      <td>None</td>
-      <td>50</td>
+      <td>0.526742</td>
+      <td>0.096091</td>
+      <td>0.012378</td>
+      <td>random</td>
+      <td>8</td>
       <td>0.0</td>
-      <td>8</td>
-      <td>8</td>
-      <td>0.1</td>
-      <td>None</td>
-      <td>100</td>
-      <td>2</td>
+      <td>50</td>
+      <td>1</td>
       <td>5</td>
+      <td>200</td>
+      <td>1.0</td>
+      <td>10</td>
       <td>friedman_mse</td>
-      <td>0.05</td>
-      <td>True</td>
-      <td>False/0/4/True/None/50/0.0/8/8/0.1/None/100/2/5/friedman_mse/0.05/True</td>
+      <td>0.1</td>
+      <td>random/8/0.0/50/1/5/200/1.0/10/friedman_mse/0.1</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.431750</td>
-      <td>2.399420</td>
-      <td>0.067037</td>
-      <td>False</td>
-      <td>0</td>
-      <td>23</td>
-      <td>False</td>
-      <td>None</td>
-      <td>70</td>
+      <td>0.512655</td>
+      <td>21.243723</td>
+      <td>0.003863</td>
+      <td>random</td>
+      <td>101</td>
       <td>0.0</td>
+      <td>4</td>
+      <td>4</td>
+      <td>1</td>
       <td>100</td>
-      <td>2</td>
-      <td>5</td>
       <td>None</td>
-      <td>10</td>
-      <td>sqrt</td>
-      <td>10</td>
-      <td>squared_error</td>
-      <td>0.05</td>
-      <td>True</td>
-      <td>False/0/23/False/None/70/0.0/100/2/5/None/10/sqrt/10/squared_error/0.05/True</td>
+      <td>None</td>
+      <td>absolute_error</td>
+      <td>0.25</td>
+      <td>random/101/0.0/4/4/1/100/None/None/absolute_error/0.25</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.391655</td>
-      <td>424.611678</td>
-      <td>0.075562</td>
-      <td>False</td>
-      <td>0</td>
-      <td>23</td>
-      <td>True</td>
-      <td>None</td>
-      <td>70</td>
-      <td>0.1</td>
-      <td>500</td>
-      <td>50</td>
-      <td>1</td>
-      <td>None</td>
-      <td>100</td>
-      <td>0.5</td>
-      <td>5</td>
-      <td>absolute_error</td>
+      <td>0.457594</td>
+      <td>0.105069</td>
+      <td>0.008300</td>
+      <td>best</td>
+      <td>42</td>
       <td>0.0</td>
-      <td>True</td>
-      <td>False/0/23/True/None/70/0.1/500/50/1/None/100/0.5/5/absolute_error/0.0/True</td>
+      <td>200</td>
+      <td>1</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>0.1</td>
+      <td>None</td>
+      <td>friedman_mse</td>
+      <td>0.0</td>
+      <td>best/42/0.0/200/1/0.1/None/0.1/None/friedman_mse/0.0</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.339918</td>
-      <td>1.811093</td>
-      <td>0.060726</td>
-      <td>False</td>
-      <td>0</td>
-      <td>16</td>
-      <td>True</td>
-      <td>None</td>
-      <td>50</td>
+      <td>0.451985</td>
+      <td>0.120220</td>
+      <td>0.003708</td>
+      <td>best</td>
+      <td>42</td>
+      <td>0.0</td>
+      <td>100</td>
+      <td>1</td>
       <td>0.1</td>
       <td>100</td>
+      <td>0.25</td>
       <td>50</td>
-      <td>0.1</td>
-      <td>None</td>
-      <td>None</td>
-      <td>log2</td>
-      <td>10</td>
       <td>squared_error</td>
-      <td>0.0</td>
-      <td>True</td>
-      <td>False/0/16/True/None/50/0.1/100/50/0.1/None/None/log2/10/squared_error/0.0/True</td>
+      <td>0.05</td>
+      <td>best/42/0.0/100/1/0.1/100/0.25/50/squared_error/0.05</td>
     </tr>
   </tbody>
-</table><hr><h3>Best and worst models obtained by tuning</h3><img src="../artifacts/random_forest__v06__best_and_worst.png"/><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/random_forest__v06__best_model_correlation.png"/><hr><h2>Feature Importances</h2><h3>Feature Importances</h3>1. features 0 (0.428804)		bedrooms
-2. features 4 (0.184419)		location.longitude
-3. features 5 (0.172217)		latitude_deviation
-4. features 6 (0.096940)		longitude_deviation
-5. features 9 (0.058012)		tenure.tenureType_LEASEHOLD
-6. features 1 (0.025758)		bathrooms
-7. features 3 (0.017136)		location.latitude
-8. features 8 (0.016482)		tenure.tenureType_FREEHOLD
-9. features 2 (0.000196)		nearestStation
-10. features 10 (0.000035)		tenure.tenureType_SHARE_OF_FREEHOLD
-11. features 7 (0.000000)		tenure.tenureType_COMMONHOLD
-<br><hr><h3>Feature Importances (Random Forest)</h3><img src="../artifacts/random_forest__v06__best_model_feature_importances.png"/><hr><h2>Comparison with other models</h2><h3>Comparison with version 06 performances</h3><table border="1" class="dataframe">
+</table><hr><h3>Best and worst models obtained by tuning</h3><img src="../artifacts/decision_tree__v09__best_and_worst.png"/><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/decision_tree__v09__best_model_correlation.png"/><hr><h2>Feature Importances</h2><h3>Feature Importances</h3>1. features 4 (0.199043)		location.longitude
+2. features 19 (0.195551)		tenure.tenureType_LEASEHOLD
+3. features 0 (0.170559)		bedrooms
+4. features 5 (0.157973)		latitude_deviation
+5. features 6 (0.129836)		longitude_deviation
+6. features 3 (0.071518)		location.latitude
+7. features 1 (0.041190)		bathrooms
+8. features 2 (0.014484)		nearestStation
+9. features 18 (0.005918)		tenure.tenureType_FREEHOLD
+10. features 8 (0.004579)		feature__chain free
+11. features 14 (0.002142)		feature__three bedrooms
+12. features 20 (0.002071)		tenure.tenureType_SHARE_OF_FREEHOLD
+13. features 15 (0.001058)		feature__two bedrooms
+14. features 16 (0.000970)		feature__two double bedrooms
+15. features 9 (0.000939)		feature__no onward chain
+16. features 12 (0.000803)		feature__private balcony
+17. features 7 (0.000482)		feature__balcony
+18. features 13 (0.000450)		feature__share of freehold
+19. features 11 (0.000353)		feature__one bedroom
+20. features 10 (0.000080)		feature__off street parking
+21. features 17 (0.000000)		tenure.tenureType_COMMONHOLD
+<br><hr><h3>Feature Importances (Decision Tree)</h3><img src="../artifacts/decision_tree__v09__best_model_feature_importances.png"/><hr><h2>Comparison with other models</h2><h3>Comparison with version 09 performances</h3><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -247,190 +203,102 @@
   </thead>
   <tbody>
     <tr>
-      <th>xg boost (tree) (v06)</th>
-      <td>0.727132</td>
-      <td>134.174901</td>
-      <td>41210.351288</td>
-      <td>3082428096.006462</td>
-      <td>0.727132</td>
-      <td>55519.619019</td>
-      <td>2022-12-07 09:43:37.103009</td>
+      <th>xg boost (v09)</th>
+      <td>0.701117</td>
+      <td>119.28102</td>
+      <td>51922.608639</td>
+      <td>4355546020.138196</td>
+      <td>0.614431</td>
+      <td>65996.560669</td>
+      <td>2022-11-30 10:16:33.388760</td>
       <td>random search</td>
     </tr>
     <tr>
-      <th>knn (v06)</th>
-      <td>0.719049</td>
-      <td>0.017916</td>
-      <td>41531.119915</td>
-      <td>3218096364.819358</td>
-      <td>0.715122</td>
-      <td>56728.267776</td>
-      <td>2022-11-21 18:05:21.585382</td>
+      <th>catboost (v09)</th>
+      <td>0.700506</td>
+      <td>2.82</td>
+      <td>44531.3556</td>
+      <td>3383205112.663283</td>
+      <td>0.700506</td>
+      <td>58165.32569</td>
+      <td>2022-11-30 13:34:39.793583</td>
+      <td>random search(no dummies)</td>
+    </tr>
+    <tr>
+      <th>knn (v09)</th>
+      <td>0.644916</td>
+      <td>0.112408</td>
+      <td>48389.098294</td>
+      <td>4157374530.888747</td>
+      <td>0.631974</td>
+      <td>64477.705689</td>
+      <td>2022-11-30 12:53:42.390150</td>
       <td>random search</td>
     </tr>
     <tr>
-      <th>catboost (v06)</th>
-      <td>0.715606</td>
-      <td>12.256545</td>
-      <td>51000.047694</td>
-      <td>4301362532.917062</td>
-      <td>0.619227</td>
-      <td>65584.773636</td>
-      <td>1999-11-13 15:26:55.706567</td>
+      <th>decision tree (v09)</th>
+      <td>0.619635</td>
+      <td>0.409451</td>
+      <td>51319.080582</td>
+      <td>4315241833.852664</td>
+      <td>0.617999</td>
+      <td>65690.500332</td>
+      <td>2022-12-11 14:59:07.675693</td>
       <td>random search</td>
     </tr>
     <tr>
-      <th>light gradient boosting (v06)</th>
-      <td>0.706735</td>
-      <td>15.043873</td>
-      <td>44080.972643</td>
-      <td>3312839956.633489</td>
-      <td>0.706735</td>
-      <td>57557.275445</td>
-      <td>2022-11-16 13:59:52.612654</td>
+      <th>neural network m12 mega (v09)</th>
+      <td>0.570335</td>
+      <td>556.62</td>
+      <td>55.158283</td>
+      <td>4853.675243</td>
+      <td>0.570335</td>
+      <td>69.668323</td>
+      <td>2022-11-29 21:03:09.676165</td>
+      <td>loss=4869.67 valloss=4726.34 +valsplit=0.1 stop=83/400</td>
+    </tr>
+    <tr>
+      <th>neural network m02 two layers (v09)</th>
+      <td>0.540824</td>
+      <td>178.62</td>
+      <td>57717.542602</td>
+      <td>5187036.047527</td>
+      <td>0.540824</td>
+      <td>72021.080577</td>
+      <td>2022-11-30 13:34:57.703544</td>
+      <td>loss=5424.62 valloss=5263.41 +valsplit=0.1 stop=52/500</td>
+    </tr>
+    <tr>
+      <th>neural network m01 simple (v09)</th>
+      <td>0.508847</td>
+      <td>188.63</td>
+      <td>60215.315359</td>
+      <td>5548257.869072</td>
+      <td>0.508847</td>
+      <td>74486.628794</td>
+      <td>2022-11-30 13:08:10.248178</td>
+      <td>loss=5724.92 valloss=5608.12 +valsplit=0.1 stop=42/50</td>
+    </tr>
+    <tr>
+      <th>linear regression (ridge) (v09)</th>
+      <td>0.459888</td>
+      <td>0.350431</td>
+      <td>63349.473479</td>
+      <td>6101320424.769447</td>
+      <td>0.459888</td>
+      <td>78110.949455</td>
+      <td>2022-12-11 14:36:43.474759</td>
       <td>random search</td>
     </tr>
     <tr>
-      <th>xg boost (v06)</th>
-      <td>0.687611</td>
-      <td>11.474795</td>
-      <td>45988.280765</td>
-      <td>3528869693.681411</td>
-      <td>0.687611</td>
-      <td>59404.290196</td>
-      <td>NaN</td>
-      <td>random search</td>
-    </tr>
-    <tr>
-      <th>decision tree (v06)</th>
-      <td>0.616727</td>
-      <td>0.133738</td>
-      <td>59431.108316</td>
-      <td>5743592165.314412</td>
-      <td>0.491556</td>
-      <td>75786.490652</td>
-      <td>2022-12-11 13:59:57.993851</td>
-      <td>random search</td>
-    </tr>
-    <tr>
-      <th>neural network m11 mega (v06)</th>
-      <td>0.612318</td>
-      <td>2569.45</td>
-      <td>56035.854723</td>
-      <td>4929943923.096645</td>
-      <td>0.563583</td>
-      <td>70213.559396</td>
-      <td>2022-11-29 12:57:16.459719</td>
-      <td>loss=2833.6 valloss=4034.41 stop=619/1000</td>
-    </tr>
-    <tr>
-      <th>neural network m12 mega (v06)</th>
-      <td>0.594032</td>
-      <td>813.27</td>
-      <td>54967.975952</td>
-      <td>4807033830.676171</td>
-      <td>0.574463</td>
-      <td>69332.77602</td>
-      <td>2022-11-29 17:08:44.480482</td>
-      <td>loss=4386.51 valloss=4438.8 +valsplit=0.1 stop=201/400</td>
-    </tr>
-    <tr>
-      <th>random forest (v06)</th>
-      <td>0.585876</td>
-      <td>1.769856</td>
-      <td>60536.998438</td>
-      <td>5634905403.102844</td>
-      <td>0.501177</td>
-      <td>75066.006975</td>
-      <td>2022-12-11 12:04:23.528125</td>
-      <td>random search</td>
-    </tr>
-    <tr>
-      <th>neural network m05 rec deep (v06)</th>
-      <td>0.580348</td>
-      <td>604.9</td>
-      <td>59357.533817</td>
-      <td>5470834738.338646</td>
-      <td>0.515701</td>
-      <td>73965.091349</td>
-      <td>2022-11-29 11:41:39.682217</td>
-      <td>loss=4908.71 valloss=4603.08 stop=214/500</td>
-    </tr>
-    <tr>
-      <th>neural network (v06)</th>
-      <td>0.556696</td>
-      <td>312.991321</td>
-      <td>66710.702966</td>
-      <td>6646858211.119819</td>
-      <td>0.411595</td>
-      <td>81528.266332</td>
-      <td>2000-01-01 17:09:59.063570</td>
-      <td>random search [input11, d^20-500-500-20-5, dense1]</td>
-    </tr>
-    <tr>
-      <th>neural network m03 2 layers+wider (v06)</th>
-      <td>0.549647</td>
-      <td>275.71</td>
-      <td>64376.517431</td>
-      <td>6268024253.295089</td>
-      <td>0.445131</td>
-      <td>79170.854822</td>
-      <td>2022-11-29 10:13:10.517896</td>
-      <td>mse +epochs=500 +learn=0.003 +loss=5229.0478515625</td>
-    </tr>
-    <tr>
-      <th>neural network m01 simple (v06)</th>
-      <td>0.541221</td>
-      <td>36.2</td>
-      <td>80597.58465</td>
-      <td>9313930610.003286</td>
-      <td>0.175496</td>
-      <td>96508.707431</td>
-      <td>2022-11-29 09:13:15.856770</td>
-      <td>recommended simple model/mse +norm +epochs=50 +learn=0.003 +endloss=5610.65771484375 +stop=17 +endloss=5511.7373046875</td>
-    </tr>
-    <tr>
-      <th>neural network simplified (v06)</th>
-      <td>0.540642</td>
-      <td>999</td>
-      <td>59373.052887</td>
-      <td>5531509335.791807</td>
-      <td>0.51033</td>
-      <td>74374.117378</td>
-      <td>2022-11-20 20:03:40.645221</td>
-      <td>recommended simple model + normalise, mse</td>
-    </tr>
-    <tr>
-      <th>neural network m04 3 layers+wider (v06)</th>
-      <td>0.520933</td>
-      <td>395.14</td>
-      <td>64421.234531</td>
-      <td>6266407942.292152</td>
-      <td>0.445274</td>
-      <td>79160.646424</td>
-      <td>2022-11-29 11:21:09.812732</td>
-      <td>loss=5415.7 valloss=5095.94 stop=166/500</td>
-    </tr>
-    <tr>
-      <th>neural network m02 two layers (v06)</th>
-      <td>0.516773</td>
-      <td>112.54</td>
-      <td>64363.094125</td>
-      <td>6262090339.685114</td>
-      <td>0.445656</td>
-      <td>79133.370582</td>
-      <td>2022-11-29 09:31:18.853517</td>
-      <td>mse +norm +epochs=50 +learn=0.003 +endloss=5785.6953125</td>
-    </tr>
-    <tr>
-      <th>linear regression (ridge) (v06)</th>
-      <td>0.4569</td>
-      <td>0.28695</td>
-      <td>63603.059705</td>
-      <td>6135206763.74439</td>
-      <td>0.456889</td>
-      <td>78327.560691</td>
-      <td>2022-12-03 19:20:52.874336</td>
+      <th>random forest (v09)</th>
+      <td>0.254902</td>
+      <td>4.46726</td>
+      <td>75769.623829</td>
+      <td>8416934462.036383</td>
+      <td>0.254902</td>
+      <td>91743.852448</td>
+      <td>2022-11-29 20:45:43.360554</td>
       <td>random search</td>
     </tr>
   </tbody>
@@ -673,10 +541,10 @@
       <th>random forest (v06)</th>
       <td>0.585876</td>
       <td>1.769856</td>
-      <td>60536.998438</td>
-      <td>5634905403.102844</td>
-      <td>0.501177</td>
-      <td>75066.006975</td>
+      <td>59011.811654</td>
+      <td>5222204044.135122</td>
+      <td>0.537711</td>
+      <td>72264.818855</td>
       <td>2022-12-11 12:04:23.528125</td>
       <td>random search</td>
     </tr>
@@ -1101,6 +969,16 @@
       <th>latitude_deviation</th>
       <th>longitude_deviation</th>
       <th>tenure.tenureType</th>
+      <th>feature__balcony</th>
+      <th>feature__chain free</th>
+      <th>feature__no onward chain</th>
+      <th>feature__off street parking</th>
+      <th>feature__one bedroom</th>
+      <th>feature__private balcony</th>
+      <th>feature__share of freehold</th>
+      <th>feature__three bedrooms</th>
+      <th>feature__two bedrooms</th>
+      <th>feature__two double bedrooms</th>
     </tr>
   </thead>
   <tbody>
@@ -1115,6 +993,16 @@
       <td>0.030230</td>
       <td>0.102600</td>
       <td>LEASEHOLD</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>27953107</th>
@@ -1127,6 +1015,16 @@
       <td>0.049670</td>
       <td>0.378180</td>
       <td>LEASEHOLD</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>33593487</th>
@@ -1139,6 +1037,16 @@
       <td>0.052540</td>
       <td>0.234350</td>
       <td>FREEHOLD</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>35271294</th>
@@ -1151,6 +1059,16 @@
       <td>0.050152</td>
       <td>0.035734</td>
       <td>LEASEHOLD</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>44749111</th>
@@ -1163,8 +1081,18 @@
       <td>0.129670</td>
       <td>0.107990</td>
       <td>FREEHOLD</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
   </tbody>
-</table><hr><h3>Hyperparameter options for Randomized Grid Search</h3>{'model__bootstrap': [True], 'model__ccp_alpha': [0.0, 0.05, 0.1, 0.25, 1, 5], 'model__criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'], 'model__max_depth': [None, 1, 2, 5, 10, 50], 'model__max_features': [None, 1.0, 'sqrt', 'log2', 0.5, 0.25, 0.1, 2], 'model__max_leaf_nodes': [None, 2, 5, 10, 50, 100, 200, 500, 750], 'model__max_samples': [None], 'model__min_impurity_decrease': [0.0, 0.1, 0.25, 1, 5], 'model__min_samples_leaf': [1, 1.5, 2, 4, 8, 50], 'model__min_samples_split': [2, 4, 8, 50, 100, 200, 500], 'model__min_weight_fraction_leaf': [0.0, 0.1, 0.25, 0.5], 'model__n_estimators': [50, 70], 'model__n_jobs': [None], 'model__oob_score': [False, True], 'model__random_state': [4, 8, 15, 16, 23, 42, 101], 'model__verbose': [0], 'model__warm_start': [False]}
-<hr><h3>Range of hyperparameter results</h3><img src="../artifacts/random_forest__v06__evolution_of_models_fig.png"/><hr><h3>Environment Variables</h3>{'notebook_environment': 'gradient', 'use_gpu': True, 'debug_mode': False, 'quick_mode': False, 'quick_override_cv_splits': 2, 'quick_override_n_iter': 10, 'quick_override_n_jobs': 3}
+</table><hr><h3>Hyperparameter options for Randomized Grid Search</h3>{'model__splitter': ['best', 'random'], 'model__random_state': [4, 8, 15, 16, 23, 42, 101], 'model__min_weight_fraction_leaf': [0.0, 0.1, 0.25, 0.5], 'model__min_samples_split': [2, 4, 8, 50, 100, 200, 500], 'model__min_samples_leaf': [1, 0.25, 0.5, 1.5, 2, 4, 8, 50], 'model__min_impurity_decrease': [0.0, 0.1, 0.25, 1, 5], 'model__max_leaf_nodes': [None, 2, 5, 10, 50, 100, 200, 500, 750], 'model__max_features': [None, 1.0, 'sqrt', 'log2', 0.5, 0.25, 0.1, 2], 'model__max_depth': [None, 1, 2, 5, 10, 50], 'model__criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'], 'model__ccp_alpha': [0.0, 0.05, 0.1, 0.25, 1, 5]}
+<hr><h3>Range of hyperparameter results</h3><img src="../artifacts/decision_tree__v09__evolution_of_models_fig.png"/><hr><h3>Environment Variables</h3>{'notebook_environment': 'gradient', 'use_gpu': True, 'debug_mode': False, 'quick_mode': False, 'quick_override_cv_splits': 2, 'quick_override_n_iter': 10, 'quick_override_n_jobs': 3}
 <hr>

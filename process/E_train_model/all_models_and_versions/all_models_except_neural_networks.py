@@ -1,5 +1,5 @@
 for i in range(3):
-    print(f"----  THIS IS RUN {i}     ----\n=======================\n")
+    print(f"----  THIS IS RUN {i}     ----\n===================================\n")
     #!/usr/bin/env python
     # coding: utf-8
 
@@ -16,9 +16,9 @@ for i in range(3):
     # In[38]:
 
 
-    ALGORITHM = 'Linear Regression (Ridge)'
+    #ALGORITHM = 'Linear Regression (Ridge)'
     #ALGORITHM = 'KNN'
-    #ALGORITHM = 'Decision Tree'
+    ALGORITHM = 'Decision Tree'
     #ALGORITHM = 'Random Forest'
     #ALGORITHM = 'XG Boost (tree)'
     #ALGORITHM = 'CatBoost'
