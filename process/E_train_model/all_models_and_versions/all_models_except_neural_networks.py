@@ -1,4 +1,4 @@
-for i in range(100):
+for i in range(5):
     print(i,"\n")
     #!/usr/bin/env python
     # coding: utf-8
@@ -18,8 +18,8 @@ for i in range(100):
 
     #ALGORITHM = 'Linear Regression (Ridge)'
     #ALGORITHM = 'KNN'
-    #ALGORITHM = 'Decision Tree'
-    ALGORITHM = 'Random Forest'
+    ALGORITHM = 'Decision Tree'
+    #ALGORITHM = 'Random Forest'
     #ALGORITHM = 'XG Boost (tree)'
     #ALGORITHM = 'CatBoost'
     ##ALGORITHM = 'Light Gradient Boosting'
