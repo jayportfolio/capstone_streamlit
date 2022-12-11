@@ -240,45 +240,6 @@
         "run_env": "gradient",
         "suboptimal": "pending"
     },
-    "decision tree - (v06)": {
-        "Mean Absolute Error Accuracy": 57094.06934058464,
-        "Mean Squared Error Accuracy": 5369228892.1957855,
-        "R square Accuracy": 0.5246958131087229,
-        "Root Mean Squared Error": 73275.02229406543,
-        "_method": "random search-no scale",
-        "_params": {
-            "model__ccp_alpha": 1,
-            "model__criterion": "absolute_error",
-            "model__max_depth": 50,
-            "model__max_features": 1.0,
-            "model__max_leaf_nodes": 50,
-            "model__min_impurity_decrease": 1,
-            "model__min_samples_leaf": 50,
-            "model__min_samples_split": 200,
-            "model__min_weight_fraction_leaf": 0.0,
-            "model__random_state": 101,
-            "model__splitter": "best"
-        },
-        "_score": 0.5246958131087229,
-        "_train time": 63.25953903198242,
-        "best method": "random search-no scale",
-        "best params": "MULTIPLE PARAM OPTIONS",
-        "best score": 0.5246958131087229,
-        "date": "2022-11-09 16:52:04.477662",
-        "first run": "2022-11-09 14:33:34.674335",
-        "random_state": 101
-    },
-    "decision tree - random search (v02)": {
-        "Mean Absolute Error Accuracy": 74554.95855918912,
-        "Mean Squared Error Accuracy": 8269820617.092809,
-        "R square Accuracy": 0.27728988246800357,
-        "Root Mean Squared Error": 90938.55407412638,
-        "_score": 0.27728988246800357,
-        "_train time": 0.06770491600036621,
-        "date": "2022-10-12 18:32:00.759091",
-        "first run": "2022-10-12 18:00:00.000000",
-        "random_state": 101
-    },
     "decision tree - random search (vx10)": {
         "Mean Absolute Error Accuracy": 55865.420033319475,
         "Mean Squared Error Accuracy": 4990106642.657863,
