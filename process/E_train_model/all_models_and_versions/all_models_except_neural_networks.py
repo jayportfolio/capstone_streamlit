@@ -1,5 +1,5 @@
-for i in range(5):
-    print(i,"\n")
+for i in range(3):
+    print(f"----  THIS IS RUN {i}     ----\n=======================\n")
     #!/usr/bin/env python
     # coding: utf-8
 
@@ -16,9 +16,9 @@ for i in range(5):
     # In[38]:
 
 
-    #ALGORITHM = 'Linear Regression (Ridge)'
+    ALGORITHM = 'Linear Regression (Ridge)'
     #ALGORITHM = 'KNN'
-    ALGORITHM = 'Decision Tree'
+    #ALGORITHM = 'Decision Tree'
     #ALGORITHM = 'Random Forest'
     #ALGORITHM = 'XG Boost (tree)'
     #ALGORITHM = 'CatBoost'
@@ -29,7 +29,7 @@ for i in range(5):
     #DATA_DETAIL = ['explore param']
     DATA_DETAIL = ['no dummies'] if 'catboost' in ALGORITHM.lower() else []
     #VERSION = '06'
-    VERSION = '06'
+    VERSION = '09'
 
     RANDOM_STATE = 101
     TRAINING_SIZE = 0.9

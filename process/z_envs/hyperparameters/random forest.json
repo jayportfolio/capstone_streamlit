@@ -12,7 +12,7 @@
 	"min_weight_fraction_leaf": [0.0, 0.1, 0.25, 0.5],
 	"n_estimators": [50, 70],
 	"n_jobs": null,
-	"oob_score": false,
+	"oob_score": [false,true],
 	"random_state": [4, 8, 15, 16, 23, 42, 101],
 	"verbose": 0,
 	"warm_start": false
