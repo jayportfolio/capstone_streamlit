@@ -1,18 +1,18 @@
-# Results from Neural Network m02 two layers
+# Results from Neural Network m05 rec deep
 ### Dataset Version: 09
-Date run: 2022-12-12 13:43:26.228737
+Date run: 2022-12-12 14:43:41.964466
 
-Start time: 2022-12-12 13:29:36.137882
+Start time: 2022-12-12 14:20:02.333199
 
-End time: 2022-12-12 13:43:26.228717
+End time: 2022-12-12 14:43:41.964456
 
 ## Results
 ### Summary
 not updated saved model, the previous run was better
-0.5126960668754335 is worse than or equal to 0.540824203913349
+0.5559945522430008 is worse than or equal to 0.5584130592342952
 
 ### Best Model: Comparing model predictions to actual property values
-![detail](../artifacts/neural_network_m02_two_layers__v09__best_ann_model.png)
+![detail](../artifacts/neural_network_m05_rec_deep__v09__best_ann_model.png)
 
 ### Model Specific Notes
 can't display hyperparameter comparison for neural network
@@ -24,42 +24,44 @@ can't display model performance graphs for neural network
 ### Neural Network Loss - Head
 |    |        loss |    val_loss |   epoch |
 |---:|------------:|------------:|--------:|
-|  0 | 5.82142e+10 | 1.06656e+10 |       0 |
-|  1 | 1.02935e+10 | 1.00094e+10 |       1 |
-|  2 | 9.64822e+09 | 9.3406e+09  |       2 |
-|  3 | 9.04456e+09 | 8.76373e+09 |       3 |
-|  4 | 8.55857e+09 | 8.3372e+09  |       4 |
+|  0 | 4.09566e+10 | 1.00149e+10 |       0 |
+|  1 | 9.39277e+09 | 8.89165e+09 |       1 |
+|  2 | 8.47421e+09 | 8.13639e+09 |       2 |
+|  3 | 8.00497e+09 | 7.74612e+09 |       3 |
+|  4 | 7.71619e+09 | 7.51315e+09 |       4 |
 
 
 
 ### Neural Network Loss - Tail
 |     |        loss |    val_loss |   epoch |
 |----:|------------:|------------:|--------:|
-| 310 | 5.65318e+09 | 5.61883e+09 |     310 |
-| 311 | 5.64076e+09 | 5.60038e+09 |     311 |
-| 312 | 5.63956e+09 | 5.60198e+09 |     312 |
-| 313 | 5.63736e+09 | 5.60321e+09 |     313 |
-| 314 | 5.64876e+09 | 5.61492e+09 |     314 |
+| 433 | 5.11592e+09 | 5.16445e+09 |     433 |
+| 434 | 5.10685e+09 | 5.05537e+09 |     434 |
+| 435 | 5.12131e+09 | 5.01482e+09 |     435 |
+| 436 | 5.10476e+09 | 5.06999e+09 |     436 |
+| 437 | 5.11315e+09 | 5.0664e+09  |     437 |
 
-![detail](../artifacts/neural_network_m02_two_layers__v09__end_loss.png)
+![detail](../artifacts/neural_network_m05_rec_deep__v09__end_loss.png)
 
 ### Model Structure
->Model: "sequential"
+>Model: "sequential_3"
 >________________________________________________________________________________________________________________________________________________________________
 > Layer (type)                                                           Output Shape                                                    Param #                 
 >
-> dense (Dense)                                                          (None, 21)                                                      462                     
+> dense_10 (Dense)                                                       (None, 128)                                                     2816                    
 >                                                                                                                                                                
-> normalization (Normalization)                                          (None, 21)                                                      43                      
+> dense_11 (Dense)                                                       (None, 256)                                                     33024                   
 >                                                                                                                                                                
-> dense_1 (Dense)                                                        (None, 21)                                                      462                     
+> dense_12 (Dense)                                                       (None, 256)                                                     65792                   
 >                                                                                                                                                                
-> dense_2 (Dense)                                                        (None, 1)                                                       22                      
+> dense_13 (Dense)                                                       (None, 256)                                                     65792                   
+>                                                                                                                                                                
+> dense_14 (Dense)                                                       (None, 1)                                                       257                     
 >                                                                                                                                                                
 >
->Total params: 989
->Trainable params: 946
->Nontrainable params: 43
+>Total params: 167,681
+>Trainable params: 167,681
+>Nontrainable params: 0
 >________________________________________________________________________________________________________________________________________________________________
 
 
@@ -73,12 +75,12 @@ can't display model performance graphs for neural network
 | knn (v09)                               |     0.644916 |    0.112408 |                     48389.1    |                   4.15737e+09 |            0.631974 |                64477.7    | 2022-11-30 12:53:42.390150 | random search                                          |
 | decision tree (v09)                     |     0.619635 |    0.409451 |                     51319.1    |                   4.31524e+09 |            0.617999 |                65690.5    | 2022-12-11 14:59:07.675693 | random search                                          |
 | neural network m12 mega (v09)           |     0.570335 |  556.62     |                        55.1583 |                4853.68        |            0.570335 |                   69.6683 | 2022-11-29 21:03:09.676165 | loss=4869.67 valloss=4726.34 +valsplit=0.1 stop=83/400 |
-| neural network m05 rec deep (v09)       |     0.558413 | 1471.09     |                     56049.2    |                   4.98835e+09 |            0.558413 |                70628.2    | 2022-12-12 13:21:58.501853 | loss=4.87e+09 valloss=4.84e+09 +valsplit=0.1 +patn=25  |
+| neural network m05 rec deep (v09)       |     0.558413 | 1471.09     |                     56357.5    |                   5.01567e+09 |            0.555995 |                70821.4    | 2022-12-12 13:21:58.501853 | loss=4.87e+09 valloss=4.84e+09 +valsplit=0.1 +patn=25  |
 | neural network m02 two layers (v09)     |     0.540824 |  178.62     |                     59659.9    |                   5.50478e+09 |            0.512696 |                74194.2    | 2022-11-30 13:34:57.703544 | loss=5424.62 valloss=5263.41 +valsplit=0.1 stop=52/500 |
-| neural network m04 3 layers+wider (v09) |     0.540678 | 1367.3      |                     59476.9    |                   5.46491e+09 |            0.516225 |                73925.1    | 2022-12-12 11:55:30.653553 | loss=5.20e+09 valloss=5.09e+09 +valsplit=0.1 +patn=25  |
+| neural network m04 3 layers+wider (v09) |     0.540678 | 1367.3      |                     60774.6    |                   5.6628e+09  |            0.498708 |                75251.6    | 2022-12-12 11:55:30.653553 | loss=5.20e+09 valloss=5.09e+09 +valsplit=0.1 +patn=25  |
 | neural network m01 simple (v09)         |     0.508847 |  188.63     |                     71376.9    |                   7.55056e+09 |            0.331597 |                86893.9    | 2022-11-30 13:08:10.248178 | loss=5724.92 valloss=5608.12 +valsplit=0.1 stop=42/50  |
 | linear regression (ridge) (v09)         |     0.459888 |    0.350431 |                     63349.5    |                   6.10132e+09 |            0.459888 |                78110.9    | 2022-12-11 14:36:43.474759 | random search                                          |
-| neural network m03 2 layers+wider (v09) |     0.4523   | 1822.49     |                     64179.1    |                   6.24487e+09 |            0.44718  |                79024.5    | 2022-12-11 18:56:27.304803 | loss=6.38e+09 valloss=6.41e+09 +valsplit=0.1 +patn=25  |
+| neural network m03 2 layers+wider (v09) |     0.4523   | 1822.49     |                     64123.6    |                   6.24293e+09 |            0.447352 |                79012.2    | 2022-12-11 18:56:27.304803 | loss=6.38e+09 valloss=6.41e+09 +valsplit=0.1 +patn=25  |
 
 ### Comparison with all model performances
 |                                                          |   best score |    best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                                                                                            |
@@ -111,13 +113,13 @@ can't display model performance graphs for neural network
 | neural network m14 mega (v10)                            |     0.579095 | 1129.09      |                     53124      |                   4.75471e+09 |            0.579095 |                68954.4    | 2022-12-01 11:52:45.011704 | loss=4.85e+04 valloss=5.34e+04 +valsplit=0.1 stop=156/400                                                              |
 | neural network m12 mega (v09)                            |     0.570335 |  556.62      |                        55.1583 |                4853.68        |            0.570335 |                   69.6683 | 2022-11-29 21:03:09.676165 | loss=4869.67 valloss=4726.34 +valsplit=0.1 stop=83/400                                                                 |
 | neural network m12 mega (v10)                            |     0.567453 |  240.1       |                     55444      |                   4.88623e+06 |            0.567453 |                69901.6    | 2022-12-01 09:57:17.586487 | loss=4790.75 valloss=4998.79 +valsplit=0.1 stop=66/400                                                                 |
-| neural network m05 rec deep (v09)                        |     0.558413 | 1471.09      |                     56049.2    |                   4.98835e+09 |            0.558413 |                70628.2    | 2022-12-12 13:21:58.501853 | loss=4.87e+09 valloss=4.84e+09 +valsplit=0.1 +patn=25                                                                  |
+| neural network m05 rec deep (v09)                        |     0.558413 | 1471.09      |                     56357.5    |                   5.01567e+09 |            0.555995 |                70821.4    | 2022-12-12 13:21:58.501853 | loss=4.87e+09 valloss=4.84e+09 +valsplit=0.1 +patn=25                                                                  |
 | decision tree - random search (vx10)                     |     0.558257 |  nan         |                     55865.4    |                   4.99011e+09 |            0.558257 |                70640.7    | nan                        | nan                                                                                                                    |
 | neural network (v06)                                     |     0.556696 |  312.991     |                     66710.7    |                   6.64686e+09 |            0.411595 |                81528.3    | 2000-01-01 17:09:59.063570 | random search [input11, d^20-500-500-20-5, dense1]                                                                     |
 | neural network m03 2 layers+wider (v06)                  |     0.549647 |  275.71      |                     64376.5    |                   6.26802e+09 |            0.445131 |                79170.9    | 2022-11-29 10:13:10.517896 | mse +epochs=500 +learn=0.003 +loss=5229.0478515625                                                                     |
 | neural network m01 simple (v06)                          |     0.541221 |   36.2       |                     69132      |                   7.15587e+09 |            0.366536 |                84592.4    | 2022-11-29 09:13:15.856770 | recommended simple model/mse +norm +epochs=50 +learn=0.003 +endloss=5610.65771484375 +stop=17 +endloss=5511.7373046875 |
 | neural network m02 two layers (v09)                      |     0.540824 |  178.62      |                     59659.9    |                   5.50478e+09 |            0.512696 |                74194.2    | 2022-11-30 13:34:57.703544 | loss=5424.62 valloss=5263.41 +valsplit=0.1 stop=52/500                                                                 |
-| neural network m04 3 layers+wider (v09)                  |     0.540678 | 1367.3       |                     59476.9    |                   5.46491e+09 |            0.516225 |                73925.1    | 2022-12-12 11:55:30.653553 | loss=5.20e+09 valloss=5.09e+09 +valsplit=0.1 +patn=25                                                                  |
+| neural network m04 3 layers+wider (v09)                  |     0.540678 | 1367.3       |                     60774.6    |                   5.6628e+09  |            0.498708 |                75251.6    | 2022-12-12 11:55:30.653553 | loss=5.20e+09 valloss=5.09e+09 +valsplit=0.1 +patn=25                                                                  |
 | neural network simplified (v06)                          |     0.540642 |  999         |                     59373.1    |                   5.53151e+09 |            0.51033  |                74374.1    | 2022-11-20 20:03:40.645221 | recommended simple model + normalise, mse                                                                              |
 | knn - random search (vx10)                               |     0.533823 |    0.0497677 |                     57566.9    |                   5.26613e+09 |            0.533823 |                72568.1    | nan                        | nan                                                                                                                    |
 | neural network - random search [i64,norm,d64^6,d1] (v11) |     0.533579 |  nan         |                     57201.7    |                   5.26888e+09 |            0.533579 |                72587      | nan                        | nan                                                                                                                    |
@@ -131,7 +133,7 @@ can't display model performance graphs for neural network
 | knn (v11)                                                |     0.465113 |    0.618877  |                     62944.7    |                   6.0423e+09  |            0.465113 |                77732.2    | 2022-11-30 16:20:53.948815 | random search                                                                                                          |
 | linear regression (ridge) (v09)                          |     0.459888 |    0.350431  |                     63349.5    |                   6.10132e+09 |            0.459888 |                78110.9    | 2022-12-11 14:36:43.474759 | random search                                                                                                          |
 | linear regression (ridge) (v06)                          |     0.4569   |    0.28695   |                     63603.1    |                   6.13521e+09 |            0.456889 |                78327.6    | 2022-12-03 19:20:52.874336 | random search                                                                                                          |
-| neural network m03 2 layers+wider (v09)                  |     0.4523   | 1822.49      |                     64179.1    |                   6.24487e+09 |            0.44718  |                79024.5    | 2022-12-11 18:56:27.304803 | loss=6.38e+09 valloss=6.41e+09 +valsplit=0.1 +patn=25                                                                  |
+| neural network m03 2 layers+wider (v09)                  |     0.4523   | 1822.49      |                     64123.6    |                   6.24293e+09 |            0.447352 |                79012.2    | 2022-12-11 18:56:27.304803 | loss=6.38e+09 valloss=6.41e+09 +valsplit=0.1 +patn=25                                                                  |
 | knn - basic (v01)                                        |   nan        |  nan         |                     55623.7    |                   5.34585e+09 |            0.546891 |                73115.3    | nan                        | nan                                                                                                                    |
 | knn - basic (v02)                                        |   nan        |  nan         |                     52181.5    |                   4.75613e+09 |            0.584356 |                68964.7    | nan                        | nan                                                                                                                    |
 | knn - random search (v01)                                |   nan        |  nan         |                     52593.9    |                   4.86155e+09 |            0.587939 |                69724.8    | nan                        | nan                                                                                                                    |

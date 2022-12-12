@@ -1,5 +1,5 @@
-<h1>Results from Neural Network m03 2 layers+wider</h1><h3>Dataset Version: 09</h3>Date run: 2022-12-11 18:56:28.540352<br>Start time: 2022-12-11 18:25:57.315582<br>End time: 2022-12-11 18:56:28.540345<br><hr><h2>Results</h2><h3>Summary</h3>pickled new version of model
-0.45229975028682723 is new best score (it's better than -999)<br><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/neural_network_m03_2_layers+wider__v09__best_ann_model.png"/><hr><h3>Model Specific Notes</h3>can't display hyperparameter comparison for neural network<br>can't display model performance graphs for neural network<br>can't display model performance graphs for neural network<br><hr><h3>Neural Network Loss - Head</h3><table border="1" class="dataframe">
+<h1>Results from Neural Network m03 2 layers+wider</h1><h3>Dataset Version: 09</h3>Date run: 2022-12-12 14:06:55.422939<br>Start time: 2022-12-12 13:43:27.656700<br>End time: 2022-12-12 14:06:55.422927<br><hr><h2>Results</h2><h3>Summary</h3>not updated saved model, the previous run was better
+0.4473522703797005 is worse than or equal to 0.45229975028682723<br><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/neural_network_m03_2_layers+wider__v09__best_ann_model.png"/><hr><h3>Model Specific Notes</h3>can't display hyperparameter comparison for neural network<br>can't display model performance graphs for neural network<br>can't display model performance graphs for neural network<br><hr><h3>Neural Network Loss - Head</h3><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -11,32 +11,32 @@
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.855433e+11</td>
-      <td>1.721288e+11</td>
+      <td>1.896098e+11</td>
+      <td>1.840963e+11</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.371437e+11</td>
-      <td>9.664427e+10</td>
+      <td>1.654197e+11</td>
+      <td>1.424461e+11</td>
       <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>5.707556e+10</td>
-      <td>2.670064e+10</td>
+      <td>1.106592e+11</td>
+      <td>7.913398e+10</td>
       <td>2</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.559845e+10</td>
-      <td>1.125268e+10</td>
+      <td>5.124734e+10</td>
+      <td>2.909598e+10</td>
       <td>3</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.089690e+10</td>
-      <td>1.086601e+10</td>
+      <td>1.800748e+10</td>
+      <td>1.220433e+10</td>
       <td>4</td>
     </tr>
   </tbody>
@@ -52,46 +52,46 @@
   <tbody>
     <tr>
       <th>495</th>
-      <td>6.392929e+09</td>
-      <td>6.416205e+09</td>
+      <td>6.443988e+09</td>
+      <td>6.463083e+09</td>
       <td>495</td>
     </tr>
     <tr>
       <th>496</th>
-      <td>6.391291e+09</td>
-      <td>6.412449e+09</td>
+      <td>6.443139e+09</td>
+      <td>6.467707e+09</td>
       <td>496</td>
     </tr>
     <tr>
       <th>497</th>
-      <td>6.389466e+09</td>
-      <td>6.422631e+09</td>
+      <td>6.443144e+09</td>
+      <td>6.462822e+09</td>
       <td>497</td>
     </tr>
     <tr>
       <th>498</th>
-      <td>6.387895e+09</td>
-      <td>6.416424e+09</td>
+      <td>6.441498e+09</td>
+      <td>6.466549e+09</td>
       <td>498</td>
     </tr>
     <tr>
       <th>499</th>
-      <td>6.384214e+09</td>
-      <td>6.405925e+09</td>
+      <td>6.441609e+09</td>
+      <td>6.466464e+09</td>
       <td>499</td>
     </tr>
   </tbody>
-</table><hr><img src="../artifacts/neural_network_m03_2_layers+wider__v09__end_loss.png"/><hr><h3>Model Structure</h3>>Model: "sequential"
+</table><hr><img src="../artifacts/neural_network_m03_2_layers+wider__v09__end_loss.png"/><hr><h3>Model Structure</h3>>Model: "sequential_1"
 >________________________________________________________________________________________________________________________________________________________________
 > Layer (type)                                                           Output Shape                                                    Param #                 
 >
-> dense (Dense)                                                          (None, 21)                                                      462                     
+> dense_3 (Dense)                                                        (None, 21)                                                      462                     
 >                                                                                                                                                                
-> normalization (Normalization)                                          (None, 21)                                                      43                      
+> normalization_1 (Normalization)                                        (None, 21)                                                      43                      
 >                                                                                                                                                                
-> dense_1 (Dense)                                                        (None, 30)                                                      660                     
+> dense_4 (Dense)                                                        (None, 30)                                                      660                     
 >                                                                                                                                                                
-> dense_2 (Dense)                                                        (None, 1)                                                       31                      
+> dense_5 (Dense)                                                        (None, 1)                                                       31                      
 >                                                                                                                                                                
 >
 >Total params: 1,196
@@ -136,6 +136,17 @@
       <td>random search(no dummies)</td>
     </tr>
     <tr>
+      <th>random forest (v09)</th>
+      <td>0.680091</td>
+      <td>1127.317849</td>
+      <td>46294.554857</td>
+      <td>3613817488.991202</td>
+      <td>0.680091</td>
+      <td>60115.035465</td>
+      <td>2022-12-11 19:26:14.332459</td>
+      <td>random search</td>
+    </tr>
+    <tr>
       <th>knn (v09)</th>
       <td>0.644916</td>
       <td>0.112408</td>
@@ -169,15 +180,37 @@
       <td>loss=4869.67 valloss=4726.34 +valsplit=0.1 stop=83/400</td>
     </tr>
     <tr>
+      <th>neural network m05 rec deep (v09)</th>
+      <td>0.558413</td>
+      <td>1471.09</td>
+      <td>56049.206234</td>
+      <td>4988345203.274884</td>
+      <td>0.558413</td>
+      <td>70628.21818</td>
+      <td>2022-12-12 13:21:58.501853</td>
+      <td>loss=4.87e+09 valloss=4.84e+09 +valsplit=0.1 +patn=25</td>
+    </tr>
+    <tr>
       <th>neural network m02 two layers (v09)</th>
       <td>0.540824</td>
       <td>178.62</td>
-      <td>60855.022922</td>
-      <td>5679860697.538664</td>
-      <td>0.497198</td>
-      <td>75364.850544</td>
+      <td>59659.87364</td>
+      <td>5504782893.089812</td>
+      <td>0.512696</td>
+      <td>74194.224122</td>
       <td>2022-11-30 13:34:57.703544</td>
       <td>loss=5424.62 valloss=5263.41 +valsplit=0.1 stop=52/500</td>
+    </tr>
+    <tr>
+      <th>neural network m04 3 layers+wider (v09)</th>
+      <td>0.540678</td>
+      <td>1367.3</td>
+      <td>59476.8688</td>
+      <td>5464914162.418774</td>
+      <td>0.516225</td>
+      <td>73925.057744</td>
+      <td>2022-12-12 11:55:30.653553</td>
+      <td>loss=5.20e+09 valloss=5.09e+09 +valsplit=0.1 +patn=25</td>
     </tr>
     <tr>
       <th>neural network m01 simple (v09)</th>
@@ -205,23 +238,12 @@
       <th>neural network m03 2 layers+wider (v09)</th>
       <td>0.4523</td>
       <td>1822.49</td>
-      <td>63891.754854</td>
-      <td>6187044183.76076</td>
-      <td>0.4523</td>
-      <td>78657.766201</td>
+      <td>64123.564083</td>
+      <td>6242932923.632053</td>
+      <td>0.447352</td>
+      <td>79012.232747</td>
       <td>2022-12-11 18:56:27.304803</td>
       <td>loss=6.38e+09 valloss=6.41e+09 +valsplit=0.1 +patn=25</td>
-    </tr>
-    <tr>
-      <th>random forest (v09)</th>
-      <td>0.254902</td>
-      <td>4.46726</td>
-      <td>75769.623829</td>
-      <td>8416934462.036383</td>
-      <td>0.254902</td>
-      <td>91743.852448</td>
-      <td>2022-11-29 20:45:43.360554</td>
-      <td>random search</td>
     </tr>
   </tbody>
 </table><hr><h3>Comparison with all model performances</h3><table border="1" class="dataframe">
@@ -369,6 +391,17 @@
       <td>0.681785</td>
       <td>59955.729602</td>
       <td>2022-11-30 14:45:52.207314</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>random forest (v09)</th>
+      <td>0.680091</td>
+      <td>1127.317849</td>
+      <td>46294.554857</td>
+      <td>3613817488.991202</td>
+      <td>0.680091</td>
+      <td>60115.035465</td>
+      <td>2022-12-11 19:26:14.332459</td>
       <td>random search</td>
     </tr>
     <tr>
@@ -537,6 +570,17 @@
       <td>loss=4790.75 valloss=4998.79 +valsplit=0.1 stop=66/400</td>
     </tr>
     <tr>
+      <th>neural network m05 rec deep (v09)</th>
+      <td>0.558413</td>
+      <td>1471.09</td>
+      <td>56049.206234</td>
+      <td>4988345203.274884</td>
+      <td>0.558413</td>
+      <td>70628.21818</td>
+      <td>2022-12-12 13:21:58.501853</td>
+      <td>loss=4.87e+09 valloss=4.84e+09 +valsplit=0.1 +patn=25</td>
+    </tr>
+    <tr>
       <th>decision tree - random search (vx10)</th>
       <td>0.558257</td>
       <td>NaN</td>
@@ -584,12 +628,23 @@
       <th>neural network m02 two layers (v09)</th>
       <td>0.540824</td>
       <td>178.62</td>
-      <td>60855.022922</td>
-      <td>5679860697.538664</td>
-      <td>0.497198</td>
-      <td>75364.850544</td>
+      <td>59659.87364</td>
+      <td>5504782893.089812</td>
+      <td>0.512696</td>
+      <td>74194.224122</td>
       <td>2022-11-30 13:34:57.703544</td>
       <td>loss=5424.62 valloss=5263.41 +valsplit=0.1 stop=52/500</td>
+    </tr>
+    <tr>
+      <th>neural network m04 3 layers+wider (v09)</th>
+      <td>0.540678</td>
+      <td>1367.3</td>
+      <td>59476.8688</td>
+      <td>5464914162.418774</td>
+      <td>0.516225</td>
+      <td>73925.057744</td>
+      <td>2022-12-12 11:55:30.653553</td>
+      <td>loss=5.20e+09 valloss=5.09e+09 +valsplit=0.1 +patn=25</td>
     </tr>
     <tr>
       <th>neural network simplified (v06)</th>
@@ -738,23 +793,12 @@
       <th>neural network m03 2 layers+wider (v09)</th>
       <td>0.4523</td>
       <td>1822.49</td>
-      <td>63891.754854</td>
-      <td>6187044183.76076</td>
-      <td>0.4523</td>
-      <td>78657.766201</td>
+      <td>64123.564083</td>
+      <td>6242932923.632053</td>
+      <td>0.447352</td>
+      <td>79012.232747</td>
       <td>2022-12-11 18:56:27.304803</td>
       <td>loss=6.38e+09 valloss=6.41e+09 +valsplit=0.1 +patn=25</td>
-    </tr>
-    <tr>
-      <th>random forest (v09)</th>
-      <td>0.254902</td>
-      <td>4.46726</td>
-      <td>75769.623829</td>
-      <td>8416934462.036383</td>
-      <td>0.254902</td>
-      <td>91743.852448</td>
-      <td>2022-11-29 20:45:43.360554</td>
-      <td>random search</td>
     </tr>
     <tr>
       <th>knn - basic (v01)</th>

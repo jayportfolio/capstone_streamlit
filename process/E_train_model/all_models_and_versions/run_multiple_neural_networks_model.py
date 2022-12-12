@@ -1,7 +1,13 @@
 failures = []
 
+xxx = ["m05 my deep"]
+structures = ['m02 two layers',"m03 2 layers+wider","m04 3 layers+wider","m05 rec deep","m11 mega","m12 mega","m13 mega","m14 mega"]
+#structures = ['m02 two layers']
+structures = ["m11 mega","m12 mega","m13 mega","m14 mega"]
+print("running ANN for", structures)
+
 for VERSION in ['09']:
-    for selected_neural_network in ['m02 two layers',"m03 2 layers+wider","m04 3 layers+wider","m05 rec deep","m05 my deep","m11 mega","m12 mega","m13 mega","m14 mega"]:
+    for selected_neural_network in structures:
 
         
         selected_nn_code = selected_neural_network
@@ -9,6 +15,8 @@ for VERSION in ['09']:
         print(f"\n\n==================================================\nVERSION = {VERSION}\nselected_nn_code = {selected_nn_code}\nselected_neural_network = {selected_neural_network}\n==================================================\n\n")
 
         try:
+            #HHprint('exception?')
+            #raise ValueError('testing exception handling')
             #!/usr/bin/env python
             # coding: utf-8
 
@@ -1058,8 +1066,11 @@ for VERSION in ['09']:
 
 
             # In[ ]:
-        except:
+        except Exception as e:
+            print("Failed", VERSION + "/" + selected_neural_network)
+            print("Failure was:\n\n", e, "\n")
             failures.append(VERSION + "/" + selected_neural_network)
+            raise ValueError("shouldn't continue, probably-fatal error occurred")
 
 print("These were failures")
 print("   " + "\n   ".join(failures))
