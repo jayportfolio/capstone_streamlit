@@ -1346,6 +1346,27 @@
         "silver time": 175.68,
         "suboptimal": "suboptimal"
     },
+    "neural network m14 mega (v09)": {
+        "Mean Absolute Error Accuracy": 51080.54125240766,
+        "Mean Squared Error Accuracy": 4395484312.865142,
+        "R square Accuracy": 0.6108953186264071,
+        "Root Mean Squared Error": 66298.44879682436,
+        "_method": "loss=4.68e+04 valloss=5.01e+04 +valsplit=0.1 +patn=25 stop=230/400 ",
+        "_params": "mae +epochs=400 +learn=0.0003",
+        "_score": 0.6108953186264071,
+        "_train time": 2179.86,
+        "best is shared": false,
+        "best method": "loss=4.68e+04 valloss=5.01e+04 +valsplit=0.1 +patn=25 stop=230/400 ",
+        "best params": "mae +epochs=400 +learn=0.0003",
+        "best run date": "2022-12-12 16:01:42.195065",
+        "best score": 0.6108953186264071,
+        "best time": 2179.86,
+        "date": "2022-12-12 16:01:42.195065",
+        "first run": "2022-12-12 16:01:42.251643",
+        "random_state": 101,
+        "run_env": "gradient",
+        "suboptimal": "pending"
+    },
     "neural network m14 mega (v10)": {
         "Mean Absolute Error Accuracy": 53123.95746232721,
         "Mean Squared Error Accuracy": 4754712208.689863,
