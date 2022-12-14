@@ -38,18 +38,18 @@
         "suboptimal": "suboptimal"
     },
     "catboost (v09)": {
-        "Mean Absolute Error Accuracy": 44531.355600381285,
-        "Mean Squared Error Accuracy": 3383205112.6632833,
-        "R square Accuracy": 0.7005060526478675,
-        "Root Mean Squared Error": 58165.32569033963,
+        "Mean Absolute Error Accuracy": 51551.486062196665,
+        "Mean Squared Error Accuracy": 4309700715.151858,
+        "R square Accuracy": 0.6184892029584729,
+        "Root Mean Squared Error": 65648.3108324339,
         "_method": "random search(no dummies)",
         "_params": {
             "depth": 15,
-            "l2_leaf_reg": 5,
-            "learning_rate": 0.5
+            "l2_leaf_reg": 7,
+            "learning_rate": 1
         },
-        "_score": 0.7005060526478675,
-        "_train time": 2.82,
+        "_score": 0.6184892029584729,
+        "_train time": 999,
         "best is shared": false,
         "best method": "random search(no dummies)",
         "best params": {
@@ -60,7 +60,7 @@
         "best run date": "2022-11-30 13:34:39.793583",
         "best score": 0.7005060526478675,
         "best time": 2.82,
-        "date": "2022-11-30 13:34:39.793583",
+        "date": "2022-12-14 10:12:29.524049",
         "first run": "2022-11-30 13:14:23.328891",
         "random_state": 101,
         "run_env": "gradient",
@@ -73,7 +73,7 @@
         "silver run date": "2022-11-30 13:23:28.812813",
         "silver score": 0.6868175923144272,
         "silver time": 0.16,
-        "suboptimal": "pending"
+        "suboptimal": "suboptimal"
     },
     "catboost (v10)": {
         "Mean Absolute Error Accuracy": 44874.99690729516,
@@ -670,23 +670,23 @@
         "suboptimal": "suboptimal"
     },
     "linear regression (ridge) (v09)": {
-        "Mean Absolute Error Accuracy": 63349.47347867658,
-        "Mean Squared Error Accuracy": 6101320424.769447,
-        "R square Accuracy": 0.4598883374718238,
-        "Root Mean Squared Error": 78110.94945505046,
+        "Mean Absolute Error Accuracy": 63351.20874061903,
+        "Mean Squared Error Accuracy": 6101470226.5428705,
+        "R square Accuracy": 0.4598750764595738,
+        "Root Mean Squared Error": 78111.90835297055,
         "_method": "random search",
         "_params": {
-            "model__alpha": 1e-05,
-            "model__copy_X": true,
+            "model__alpha": 0.1,
+            "model__copy_X": false,
             "model__fit_intercept": true,
-            "model__max_iter": 1000000,
+            "model__max_iter": 10000,
             "model__positive": false,
             "model__random_state": 101,
-            "model__solver": "sag",
+            "model__solver": "sparse_cg",
             "model__tol": 0.001
         },
-        "_score": 0.4598883374718238,
-        "_train time": 0.350430965423584,
+        "_score": 0.4598750764595738,
+        "_train time": 0.02819061279296875,
         "best is shared": false,
         "best method": "random search",
         "best params": {
@@ -702,7 +702,7 @@
         "best run date": "2022-12-11 14:36:43.474759",
         "best score": 0.4598883374718238,
         "best time": 0.350430965423584,
-        "date": "2022-12-11 14:36:43.474759",
+        "date": "2022-12-14 00:12:19.563338",
         "first run": "2022-11-29 15:13:33.267574",
         "random_state": 101,
         "run_env": "gradient",
@@ -720,7 +720,7 @@
         "silver run date": "2022-11-29 19:51:49.096191",
         "silver score": 0.4598883374313387,
         "silver time": 0.25263214111328125,
-        "suboptimal": "pending"
+        "suboptimal": "suboptimal"
     },
     "linear regression (ridge) (v10)": {
         "Mean Absolute Error Accuracy": 62596.20643084104,
@@ -1388,6 +1388,27 @@
         "run_env": "gradient",
         "suboptimal": "pending"
     },
+    "neural network m15 mega + dropout (v09)": {
+        "Mean Absolute Error Accuracy": 49410.90648722524,
+        "Mean Squared Error Accuracy": 4267390328.47179,
+        "R square Accuracy": 0.6222346763480049,
+        "Root Mean Squared Error": 65325.2656211346,
+        "_method": "loss=4.38e+04 valloss=4.85e+04 +valsplit=0.1 +patn=25 stop=306/400 ",
+        "_params": "mae +epochs=400 +learn=0.0003",
+        "_score": 0.6222346763480049,
+        "_train time": 2077.84,
+        "best is shared": false,
+        "best method": "loss=4.38e+04 valloss=4.85e+04 +valsplit=0.1 +patn=25 stop=306/400 ",
+        "best params": "mae +epochs=400 +learn=0.0003",
+        "best run date": "2022-12-13 23:57:56.104125",
+        "best score": 0.6222346763480049,
+        "best time": 2077.84,
+        "date": "2022-12-13 23:57:56.104125",
+        "first run": "2022-12-13 23:57:56.105918",
+        "random_state": 101,
+        "run_env": "gradient",
+        "suboptimal": "pending"
+    },
     "neural network simplified (v06)": {
         "Mean Absolute Error Accuracy": 59373.052887066624,
         "Mean Squared Error Accuracy": 5531509335.791807,
@@ -1754,6 +1775,61 @@
         "silver run date": "2022-12-03 00:21:25.790717",
         "silver score": 0.7259889481123455,
         "silver time": 217.28568649291992,
+        "suboptimal": "pending"
+    },
+    "xg boost (tree) (v09)": {
+        "Mean Absolute Error Accuracy": 42675.74685588035,
+        "Mean Squared Error Accuracy": 3147715326.5804105,
+        "R square Accuracy": 0.7213524876840065,
+        "Root Mean Squared Error": 56104.50362119257,
+        "_method": "random search",
+        "_params": {
+            "model__booster": "dart",
+            "model__colsample_bytree": 1,
+            "model__lambda": 100,
+            "model__learning_rate": 0.1,
+            "model__max_depth": 10,
+            "model__max_features": null,
+            "model__max_leaf_nodes": 200,
+            "model__max_samples": 0.5,
+            "model__min_sample_split": 200,
+            "model__min_samples_leaf": 2000,
+            "model__n_estimators": 500,
+            "model__n_jobs": 3,
+            "model__objective": "reg:squarederror",
+            "model__subsample": 0.9,
+            "model__tree_method": "auto",
+            "model__verbosity": 1
+        },
+        "_score": 0.7213524876840065,
+        "_train time": 179.82091236114502,
+        "best is shared": false,
+        "best method": "random search",
+        "best params": {
+            "model__booster": "dart",
+            "model__colsample_bytree": 1,
+            "model__lambda": 100,
+            "model__learning_rate": 0.1,
+            "model__max_depth": 10,
+            "model__max_features": null,
+            "model__max_leaf_nodes": 200,
+            "model__max_samples": 0.5,
+            "model__min_sample_split": 200,
+            "model__min_samples_leaf": 2000,
+            "model__n_estimators": 500,
+            "model__n_jobs": 3,
+            "model__objective": "reg:squarederror",
+            "model__subsample": 0.9,
+            "model__tree_method": "auto",
+            "model__verbosity": 1
+        },
+        "best run date": "2022-12-14 00:46:51.090690",
+        "best score": 0.7213524876840065,
+        "best time": 179.82091236114502,
+        "date": "2022-12-14 00:46:51.090690",
+        "first run": "2022-12-14 00:46:51.092108",
+        "random_state": 101,
+        "run_env": "gradient",
         "suboptimal": "pending"
     },
     "xg boost (tree) (v11)": {

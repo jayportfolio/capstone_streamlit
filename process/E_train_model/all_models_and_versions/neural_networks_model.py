@@ -12,7 +12,7 @@
 # * what fraction of the data we'll use for testing (0.1)
 # * if the data split will be randomised (it won't!)
 
-# In[1]:
+# In[115]:
 
 
 #ALGORITHM = 'Neural Network'
@@ -22,7 +22,7 @@ ALGORITHM_DETAIL_ORIG = ALGORITHM_DETAIL
 #ALGORITHM_DETAIL += ' tbc'
 DATA_DETAIL = []
 #DATA_DETAIL = ['no scale','no dummies']
-VERSION = '06'
+VERSION = '09'
 
 RANDOM_STATE = 101
 TRAINING_SIZE = 0.9
@@ -43,7 +43,7 @@ price_divisor = 1
 #selected_nn_code = 'm01 simple'
 
 # ---- 2nd NEURAL NETWORK STRUCTURE DEFINITION ---- #
-#selected_neural_network = selected_nn_code = "m02 two layers"
+selected_neural_network = selected_nn_code = "m02 two layers"
 
 
 # ---- 3rd NEURAL NETWORK STRUCTURE DEFINITION ---- #
@@ -65,7 +65,7 @@ price_divisor = 1
 #selected_neural_network = selected_nn_code = "m11 mega"
 
 # ---- 8th NEURAL NETWORK STRUCTURE DEFINITION ---- #
-selected_neural_network = selected_nn_code = "m12 mega"
+#selected_neural_network = selected_nn_code = "m12 mega"
 
 # ---- 9th NEURAL NETWORK STRUCTURE DEFINITION ---- #
 #selected_neural_network = selected_nn_code = "m13 mega"
@@ -86,7 +86,7 @@ create_python_script = True
 # 
 # 
 
-# In[28]:
+# In[116]:
 
 
 import os
@@ -102,7 +102,7 @@ if is_jupyter:
     get_ipython().system('pip install tabulate')
 
 
-# In[3]:
+# In[117]:
 
 
 from sklearn.impute import SimpleImputer
@@ -185,7 +185,7 @@ print(env_vars)
 
 # #### Include any overrides specific to the algorthm / python environment being used
 
-# In[4]:
+# In[118]:
 
 
 #running_locally = True
@@ -198,7 +198,7 @@ running_locally = run_env == 'local'
 # 
 # 
 
-# In[5]:
+# In[119]:
 
 
 from sklearn.pipeline import Pipeline
@@ -485,14 +485,14 @@ def make_simple_ann(key, inputs=-1):
 # ## Stage: get the data
 # 
 
-# In[6]:
+# In[120]:
 
 
 columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 LABEL = 'Price'
 
 
-# In[7]:
+# In[121]:
 
 
 df, retrieval_type = get_source_dataframe(cloud_run, VERSION, folder_prefix='../../../', row_limit=None)
@@ -506,7 +506,7 @@ if retrieval_type != 'tidy':
     df = df[columns]
 
 
-# In[8]:
+# In[122]:
 
 
 print(colored(f"features", "blue"), "-> ", columns)
@@ -514,14 +514,14 @@ columns.insert(0, LABEL)
 print(colored(f"label", "green", None, ['bold']), "-> ", LABEL)
 
 
-# In[9]:
+# In[123]:
 
 
 df = preprocess(df, version=VERSION)
 df = df.dropna()
 
 
-# In[10]:
+# In[124]:
 
 
 df['Price'] = df['Price'] / price_divisor # potentially making the price smaller to make the ANN perform better
@@ -529,7 +529,7 @@ df['Price'] = df['Price'] / price_divisor # potentially making the price smaller
 df.head(30)
 
 
-# In[11]:
+# In[125]:
 
 
 X_train, X_test, y_train, y_test, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
@@ -555,7 +555,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 # 
 # 
 
-# In[12]:
+# In[126]:
 
 
 trainable_model, ALGORITHM_DETAIL, chosen_epochs, chosen_params = make_simple_ann(selected_neural_network)
@@ -563,14 +563,14 @@ trainable_model, ALGORITHM_DETAIL, chosen_epochs, chosen_params = make_simple_an
 ALGORITHM_DETAIL
 
 
-# In[13]:
+# In[127]:
 
 
 print("selected_neural_network",selected_neural_network)
 trainable_model.summary()
 
 
-# In[14]:
+# In[128]:
 
 
 val_split = 0.1
@@ -604,7 +604,7 @@ pipe_end = time()
 estimated_time = round((pipe_end - pipe_start), 2)
 
 
-# In[15]:
+# In[129]:
 
 
 #ALGORITHM_DETAIL.replace("epochs=", f"epochs={len(hist)}/")
@@ -616,7 +616,7 @@ estimated_time = round((pipe_end - pipe_start), 2)
 # 
 # 
 
-# In[17]:
+# In[130]:
 
 
 hist = pd.DataFrame(history.history)
@@ -650,19 +650,19 @@ print(ALGORITHM_DETAIL)
 hist.tail()
 
 
-# In[ ]:
+# In[130]:
 
 
 
 
 
-# In[ ]:
+# In[130]:
 
 
 
 
 
-# In[18]:
+# In[131]:
 
 
 def plot_loss(history):
@@ -690,13 +690,13 @@ def plot_loss(history):
 loss_fig, loss_ax = plot_loss(history)
 
 
-# In[19]:
+# In[132]:
 
 
 y_pred = trainable_model.predict(X_test)
 
 
-# In[20]:
+# In[133]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -712,7 +712,7 @@ print('Mean Squared Error Accuracy', MSE)
 print('Root Mean Squared Error', RMSE)
 
 
-# In[21]:
+# In[134]:
 
 
 if debug_mode:
@@ -724,7 +724,7 @@ if debug_mode:
     print(y_test.shape)
 
 
-# In[22]:
+# In[135]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -744,7 +744,7 @@ combined['bedrooms'] = combined['bedrooms'].astype(int)
 combined
 
 
-# In[23]:
+# In[136]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -763,7 +763,7 @@ plt.show()
 # 
 # 
 
-# In[24]:
+# In[137]:
 
 
 cv_best_model_fit_time = estimated_time
@@ -803,7 +803,7 @@ print(key)
 print(ALGORITHM_DETAIL)
 
 
-# In[25]:
+# In[138]:
 
 
 if this_model_is_best:
@@ -821,7 +821,7 @@ print(new_model_decision)
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[29]:
+# In[139]:
 
 
 from bs4 import BeautifulSoup
@@ -1027,26 +1027,26 @@ def print_and_report(text_single, title):
 
 
 
-# In[30]:
+# In[140]:
 
 
 print('Nearly finished...')
 
 
-# In[34]:
+# In[141]:
 
 
 if create_python_script and is_jupyter:
     get_ipython().system("jupyter nbconvert --to script 'neural_networks_model.ipynb'")
 
 
-# In[32]:
+# In[142]:
 
 
 print('Finished!')
 
 
-# In[ ]:
+# In[142]:
 
 
 

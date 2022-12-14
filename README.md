@@ -8,6 +8,11 @@ cd /notebooks/process/E_train_model/all_models_and_versions
 python all_models_except_neural_networks.py
 
 
+##### Run multiple models
+cd /notebooks/process/E_train_model/all_models_and_versions
+python run_multiple_all_model_except_neural.py
+
+
 ##### Run neural network model
 
 cd /notebooks/process/E_train_model/all_models_and_versions

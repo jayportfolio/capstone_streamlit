@@ -1,12 +1,12 @@
 failures = []
 
-algorithms = ['Linear Regression (Ridge)']
+algorithms = ['CatBoost','XG Boost (tree)']
 print("running for", algorithms)
 
 for VERSION in ['09']:
     for ALGORITHM in algorithms:
 
-        print(f"\n\n==================================================\nVERSION = {VERSION}\nselected_nn_code = {selected_nn_code}\nselected_neural_network = {selected_neural_network}\n==================================================\n\n")
+        print(f"\n\n==================================================\nVERSION = {VERSION}\nALGORITHM = {ALGORITHM}\n==================================================\n\n")
 
         try:
             # !/usr/bin/env python
@@ -1002,10 +1002,12 @@ for VERSION in ['09']:
 
 
         except Exception as e:
-            print("Failed", VERSION + "/" + selected_neural_network)
+            print("Failed", VERSION + "/" + ALGORITHM)
             print("Failure was:\n\n", e, "\n")
-            failures.append(VERSION + "/" + selected_neural_network)
+            failures.append(VERSION + "/" + ALGORITHM)
             raise ValueError("shouldn't continue, probably-fatal error occurred")
 
-print("These were failures")
-print("   " + "\n   ".join(failures))
+
+if len(failures) > 0:
+    print("These were failures")
+    print("   " + "\n   ".join(failures))
