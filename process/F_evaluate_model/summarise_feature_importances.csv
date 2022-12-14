@@ -1,0 +1,13 @@
+Model, 	Catboost,XG Boost,Random Forest,Decision Trees
+Feature 1,	bedrooms,	tenure.tenureType_LEASEHOLD,	bedrooms,	location.longitude
+Feature 2, 	latitude_deviation,	bedrooms,	location.longitude,	tenure.tenureType_LEASEHOLD
+Feature 3,location.longitude,	latitude_deviation,	latitude_deviation,	bedrooms
+Feature 4,	tenure.tenureType,	tenure.tenureType_FREEHOLD,	location.latitude,	latitude_deviation
+Feature 5, 	longitude_deviation,	bathrooms,	longitude_deviation,	longitude_deviation
+Feature 6,	bathrooms,	longitude_deviation,	tenure.tenureType_LEASEHOLD,
+Feature 7,	location.latitude,,,
+Feature 8,	nearestStation,,,
+Feature 9,	feature__chain free,,,
+Feature 10,	feature__no onward chain,,,
+Feature 11,	feature__off street parking,,,
+Feature 12,	feature__two double bedrooms,,,
