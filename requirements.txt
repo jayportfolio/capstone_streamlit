@@ -7,6 +7,10 @@ xgboost
 scikeras
 catboost
 
+pytest
+pytest-cov
+tabulate
+
 # Temporarily remove for heroku slug
 #jupyter #==1.0.0
 #matplotlib #==3.5.2
