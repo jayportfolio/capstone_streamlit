@@ -287,16 +287,6 @@ def assert_ok(updated, expected__json_filename, testname=""):
         assert failed == []
 
 
-import pytest
-
-def method1():
-    return False
-
-def test_method1():
-    x=5
-    y=10
-    assert x==y
-
 def test_module():
     if False:
         pass
