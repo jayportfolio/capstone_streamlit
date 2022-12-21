@@ -946,7 +946,7 @@ combined['bedrooms'] = combined['bedrooms'].astype(int)
 combined
 
 
-# In[ ]:
+# In[26]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -965,7 +965,7 @@ plt.show()
 # 
 # 
 
-# In[ ]:
+# In[27]:
 
 
 cv_best_model_fit_time = estimated_time
@@ -1005,7 +1005,7 @@ print(key)
 print(ALGORITHM_DETAIL)
 
 
-# In[ ]:
+# In[28]:
 
 
 if this_model_is_best:
@@ -1023,7 +1023,7 @@ print(new_model_decision)
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[ ]:
+# In[29]:
 
 
 from bs4 import BeautifulSoup
@@ -1229,26 +1229,26 @@ def print_and_report(text_single, title):
 
 
 
-# In[ ]:
+# In[30]:
 
 
 print('Nearly finished...')
 
 
-# In[ ]:
+# In[31]:
 
 
 if create_python_script and is_jupyter:
     get_ipython().system("jupyter nbconvert --to script 'neural_networks_with_autoencoder_20221214.ipynb'")
 
 
-# In[ ]:
+# In[32]:
 
 
 print('Finished!')
 
 
-# In[ ]:
+# In[32]:
 
 
 

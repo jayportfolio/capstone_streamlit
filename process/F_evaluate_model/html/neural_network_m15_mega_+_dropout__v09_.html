@@ -1,5 +1,5 @@
-<h1>Results from Neural Network m15 mega + dropout</h1><h3>Dataset Version: 09</h3>Date run: 2022-12-13 23:57:59.864441<br>Start time: 2022-12-13 23:23:05.800845<br>End time: 2022-12-13 23:57:59.864367<br><hr><h2>Results</h2><h3>Summary</h3>pickled new version of model
-0.6222346763480049 is new best score (it's better than -999)<br><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/neural_network_m15_mega_+_dropout__v09__best_ann_model.png"/><hr><h3>Model Specific Notes</h3>can't display hyperparameter comparison for neural network<br>can't display model performance graphs for neural network<br>can't display model performance graphs for neural network<br><hr><h3>Neural Network Loss - Head</h3><table border="1" class="dataframe">
+<h1>Results from Neural Network m15 mega + dropout</h1><h3>Dataset Version: 09</h3>Date run: 2022-12-20 15:17:29.490091<br>Start time: 2022-12-20 13:55:52.555658<br>End time: 2022-12-20 15:17:29.489980<br><hr><h2>Results</h2><h3>Summary</h3>not updated saved model, the previous run was better
+-15.994804906238336 is worse than or equal to 0.6222346763480049<br><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/neural_network_m15_mega_+_dropout__v09__best_ann_model.png"/><hr><h3>Model Specific Notes</h3>can't display hyperparameter comparison for neural network<br>can't display model performance graphs for neural network<br>can't display model performance graphs for neural network<br><hr><h3>Neural Network Loss - Head</h3><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -11,32 +11,32 @@
   <tbody>
     <tr>
       <th>0</th>
-      <td>425121.21875</td>
-      <td>425837.03125</td>
+      <td>0.162841</td>
+      <td>0.121239</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>424949.09375</td>
-      <td>425580.84375</td>
+      <td>0.128303</td>
+      <td>0.126238</td>
       <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>424659.31250</td>
-      <td>425233.68750</td>
+      <td>0.122992</td>
+      <td>0.116827</td>
       <td>2</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>424274.28125</td>
-      <td>424927.00000</td>
+      <td>0.120610</td>
+      <td>0.114179</td>
       <td>3</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>423803.68750</td>
-      <td>424262.34375</td>
+      <td>0.117811</td>
+      <td>0.118208</td>
       <td>4</td>
     </tr>
   </tbody>
@@ -51,34 +51,34 @@
   </thead>
   <tbody>
     <tr>
-      <th>301</th>
-      <td>43887.136719</td>
-      <td>48689.136719</td>
-      <td>301</td>
+      <th>121</th>
+      <td>0.085584</td>
+      <td>0.102539</td>
+      <td>121</td>
     </tr>
     <tr>
-      <th>302</th>
-      <td>43936.593750</td>
-      <td>48743.390625</td>
-      <td>302</td>
+      <th>122</th>
+      <td>0.085786</td>
+      <td>0.097605</td>
+      <td>122</td>
     </tr>
     <tr>
-      <th>303</th>
-      <td>43989.910156</td>
-      <td>49123.851562</td>
-      <td>303</td>
+      <th>123</th>
+      <td>0.085499</td>
+      <td>0.098600</td>
+      <td>123</td>
     </tr>
     <tr>
-      <th>304</th>
-      <td>43774.664062</td>
-      <td>49447.656250</td>
-      <td>304</td>
+      <th>124</th>
+      <td>0.085337</td>
+      <td>0.100067</td>
+      <td>124</td>
     </tr>
     <tr>
-      <th>305</th>
-      <td>43844.781250</td>
-      <td>48944.964844</td>
-      <td>305</td>
+      <th>125</th>
+      <td>0.085297</td>
+      <td>0.098536</td>
+      <td>125</td>
     </tr>
   </tbody>
 </table><hr><img src="../artifacts/neural_network_m15_mega_+_dropout__v09__end_loss.png"/><hr><h3>Model Structure</h3>>Model: "sequential"
@@ -87,39 +87,39 @@
 >
 > normalization (Normalization)                                          (None, 21)                                                      43                      
 >                                                                                                                                                                
-> dense (Dense)                                                          (None, 128)                                                     2816                    
+> dense_8 (Dense)                                                        (None, 128)                                                     2816                    
 >                                                                                                                                                                
-> dense_1 (Dense)                                                        (None, 256)                                                     33024                   
+> dense_9 (Dense)                                                        (None, 256)                                                     33024                   
 >                                                                                                                                                                
-> batch_normalization_1 (BatchNormalization)                             (None, 256)                                                     1024                    
+> batch_normalization_5 (BatchNormalization)                             (None, 256)                                                     1024                    
 >                                                                                                                                                                
 > activation (Activation)                                                multiple                                                        0                       
 >                                                                                                                                                                
-> dense_2 (Dense)                                                        (None, 512)                                                     131584                  
+> dense_10 (Dense)                                                       (None, 512)                                                     131584                  
 >                                                                                                                                                                
-> batch_normalization_2 (BatchNormalization)                             (None, 512)                                                     2048                    
+> batch_normalization_6 (BatchNormalization)                             (None, 512)                                                     2048                    
 >                                                                                                                                                                
 > dropout (Dropout)                                                      (None, 512)                                                     0                       
 >                                                                                                                                                                
-> dense_3 (Dense)                                                        (None, 1024)                                                    525312                  
+> dense_11 (Dense)                                                       (None, 1024)                                                    525312                  
 >                                                                                                                                                                
-> batch_normalization_3 (BatchNormalization)                             (None, 1024)                                                    4096                    
+> batch_normalization_7 (BatchNormalization)                             (None, 1024)                                                    4096                    
 >                                                                                                                                                                
-> dense_4 (Dense)                                                        (None, 1024)                                                    1049600                 
+> dense_12 (Dense)                                                       (None, 1024)                                                    1049600                 
 >                                                                                                                                                                
 > dropout_1 (Dropout)                                                    (None, 1024)                                                    0                       
 >                                                                                                                                                                
-> batch_normalization_4 (BatchNormalization)                             (None, 1024)                                                    4096                    
+> batch_normalization_8 (BatchNormalization)                             (None, 1024)                                                    4096                    
 >                                                                                                                                                                
-> dense_5 (Dense)                                                        (None, 512)                                                     524800                  
+> dense_13 (Dense)                                                       (None, 512)                                                     524800                  
 >                                                                                                                                                                
-> batch_normalization_5 (BatchNormalization)                             (None, 512)                                                     2048                    
+> batch_normalization_9 (BatchNormalization)                             (None, 512)                                                     2048                    
 >                                                                                                                                                                
-> dense_6 (Dense)                                                        (None, 256)                                                     131328                  
+> dense_14 (Dense)                                                       (None, 256)                                                     131328                  
 >                                                                                                                                                                
-> batch_normalization_6 (BatchNormalization)                             (None, 256)                                                     1024                    
+> batch_normalization_10 (BatchNormalization)                            (None, 256)                                                     1024                    
 >                                                                                                                                                                
-> dense_7 (Dense)                                                        (None, 1)                                                       257                     
+> dense_15 (Dense)                                                       (None, 1)                                                       257                     
 >                                                                                                                                                                
 >
 >Total params: 2,413,100
@@ -142,6 +142,17 @@
   </thead>
   <tbody>
     <tr>
+      <th>xg boost (tree) (v09)</th>
+      <td>0.721352</td>
+      <td>179.820912</td>
+      <td>42675.746856</td>
+      <td>3147715326.58041</td>
+      <td>0.721352</td>
+      <td>56104.503621</td>
+      <td>2022-12-14 00:46:51.090690</td>
+      <td>random search</td>
+    </tr>
+    <tr>
       <th>xg boost (v09)</th>
       <td>0.701117</td>
       <td>119.28102</td>
@@ -156,10 +167,10 @@
       <th>catboost (v09)</th>
       <td>0.700506</td>
       <td>2.82</td>
-      <td>44531.3556</td>
-      <td>3383205112.663283</td>
-      <td>0.700506</td>
-      <td>58165.32569</td>
+      <td>51551.486062</td>
+      <td>4309700715.151858</td>
+      <td>0.618489</td>
+      <td>65648.310832</td>
       <td>2022-11-30 13:34:39.793583</td>
       <td>random search(no dummies)</td>
     </tr>
@@ -189,10 +200,10 @@
       <th>neural network m15 mega + dropout (v09)</th>
       <td>0.622235</td>
       <td>2077.84</td>
-      <td>49410.906487</td>
-      <td>4267390328.47179</td>
-      <td>0.622235</td>
-      <td>65325.265621</td>
+      <td>212534587876.077087</td>
+      <td>47995052450841435832320.0</td>
+      <td>-15.994805</td>
+      <td>219077731526.600952</td>
       <td>2022-12-13 23:57:56.104125</td>
       <td>loss=4.38e+04 valloss=4.85e+04 +valsplit=0.1 +patn=25 stop=306/400</td>
     </tr>
@@ -299,10 +310,10 @@
       <th>linear regression (ridge) (v09)</th>
       <td>0.459888</td>
       <td>0.350431</td>
-      <td>63349.473479</td>
-      <td>6101320424.769447</td>
-      <td>0.459888</td>
-      <td>78110.949455</td>
+      <td>63351.208741</td>
+      <td>6101470226.542871</td>
+      <td>0.459875</td>
+      <td>78111.908353</td>
       <td>2022-12-11 14:36:43.474759</td>
       <td>random search</td>
     </tr>
@@ -342,6 +353,17 @@
       <td>0.727132</td>
       <td>55519.619019</td>
       <td>2022-12-07 09:43:37.103009</td>
+      <td>random search</td>
+    </tr>
+    <tr>
+      <th>xg boost (tree) (v09)</th>
+      <td>0.721352</td>
+      <td>179.820912</td>
+      <td>42675.746856</td>
+      <td>3147715326.58041</td>
+      <td>0.721352</td>
+      <td>56104.503621</td>
+      <td>2022-12-14 00:46:51.090690</td>
       <td>random search</td>
     </tr>
     <tr>
@@ -414,10 +436,10 @@
       <th>catboost (v09)</th>
       <td>0.700506</td>
       <td>2.82</td>
-      <td>44531.3556</td>
-      <td>3383205112.663283</td>
-      <td>0.700506</td>
-      <td>58165.32569</td>
+      <td>51551.486062</td>
+      <td>4309700715.151858</td>
+      <td>0.618489</td>
+      <td>65648.310832</td>
       <td>2022-11-30 13:34:39.793583</td>
       <td>random search(no dummies)</td>
     </tr>
@@ -502,10 +524,10 @@
       <th>neural network m15 mega + dropout (v09)</th>
       <td>0.622235</td>
       <td>2077.84</td>
-      <td>49410.906487</td>
-      <td>4267390328.47179</td>
-      <td>0.622235</td>
-      <td>65325.265621</td>
+      <td>212534587876.077087</td>
+      <td>47995052450841435832320.0</td>
+      <td>-15.994805</td>
+      <td>219077731526.600952</td>
       <td>2022-12-13 23:57:56.104125</td>
       <td>loss=4.38e+04 valloss=4.85e+04 +valsplit=0.1 +patn=25 stop=306/400</td>
     </tr>
@@ -887,10 +909,10 @@
       <th>linear regression (ridge) (v09)</th>
       <td>0.459888</td>
       <td>0.350431</td>
-      <td>63349.473479</td>
-      <td>6101320424.769447</td>
-      <td>0.459888</td>
-      <td>78110.949455</td>
+      <td>63351.208741</td>
+      <td>6101470226.542871</td>
+      <td>0.459875</td>
+      <td>78111.908353</td>
       <td>2022-12-11 14:36:43.474759</td>
       <td>random search</td>
     </tr>

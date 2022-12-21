@@ -15,7 +15,7 @@ python run_multiple_all_model_except_neural.py
 
 ##### Run neural network model
 
-cd /notebooks/process/E_train_model/all_models_and_versions
+cd /notebooks/process/E_train_model/neural_networks/
 python neural_networks_model.py
 
 
