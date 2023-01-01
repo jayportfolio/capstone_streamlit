@@ -1,22 +1,17 @@
-<h1>Results from CatBoost</h1><h3>Dataset Version: 09</h3>Date run: 2022-12-14 10:12:30.541212<br>Start time: 2022-12-14 10:11:48.265506<br>End time: 2022-12-14 10:12:30.541212<br><hr><h2>Results</h2><h3>Summary</h3>not updated saved model, the previous run was better
-0.6184892029584729 is worse than or equal to '0.7005060526478675<br><hr><h3>Model Specific Notes</h3>can't display hyperparameter comparison for catboost<br>can't display model performance graphs for catboost<br>can't display model performance graphs for catboost<br><hr><h2>Feature Importances</h2><h3>Feature Importances</h3>1. features 0 (40.728405)		bedrooms
-2. features 5 (14.606755)		latitude_deviation
-3. features 4 (12.186428)		location.longitude
-4. features 7 (10.394905)		tenure.tenureType
-5. features 6 (9.069242)		longitude_deviation
-6. features 1 (6.054860)		bathrooms
-7. features 3 (3.901189)		location.latitude
-8. features 2 (1.995774)		nearestStation
-9. features 9 (0.802852)		feature__chain free
-10. features 10 (0.258410)		feature__no onward chain
-11. features 11 (0.001181)		feature__off street parking
-12. features 17 (0.000000)		feature__two double bedrooms
-13. features 16 (0.000000)		feature__two bedrooms
-14. features 12 (0.000000)		feature__one bedroom
-15. features 13 (0.000000)		feature__private balcony
-16. features 14 (0.000000)		feature__share of freehold
-17. features 15 (0.000000)		feature__three bedrooms
-18. features 8 (0.000000)		feature__balcony
+<h1>Results from CatBoost</h1><h3>Dataset Version: 09</h3>Date run: 2023-01-01 09:20:36.008041<br>Start time: 2023-01-01 09:19:43.102843<br>End time: 2023-01-01 09:20:36.007963<br><hr><h2>Results</h2><h3>Summary</h3>not updated saved model, the previous run was better
+0.2414314970874225 is worse than or equal to '0.7005060526478675<br><hr><h3>Model Specific Notes</h3>can't display hyperparameter comparison for catboost<br>can't display model performance graphs for catboost<br>can't display model performance graphs for catboost<br><hr><h2>Feature Importances</h2><h3>Feature Importances</h3>1. features 0 (24.370893)		bedrooms
+2. features 12 (24.080498)		feature__private balcony
+3. features 2 (12.046189)		nearestStation
+4. features 8 (9.023475)		feature__chain free
+5. features 3 (8.104821)		location.latitude
+6. features 1 (6.369376)		bathrooms
+7. features 5 (4.518958)		latitude_deviation
+8. features 9 (2.787068)		feature__no onward chain
+9. features 10 (2.523066)		feature__off street parking
+10. features 4 (2.239171)		location.longitude
+11. features 11 (2.005703)		feature__one bedroom
+12. features 6 (1.930782)		longitude_deviation
+13. features 7 (0.000000)		feature__balcony
 <br><hr><h3>Feature Importances (CatBoost)</h3><img src="../artifacts/catboost__v09__best_model_feature_importances.png"/><hr><h2>Comparison with other models</h2><h3>Comparison with version 09 performances</h3><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -58,10 +53,10 @@
       <th>catboost (v09)</th>
       <td>0.700506</td>
       <td>2.82</td>
-      <td>51551.486062</td>
-      <td>4309700715.151858</td>
-      <td>0.618489</td>
-      <td>65648.310832</td>
+      <td>74210.938931</td>
+      <td>8569097506.139938</td>
+      <td>0.241431</td>
+      <td>92569.41993</td>
       <td>2022-11-30 13:34:39.793583</td>
       <td>random search(no dummies)</td>
     </tr>
@@ -91,10 +86,10 @@
       <th>neural network m15 mega + dropout (v09)</th>
       <td>0.622235</td>
       <td>2077.84</td>
-      <td>49410.906487</td>
-      <td>4267390328.47179</td>
-      <td>0.622235</td>
-      <td>65325.265621</td>
+      <td>212534587876.077087</td>
+      <td>47995052450841435832320.0</td>
+      <td>-15.994805</td>
+      <td>219077731526.600952</td>
       <td>2022-12-13 23:57:56.104125</td>
       <td>loss=4.38e+04 valloss=4.85e+04 +valsplit=0.1 +patn=25 stop=306/400</td>
     </tr>
@@ -219,6 +214,17 @@
       <td>2022-12-11 18:56:27.304803</td>
       <td>loss=6.38e+09 valloss=6.41e+09 +valsplit=0.1 +patn=25</td>
     </tr>
+    <tr>
+      <th>neural network with autoencoding m15 mega + dropout (v09)</th>
+      <td>0.42689</td>
+      <td>1641.39</td>
+      <td>64379.512251</td>
+      <td>6474086836.603735</td>
+      <td>0.42689</td>
+      <td>80461.710376</td>
+      <td>2022-12-21 01:26:33.005210</td>
+      <td>loss=6.51e+04 valloss=6.52e+04 +valsplit=0.1 +patn=25 stop=214/400</td>
+    </tr>
   </tbody>
 </table><hr><h3>Comparison with all model performances</h3><table border="1" class="dataframe">
   <thead>
@@ -327,10 +333,10 @@
       <th>catboost (v09)</th>
       <td>0.700506</td>
       <td>2.82</td>
-      <td>51551.486062</td>
-      <td>4309700715.151858</td>
-      <td>0.618489</td>
-      <td>65648.310832</td>
+      <td>74210.938931</td>
+      <td>8569097506.139938</td>
+      <td>0.241431</td>
+      <td>92569.41993</td>
       <td>2022-11-30 13:34:39.793583</td>
       <td>random search(no dummies)</td>
     </tr>
@@ -349,10 +355,10 @@
       <th>catboost (v11)</th>
       <td>0.689818</td>
       <td>12.81</td>
-      <td>45407.2565</td>
-      <td>3503940324.932943</td>
-      <td>0.689818</td>
-      <td>59194.090287</td>
+      <td>70705.72771</td>
+      <td>7672277461.395934</td>
+      <td>0.320821</td>
+      <td>87591.537613</td>
       <td>2022-11-30 16:14:29.405177</td>
       <td>random search(no dummies)</td>
     </tr>
@@ -415,10 +421,10 @@
       <th>neural network m15 mega + dropout (v09)</th>
       <td>0.622235</td>
       <td>2077.84</td>
-      <td>49410.906487</td>
-      <td>4267390328.47179</td>
-      <td>0.622235</td>
-      <td>65325.265621</td>
+      <td>212534587876.077087</td>
+      <td>47995052450841435832320.0</td>
+      <td>-15.994805</td>
+      <td>219077731526.600952</td>
       <td>2022-12-13 23:57:56.104125</td>
       <td>loss=4.38e+04 valloss=4.85e+04 +valsplit=0.1 +patn=25 stop=306/400</td>
     </tr>
@@ -588,6 +594,17 @@
       <td>loss=4.76e+09 valloss=4.77e+09 +valsplit=0.1 +patn=25 stop=179/400</td>
     </tr>
     <tr>
+      <th>neural network m15 mega + dropout (v11)</th>
+      <td>0.5707</td>
+      <td>1191.61</td>
+      <td>53709.702226</td>
+      <td>4849542517.605685</td>
+      <td>0.5707</td>
+      <td>69638.656776</td>
+      <td>2022-12-21 02:55:33.483148</td>
+      <td>loss=4.43e+04 valloss=5.35e+04 +valsplit=0.1 +patn=25 stop=170/400</td>
+    </tr>
+    <tr>
       <th>neural network m12 mega (v10)</th>
       <td>0.567453</td>
       <td>240.1</td>
@@ -742,6 +759,17 @@
       <td>loss=5724.92 valloss=5608.12 +valsplit=0.1 stop=42/50</td>
     </tr>
     <tr>
+      <th>neural network with autoencoding m15 mega + dropout (v11)</th>
+      <td>0.488747</td>
+      <td>1276.23</td>
+      <td>58773.731907</td>
+      <td>5775319278.568146</td>
+      <td>0.488747</td>
+      <td>75995.521438</td>
+      <td>2022-12-22 19:06:48.049482</td>
+      <td>loss=5.27e+04 valloss=5.91e+04 +valsplit=0.1 +patn=25 stop=181/400</td>
+    </tr>
+    <tr>
       <th>knn (v10)</th>
       <td>0.484585</td>
       <td>0.29179</td>
@@ -828,6 +856,17 @@
       <td>79012.232747</td>
       <td>2022-12-11 18:56:27.304803</td>
       <td>loss=6.38e+09 valloss=6.41e+09 +valsplit=0.1 +patn=25</td>
+    </tr>
+    <tr>
+      <th>neural network with autoencoding m15 mega + dropout (v09)</th>
+      <td>0.42689</td>
+      <td>1641.39</td>
+      <td>64379.512251</td>
+      <td>6474086836.603735</td>
+      <td>0.42689</td>
+      <td>80461.710376</td>
+      <td>2022-12-21 01:26:33.005210</td>
+      <td>loss=6.51e+04 valloss=6.52e+04 +valsplit=0.1 +patn=25 stop=214/400</td>
     </tr>
     <tr>
       <th>knn - basic (v01)</th>

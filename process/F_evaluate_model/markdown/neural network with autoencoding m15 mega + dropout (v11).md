@@ -1,15 +1,15 @@
 # Results from Neural Network with autoencoding m15 mega + dropout
 ### Dataset Version: 11
-Date run: 2022-12-21 02:22:51.463592
+Date run: 2022-12-22 19:06:52.280890
 
-Start time: 2022-12-21 01:57:48.272494
+Start time: 2022-12-22 18:45:19.880291
 
-End time: 2022-12-21 02:22:51.463501
+End time: 2022-12-22 19:06:52.280795
 
 ## Results
 ### Summary
 pickled new version of model
-0.47045952223189136 is new best score (it's better than -999)
+0.48874717601865014 is new best score (it's better than 0.47045952223189136)
 
 ### Best Model: Comparing model predictions to actual property values
 ![detail](../artifacts/neural_network_with_autoencoding_m15_mega_+_dropout__v11__best_ann_model.png)
@@ -24,65 +24,65 @@ can't display model performance graphs for neural network
 ### Neural Network Loss - Head
 |    |   loss |   val_loss |   epoch |
 |---:|-------:|-----------:|--------:|
-|  0 | 425121 |     425866 |       0 |
-|  1 | 424949 |     425609 |       1 |
-|  2 | 424659 |     425199 |       2 |
-|  3 | 424274 |     424798 |       3 |
-|  4 | 423804 |     424234 |       4 |
+|  0 | 425122 |     425862 |       0 |
+|  1 | 424950 |     425606 |       1 |
+|  2 | 424660 |     425199 |       2 |
+|  3 | 424275 |     424822 |       3 |
+|  4 | 423804 |     424368 |       4 |
 
 
 
 ### Neural Network Loss - Tail
 |     |    loss |   val_loss |   epoch |
 |----:|--------:|-----------:|--------:|
-| 191 | 51220.9 |    59089.7 |     191 |
-| 192 | 51002.4 |    59424.9 |     192 |
-| 193 | 50760.5 |    60440.4 |     193 |
-| 194 | 50754.5 |    59666.8 |     194 |
-| 195 | 50733.8 |    59598.7 |     195 |
+| 176 | 52989   |    60773.1 |     176 |
+| 177 | 53134.2 |    59557.1 |     177 |
+| 178 | 53202   |    60247   |     178 |
+| 179 | 52665.5 |    60229.4 |     179 |
+| 180 | 52837.9 |    59436.9 |     180 |
 
 ![detail](../artifacts/neural_network_with_autoencoding_m15_mega_+_dropout__v11__end_loss.png)
 
 ### Model Structure
->Model: "sequential_1"
+>Model: "sequential"
 >________________________________________________________________________________________________________________________________________________________________
 > Layer (type)                                                           Output Shape                                                    Param #                 
 >
-> normalization_1 (Normalization)                                        (None, 42)                                                      85                      
+> normalization (Normalization)                                          (None, 42)                                                      85                      
 >                                                                                                                                                                
-> dense_8 (Dense)                                                        (None, 128)                                                     5504                    
+> dense (Dense)                                                          (None, 128)                                                     5504                    
 >                                                                                                                                                                
-> dense_9 (Dense)                                                        (None, 256)                                                     33024                   
+> dense_1 (Dense)                                                        (None, 256)                                                     33024                   
 >                                                                                                                                                                
-> batch_normalization_8 (BatchNormalization)                             (None, 256)                                                     1024                    
+> batch_normalization_1 (BatchNormalization)                             (None, 256)                                                     1024                    
 >                                                                                                                                                                
-> activation_1 (Activation)                                              multiple                                                        0                       
+> activation (Activation)                                                multiple                                                        0                       
 >                                                                                                                                                                
-> dense_10 (Dense)                                                       (None, 512)                                                     131584                  
+> dense_2 (Dense)                                                        (None, 512)                                                     131584                  
 >                                                                                                                                                                
-> batch_normalization_9 (BatchNormalization)                             (None, 512)                                                     2048                    
+> batch_normalization_2 (BatchNormalization)                             (None, 512)                                                     2048                    
 >                                                                                                                                                                
-> dropout_2 (Dropout)                                                    (None, 512)                                                     0                       
+> dropout (Dropout)                                                      (None, 512)                                                     0                       
 >                                                                                                                                                                
-> dense_11 (Dense)                                                       (None, 1024)                                                    525312                  
+> dense_3 (Dense)                                                        (None, 1024)                                                    525312                  
 >                                                                                                                                                                
-> batch_normalization_10 (BatchNormalization)                            (None, 1024)                                                    4096                    
+> batch_normalization_3 (BatchNormalization)                             (None, 1024)                                                    4096                    
 >                                                                                                                                                                
-> dense_12 (Dense)                                                       (None, 1024)                                                    1049600                 
+> dense_4 (Dense)                                                        (None, 1024)                                                    1049600                 
 >                                                                                                                                                                
-> dropout_3 (Dropout)                                                    (None, 1024)                                                    0                       
+> dropout_1 (Dropout)                                                    (None, 1024)                                                    0                       
 >                                                                                                                                                                
-> batch_normalization_11 (BatchNormalization)                            (None, 1024)                                                    4096                    
+> batch_normalization_4 (BatchNormalization)                             (None, 1024)                                                    4096                    
 >                                                                                                                                                                
-> dense_13 (Dense)                                                       (None, 512)                                                     524800                  
+> dense_5 (Dense)                                                        (None, 512)                                                     524800                  
 >                                                                                                                                                                
-> batch_normalization_12 (BatchNormalization)                            (None, 512)                                                     2048                    
+> batch_normalization_5 (BatchNormalization)                             (None, 512)                                                     2048                    
 >                                                                                                                                                                
-> dense_14 (Dense)                                                       (None, 256)                                                     131328                  
+> dense_6 (Dense)                                                        (None, 256)                                                     131328                  
 >                                                                                                                                                                
-> batch_normalization_13 (BatchNormalization)                            (None, 256)                                                     1024                    
+> batch_normalization_6 (BatchNormalization)                             (None, 256)                                                     1024                    
 >                                                                                                                                                                
-> dense_15 (Dense)                                                       (None, 1)                                                       257                     
+> dense_7 (Dense)                                                        (None, 1)                                                       257                     
 >                                                                                                                                                                
 >
 >Total params: 2,415,830
@@ -100,10 +100,11 @@ can't display model performance graphs for neural network
 | neural network m11 mega (v06)                             |     0.612318 | 2569.45     |                        56035.9 |                   4.92994e+09 |            0.563583 |                   70213.6 | 2022-11-29 12:57:16.459719 | loss=2833.6 valloss=4034.41 stop=619/1000                          |
 | xg boost (tree) (v11)                                     |     0.603614 |   14.2104   |                        52330.4 |                   4.47774e+09 |            0.603614 |                   66915.9 | 2022-11-30 20:18:59.876471 | random search                                                      |
 | neural network m11 mega (v09)                             |     0.587136 |  994.87     |                        53873   |                   4.66388e+09 |            0.587136 |                   68292.6 | 2022-12-12 15:02:24.649254 | loss=4.26e+09 valloss=4.72e+09 +valsplit=0.1 +patn=25 stop=189/400 |
+| neural network m15 mega + dropout (v11)                   |     0.5707   | 1191.61     |                        53709.7 |                   4.84954e+09 |            0.5707   |                   69638.7 | 2022-12-21 02:55:33.483148 | loss=4.43e+04 valloss=5.35e+04 +valsplit=0.1 +patn=25 stop=170/400 |
 | neural network - random search [i64,norm,d64^6,d1] (v11)  |     0.533579 |  nan        |                        57201.7 |                   5.26888e+09 |            0.533579 |                   72587   | nan                        | nan                                                                |
+| neural network with autoencoding m15 mega + dropout (v11) |     0.488747 | 1276.23     |                        58773.7 |                   5.77532e+09 |            0.488747 |                   75995.5 | 2022-12-22 19:06:48.049482 | loss=5.27e+04 valloss=5.91e+04 +valsplit=0.1 +patn=25 stop=181/400 |
 | xg boost (v11)                                            |     0.484341 |    1.66323  |                        61556.7 |                   5.82509e+09 |            0.484341 |                   76322.3 | 2022-11-30 16:55:55.436173 | random search                                                      |
 | xg boost (linear) (v11)                                   |     0.484341 |   12.6817   |                        62224.3 |                   5.90103e+09 |            0.477618 |                   76818.2 | 2022-11-30 19:47:04.498556 | random search                                                      |
-| neural network with autoencoding m15 mega + dropout (v11) |     0.47046  | 1491.91     |                        59807.5 |                   5.9819e+09  |            0.47046  |                   77342.8 | 2022-12-21 02:22:46.642086 | loss=5.07e+04 valloss=5.88e+04 +valsplit=0.1 +patn=25 stop=196/400 |
 | knn (v11)                                                 |     0.465113 |    0.618877 |                        62944.7 |                   6.0423e+09  |            0.465113 |                   77732.2 | 2022-11-30 16:20:53.948815 | random search                                                      |
 
 ### Comparison with all model performances
@@ -141,6 +142,7 @@ can't display model performance graphs for neural network
 | neural network m05 rec deep (v06)                         |     0.580348 |  604.9       |                59357.5         |                   5.47083e+09 |            0.515701 |           73965.1         | 2022-11-29 11:41:39.682217 | loss=4908.71 valloss=4603.08 stop=214/500                                                                              |
 | neural network m14 mega (v10)                             |     0.579095 | 1129.09      |                53124           |                   4.75471e+09 |            0.579095 |           68954.4         | 2022-12-01 11:52:45.011704 | loss=4.85e+04 valloss=5.34e+04 +valsplit=0.1 stop=156/400                                                              |
 | neural network m12 mega (v09)                             |     0.571972 |  848.7       |                54696           |                   4.83518e+09 |            0.571972 |           69535.4         | 2022-12-12 15:16:52.189760 | loss=4.76e+09 valloss=4.77e+09 +valsplit=0.1 +patn=25 stop=179/400                                                     |
+| neural network m15 mega + dropout (v11)                   |     0.5707   | 1191.61      |                53709.7         |                   4.84954e+09 |            0.5707   |           69638.7         | 2022-12-21 02:55:33.483148 | loss=4.43e+04 valloss=5.35e+04 +valsplit=0.1 +patn=25 stop=170/400                                                     |
 | neural network m12 mega (v10)                             |     0.567453 |  240.1       |                55444           |                   4.88623e+06 |            0.567453 |           69901.6         | 2022-12-01 09:57:17.586487 | loss=4790.75 valloss=4998.79 +valsplit=0.1 stop=66/400                                                                 |
 | neural network m05 rec deep (v09)                         |     0.558413 | 1471.09      |                56357.5         |                   5.01567e+09 |            0.555995 |           70821.4         | 2022-12-12 13:21:58.501853 | loss=4.87e+09 valloss=4.84e+09 +valsplit=0.1 +patn=25                                                                  |
 | decision tree - random search (vx10)                      |     0.558257 |  nan         |                55865.4         |                   4.99011e+09 |            0.558257 |           70640.7         | nan                        | nan                                                                                                                    |
@@ -155,11 +157,11 @@ can't display model performance graphs for neural network
 | neural network m04 3 layers+wider (v06)                   |     0.520933 |  395.14      |                64421.2         |                   6.26641e+09 |            0.445274 |           79160.6         | 2022-11-29 11:21:09.812732 | loss=5415.7 valloss=5095.94 stop=166/500                                                                               |
 | neural network m02 two layers (v06)                       |     0.516773 |  112.54      |                64363.1         |                   6.26209e+09 |            0.445656 |           79133.4         | 2022-11-29 09:31:18.853517 | mse +norm +epochs=50 +learn=0.003 +endloss=5785.6953125                                                                |
 | neural network m01 simple (v09)                           |     0.508847 |  188.63      |                71376.9         |                   7.55056e+09 |            0.331597 |           86893.9         | 2022-11-30 13:08:10.248178 | loss=5724.92 valloss=5608.12 +valsplit=0.1 stop=42/50                                                                  |
+| neural network with autoencoding m15 mega + dropout (v11) |     0.488747 | 1276.23      |                58773.7         |                   5.77532e+09 |            0.488747 |           75995.5         | 2022-12-22 19:06:48.049482 | loss=5.27e+04 valloss=5.91e+04 +valsplit=0.1 +patn=25 stop=181/400                                                     |
 | knn (v10)                                                 |     0.484585 |    0.29179   |                61764.2         |                   5.82234e+09 |            0.484585 |           76304.2         | 2022-11-30 15:12:50.989371 | random search                                                                                                          |
 | xg boost (v11)                                            |     0.484341 |    1.66323   |                61556.7         |                   5.82509e+09 |            0.484341 |           76322.3         | 2022-11-30 16:55:55.436173 | random search                                                                                                          |
 | xg boost (linear) (v11)                                   |     0.484341 |   12.6817    |                62224.3         |                   5.90103e+09 |            0.477618 |           76818.2         | 2022-11-30 19:47:04.498556 | random search                                                                                                          |
 | linear regression (ridge) (v10)                           |     0.470806 |    0.239057  |                62596.2         |                   5.97799e+09 |            0.470806 |           77317.4         | 2022-12-01 19:50:08.050622 | random search                                                                                                          |
-| neural network with autoencoding m15 mega + dropout (v11) |     0.47046  | 1491.91      |                59807.5         |                   5.9819e+09  |            0.47046  |           77342.8         | 2022-12-21 02:22:46.642086 | loss=5.07e+04 valloss=5.88e+04 +valsplit=0.1 +patn=25 stop=196/400                                                     |
 | knn (v11)                                                 |     0.465113 |    0.618877  |                62944.7         |                   6.0423e+09  |            0.465113 |           77732.2         | 2022-11-30 16:20:53.948815 | random search                                                                                                          |
 | linear regression (ridge) (v09)                           |     0.459888 |    0.350431  |                63351.2         |                   6.10147e+09 |            0.459875 |           78111.9         | 2022-12-11 14:36:43.474759 | random search                                                                                                          |
 | linear regression (ridge) (v06)                           |     0.4569   |    0.28695   |                63603.1         |                   6.13521e+09 |            0.456889 |           78327.6         | 2022-12-03 19:20:52.874336 | random search                                                                                                          |

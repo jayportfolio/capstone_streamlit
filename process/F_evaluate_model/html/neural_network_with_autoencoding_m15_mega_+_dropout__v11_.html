@@ -1,5 +1,5 @@
-<h1>Results from Neural Network with autoencoding m15 mega + dropout</h1><h3>Dataset Version: 11</h3>Date run: 2022-12-21 02:22:51.463592<br>Start time: 2022-12-21 01:57:48.272494<br>End time: 2022-12-21 02:22:51.463501<br><hr><h2>Results</h2><h3>Summary</h3>pickled new version of model
-0.47045952223189136 is new best score (it's better than -999)<br><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/neural_network_with_autoencoding_m15_mega_+_dropout__v11__best_ann_model.png"/><hr><h3>Model Specific Notes</h3>can't display hyperparameter comparison for neural network<br>can't display model performance graphs for neural network<br>can't display model performance graphs for neural network<br><hr><h3>Neural Network Loss - Head</h3><table border="1" class="dataframe">
+<h1>Results from Neural Network with autoencoding m15 mega + dropout</h1><h3>Dataset Version: 11</h3>Date run: 2022-12-22 19:06:52.280890<br>Start time: 2022-12-22 18:45:19.880291<br>End time: 2022-12-22 19:06:52.280795<br><hr><h2>Results</h2><h3>Summary</h3>pickled new version of model
+0.48874717601865014 is new best score (it's better than 0.47045952223189136)<br><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/neural_network_with_autoencoding_m15_mega_+_dropout__v11__best_ann_model.png"/><hr><h3>Model Specific Notes</h3>can't display hyperparameter comparison for neural network<br>can't display model performance graphs for neural network<br>can't display model performance graphs for neural network<br><hr><h3>Neural Network Loss - Head</h3><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -11,32 +11,32 @@
   <tbody>
     <tr>
       <th>0</th>
-      <td>425120.87500</td>
-      <td>425865.84375</td>
+      <td>425121.50000</td>
+      <td>425861.78125</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>424949.43750</td>
-      <td>425609.40625</td>
+      <td>424950.03125</td>
+      <td>425606.37500</td>
       <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>424659.25000</td>
-      <td>425198.56250</td>
+      <td>424660.40625</td>
+      <td>425198.78125</td>
       <td>2</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>424274.28125</td>
-      <td>424797.90625</td>
+      <td>424275.03125</td>
+      <td>424822.34375</td>
       <td>3</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>423803.50000</td>
-      <td>424233.62500</td>
+      <td>423804.37500</td>
+      <td>424368.03125</td>
       <td>4</td>
     </tr>
   </tbody>
@@ -51,75 +51,75 @@
   </thead>
   <tbody>
     <tr>
-      <th>191</th>
-      <td>51220.894531</td>
-      <td>59089.675781</td>
-      <td>191</td>
+      <th>176</th>
+      <td>52989.031250</td>
+      <td>60773.101562</td>
+      <td>176</td>
     </tr>
     <tr>
-      <th>192</th>
-      <td>51002.378906</td>
-      <td>59424.933594</td>
-      <td>192</td>
+      <th>177</th>
+      <td>53134.234375</td>
+      <td>59557.128906</td>
+      <td>177</td>
     </tr>
     <tr>
-      <th>193</th>
-      <td>50760.542969</td>
-      <td>60440.425781</td>
-      <td>193</td>
+      <th>178</th>
+      <td>53202.023438</td>
+      <td>60246.992188</td>
+      <td>178</td>
     </tr>
     <tr>
-      <th>194</th>
-      <td>50754.453125</td>
-      <td>59666.800781</td>
-      <td>194</td>
+      <th>179</th>
+      <td>52665.527344</td>
+      <td>60229.390625</td>
+      <td>179</td>
     </tr>
     <tr>
-      <th>195</th>
-      <td>50733.812500</td>
-      <td>59598.675781</td>
-      <td>195</td>
+      <th>180</th>
+      <td>52837.902344</td>
+      <td>59436.949219</td>
+      <td>180</td>
     </tr>
   </tbody>
-</table><hr><img src="../artifacts/neural_network_with_autoencoding_m15_mega_+_dropout__v11__end_loss.png"/><hr><h3>Model Structure</h3>>Model: "sequential_1"
+</table><hr><img src="../artifacts/neural_network_with_autoencoding_m15_mega_+_dropout__v11__end_loss.png"/><hr><h3>Model Structure</h3>>Model: "sequential"
 >________________________________________________________________________________________________________________________________________________________________
 > Layer (type)                                                           Output Shape                                                    Param #                 
 >
-> normalization_1 (Normalization)                                        (None, 42)                                                      85                      
+> normalization (Normalization)                                          (None, 42)                                                      85                      
 >                                                                                                                                                                
-> dense_8 (Dense)                                                        (None, 128)                                                     5504                    
+> dense (Dense)                                                          (None, 128)                                                     5504                    
 >                                                                                                                                                                
-> dense_9 (Dense)                                                        (None, 256)                                                     33024                   
+> dense_1 (Dense)                                                        (None, 256)                                                     33024                   
 >                                                                                                                                                                
-> batch_normalization_8 (BatchNormalization)                             (None, 256)                                                     1024                    
+> batch_normalization_1 (BatchNormalization)                             (None, 256)                                                     1024                    
 >                                                                                                                                                                
-> activation_1 (Activation)                                              multiple                                                        0                       
+> activation (Activation)                                                multiple                                                        0                       
 >                                                                                                                                                                
-> dense_10 (Dense)                                                       (None, 512)                                                     131584                  
+> dense_2 (Dense)                                                        (None, 512)                                                     131584                  
 >                                                                                                                                                                
-> batch_normalization_9 (BatchNormalization)                             (None, 512)                                                     2048                    
+> batch_normalization_2 (BatchNormalization)                             (None, 512)                                                     2048                    
 >                                                                                                                                                                
-> dropout_2 (Dropout)                                                    (None, 512)                                                     0                       
+> dropout (Dropout)                                                      (None, 512)                                                     0                       
 >                                                                                                                                                                
-> dense_11 (Dense)                                                       (None, 1024)                                                    525312                  
+> dense_3 (Dense)                                                        (None, 1024)                                                    525312                  
 >                                                                                                                                                                
-> batch_normalization_10 (BatchNormalization)                            (None, 1024)                                                    4096                    
+> batch_normalization_3 (BatchNormalization)                             (None, 1024)                                                    4096                    
 >                                                                                                                                                                
-> dense_12 (Dense)                                                       (None, 1024)                                                    1049600                 
+> dense_4 (Dense)                                                        (None, 1024)                                                    1049600                 
 >                                                                                                                                                                
-> dropout_3 (Dropout)                                                    (None, 1024)                                                    0                       
+> dropout_1 (Dropout)                                                    (None, 1024)                                                    0                       
 >                                                                                                                                                                
-> batch_normalization_11 (BatchNormalization)                            (None, 1024)                                                    4096                    
+> batch_normalization_4 (BatchNormalization)                             (None, 1024)                                                    4096                    
 >                                                                                                                                                                
-> dense_13 (Dense)                                                       (None, 512)                                                     524800                  
+> dense_5 (Dense)                                                        (None, 512)                                                     524800                  
 >                                                                                                                                                                
-> batch_normalization_12 (BatchNormalization)                            (None, 512)                                                     2048                    
+> batch_normalization_5 (BatchNormalization)                             (None, 512)                                                     2048                    
 >                                                                                                                                                                
-> dense_14 (Dense)                                                       (None, 256)                                                     131328                  
+> dense_6 (Dense)                                                        (None, 256)                                                     131328                  
 >                                                                                                                                                                
-> batch_normalization_13 (BatchNormalization)                            (None, 256)                                                     1024                    
+> batch_normalization_6 (BatchNormalization)                             (None, 256)                                                     1024                    
 >                                                                                                                                                                
-> dense_15 (Dense)                                                       (None, 1)                                                       257                     
+> dense_7 (Dense)                                                        (None, 1)                                                       257                     
 >                                                                                                                                                                
 >
 >Total params: 2,415,830
@@ -197,6 +197,17 @@
       <td>loss=4.26e+09 valloss=4.72e+09 +valsplit=0.1 +patn=25 stop=189/400</td>
     </tr>
     <tr>
+      <th>neural network m15 mega + dropout (v11)</th>
+      <td>0.5707</td>
+      <td>1191.61</td>
+      <td>53709.702226</td>
+      <td>4849542517.605685</td>
+      <td>0.5707</td>
+      <td>69638.656776</td>
+      <td>2022-12-21 02:55:33.483148</td>
+      <td>loss=4.43e+04 valloss=5.35e+04 +valsplit=0.1 +patn=25 stop=170/400</td>
+    </tr>
+    <tr>
       <th>neural network - random search [i64,norm,d64^6,d1] (v11)</th>
       <td>0.533579</td>
       <td>NaN</td>
@@ -206,6 +217,17 @@
       <td>72587.026172</td>
       <td>NaN</td>
       <td>NaN</td>
+    </tr>
+    <tr>
+      <th>neural network with autoencoding m15 mega + dropout (v11)</th>
+      <td>0.488747</td>
+      <td>1276.23</td>
+      <td>58773.731907</td>
+      <td>5775319278.568146</td>
+      <td>0.488747</td>
+      <td>75995.521438</td>
+      <td>2022-12-22 19:06:48.049482</td>
+      <td>loss=5.27e+04 valloss=5.91e+04 +valsplit=0.1 +patn=25 stop=181/400</td>
     </tr>
     <tr>
       <th>xg boost (v11)</th>
@@ -228,17 +250,6 @@
       <td>76818.191209</td>
       <td>2022-11-30 19:47:04.498556</td>
       <td>random search</td>
-    </tr>
-    <tr>
-      <th>neural network with autoencoding m15 mega + dropout (v11)</th>
-      <td>0.47046</td>
-      <td>1491.91</td>
-      <td>59807.546174</td>
-      <td>5981904033.742625</td>
-      <td>0.47046</td>
-      <td>77342.769757</td>
-      <td>2022-12-21 02:22:46.642086</td>
-      <td>loss=5.07e+04 valloss=5.88e+04 +valsplit=0.1 +patn=25 stop=196/400</td>
     </tr>
     <tr>
       <th>knn (v11)</th>
@@ -620,6 +631,17 @@
       <td>loss=4.76e+09 valloss=4.77e+09 +valsplit=0.1 +patn=25 stop=179/400</td>
     </tr>
     <tr>
+      <th>neural network m15 mega + dropout (v11)</th>
+      <td>0.5707</td>
+      <td>1191.61</td>
+      <td>53709.702226</td>
+      <td>4849542517.605685</td>
+      <td>0.5707</td>
+      <td>69638.656776</td>
+      <td>2022-12-21 02:55:33.483148</td>
+      <td>loss=4.43e+04 valloss=5.35e+04 +valsplit=0.1 +patn=25 stop=170/400</td>
+    </tr>
+    <tr>
       <th>neural network m12 mega (v10)</th>
       <td>0.567453</td>
       <td>240.1</td>
@@ -774,6 +796,17 @@
       <td>loss=5724.92 valloss=5608.12 +valsplit=0.1 stop=42/50</td>
     </tr>
     <tr>
+      <th>neural network with autoencoding m15 mega + dropout (v11)</th>
+      <td>0.488747</td>
+      <td>1276.23</td>
+      <td>58773.731907</td>
+      <td>5775319278.568146</td>
+      <td>0.488747</td>
+      <td>75995.521438</td>
+      <td>2022-12-22 19:06:48.049482</td>
+      <td>loss=5.27e+04 valloss=5.91e+04 +valsplit=0.1 +patn=25 stop=181/400</td>
+    </tr>
+    <tr>
       <th>knn (v10)</th>
       <td>0.484585</td>
       <td>0.29179</td>
@@ -816,17 +849,6 @@
       <td>77317.447559</td>
       <td>2022-12-01 19:50:08.050622</td>
       <td>random search</td>
-    </tr>
-    <tr>
-      <th>neural network with autoencoding m15 mega + dropout (v11)</th>
-      <td>0.47046</td>
-      <td>1491.91</td>
-      <td>59807.546174</td>
-      <td>5981904033.742625</td>
-      <td>0.47046</td>
-      <td>77342.769757</td>
-      <td>2022-12-21 02:22:46.642086</td>
-      <td>loss=5.07e+04 valloss=5.88e+04 +valsplit=0.1 +patn=25 stop=196/400</td>
     </tr>
     <tr>
       <th>knn (v11)</th>
