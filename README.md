@@ -1,6 +1,12 @@
 Details Here!
 
 
+### Running the capstone submissions:
+##### Run 07 submission
+cd "/notebooks/capstone/step 07"
+python 07_all_models_except_neural_networks.py
+
+
 ### Running the python model trainer on cloud:
 
 ##### Run any model except neural network

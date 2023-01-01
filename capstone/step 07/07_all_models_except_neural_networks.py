@@ -11,8 +11,8 @@
 
 FILENAME = '07_all_models_except_neural_networks'
 
-#ALGORITHM = 'XG Boost (tree)'
-ALGORITHM = 'Linear Regression (Ridge)'
+#ALGORITHM = 'Linear Regression (Ridge)'
+ALGORITHM = 'XG Boost (tree)'
 
 ALGORITHM_DETAIL = 'random search'
 DATA_DETAIL = []
@@ -701,9 +701,4 @@ if not using_catboost:
 include_in_html_report(type="dict", section_header="Environment Variables", section_content=env_vars)
 
 
-def print_and_report(text_single, title):
-    include_in_html_report("text", section_content=title)
-    for each in text_single:
-        print(each)
-        include_in_html_report("text", section_header="", section_content=each)
-
+print('Finished!')
