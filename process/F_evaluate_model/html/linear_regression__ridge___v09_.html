@@ -1,19 +1,19 @@
-<h1>Results from Linear Regression (Ridge)</h1><h3>Dataset Version: 09</h3>Date run: 2023-01-01 09:59:18.847872<br>Start time: 2023-01-01 09:37:52.296331<br>End time: 2023-01-01 09:59:18.847776<br><hr><h2>Results</h2><h3>Summary</h3>not updated saved model, the previous run was better
-0.2584479805205838 is worse than or equal to '0.4599552669895083<br><hr><h3>Tuned Models ranked by performance, with parameter details</h3><table border="1" class="dataframe">
+<h1>Results from Linear Regression (Ridge)</h1><h3>Dataset Version: 09</h3>Date run: 2023-01-01 22:31:38.815625<br>Start time: 2023-01-01 22:31:31.555705<br>End time: 2023-01-01 22:31:38.815537<br><hr><h2>Results</h2><h3>Summary</h3>pickled new version of model
+0.4599725790552657 is new best score (it's better than 0.4599552669895083)<br><hr><h3>Tuned Models ranked by performance, with parameter details</h3><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
       <th>mean_test_score</th>
       <th>mean_fit_time</th>
       <th>mean_score_time</th>
-      <th>param_model__tol</th>
-      <th>param_model__solver</th>
-      <th>param_model__random_state</th>
-      <th>param_model__positive</th>
-      <th>param_model__max_iter</th>
-      <th>param_model__fit_intercept</th>
-      <th>param_model__copy_X</th>
       <th>param_model__alpha</th>
+      <th>param_model__copy_X</th>
+      <th>param_model__fit_intercept</th>
+      <th>param_model__max_iter</th>
+      <th>param_model__positive</th>
+      <th>param_model__random_state</th>
+      <th>param_model__solver</th>
+      <th>param_model__tol</th>
       <th>params2</th>
     </tr>
     <tr>
@@ -35,108 +35,18 @@
   <tbody>
     <tr>
       <th>1</th>
-      <td>0.245487</td>
-      <td>0.052091</td>
-      <td>0.000819</td>
-      <td>0.0001</td>
+      <td>0.452395</td>
+      <td>0.089866</td>
+      <td>0.003295</td>
+      <td>0.00001</td>
+      <td>True</td>
+      <td>True</td>
+      <td>100000</td>
+      <td>False</td>
+      <td>101</td>
       <td>sag</td>
-      <td>101</td>
-      <td>False</td>
-      <td>100000</td>
-      <td>True</td>
-      <td>False</td>
-      <td>0.00001</td>
-      <td>0.0001/sag/101/False/100000/True/False/1e-05</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.245487</td>
-      <td>0.007818</td>
-      <td>0.008558</td>
-      <td>0.00001</td>
-      <td>cholesky</td>
-      <td>101</td>
-      <td>False</td>
-      <td>100</td>
-      <td>True</td>
-      <td>False</td>
-      <td>10</td>
-      <td>1e-05/cholesky/101/False/100/True/False/10</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.245487</td>
-      <td>0.009368</td>
-      <td>0.003762</td>
-      <td>0.001</td>
-      <td>svd</td>
-      <td>101</td>
-      <td>False</td>
-      <td>10000</td>
-      <td>True</td>
-      <td>True</td>
-      <td>10</td>
-      <td>0.001/svd/101/False/10000/True/True/10</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.245487</td>
-      <td>0.005392</td>
-      <td>0.000825</td>
-      <td>0.0001</td>
-      <td>cholesky</td>
-      <td>101</td>
-      <td>False</td>
-      <td>1000</td>
-      <td>True</td>
-      <td>False</td>
-      <td>10</td>
-      <td>0.0001/cholesky/101/False/1000/True/False/10</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.245487</td>
-      <td>0.005584</td>
-      <td>0.000820</td>
-      <td>0.00001</td>
-      <td>auto</td>
-      <td>101</td>
-      <td>False</td>
-      <td>10000</td>
-      <td>True</td>
-      <td>True</td>
-      <td>10</td>
-      <td>1e-05/auto/101/False/10000/True/True/10</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.245487</td>
-      <td>0.005916</td>
-      <td>0.000785</td>
       <td>0.01</td>
-      <td>svd</td>
-      <td>101</td>
-      <td>False</td>
-      <td>100000</td>
-      <td>True</td>
-      <td>False</td>
-      <td>10</td>
-      <td>0.01/svd/101/False/100000/True/False/10</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>0.245487</td>
-      <td>0.006649</td>
-      <td>0.001570</td>
-      <td>0.0001</td>
-      <td>sparse_cg</td>
-      <td>101</td>
-      <td>False</td>
-      <td>100000</td>
-      <td>True</td>
-      <td>False</td>
-      <td>1</td>
-      <td>0.0001/sparse_cg/101/False/100000/True/False/1</td>
+      <td>1e-05/True/True/100000/False/101/sag/0.01</td>
     </tr>
   </tbody>
 </table><hr><h3>Best and worst models obtained by tuning</h3><img src="../artifacts/linear_regression__ridge___v09__best_and_worst.png"/><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/linear_regression__ridge___v09__best_model_correlation.png"/><hr><h2>Comparison with other models</h2><h3>Comparison with version 09 performances</h3><table border="1" class="dataframe">
@@ -156,13 +66,13 @@
   <tbody>
     <tr>
       <th>xg boost (tree) (v09)</th>
-      <td>0.721352</td>
-      <td>179.820912</td>
-      <td>42675.746856</td>
-      <td>3147715326.58041</td>
-      <td>0.721352</td>
-      <td>56104.503621</td>
-      <td>2022-12-14 00:46:51.090690</td>
+      <td>0.725406</td>
+      <td>27.581891</td>
+      <td>42435.37192</td>
+      <td>3101925711.1648</td>
+      <td>0.725406</td>
+      <td>55694.93434</td>
+      <td>2023-01-01 22:24:42.442276</td>
       <td>random search</td>
     </tr>
     <tr>
@@ -321,14 +231,14 @@
     </tr>
     <tr>
       <th>linear regression (ridge) (v09)</th>
-      <td>0.459955</td>
-      <td>0.100284</td>
-      <td>75320.739699</td>
-      <td>8376872406.903015</td>
-      <td>0.258448</td>
-      <td>91525.255569</td>
-      <td>2023-01-01 09:49:20.349186</td>
-      <td>random search(pca)</td>
+      <td>0.459973</td>
+      <td>0.135545</td>
+      <td>63342.996366</td>
+      <td>6100368797.672073</td>
+      <td>0.459973</td>
+      <td>78104.857709</td>
+      <td>2023-01-01 22:31:37.170134</td>
+      <td>rerun best</td>
     </tr>
     <tr>
       <th>neural network m03 2 layers+wider (v09)</th>
@@ -372,22 +282,22 @@
       <th>xg boost (tree) (v06)</th>
       <td>0.727132</td>
       <td>134.174901</td>
-      <td>41210.351288</td>
-      <td>3082428096.006462</td>
-      <td>0.727132</td>
-      <td>55519.619019</td>
+      <td>42214.988358</td>
+      <td>3096014871.208212</td>
+      <td>0.725929</td>
+      <td>55641.844606</td>
       <td>2022-12-07 09:43:37.103009</td>
       <td>random search</td>
     </tr>
     <tr>
       <th>xg boost (tree) (v09)</th>
-      <td>0.721352</td>
-      <td>179.820912</td>
-      <td>42675.746856</td>
-      <td>3147715326.58041</td>
-      <td>0.721352</td>
-      <td>56104.503621</td>
-      <td>2022-12-14 00:46:51.090690</td>
+      <td>0.725406</td>
+      <td>27.581891</td>
+      <td>42435.37192</td>
+      <td>3101925711.1648</td>
+      <td>0.725406</td>
+      <td>55694.93434</td>
+      <td>2023-01-01 22:24:42.442276</td>
       <td>random search</td>
     </tr>
     <tr>
@@ -930,13 +840,24 @@
       <td>random search</td>
     </tr>
     <tr>
+      <th>linear regression (ridge) (v11)</th>
+      <td>0.484311</td>
+      <td>0.2412</td>
+      <td>61567.465046</td>
+      <td>5825535717.872867</td>
+      <td>0.484302</td>
+      <td>76325.197136</td>
+      <td>2023-01-01 10:07:22.564855</td>
+      <td>random search(pca,1.0% retain)</td>
+    </tr>
+    <tr>
       <th>linear regression (ridge) (v10)</th>
       <td>0.470806</td>
       <td>0.239057</td>
-      <td>62596.206431</td>
-      <td>5977987697.000203</td>
-      <td>0.470806</td>
-      <td>77317.447559</td>
+      <td>62604.882559</td>
+      <td>5978439935.576468</td>
+      <td>0.470766</td>
+      <td>77320.372061</td>
       <td>2022-12-01 19:50:08.050622</td>
       <td>random search</td>
     </tr>
@@ -953,14 +874,14 @@
     </tr>
     <tr>
       <th>linear regression (ridge) (v09)</th>
-      <td>0.459955</td>
-      <td>0.100284</td>
-      <td>75320.739699</td>
-      <td>8376872406.903015</td>
-      <td>0.258448</td>
-      <td>91525.255569</td>
-      <td>2023-01-01 09:49:20.349186</td>
-      <td>random search(pca)</td>
+      <td>0.459973</td>
+      <td>0.135545</td>
+      <td>63342.996366</td>
+      <td>6100368797.672073</td>
+      <td>0.459973</td>
+      <td>78104.857709</td>
+      <td>2023-01-01 22:31:37.170134</td>
+      <td>rerun best</td>
     </tr>
     <tr>
       <th>linear regression (ridge) (v06)</th>
