@@ -15,9 +15,7 @@ def create_train_test_data(df_orig, categories, RANDOM_STATE=[], p_train_size=0.
         df.reset_index(inplace=True)
 
     if not no_dummies:
-        for column in categories:
-            df = pd.concat([df, pd.get_dummies(df[column], prefix=column)], axis=1)
-            df.drop([column], axis=1, inplace=True)  # now drop the original column (you don't need it anymore),
+        df = convert_to_dummied(df, categories)
     else:
         # one_hot_max_size
         # for column in categories:
@@ -54,6 +52,14 @@ def create_train_test_data(df_orig, categories, RANDOM_STATE=[], p_train_size=0.
         y_test1 = y_test1[:, 1].reshape(-1, 1)
 
         return X_train1, X_test1, y_train1, y_test1, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels
+
+
+def convert_to_dummied(df, categories):
+    for column in categories:
+        df = pd.concat([df, pd.get_dummies(df[column], prefix=column)], axis=1)
+        df.drop([column], axis=1, inplace=True)  # now drop the original column (you don't need it anymore),
+    return df
+
 
 def this_test_data(VERSION, test_data_only=False, drop_nulls=True, IN_COLAB=False):
     suffix = "_no_nulls" if drop_nulls else ""
