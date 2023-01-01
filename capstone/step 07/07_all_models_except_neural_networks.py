@@ -11,23 +11,17 @@
 # * what fraction of the data we'll use for testing (0.1)
 # * if the data split will be randomised (it won't!)
 
-# In[1]:
+# In[64]:
 
 
-#ALGORITHM = 'Linear Regression (Ridge)'
-#ALGORITHM = 'KNN'
-#ALGORITHM = 'Decision Tree'
-#ALGORITHM = 'Random Forest'
-#ALGORITHM = 'XG Boost (tree)'
-ALGORITHM = 'CatBoost'
-#ALGORITHM = 'Light Gradient Boosting'
+FILENAME = '07_all_models_except_neural_networks'
+
+ALGORITHM = 'XG Boost (tree)'
+ALGORITHM = 'Linear Regression (Ridge)'
 
 ALGORITHM_DETAIL = 'random search'
-#DATA_DETAIL = ['no scale','no dummies']
-#DATA_DETAIL = ['explore param']
-DATA_DETAIL = ['no dummies'] if 'catboost' in ALGORITHM.lower() else []
-#VERSION = '06'
-VERSION = '09'
+DATA_DETAIL = []
+VERSION = '06'
 
 RANDOM_STATE = 101
 TRAINING_SIZE = 0.9
@@ -49,7 +43,7 @@ create_python_script = True
 # 
 # 
 
-# In[2]:
+# In[65]:
 
 
 from sklearn.impute import SimpleImputer
@@ -74,12 +68,11 @@ import os
 
 start_timestamp = datetime.now()
 
-module_path = os.path.abspath(os.path.join('..', '..', '..'))
+module_path = os.path.abspath(os.path.join('..', '..'))
 if module_path not in sys.path:
-    #sys.path.append(module_path+"\\zfunctions")
     sys.path.append(module_path)
 
-with open('../../z_envs/_envs.json') as f:
+with open('../../process/z_envs/_envs.json') as f:
     env_vars = json.loads(f.read())
 
 try:
@@ -104,12 +97,10 @@ OVERRIDE_CV = env_vars.get('quick_override_cv_splits', None) if quick_mode else 
 OVERRIDE_N_ITER = env_vars.get('quick_override_n_iter', None) if quick_mode else None
 OVERRIDE_JOBS = env_vars.get('quick_override_n_jobs', None) if quick_mode else None
 OVERRIDE_VERBOSE = 1
-#if quick_mode:OVERRIDE_CV, OVERRIDE_N_ITER = 2, 10
 
 already_timed = False
 no_dummies = 'no dummies' in DATA_DETAIL
 no_scaling = 'no scaling' in DATA_DETAIL
-#not_catboost = 'catboost' not in ALGORITHM.lower() or not no_dummies
 using_catboost = 'catboost' in ALGORITHM.lower()
 
 if run_env not in ['colab', 'gradient', 'cloud']:
@@ -130,7 +121,7 @@ from functions_f_evaluate_model_20221116 import get_best_estimator_average_time,
 print(env_vars)
 
 
-# In[3]:
+# In[66]:
 
 
 if is_jupyter:
@@ -145,18 +136,15 @@ if is_jupyter:
 
 # #### Include any overrides specific to the algorthm / python environment being used
 
-# In[4]:
+# In[67]:
 
 
-#running_locally = True
 running_locally = run_env == 'local'
 
 
 if 'forest' in ALGORITHM.lower():
-    #OVERRIDE_N_ITER = 5
     OVERRIDE_N_ITER = 50
     if use_gpu:
-        #OVERRIDE_JOBS = 8
         OVERRIDE_JOBS = 4
 
 if running_locally:
@@ -167,11 +155,11 @@ if running_locally:
     else:
         OVERRIDE_N_ITER = 5
 
-if ALGORITHM.lower() in ['xg boost','xg boost (linear)','xg boost (tree)']:
-        OVERRIDE_N_ITER = 20
-
-if 'forest' in ALGORITHM.lower() or True:
-    OVERRIDE_VERBOSE = 2
+#if ALGORITHM.lower() in ['xg boost','xg boost (linear)','xg boost (tree)']:
+#        OVERRIDE_N_ITER = 20
+#
+#if 'forest' in ALGORITHM.lower() or True:
+#    OVERRIDE_VERBOSE = 2
 
 
 # <code style="background:blue;color:blue">**********************************************************************************************************</code>
@@ -180,7 +168,7 @@ if 'forest' in ALGORITHM.lower() or True:
 # 
 # 
 
-# In[5]:
+# In[68]:
 
 
 from sklearn.pipeline import Pipeline
@@ -189,7 +177,6 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 def make_pipeline():
     return Pipeline([
-        #('mms', MinMaxScaler()),
         ('std_scaler', StandardScaler()),
         ('model', get_chosen_model(ALGORITHM))
     ])
@@ -203,14 +190,14 @@ starter_pipe
 # 
 # ## Stage: get the data
 
-# In[6]:
+# In[69]:
 
 
 columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 LABEL = 'Price'
 
 
-# In[7]:
+# In[70]:
 
 
 df, retrieval_type = get_source_dataframe(cloud_run, VERSION, folder_prefix='../../../', row_limit=None)
@@ -224,7 +211,7 @@ if retrieval_type != 'tidy':
     df = df[columns]
 
 
-# In[8]:
+# In[71]:
 
 
 print(colored(f"features", "blue"), "-> ", columns)
@@ -232,20 +219,20 @@ columns.insert(0, LABEL)
 print(colored(f"label", "green", None, ['bold']), "-> ", LABEL)
 
 
-# In[9]:
+# In[72]:
 
 
 df = preprocess(df, version=VERSION)
 df = df.dropna()
 
 
-# In[10]:
+# In[73]:
 
 
 df.head(5)
 
 
-# In[11]:
+# In[74]:
 
 
 X_train, X_test, y_train, y_test, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
@@ -261,31 +248,16 @@ if 'forest' in ALGORITHM.lower() or ALGORITHM.lower()=='light gradient boosting'
     y_train_orig = y_train
     y_train = y_train.ravel()
 
-#print(X_train[0])
 print(df.shape)
 print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.shape, X_test_index.shape,
       y_train_index.shape, y_test_index.shape)
 
 
 
-# In[12]:
-
-
-#imputer = SimpleImputer(strategy='mean')
-#imputer.fit(X_train[6])
-#X_train[6] = imputer.transform(X_train[6])
-
-
-# In[13]:
+# In[75]:
 
 
 starter_model = starter_pipe[-1]
-
-
-# In[14]:
-
-
-X_train
 
 
 # <code style="background:blue;color:blue">**********************************************************************************************************</code>
@@ -296,34 +268,10 @@ X_train
 # 
 # 
 
-# In[ ]:
+# In[76]:
 
 
-
-
-
-# In[15]:
-
-
-options_block = get_hyperparameters(ALGORITHM, use_gpu, prefix='../../../')
-
-if 'explore param' in DATA_DETAIL:
-    def automl_step(param_options, vary):
-        for key2, value in param_options.items():
-            #print(key2, value, vary)
-            if key2 != vary and key2 != 'model__' + vary:
-                try:
-                    param_options[key2] = [param_options[key2][0]]
-                except:
-                    # value probably wasn't an list of options
-                    param_options[key2] = [param_options[key2]]
-        return param_options
-
-    #options_block = automl_step(options_block, "model__epochs")
-    explore_param = "n_estimators"
-    options_block = automl_step(options_block, explore_param)
-    
-    ALGORITHM_DETAIL = 'grid search (implied)'
+options_block = get_hyperparameters(ALGORITHM, use_gpu, prefix='../../')
 
 param_options, cv, n_jobs, refit, n_iter, verbose = get_cv_params(options_block, debug_mode=debug_mode,
                                                                   override_cv=OVERRIDE_CV,
@@ -333,17 +281,10 @@ param_options, cv, n_jobs, refit, n_iter, verbose = get_cv_params(options_block,
                                                                   )
 
 
-if not using_catboost and len(param_options.keys()) > 2 and not already_timed and debug_mode:
-    already_timed = True
-    get_ipython().run_line_magic('timeit', 'starter_pipe.fit(X_train, y_train)')
-
-
 print("cv:", cv, "n_jobs:", n_jobs, "refit:", refit, "n_iter:", n_iter, "verbose:", verbose)
-#print('\n\nHyperparameters:')
-#param_options if not using_catboost else options_block
 
 
-# In[16]:
+# In[77]:
 
 
 def fit_model_with_cross_validation(gs, X_train, y_train, fits):
@@ -361,76 +302,23 @@ def fit_model_with_cross_validation(gs, X_train, y_train, fits):
         f'max fit/score time     = {round(cv_result.cv_results_["mean_fit_time"].max(), 2)}s/{round(cv_result.cv_results_["mean_score_time"].max(), 2)}s')
     print(f'refit time             = {round(cv_result.refit_time_, 2)}s')
 
-    #return cv_result, average_time, cv_result.refit_time_, len(cv_result.cv_results_["mean_fit_time"])
     return average_time, cv_result.refit_time_, len(cv_result.cv_results_["mean_fit_time"])
 
+print('random search')
+crossval_runner = RandomizedSearchCV(
+    estimator=starter_pipe,
+    param_distributions=param_options,
+    cv=cv, n_jobs=n_jobs,  # get the AVX/AVX2 info if use n_jobs > 2
+    verbose=verbose, scoring=CROSS_VALIDATION_SCORING,
+    refit=refit,
+    return_train_score=True,  #n_iter=n_iter,
+    n_iter=n_iter,  # 1, #3
+    #error_score='raise'
+)
+cv_average_fit_time, cv_best_model_fit_time, total_fits = fit_model_with_cross_validation(
+    crossval_runner, X_train, y_train, fits=cv * n_iter)
 
-if not using_catboost:
-    if ALGORITHM_DETAIL == 'grid search' or ALGORITHM_DETAIL == 'grid search (implied)':
-        print('grid search (or implied)')
-        crossval_runner = GridSearchCV(
-            estimator=starter_pipe,
-            param_grid=param_options,
-            cv=cv, n_jobs=n_jobs, # get the AVX/AVX2 info if use n_jobs > 2
-            verbose=verbose, scoring=CROSS_VALIDATION_SCORING,
-            refit=refit,
-            return_train_score=True, #n_iter=n_iter,
-            #error_score='raise'
-        )
-    else:
-        print('random search')
-        crossval_runner = RandomizedSearchCV(
-            estimator=starter_pipe,
-            param_distributions=param_options,
-            cv=cv, n_jobs=n_jobs,  # get the AVX/AVX2 info if use n_jobs > 2
-            verbose=verbose, scoring=CROSS_VALIDATION_SCORING,
-            refit=refit,
-            return_train_score=True,  #n_iter=n_iter,
-            n_iter=n_iter,  # 1, #3
-            #error_score='raise'
-    )
-    cv_average_fit_time, cv_best_model_fit_time, total_fits = fit_model_with_cross_validation(
-        crossval_runner, X_train, y_train, fits=cv * n_iter)
-
-else:
-    from catboost import CatBoostRegressor, Pool
-
-    #pool = Pool(df, cat_features=['tenure.tenureType'], label=df['Price'].values)
-    pool_Xtrain = Pool(X_train, cat_features=[7], label=y_train)
-    #pool_Xtest = Pool(X_train, cat_features=[7], label=y_train)
-    pool_Xtest = Pool(X_test, cat_features=[7], label=y_test)
-    import sys
-    starter_model = model=CatBoostRegressor(iterations=3, depth=3, learning_rate=0.1, loss_function='RMSE', objective='RMSE')
-
-    output = starter_model.randomized_search(options_block, # param_options,
-                                    X=pool_Xtrain, # X_train,
-                                    #y=y_train,
-                                    #cat_features=[],
-                                    cv=5,
-                                    n_iter=100,
-                                    partition_random_seed=101,
-                                    calc_cv_statistics=True,
-                                    #search_by_train_test_split=True,
-                                    refit=True,
-                                    shuffle=True,
-                                    stratified=None,
-                                    #train_size=0.8,
-                                    #train_size=1,
-                                    verbose=True,
-                                    plot=True,
-                                    log_cout=sys.stdout,
-                                    log_cerr=sys.stderr)
-
-    cat_params, cat_cv_results = output['params'], output['cv_results']
-    crossval_runner = {"best_params_": cat_params, "cv_results_": cat_cv_results, "best_estimator_": None}
 crossval_runner
-
-
-# In[17]:
-
-
-if ALGORITHM_DETAIL == 'grid search' or ALGORITHM_DETAIL == 'grid search (implied)':
-    print(crossval_runner.best_params_)
 
 
 # <code style="background:blue;color:blue">**********************************************************************************************************</code>
@@ -439,7 +327,7 @@ if ALGORITHM_DETAIL == 'grid search' or ALGORITHM_DETAIL == 'grid search (implie
 # 
 # 
 
-# In[18]:
+# In[78]:
 
 
 if not using_catboost:
@@ -457,19 +345,7 @@ else:
     print(cat_cv_results)
 
 
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[19]:
+# In[79]:
 
 
 key = f'{ALGORITHM} (v{VERSION})'.lower()
@@ -503,19 +379,13 @@ if not using_catboost:
     if is_jupyter:display(cv_results_df_summary)
 
 
-# In[ ]:
-
-
-
-
-
 # <code style="background:blue;color:blue">**************</code>
 # 
 # #### Mini Stage: Make predictions
 # 
 # 
 
-# In[20]:
+# In[80]:
 
 
 if not using_catboost:
@@ -524,13 +394,7 @@ else:
     y_pred = starter_model.predict(pool_Xtest)
 
 
-# In[ ]:
-
-
-
-
-
-# In[21]:
+# In[81]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -546,13 +410,7 @@ print('Mean Squared Error Accuracy', MSE)
 print('Root Mean Squared Error', RMSE)
 
 
-# In[ ]:
-
-
-
-
-
-# In[22]:
+# In[82]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -572,13 +430,7 @@ combined['bedrooms'] = combined['bedrooms'].astype(int)
 combined
 
 
-# In[ ]:
-
-
-
-
-
-# In[23]:
+# In[83]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -591,7 +443,7 @@ best_model_ax.set_xlabel('Actual')
 plt.show()
 
 
-# In[24]:
+# In[84]:
 
 
 if not using_catboost:
@@ -647,51 +499,28 @@ if not using_catboost:
     best_model_scores[-1] = fitted_graph_model.score(X_test, y_test)
 
 
-# In[25]:
+# In[85]:
 
 
 if not using_catboost:
     evolution_of_models_fig, evolution_of_models_axes = plt.subplots(nrows=len(best_model_scores.keys()), figsize=(15, 45))
 
     ax_index=-1
-    #for i in best_model_scores.keys():
+
     for i, ax_index in zip(best_model_scores.keys(), range(0, len(best_model_scores.keys()))):
-        #ax_index += 1
-        #print(len(best_model_scores.keys()))
-        #print('i',i, "ax_index",ax_index)
         if i >= 0:
-            # plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=3)
-            # plt.scatter(y_test, best_model_predictions[i])
-            # # plt.title(str(i) + " " + str(round(best_model_scores[i], 4)) + " for " + str(best_models[i]))
-            # if len(best_models[i].keys()) < 30:
-            #     plt.title(str(i) + " " + str(round(best_model_scores[i], 4)) + " for " + str(best_models[i]))
-            # else:
-            #     plt.title(str(i) + " " + str(round(best_model_scores[i], 4)) + " for entry " + str(i))
-            # plt.show()
-
-            #>>>
-
             plt.subplots_adjust(hspace=0.2)
             plt.subplots_adjust(wspace=0.2)
-
-            #.flatten()
-            #coordinates = evolution_of_models_axes[i]
 
             if len(best_models[i].keys()) < 30:
                 eom_title = str(i) + " " + str(round(best_model_scores[i], 4)) + " for " + str(best_models[i])
             else:
                 eom_title = str(i) + " " + str(round(best_model_scores[i], 4)) + " for entry " + str(i)
 
-            print (ax_index)
             sns.lineplot(x=[y_test.min(), y_test.max()], y=[y_test.min(), y_test.max()], ax=evolution_of_models_axes[ax_index], color='red')
             sns.scatterplot(x=y_test.flatten(), y=best_model_predictions[0].flatten(), ax=evolution_of_models_axes[ax_index],
                             s=100).set(title=eom_title)
 
-
-            #<<<
-
-    #plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=3)
-    #plt.scatter(y_test, best_model_predictions[-1])
 
     if len(best_models[i].keys()) < 30:
         eom_title = str(i) + " " + str(round(best_model_scores[-1], 4)) + " for (worst)" + str(best_models[-1])
@@ -706,7 +535,7 @@ if not using_catboost:
     plt.show()
 
 
-# In[26]:
+# In[86]:
 
 
 if not using_catboost:
@@ -741,28 +570,14 @@ if not using_catboost:
     plt.show()
 
 
-# In[ ]:
-
-
-
-
-
 # <code style="background:blue;color:blue">**********************************************************************************************************</code>
 # 
 # ## Stage: Evaluate the model
 # 
 # 
 
-# In[27]:
+# In[87]:
 
-
-# <catboost.core.CatBoostRegressor object at 0x7fb167387490>
-# {'depth': 6}
-# defaultdict(<class 'list'>, {'iterations': [0, 1, 2],
-# 'test-RMSE-mean': [396884.9605444017, 359548.6632536235, 326027.84885587444],
-# 'test-RMSE-std': [308.9495320039113, 260.0967808594464, 219.65856329246023],
-# 'train-RMSE-mean': [396884.77936957515, 359542.3612912551, 326018.9404460669],
-# 'train-RMSE-std': [91.44140078375503, 86.77961380623475, 69.4038638987425]})
 
 cv_best_model_fit_time = cv_best_model_fit_time if not using_catboost else 999
 
@@ -785,25 +600,25 @@ new_results = {
 }
 
 if run_env not in ['colab']:
-    old_results_json = get_results()
+    old_results_json = get_results(directory='../../results/')
     try:
         old_best_score = old_results_json[key]['best score']
     except:
         print(f"haven't scored this model yet: {ALGORITHM}")
         old_best_score = -999
-    this_model_is_best = update_results(old_results_json, new_results, key)
+    this_model_is_best = update_results(old_results_json, new_results, key, directory='../../results/')
 
 print(key)
 new_results
 
 
-# In[28]:
+# In[88]:
 
 
 crossval_runner.best_estimator_  if not using_catboost else ''
 
 
-# In[29]:
+# In[89]:
 
 
 if this_model_is_best:
@@ -815,7 +630,7 @@ if this_model_is_best:
         new_model_decision = f"pickled new version of model\n{old_results_json[key]['_score']} is new best score (it's better than {old_best_score})"
         #print(results_json[key]['_score'], 'is an improvement on', results_json[key]['second best score'])
 else:
-    new_model_decision = f"not updated saved model, the previous run was better\n{old_results_json[key]['_score']} is worse than or equal to '{old_best_score}"
+    new_model_decision = f"not updated saved model, the previous run was better\n{old_results_json[key]['_score']} is worse than or equal to {old_best_score}"
 
 print(new_model_decision)
 
@@ -825,7 +640,7 @@ print(new_model_decision)
 # ## Stage: Investigate the feature importances (if applicable)
 # 
 
-# In[30]:
+# In[90]:
 
 
 if model_uses_feature_importances:
@@ -838,7 +653,6 @@ if model_uses_feature_importances:
 
     feature_importances_output = ""
     for f in range(X_train.shape[1]):
-        #print('%d. features %d (%f)' % (f + 1, indices[f], feature_importances[indices[f]]), df_features.columns[indices[f] + 1])
         feature_importances_output += ('%d. features %d (%f)' % (f + 1, indices[f], feature_importances[indices[f]]))
         feature_importances_output += '\t\t'
         feature_importances_output += (df_features.columns[indices[f] + 1])
@@ -848,7 +662,7 @@ else:
     print(f'{ALGORITHM} does not have feature_importances, skipping')
 
 
-# In[31]:
+# In[91]:
 
 
 if model_uses_feature_importances:
@@ -866,7 +680,7 @@ else:
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[32]:
+# In[92]:
 
 
 from bs4 import BeautifulSoup
@@ -876,7 +690,7 @@ def include_in_html_report(type, section_header=None, section_figure=None, secti
 
     # writePath_html = r'model_results/%s (html).html' % key
     # writePath_md = r'model_results/%s (md).md' % key
-    results_root = '../../F_evaluate_model'
+    results_root = '../../process/F_evaluate_model'
     writePath_html = f'{results_root}/html/{key}.html'.replace(" ", "_").replace("(", "_").replace(")", "_")
     writePath_md = f'{results_root}/markdown/{key}.md'
 
@@ -908,7 +722,6 @@ def include_in_html_report(type, section_header=None, section_figure=None, secti
                 f2.write(dfAsString + '\n')
         elif type=='graph':
             filename = key + "_" + section_content
-            #section_figure.savefig(f'model_results/artifacts/{filename.replace(" ", "_")}')
             section_figure.savefig(f'{results_root}/artifacts/{filename.replace(" ", "_").replace("(", "_").replace(")", "_")}')
 
             with open(writePath_html, 'a') as f1:
@@ -916,40 +729,20 @@ def include_in_html_report(type, section_header=None, section_figure=None, secti
                 f1.write(dfAsString)
 
             with open(writePath_md, 'a') as f2:
-                #dfAsString = f'(./model_results/artifacts/{filename}) \n'
-                #dfAsString = f'![detail](./artifacts/{filename.replace(" ","_")})'
                 dfAsString = f'![detail](../artifacts/{filename.replace(" ","_").replace("(", "_").replace(")", "_")})'
                 f2.write(dfAsString)
                 f2.write('\n')
         elif type=='json':
 
-            # html_content_parsed = [[cell.text for cell in row("td")]
-            #              for row in BeautifulSoup(content,features="html.parser")("tr")]
-            #
-            # html_content_dictionary = {element[0]:element[1:] for element in html_content_parsed}
-
-            #xxxprint(json.dumps(html_content_dictionary, indent=4))
-
-
-
             with open(writePath_html, 'a') as f1:
-                #f.write(json.dumps(html_content_dictionary, indent=4))
                 soup = BeautifulSoup(section_content, "html.parser")
                 f1.write(str(soup.prettify()))
             with open(writePath_md, 'a') as f2:
-                #f.write(json.dumps(html_content_dictionary, indent=4))
                 soup = BeautifulSoup(section_content, "html.parser")
-                #f2.write(str(soup.prettify()))
-
-
-                # html_content_dictionary = {element[0]:element[1:] for element in html_content_parsed}
-                # f2.write(json.dumps(html_content_dictionary, indent=4))
 
                 import ast
                 loads = ast.literal_eval(section_content)
-                #df = pd.DataFrame.from_dict(loads)
-                #df.drop(['dont'], axis=1, inplace=True)
-                #print(df.to_markdown(index=False,tablefmt='fancy_grid'))
+
                 for each in loads:
                     f2.write(each + " = " + str(loads[each]) + "\n\n")
 
@@ -1014,7 +807,7 @@ if model_uses_feature_importances:
 include_in_html_report("header", section_content=f"Comparison with other models", section_figure=2)
 
 
-dff = pd.read_json('../../../results/results.json')
+dff = pd.read_json('../../results/results.json')
 
 version = VERSION
 
@@ -1048,42 +841,22 @@ def print_and_report(text_single, title):
         print(each)
         include_in_html_report("text", section_header="", section_content=each)
 
-# if not catboost:
-#     print_and_report([
-#         'Best Index:' + str(crossval_runner.best_index_) + '<br>',
-#         'Best Score:' + str(crossval_runner.best_score_) + '<br>',
-#         'Best Params: ' + str(crossval_runner.best_params_) + '<br>'
-#     ], "Best Model Details")
 
-
-
-# In[33]:
+# In[93]:
 
 
 print('Nearly finished...')
 
 
-# In[34]:
+# In[94]:
 
-
-# !jupyter nbconvert --to script mycode.ipynb
-# with open('it10_all_models_20221203.ipynb', 'r') as f:
-#     lines = f.readlines()
-# with open('mycode.py', 'w') as f:
-#     for line in lines:
-#         if 'nbconvert --to script' in line:
-#             break
-#         else:
-#             f.write(line)
 
 if create_python_script and is_jupyter:
-    get_ipython().system("jupyter nbconvert --to script 'all_models_except_neural_networks.ipynb'")
-
-#!jupyter nbconvert --to script 'it10_all_models_20221203.ipynb' &&  \
-#!mv ./folder/notebooks/*.py ./folder/python_scripts && \
+    filename = FILENAME+'.ipynb'
+    get_ipython().system('jupyter nbconvert --to script $filename')
 
 
-# In[36]:
+# In[95]:
 
 
 print('Finished!')

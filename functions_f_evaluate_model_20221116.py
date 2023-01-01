@@ -111,8 +111,8 @@ def get_best_estimator_average_time(best_estimator_pipe, X_train, y_train, debug
     return average_time
 
 
-def get_results():
-    results_filename = '../../../results/results.json'
+def get_results(directory='../../../results/'):
+    results_filename = directory+'results.json'
 
     with open(results_filename) as f:
         raw_audit = f.read()
