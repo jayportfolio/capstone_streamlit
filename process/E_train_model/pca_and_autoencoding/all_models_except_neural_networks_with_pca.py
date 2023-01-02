@@ -1189,7 +1189,11 @@ if create_python_script and is_jupyter:
 
 
 # In[41]:
-
+print(f'ALGORITHM: {ALGORITHM}')
+print(f'ALGORITHM_DETAIL: {ALGORITHM_DETAIL}')
+print(f'DATA VERSION: {VERSION}')
+print(f'DATA_DETAIL: {DATA_DETAIL}')
+print(f'FILENAME: {FILENAME}')
 
 print('Finished!')
 

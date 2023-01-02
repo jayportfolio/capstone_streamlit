@@ -31,7 +31,7 @@ ALGORITHM_DETAIL = 'custom'
 #DATA_DETAIL = ['explore param']
 DATA_DETAIL = ['no dummies'] if 'catboost' in ALGORITHM.lower() else []
 #VERSION = '06'
-VERSION = '10'
+VERSION = '11'
 
 RANDOM_STATE = 101
 TRAINING_SIZE = 0.9
@@ -374,13 +374,13 @@ if not using_catboost:
                                'model__colsample_bytree': 0.9, 
                                'model__lambda': 1, 
                                'model__learning_rate': 0.1, 
-                               'model__max_depth': [15,20], #[15,20,30], 
+                               'model__max_depth': [20,25], #[15,20,30], 
                                'model__max_features': None, 
                                'model__max_leaf_nodes': 20, 
                                'model__max_samples': 1, 
                                'model__min_sample_split': None, 
                                'model__min_samples_leaf': 2000,
-                               'model__n_estimators': [20,50], #[50,100,150], 
+                               'model__n_estimators': [50,75], #[50,100,150], 
                                'model__n_jobs': 3, 
                                'model__objective': 
                                'reg:squarederror', 
@@ -1092,6 +1092,11 @@ if create_python_script and is_jupyter:
 
 
 # In[ ]:
+
+print(f'ALGORITHM: {ALGORITHM}')
+print(f'ALGORITHM_DETAIL: {ALGORITHM_DETAIL}')
+print(f'DATA VERSION: {VERSION}')
+print(f'DATA_DETAIL: {DATA_DETAIL}')
 
 
 print('Finished!')

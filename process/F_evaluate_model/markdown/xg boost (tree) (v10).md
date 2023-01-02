@@ -1,90 +1,90 @@
 # Results from XG Boost (tree)
 ### Dataset Version: 10
-Date run: 2023-01-02 17:32:05.417856
+Date run: 2023-01-02 17:58:19.012416
 
-Start time: 2023-01-02 17:30:54.294319
+Start time: 2023-01-02 17:48:03.012422
 
-End time: 2023-01-02 17:32:05.417845
+End time: 2023-01-02 17:58:19.012342
 
 ## Results
 ### Summary
 pickled new version of model
-0.7198496773488522 is new best score (it's better than 0.49227270707432136)
+0.7263637388413389 is new best score (it's better than 0.7198496773488522)
 
 ### Tuned Models ranked by performance, with parameter details
 |   rank_test_score |   mean_test_score |   mean_fit_time |   mean_score_time | param_model__booster   |   param_model__colsample_bytree |   param_model__lambda |   param_model__learning_rate |   param_model__max_depth | param_model__max_features   |   param_model__max_leaf_nodes |   param_model__max_samples | param_model__min_sample_split   |   param_model__min_samples_leaf |   param_model__n_estimators |   param_model__n_jobs | param_model__objective   |   param_model__subsample | param_model__tree_method   |   param_model__verbosity | params2                                                                |
 |------------------:|------------------:|----------------:|------------------:|:-----------------------|--------------------------------:|----------------------:|-----------------------------:|-------------------------:|:----------------------------|------------------------------:|---------------------------:|:--------------------------------|--------------------------------:|----------------------------:|----------------------:|:-------------------------|-------------------------:|:---------------------------|-------------------------:|:-----------------------------------------------------------------------|
-|                 1 |          0.694272 |         8.62611 |          0.33958  | dart                   |                             0.9 |                     1 |                          0.1 |                       20 |                             |                            20 |                          1 |                                 |                            2000 |                          50 |                     3 | reg:squarederror         |                      0.5 | hist                       |                        2 | dart/0.9/1/0.1/20/None/20/1/None/2000/50/3/reg:squarederror/0.5/hist/2 |
-|                 2 |          0.691995 |         6.85779 |          0.447644 | dart                   |                             0.9 |                     1 |                          0.1 |                       15 |                             |                            20 |                          1 |                                 |                            2000 |                          50 |                     3 | reg:squarederror         |                      0.5 | hist                       |                        2 | dart/0.9/1/0.1/15/None/20/1/None/2000/50/3/reg:squarederror/0.5/hist/2 |
-|                 3 |          0.388472 |         1.49721 |          0.162187 | dart                   |                             0.9 |                     1 |                          0.1 |                       15 |                             |                            20 |                          1 |                                 |                            2000 |                          20 |                     3 | reg:squarederror         |                      0.5 | hist                       |                        2 | dart/0.9/1/0.1/15/None/20/1/None/2000/20/3/reg:squarederror/0.5/hist/2 |
-|                 4 |          0.384148 |         1.81299 |          0.127886 | dart                   |                             0.9 |                     1 |                          0.1 |                       20 |                             |                            20 |                          1 |                                 |                            2000 |                          20 |                     3 | reg:squarederror         |                      0.5 | hist                       |                        2 | dart/0.9/1/0.1/20/None/20/1/None/2000/20/3/reg:squarederror/0.5/hist/2 |
+|                 1 |          0.69933  |         50.1839 |          1.16073  | dart                   |                             0.9 |                     1 |                          0.1 |                       20 |                             |                            20 |                          1 |                                 |                            2000 |                          75 |                     3 | reg:squarederror         |                      0.5 | hist                       |                        2 | dart/0.9/1/0.1/20/None/20/1/None/2000/75/3/reg:squarederror/0.5/hist/2 |
+|                 2 |          0.698397 |        111.234  |          2.16831  | dart                   |                             0.9 |                     1 |                          0.1 |                       25 |                             |                            20 |                          1 |                                 |                            2000 |                          75 |                     3 | reg:squarederror         |                      0.5 | hist                       |                        2 | dart/0.9/1/0.1/25/None/20/1/None/2000/75/3/reg:squarederror/0.5/hist/2 |
+|                 3 |          0.695163 |         30.1502 |          0.786835 | dart                   |                             0.9 |                     1 |                          0.1 |                       25 |                             |                            20 |                          1 |                                 |                            2000 |                          50 |                     3 | reg:squarederror         |                      0.5 | hist                       |                        2 | dart/0.9/1/0.1/25/None/20/1/None/2000/50/3/reg:squarederror/0.5/hist/2 |
+|                 4 |          0.694272 |         19.9463 |          0.689552 | dart                   |                             0.9 |                     1 |                          0.1 |                       20 |                             |                            20 |                          1 |                                 |                            2000 |                          50 |                     3 | reg:squarederror         |                      0.5 | hist                       |                        2 | dart/0.9/1/0.1/20/None/20/1/None/2000/50/3/reg:squarederror/0.5/hist/2 |
 ### Best and worst models obtained by tuning
 ![detail](../artifacts/xg_boost__tree___v10__best_and_worst.png)
 ### Best Model: Comparing model predictions to actual property values
 ![detail](../artifacts/xg_boost__tree___v10__best_model_correlation.png)
 ## Feature Importances
 ### Feature Importances
-1. features 59 (0.204746)		tenure.tenureType_LEASEHOLD
-2. features 0 (0.126975)		bedrooms
-3. features 58 (0.068739)		tenure.tenureType_FREEHOLD
-4. features 1 (0.032587)		bathrooms
-5. features 5 (0.030548)		latitude_deviation
-6. features 6 (0.027991)		longitude_deviation
-7. features 4 (0.026409)		location.longitude
-8. features 60 (0.018454)		tenure.tenureType_SHARE_OF_FREEHOLD
-9. features 45 (0.015913)		feature__private garden
-10. features 3 (0.014145)		location.latitude
-11. features 48 (0.011627)		feature__separate kitchen
-12. features 47 (0.011493)		feature__reception room
-13. features 22 (0.011436)		feature__epc rating d
-14. features 43 (0.011013)		feature__parking
-15. features 7 (0.010880)		feature__1 bedroom
-16. features 44 (0.009843)		feature__private balcony
-17. features 34 (0.009633)		feature__leasehold
-18. features 52 (0.009511)		feature__top floor
-19. features 41 (0.009412)		feature__one bedroom
-20. features 29 (0.009261)		feature__garden
-21. features 12 (0.009253)		feature__balcony
-22. features 14 (0.009138)		feature__chain free
-23. features 46 (0.009055)		feature__private rear garden
-24. features 53 (0.009055)		feature__two bathrooms
-25. features 19 (0.009051)		feature__double glazed
-26. features 49 (0.008958)		feature__share of freehold
-27. features 38 (0.008941)		feature__no chain
-28. features 8 (0.008917)		feature__2 bedrooms
-29. features 42 (0.008910)		feature__one double bedroom
-30. features 37 (0.008887)		feature__modern kitchen
-31. features 33 (0.008729)		feature__kitchen
-32. features 55 (0.008633)		feature__two double bedrooms
-33. features 9 (0.008581)		feature__2 double bedrooms
-34. features 24 (0.008508)		feature__excellent transport links
-35. features 31 (0.008501)		feature__great location
-36. features 17 (0.008457)		feature__communal gardens
-37. features 32 (0.008415)		feature__ground floor
-38. features 16 (0.008383)		feature__communal garden
-39. features 20 (0.008248)		feature__double glazing
-40. features 13 (0.008188)		feature__bathroom
-41. features 54 (0.008154)		feature__two bedrooms
-42. features 23 (0.008120)		feature__excellent location
-43. features 51 (0.008111)		feature__three double bedrooms
-44. features 26 (0.008109)		feature__first floor
-45. features 15 (0.008064)		feature__close to local amenities
-46. features 27 (0.007848)		feature__fitted kitchen
-47. features 21 (0.007793)		feature__epc rating c
-48. features 39 (0.007786)		feature__no onward chain
-49. features 30 (0.007734)		feature__gas central heating
-50. features 40 (0.007716)		feature__off street parking
-51. features 35 (0.007500)		feature__long lease
-52. features 36 (0.007474)		feature__modern bathroom
-53. features 28 (0.007224)		feature__garage
-54. features 10 (0.007160)		feature__allocated parking
-55. features 2 (0.007133)		nearestStation
-56. features 18 (0.007097)		feature__double bedroom
-57. features 25 (0.006874)		feature__family bathroom
-58. features 50 (0.006860)		feature__three bedrooms
-59. features 56 (0.006384)		feature__two reception rooms
-60. features 11 (0.005746)		feature__allocated parking space
-61. features 57 (0.005688)		tenure.tenureType_COMMONHOLD
+1. features 59 (0.134692)		tenure.tenureType_LEASEHOLD
+2. features 0 (0.086872)		bedrooms
+3. features 58 (0.065835)		tenure.tenureType_FREEHOLD
+4. features 5 (0.036115)		latitude_deviation
+5. features 6 (0.031655)		longitude_deviation
+6. features 4 (0.029571)		location.longitude
+7. features 1 (0.025214)		bathrooms
+8. features 60 (0.019004)		tenure.tenureType_SHARE_OF_FREEHOLD
+9. features 45 (0.017076)		feature__private garden
+10. features 3 (0.015954)		location.latitude
+11. features 48 (0.014758)		feature__separate kitchen
+12. features 47 (0.014616)		feature__reception room
+13. features 43 (0.014542)		feature__parking
+14. features 22 (0.013709)		feature__epc rating d
+15. features 7 (0.012703)		feature__1 bedroom
+16. features 52 (0.012420)		feature__top floor
+17. features 34 (0.012281)		feature__leasehold
+18. features 44 (0.011552)		feature__private balcony
+19. features 19 (0.011481)		feature__double glazed
+20. features 29 (0.011454)		feature__garden
+21. features 37 (0.011425)		feature__modern kitchen
+22. features 33 (0.011418)		feature__kitchen
+23. features 49 (0.011268)		feature__share of freehold
+24. features 38 (0.011212)		feature__no chain
+25. features 31 (0.011032)		feature__great location
+26. features 46 (0.011006)		feature__private rear garden
+27. features 41 (0.010916)		feature__one bedroom
+28. features 12 (0.010845)		feature__balcony
+29. features 53 (0.010844)		feature__two bathrooms
+30. features 42 (0.010698)		feature__one double bedroom
+31. features 17 (0.010614)		feature__communal gardens
+32. features 24 (0.010508)		feature__excellent transport links
+33. features 55 (0.010499)		feature__two double bedrooms
+34. features 32 (0.010452)		feature__ground floor
+35. features 14 (0.010405)		feature__chain free
+36. features 8 (0.010361)		feature__2 bedrooms
+37. features 15 (0.010312)		feature__close to local amenities
+38. features 20 (0.010290)		feature__double glazing
+39. features 54 (0.010276)		feature__two bedrooms
+40. features 16 (0.010246)		feature__communal garden
+41. features 23 (0.010220)		feature__excellent location
+42. features 26 (0.010200)		feature__first floor
+43. features 27 (0.010085)		feature__fitted kitchen
+44. features 13 (0.010070)		feature__bathroom
+45. features 51 (0.010031)		feature__three double bedrooms
+46. features 39 (0.009901)		feature__no onward chain
+47. features 36 (0.009834)		feature__modern bathroom
+48. features 9 (0.009810)		feature__2 double bedrooms
+49. features 40 (0.009763)		feature__off street parking
+50. features 21 (0.009581)		feature__epc rating c
+51. features 30 (0.009568)		feature__gas central heating
+52. features 18 (0.009477)		feature__double bedroom
+53. features 35 (0.009134)		feature__long lease
+54. features 2 (0.008692)		nearestStation
+55. features 10 (0.008666)		feature__allocated parking
+56. features 25 (0.008504)		feature__family bathroom
+57. features 50 (0.008482)		feature__three bedrooms
+58. features 28 (0.008198)		feature__garage
+59. features 56 (0.008157)		feature__two reception rooms
+60. features 57 (0.007926)		tenure.tenureType_COMMONHOLD
+61. features 11 (0.007566)		feature__allocated parking space
 
 
 ### Feature Importances (XG Boost (tree))
@@ -93,9 +93,8 @@ pickled new version of model
 ### Comparison with version 10 performances
 |                                      |   best score |    best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                                      |
 |:-------------------------------------|-------------:|-------------:|-------------------------------:|------------------------------:|--------------------:|--------------------------:|:---------------------------|:-----------------------------------------------------------------|
-| xg boost (tree) (v10)                |     0.71985  |    6.83669   |                        42780.2 |                   3.16469e+09 |            0.71985  |                   56255.6 | 2023-01-02 17:32:03.977619 | custom                                                           |
+| xg boost (tree) (v10)                |     0.726364 |   69.306     |                        41944.4 |                   3.09111e+09 |            0.726364 |                   55597.7 | 2023-01-02 17:58:16.959076 | custom                                                           |
 | catboost (v10)                       |     0.694651 |    4.77      |                        68364.3 |                   7.1318e+09  |            0.368666 |                   84450   | 2022-11-30 14:14:50.145713 | random search(no dummies)                                        |
-| xg boost (v10)                       |     0.681785 |    9.30959   |                        46626.7 |                   3.59469e+09 |            0.681785 |                   59955.7 | 2022-11-30 14:45:52.207314 | random search                                                    |
 | random forest - random search (vx10) |     0.647421 |  nan         |                        49942   |                   3.98288e+09 |            0.647421 |                   63110.1 | nan                        | nan                                                              |
 | neural network m13 mega (v10)        |     0.583716 |  142.89      |                        54668.9 |                   4.94809e+09 |            0.561977 |                   70342.6 | 2022-12-01 10:27:39.663081 | loss=3878948096.0 valloss=4822886400.0 +valsplit=0.1 stop=38/400 |
 | neural network m14 mega (v10)        |     0.579095 | 1129.09      |                        53124   |                   4.75471e+09 |            0.579095 |                   68954.4 | 2022-12-01 11:52:45.011704 | loss=4.85e+04 valloss=5.34e+04 +valsplit=0.1 stop=156/400        |
@@ -109,18 +108,13 @@ pickled new version of model
 |:----------------------------------------------------------|-------------:|-------------:|-------------------------------:|------------------------------:|--------------------:|--------------------------:|:---------------------------|:-----------------------------------------------------------------------------------------------------------------------|
 | xg boost (tree) (v09)                                     |     0.728969 |   89.2137    |                41339.5         |                   3.06168e+09 |            0.728969 |           55332.4         | 2023-01-02 16:33:38.004418 | custom                                                                                                                 |
 | xg boost (tree) (v06)                                     |     0.727132 |  134.175     |                42215           |                   3.09601e+09 |            0.725929 |           55641.8         | 2022-12-07 09:43:37.103009 | random search                                                                                                          |
-| xg boost (v11) rs                                         |     0.721019 |  nan         |                42603           |                   3.15148e+09 |            0.721019 |           56138           | nan                        | nan                                                                                                                    |
-| xg boost (tree) (v10)                                     |     0.71985  |    6.83669   |                42780.2         |                   3.16469e+09 |            0.71985  |           56255.6         | 2023-01-02 17:32:03.977619 | custom                                                                                                                 |
+| xg boost (tree) (v10)                                     |     0.726364 |   69.306     |                41944.4         |                   3.09111e+09 |            0.726364 |           55597.7         | 2023-01-02 17:58:16.959076 | custom                                                                                                                 |
 | knn (v06)                                                 |     0.719049 |    0.0179159 |                41531.1         |                   3.2181e+09  |            0.715122 |           56728.3         | 2022-11-21 18:05:21.585382 | random search                                                                                                          |
 | catboost (v06)                                            |     0.715606 |   12.2565    |                51000           |                   4.30136e+09 |            0.619227 |           65584.8         | 1999-11-13 15:26:55.706567 | random search                                                                                                          |
-| xg boost (v05) rs                                         |     0.710594 |  nan         |                42229           |                   3.21963e+09 |            0.710594 |           56741.7         | nan                        | nan                                                                                                                    |
 | light gradient boosting (v06)                             |     0.706735 |   15.0439    |                44081           |                   3.31284e+09 |            0.706735 |           57557.3         | 2022-11-16 13:59:52.612654 | random search                                                                                                          |
-| xg boost (v09)                                            |     0.701117 |  119.281     |                51922.6         |                   4.35555e+09 |            0.614431 |           65996.6         | 2022-11-30 10:16:33.388760 | random search                                                                                                          |
 | catboost (v09)                                            |     0.700506 |    2.82      |                74210.9         |                   8.5691e+09  |            0.241431 |           92569.4         | 2022-11-30 13:34:39.793583 | random search(no dummies)                                                                                              |
 | catboost (v10)                                            |     0.694651 |    4.77      |                68364.3         |                   7.1318e+09  |            0.368666 |           84450           | 2022-11-30 14:14:50.145713 | random search(no dummies)                                                                                              |
 | catboost (v11)                                            |     0.689818 |   12.81      |                70705.7         |                   7.67228e+09 |            0.320821 |           87591.5         | 2022-11-30 16:14:29.405177 | random search(no dummies)                                                                                              |
-| xg boost (v06)                                            |     0.687611 |   11.4748    |                45988.3         |                   3.52887e+09 |            0.687611 |           59404.3         | nan                        | random search                                                                                                          |
-| xg boost (v10)                                            |     0.681785 |    9.30959   |                46626.7         |                   3.59469e+09 |            0.681785 |           59955.7         | 2022-11-30 14:45:52.207314 | random search                                                                                                          |
 | random forest (v09)                                       |     0.680091 | 1127.32      |                46294.6         |                   3.61382e+09 |            0.680091 |           60115           | 2022-12-11 19:26:14.332459 | random search                                                                                                          |
 | random forest - random search (vx10)                      |     0.647421 |  nan         |                49942           |                   3.98288e+09 |            0.647421 |           63110.1         | nan                        | nan                                                                                                                    |
 | knn (v09)                                                 |     0.644916 |    0.112408  |                48389.1         |                   4.15737e+09 |            0.631974 |           64477.7         | 2022-11-30 12:53:42.390150 | random search                                                                                                          |
@@ -131,12 +125,10 @@ pickled new version of model
 | neural network m14 mega (v09)                             |     0.610895 | 2179.86      |                51080.5         |                   4.39548e+09 |            0.610895 |           66298.4         | 2022-12-12 16:01:42.195065 | loss=4.68e+04 valloss=5.01e+04 +valsplit=0.1 +patn=25 stop=230/400                                                     |
 | neural network m13 mega (v09)                             |     0.607154 |  500.16      |                50938.6         |                   4.43775e+09 |            0.607154 |           66616.4         | 2022-12-12 15:25:17.070719 | loss=4.55e+04 valloss=5.03e+04 +valsplit=0.1 +patn=25 stop=104/400                                                     |
 | xg boost (tree) (v11)                                     |     0.603614 |   14.2104    |                52330.4         |                   4.47774e+09 |            0.603614 |           66915.9         | 2022-11-30 20:18:59.876471 | random search                                                                                                          |
-| xg boost (v04) rs                                         |     0.603522 |  nan         |                50419.2         |                   4.50494e+09 |            0.603522 |           67118.9         | nan                        | nan                                                                                                                    |
 | neural network m12 mega (v06)                             |     0.594032 |  813.27      |                54968           |                   4.80703e+09 |            0.574463 |           69332.8         | 2022-11-29 17:08:44.480482 | loss=4386.51 valloss=4438.8 +valsplit=0.1 stop=201/400                                                                 |
 | neural network m11 mega (v09)                             |     0.587136 |  994.87      |                53873           |                   4.66388e+09 |            0.587136 |           68292.6         | 2022-12-12 15:02:24.649254 | loss=4.26e+09 valloss=4.72e+09 +valsplit=0.1 +patn=25 stop=189/400                                                     |
 | random forest (v06)                                       |     0.585876 |    1.76986   |                60537           |                   5.63491e+09 |            0.501177 |           75066           | 2022-12-11 12:04:23.528125 | random search                                                                                                          |
 | neural network m13 mega (v10)                             |     0.583716 |  142.89      |                54668.9         |                   4.94809e+09 |            0.561977 |           70342.6         | 2022-12-01 10:27:39.663081 | loss=3878948096.0 valloss=4822886400.0 +valsplit=0.1 stop=38/400                                                       |
-| xg boost (v03) rs                                         |     0.582071 |  nan         |                51147.3         |                   4.7333e+09  |            0.574533 |           68799           | nan                        | nan                                                                                                                    |
 | neural network m05 rec deep (v06)                         |     0.580348 |  604.9       |                59357.5         |                   5.47083e+09 |            0.515701 |           73965.1         | 2022-11-29 11:41:39.682217 | loss=4908.71 valloss=4603.08 stop=214/500                                                                              |
 | neural network m14 mega (v10)                             |     0.579095 | 1129.09      |                53124           |                   4.75471e+09 |            0.579095 |           68954.4         | 2022-12-01 11:52:45.011704 | loss=4.85e+04 valloss=5.34e+04 +valsplit=0.1 stop=156/400                                                              |
 | neural network m12 mega (v09)                             |     0.571972 |  848.7       |                54696           |                   4.83518e+09 |            0.571972 |           69535.4         | 2022-12-12 15:16:52.189760 | loss=4.76e+09 valloss=4.77e+09 +valsplit=0.1 +patn=25 stop=179/400                                                     |
@@ -157,8 +149,6 @@ pickled new version of model
 | neural network m01 simple (v09)                           |     0.508847 |  188.63      |                71376.9         |                   7.55056e+09 |            0.331597 |           86893.9         | 2022-11-30 13:08:10.248178 | loss=5724.92 valloss=5608.12 +valsplit=0.1 stop=42/50                                                                  |
 | neural network with autoencoding m15 mega + dropout (v11) |     0.488747 | 1276.23      |                58773.7         |                   5.77532e+09 |            0.488747 |           75995.5         | 2022-12-22 19:06:48.049482 | loss=5.27e+04 valloss=5.91e+04 +valsplit=0.1 +patn=25 stop=181/400                                                     |
 | knn (v10)                                                 |     0.484585 |    0.29179   |                61764.2         |                   5.82234e+09 |            0.484585 |           76304.2         | 2022-11-30 15:12:50.989371 | random search                                                                                                          |
-| xg boost (v11)                                            |     0.484341 |    1.66323   |                61556.7         |                   5.82509e+09 |            0.484341 |           76322.3         | 2022-11-30 16:55:55.436173 | random search                                                                                                          |
-| xg boost (linear) (v11)                                   |     0.484341 |   12.6817    |                62224.3         |                   5.90103e+09 |            0.477618 |           76818.2         | 2022-11-30 19:47:04.498556 | random search                                                                                                          |
 | linear regression (ridge) (v11)                           |     0.484311 |    0.2412    |                61567.5         |                   5.82554e+09 |            0.484302 |           76325.2         | 2023-01-01 10:07:22.564855 | random search(pca,1.0% retain)                                                                                         |
 | linear regression (ridge) (v10)                           |     0.470806 |    0.239057  |                62605.9         |                   5.97852e+09 |            0.470759 |           77320.9         | 2022-12-01 19:50:08.050622 | random search                                                                                                          |
 | knn (v11)                                                 |     0.465113 |    0.618877  |                62944.7         |                   6.0423e+09  |            0.465113 |           77732.2         | 2022-11-30 16:20:53.948815 | random search                                                                                                          |
@@ -176,8 +166,6 @@ pickled new version of model
 | linear regression (ridge) - random search (v04)           |   nan        |  nan         |                71834.4         |                   7.71252e+09 |            0.321224 |           87821           | nan                        | nan                                                                                                                    |
 | linear regression (ridge) - random search (v05)           |   nan        |  nan         |                63770.7         |                   6.19128e+09 |            0.443478 |           78684.7         | nan                        | nan                                                                                                                    |
 | linear regression - basic (v01)                           |   nan        |  nan         |                72921.6         |                   8.29799e+09 |            0.29667  |           91093.3         | nan                        | nan                                                                                                                    |
-| xg boost (v02) rs                                         |   nan        |  nan         |                45160.2         |                   3.62788e+09 |            0.682955 |           60231.8         | nan                        | nan                                                                                                                    |
-| xg boost - basic (v02)                                    |   nan        |  nan         |                48536.5         |                   3.97959e+09 |            0.652219 |           63084           | nan                        | nan                                                                                                                    |
 ## Appendix
 ### Data Sample
 |          |   Price |   bedrooms |   bathrooms |   nearestStation |   location.latitude |   location.longitude |   latitude_deviation |   longitude_deviation | tenure.tenureType   |   feature__1 bedroom |   feature__2 bedrooms |   feature__2 double bedrooms |   feature__allocated parking |   feature__allocated parking space |   feature__balcony |   feature__bathroom |   feature__chain free |   feature__close to local amenities |   feature__communal garden |   feature__communal gardens |   feature__double bedroom |   feature__double glazed |   feature__double glazing |   feature__epc rating c |   feature__epc rating d |   feature__excellent location |   feature__excellent transport links |   feature__family bathroom |   feature__first floor |   feature__fitted kitchen |   feature__garage |   feature__garden |   feature__gas central heating |   feature__great location |   feature__ground floor |   feature__kitchen |   feature__leasehold |   feature__long lease |   feature__modern bathroom |   feature__modern kitchen |   feature__no chain |   feature__no onward chain |   feature__off street parking |   feature__one bedroom |   feature__one double bedroom |   feature__parking |   feature__private balcony |   feature__private garden |   feature__private rear garden |   feature__reception room |   feature__separate kitchen |   feature__share of freehold |   feature__three bedrooms |   feature__three double bedrooms |   feature__top floor |   feature__two bathrooms |   feature__two bedrooms |   feature__two double bedrooms |   feature__two reception rooms |
