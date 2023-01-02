@@ -2,6 +2,13 @@
 # coding: utf-8
 
 
+import json
+from datetime import datetime
+import matplotlib.pyplot as plt
+import sys
+import os
+import pandas as pd
+
 from bs4 import BeautifulSoup
 
 
@@ -112,23 +119,21 @@ def include_in_html_report(type, section_header=None, section_figure=None, secti
             f1.write('<hr>')
 
 
-include_in_html_report("header", section_content=f"Results from {ALGORITHM}", section_figure=1)
+key = 'Summary'
+include_in_html_report("header", section_content=f"SUMMARY RESULTS", section_figure=1)
 
 end_timestamp = datetime.now()
 
-include_in_html_report(type="text", section_header=f"Dataset Version: {VERSION}", section_content_list=[
-    f"Date run: {datetime.now()}"
-    "",
-    f"Start time: {start_timestamp}",
-    f"End time: {end_timestamp}",
+include_in_html_report(type="text", section_header=f"Dataset Version: N/A", section_content_list=[
+    f"Report run: {datetime.now()}"
 ])
 include_in_html_report("header", section_content=f"Results", section_figure=2)
 
-include_in_html_report(type="text", section_header="Summary", section_content=new_model_decision)
+#xxxinclude_in_html_report(type="text", section_header="Summary", section_content=new_model_decision)
 
 #include_in_html_report(type="dataframe",text_single="Tuned Models ranked by performance", content=cv_results_df_sorted)
 
-if not using_catboost:
+'''if not using_catboost:
     include_in_html_report(type='dataframe', section_header='Tuned Models ranked by performance, with parameter details', section_content=cv_results_df_summary)
 
     include_in_html_report(type='graph', section_header='Best and worst models obtained by tuning', section_figure=worst_and_best_model_fig, section_content="best_and_worst.png")
@@ -142,38 +147,38 @@ if model_uses_feature_importances:
     include_in_html_report("header", section_content=f"Feature Importances", section_figure=2)
     include_in_html_report(type="text", section_header="Feature Importances", section_content=feature_importances_output)
     include_in_html_report(type="graph", section_header=f"Feature Importances ({ALGORITHM})", section_figure=feature_importance_fig, section_content='best_model_feature_importances.png')
-
+'''
 
 include_in_html_report("header", section_content=f"Comparison with other models", section_figure=2)
 
 
 dff = pd.read_json('../../../results/results.json')
 
-version = VERSION
+#version = VERSION
 
 
 all_models_df = dff[dff.columns].T.sort_values("best score", ascending=False)
-version_models_df = dff[[c for c in dff.columns if version in c]].T.sort_values("best score", ascending=False)
+#version_models_df = dff[[c for c in dff.columns if version in c]].T.sort_values("best score", ascending=False)
 
-version_models_summary = version_models_df[['best score', 'best time', 'Mean Absolute Error Accuracy', 'Mean Squared Error Accuracy', 'R square Accuracy', 'Root Mean Squared Error', 'best run date', 'best method']]
+#version_models_summary = version_models_df[['best score', 'best time', 'Mean Absolute Error Accuracy', 'Mean Squared Error Accuracy', 'R square Accuracy', 'Root Mean Squared Error', 'best run date', 'best method']]
 all_models_summary = all_models_df[['best score', 'best time', 'Mean Absolute Error Accuracy', 'Mean Squared Error Accuracy', 'R square Accuracy', 'Root Mean Squared Error', 'best run date', 'best method']]
 
-include_in_html_report(type="dataframe", section_header=f"Comparison with version {VERSION} performances", section_content=version_models_summary)
+#include_in_html_report(type="dataframe", section_header=f"Comparison with version {VERSION} performances", section_content=version_models_summary)
 include_in_html_report(type="dataframe", section_header="Comparison with all model performances", section_content=all_models_summary)
 
 
 include_in_html_report("header", section_content=f"Appendix", section_figure=2)
 
-include_in_html_report(type="dataframe", section_header="Data Sample", section_content=df.head(5))
+#include_in_html_report(type="dataframe", section_header="Data Sample", section_content=df.head(5))
 
-include_in_html_report(type="json", section_header="Hyperparameter options for Randomized Grid Search", section_content=f"{param_options if not using_catboost else options_block}")
+'''include_in_html_report(type="json", section_header="Hyperparameter options for Randomized Grid Search", section_content=f"{param_options if not using_catboost else options_block}")
 
 if not using_catboost:
     include_in_html_report(type="graph", section_header=f"Range of hyperparameter results", section_figure=evolution_of_models_fig,
         section_content='evolution_of_models_fig.png')
 
 include_in_html_report(type="dict", section_header="Environment Variables", section_content=env_vars)
-
+'''
 
 def print_and_report(text_single, title):
     include_in_html_report("text", section_content=title)
@@ -195,29 +200,6 @@ def print_and_report(text_single, title):
 
 print('Nearly finished...')
 
-
-# In[139]:
-
-
-# !jupyter nbconvert --to script mycode.ipynb
-# with open('it10_all_models_20221203.ipynb', 'r') as f:
-#     lines = f.readlines()
-# with open('mycode.py', 'w') as f:
-#     for line in lines:
-#         if 'nbconvert --to script' in line:
-#             break
-#         else:
-#             f.write(line)
-
-if create_python_script and is_jupyter:
-    filename = FILENAME+'.ipynb'
-    get_ipython().system('jupyter nbconvert --to script $filename')
-
-#!jupyter nbconvert --to script 'it10_all_models_20221203.ipynb' &&  \
-#!mv ./folder/notebooks/*.py ./folder/python_scripts && \
-
-
-# In[140]:
 
 
 print('Finished!')
