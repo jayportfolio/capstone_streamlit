@@ -16,11 +16,11 @@
 
 FILENAME = 'all_models_except_neural_networks'
 
-ALGORITHM = 'Linear Regression (Ridge)'
+#ALGORITHM = 'Linear Regression (Ridge)'
 #ALGORITHM = 'KNN'
 #ALGORITHM = 'Decision Tree'
 #ALGORITHM = 'Random Forest'
-#ALGORITHM = 'XG Boost (tree)'
+ALGORITHM = 'XG Boost (tree)'
 #ALGORITHM = 'CatBoost'
 #ALGORITHM = 'Light Gradient Boosting'
 

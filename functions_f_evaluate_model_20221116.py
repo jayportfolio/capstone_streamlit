@@ -158,14 +158,14 @@ def update_results(saved_results_json, new_results, key, directory='../../../res
         this_model_is_best = False
     elif max_score == new_results['_score']:
 
-        if old_results['best params'] == new_results['_params'] and new_results['_train time'] <= old_results['best time']:
+        if old_results['best params'] == new_results['_params'] and new_results['_train time'] * 1.3 <= old_results['best time']:
             print("3a: ? same params but better time ==> replace results and update model")
 
             #put_new_in_best(new_results, old_results)
             replace_new_in_best(new_results, old_results)
             this_model_is_best = True
 
-        elif old_results['best params'] != new_results['_params'] and new_results['_train time'] <= old_results['best time']:
+        elif old_results['best params'] != new_results['_params'] and new_results['_train time'] < old_results['best time']:
             print("3b: ? different params and better time ==> update results and update model")
 
             put_new_in_best(new_results, old_results)
@@ -173,7 +173,7 @@ def update_results(saved_results_json, new_results, key, directory='../../../res
 
             this_model_is_best = True
 
-        elif old_results['best params'] == new_results['_params'] or old_results['best time'] > new_results['_train time'] * 3:
+        elif old_results['best params'] == new_results['_params'] or new_results['_train time'] * 3 < old_results['best time']:
             print("3c: ? same params or much better time ==> don't update results and don't update model")
 
             put_old_best_in_best(new_results, old_results)  ## was best2

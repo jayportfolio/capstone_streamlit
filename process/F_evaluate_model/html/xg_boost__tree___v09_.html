@@ -1,27 +1,27 @@
-<h1>Results from XG Boost (tree)</h1><h3>Dataset Version: 09</h3>Date run: 2023-01-01 22:24:43.466467<br>Start time: 2023-01-01 21:56:28.796592<br>End time: 2023-01-01 22:24:43.466451<br><hr><h2>Results</h2><h3>Summary</h3>pickled new version of model
-0.7254059553904803 is new best score (it's better than 0.7213524876840065)<br><hr><h3>Tuned Models ranked by performance, with parameter details</h3><table border="1" class="dataframe">
+<h1>Results from XG Boost (tree)</h1><h3>Dataset Version: 09</h3>Date run: 2023-01-02 00:28:33.888183<br>Start time: 2023-01-02 00:25:45.964573<br>End time: 2023-01-02 00:28:33.888173<br><hr><h2>Results</h2><h3>Summary</h3>not updated saved model, the previous run was better
+0.7254059553904803 is worse than or equal to 0.7254059553904803<br><hr><h3>Tuned Models ranked by performance, with parameter details</h3><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
       <th>mean_test_score</th>
       <th>mean_fit_time</th>
       <th>mean_score_time</th>
-      <th>param_model__verbosity</th>
-      <th>param_model__tree_method</th>
-      <th>param_model__subsample</th>
-      <th>param_model__objective</th>
-      <th>param_model__n_jobs</th>
-      <th>param_model__n_estimators</th>
-      <th>param_model__min_samples_leaf</th>
-      <th>param_model__min_sample_split</th>
-      <th>param_model__max_samples</th>
-      <th>param_model__max_leaf_nodes</th>
-      <th>param_model__max_features</th>
-      <th>param_model__max_depth</th>
-      <th>param_model__learning_rate</th>
-      <th>param_model__lambda</th>
-      <th>param_model__colsample_bytree</th>
       <th>param_model__booster</th>
+      <th>param_model__colsample_bytree</th>
+      <th>param_model__lambda</th>
+      <th>param_model__learning_rate</th>
+      <th>param_model__max_depth</th>
+      <th>param_model__max_features</th>
+      <th>param_model__max_leaf_nodes</th>
+      <th>param_model__max_samples</th>
+      <th>param_model__min_sample_split</th>
+      <th>param_model__min_samples_leaf</th>
+      <th>param_model__n_estimators</th>
+      <th>param_model__n_jobs</th>
+      <th>param_model__objective</th>
+      <th>param_model__subsample</th>
+      <th>param_model__tree_method</th>
+      <th>param_model__verbosity</th>
       <th>params2</th>
     </tr>
     <tr>
@@ -52,163 +52,25 @@
     <tr>
       <th>1</th>
       <td>0.707491</td>
-      <td>36.038052</td>
-      <td>0.356620</td>
+      <td>36.886707</td>
+      <td>0.237277</td>
+      <td>gbtree</td>
       <td>1</td>
-      <td>auto</td>
-      <td>0.9</td>
-      <td>reg:squarederror</td>
-      <td>3</td>
-      <td>500</td>
-      <td>20</td>
-      <td>2000</td>
-      <td>None</td>
-      <td>200</td>
-      <td>16</td>
-      <td>10</td>
-      <td>0.3</td>
       <td>1000</td>
-      <td>1</td>
-      <td>gbtree</td>
-      <td>1/auto/0.9/reg:squarederror/3/500/20/2000/None/200/16/10/0.3/1000/1/gbtree</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.696527</td>
-      <td>161.316020</td>
-      <td>1.956441</td>
-      <td>1</td>
-      <td>hist</td>
-      <td>0.5</td>
-      <td>reg:squarederror</td>
-      <td>3</td>
-      <td>500</td>
-      <td>None</td>
-      <td>20</td>
-      <td>1</td>
-      <td>20</td>
-      <td>4</td>
-      <td>6</td>
-      <td>0.1</td>
-      <td>None</td>
-      <td>0.9</td>
-      <td>dart</td>
-      <td>1/hist/0.5/reg:squarederror/3/500/None/20/1/20/4/6/0.1/None/0.9/dart</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.683731</td>
-      <td>11.022767</td>
-      <td>0.478418</td>
-      <td>1</td>
-      <td>auto</td>
-      <td>0.9</td>
-      <td>reg:squarederror</td>
-      <td>3</td>
-      <td>100</td>
-      <td>None</td>
-      <td>None</td>
-      <td>0.9</td>
-      <td>2000</td>
-      <td>None</td>
-      <td>8</td>
       <td>0.3</td>
-      <td>100</td>
-      <td>1</td>
-      <td>dart</td>
-      <td>1/auto/0.9/reg:squarederror/3/100/None/None/0.9/2000/None/8/0.3/100/1/dart</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.670629</td>
-      <td>10.641767</td>
-      <td>0.380237</td>
-      <td>1</td>
-      <td>hist</td>
-      <td>0.9</td>
-      <td>reg:squarederror</td>
-      <td>3</td>
-      <td>100</td>
-      <td>2000</td>
-      <td>20</td>
-      <td>None</td>
-      <td>None</td>
-      <td>64</td>
       <td>10</td>
-      <td>None</td>
-      <td>1000</td>
-      <td>0.75</td>
-      <td>dart</td>
-      <td>1/hist/0.9/reg:squarederror/3/100/2000/20/None/None/64/10/None/1000/0.75/dart</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>0.657597</td>
-      <td>1.104502</td>
-      <td>0.053606</td>
-      <td>1</td>
-      <td>hist</td>
-      <td>0.75</td>
-      <td>reg:squarederror</td>
-      <td>3</td>
-      <td>500</td>
-      <td>None</td>
-      <td>200</td>
-      <td>0.75</td>
-      <td>200</td>
       <td>16</td>
-      <td>3</td>
-      <td>None</td>
-      <td>1</td>
-      <td>0.75</td>
-      <td>gbtree</td>
-      <td>1/hist/0.75/reg:squarederror/3/500/None/200/0.75/200/16/3/None/1/0.75/gbtree</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>0.650833</td>
-      <td>2.674523</td>
-      <td>0.037658</td>
-      <td>1</td>
-      <td>auto</td>
-      <td>0.9</td>
-      <td>reg:squarederror</td>
-      <td>3</td>
-      <td>100</td>
-      <td>None</td>
-      <td>20</td>
-      <td>0.9</td>
-      <td>2</td>
-      <td>2</td>
-      <td>6</td>
-      <td>0.1</td>
-      <td>10</td>
-      <td>0.75</td>
-      <td>gbtree</td>
-      <td>1/auto/0.9/reg:squarederror/3/100/None/20/0.9/2/2/6/0.1/10/0.75/gbtree</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>0.615943</td>
-      <td>1.169228</td>
-      <td>0.026999</td>
-      <td>1</td>
-      <td>auto</td>
-      <td>0.5</td>
-      <td>reg:squarederror</td>
-      <td>3</td>
-      <td>100</td>
-      <td>2000</td>
-      <td>None</td>
-      <td>None</td>
       <td>200</td>
-      <td>4</td>
+      <td>None</td>
+      <td>2000</td>
+      <td>20</td>
+      <td>500</td>
       <td>3</td>
-      <td>None</td>
-      <td>None</td>
-      <td>0.5</td>
-      <td>gbtree</td>
-      <td>1/auto/0.5/reg:squarederror/3/100/2000/None/None/200/4/3/None/None/0.5/gbtree</td>
+      <td>reg:squarederror</td>
+      <td>0.9</td>
+      <td>auto</td>
+      <td>1</td>
+      <td>gbtree/1/1000/0.3/10/16/200/None/2000/20/500/3/reg:squarederror/0.9/auto/1</td>
     </tr>
   </tbody>
 </table><hr><h3>Best and worst models obtained by tuning</h3><img src="../artifacts/xg_boost__tree___v09__best_and_worst.png"/><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/xg_boost__tree___v09__best_model_correlation.png"/><hr><h2>Feature Importances</h2><h3>Feature Importances</h3>1. features 19 (0.324226)		tenure.tenureType_LEASEHOLD
@@ -414,14 +276,14 @@
     </tr>
     <tr>
       <th>linear regression (ridge) (v09)</th>
-      <td>0.459955</td>
-      <td>0.100284</td>
-      <td>63351.07009</td>
-      <td>6101488002.790185</td>
-      <td>0.459874</td>
-      <td>78112.02214</td>
-      <td>2023-01-01 09:49:20.349186</td>
-      <td>random search(pca)</td>
+      <td>0.459973</td>
+      <td>0.132456</td>
+      <td>63342.996366</td>
+      <td>6100368797.672073</td>
+      <td>0.459973</td>
+      <td>78104.857709</td>
+      <td>2023-01-02 00:17:19.098111</td>
+      <td>rerun best: random search(-)</td>
     </tr>
     <tr>
       <th>neural network m03 2 layers+wider (v09)</th>
@@ -1057,14 +919,14 @@
     </tr>
     <tr>
       <th>linear regression (ridge) (v09)</th>
-      <td>0.459955</td>
-      <td>0.100284</td>
-      <td>63351.07009</td>
-      <td>6101488002.790185</td>
-      <td>0.459874</td>
-      <td>78112.02214</td>
-      <td>2023-01-01 09:49:20.349186</td>
-      <td>random search(pca)</td>
+      <td>0.459973</td>
+      <td>0.132456</td>
+      <td>63342.996366</td>
+      <td>6100368797.672073</td>
+      <td>0.459973</td>
+      <td>78104.857709</td>
+      <td>2023-01-02 00:17:19.098111</td>
+      <td>rerun best: random search(-)</td>
     </tr>
     <tr>
       <th>linear regression (ridge) (v06)</th>

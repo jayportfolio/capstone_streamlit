@@ -15,7 +15,7 @@ python all_models_except_neural_networks.py
 
 ##### Run any model except neural network, with PCA for dimension reduction
 cd /notebooks/process/E_train_model/pca_and_autoencoding
-python all_models_except_neural_networks.py
+python all_models_except_neural_networks_with_pca.py
 
 
 

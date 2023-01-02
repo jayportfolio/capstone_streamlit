@@ -16,12 +16,12 @@
 
 FILENAME = 'all_models_except_neural_networks_with_pca'
 
-ALGORITHM = 'Linear Regression (Ridge)'
+#ALGORITHM = 'Linear Regression (Ridge)'
 #ALGORITHM = 'KNN'
 #ALGORITHM = 'Decision Tree'
 #ALGORITHM = 'Random Forest'
 #ALGORITHM = 'XG Boost (tree)'
-#ALGORITHM = 'CatBoost'
+ALGORITHM = 'CatBoost'
 #ALGORITHM = 'Light Gradient Boosting'
 
 ALGORITHM_DETAIL = 'random search'
@@ -36,10 +36,16 @@ TRAINING_SIZE = 0.9
 
 CROSS_VALIDATION_SCORING = 'r2'
 
+use_dimension_reduction = True # True
+pca_data_retain = 0.99 #0.5 #0.99 # 0.9999999999999 # 0.95
+#pca_data_retain = 0.9999999999999
+
 print(f'ALGORITHM: {ALGORITHM}')
 print(f'ALGORITHM_DETAIL: {ALGORITHM_DETAIL}')
 print(f'DATA VERSION: {VERSION}')
 print(f'DATA_DETAIL: {DATA_DETAIL}')
+print(f'use_dimension_reduction: {use_dimension_reduction}')
+print(f'pca_data_retain: {pca_data_retain}')
 
 model_uses_feature_importances = 'tree' in ALGORITHM.lower() or 'forest' in ALGORITHM.lower() or 'boost' in ALGORITHM.lower()
 create_python_script = True
@@ -145,8 +151,8 @@ if is_jupyter:
     if ALGORITHM == 'Light Gradient Boosting':
         get_ipython().run_line_magic('pip', 'install lightgbm')
 
-get_ipython().system('pip install pydot')
-get_ipython().system('pip install graphviz')
+    get_ipython().system('pip install pydot')
+    get_ipython().system('pip install graphviz')
 
 
 # #### Include any overrides specific to the algorthm / python environment being used
@@ -318,10 +324,6 @@ print(X_train_orig.shape, X_test_orig.shape, y_train_orig.shape, y_test_orig.sha
 
 # In[13]:
 
-
-use_dimension_reduction = True # True
-pca_data_retain = 0.95 #0.5 #0.99 # 0.9999999999999 # 0.95
-pca_data_retain = 0.9999999999999
 
 if not use_dimension_reduction:
     print(DATA_DETAIL)
@@ -905,7 +907,7 @@ if this_model_is_best:
         new_model_decision = f"pickled new version of model\n{old_results_json[key]['_score']} is new best score (it's better than {old_best_score})"
         #print(results_json[key]['_score'], 'is an improvement on', results_json[key]['second best score'])
 else:
-    new_model_decision = f"not updated saved model, the previous run was better\n{old_results_json[key]['_score']} is worse than or equal to '{old_best_score}"
+    new_model_decision = f"not updated saved model, the previous run was better\n{old_results_json[key]['_score']} is worse than or equal to {old_best_score}"
 
 print(new_model_decision)
 
