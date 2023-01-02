@@ -683,7 +683,7 @@
         "Mean Squared Error Accuracy": 6100368797.672073,
         "R square Accuracy": 0.4599725790552657,
         "Root Mean Squared Error": 78104.85770854508,
-        "_method": "rerun best",
+        "_method": "rerun best: random search(-)",
         "_params": {
             "model__alpha": 1e-05,
             "model__copy_X": true,
@@ -695,9 +695,9 @@
             "model__tol": 0.01
         },
         "_score": 0.4599725790552657,
-        "_train time": 0.135545015335083,
+        "_train time": 0.13245558738708496,
         "best is shared": false,
-        "best method": "rerun best",
+        "best method": "rerun best: random search(-)",
         "best params": {
             "model__alpha": 1e-05,
             "model__copy_X": true,
@@ -708,27 +708,13 @@
             "model__solver": "sag",
             "model__tol": 0.01
         },
-        "best run date": "2023-01-01 22:31:37.170134",
+        "best run date": "2023-01-02 00:17:19.098111",
         "best score": 0.4599725790552657,
-        "best time": 0.135545015335083,
-        "date": "2023-01-01 22:31:37.170134",
+        "best time": 0.13245558738708496,
+        "date": "2023-01-02 00:17:19.098111",
         "first run": "2022-11-29 15:13:33.267574",
         "random_state": 101,
         "run_env": "gradient",
-        "silver method": "random search(pca,1.0% retain)",
-        "silver params": {
-            "model__alpha": 0.0001,
-            "model__copy_X": true,
-            "model__fit_intercept": true,
-            "model__max_iter": 100000,
-            "model__positive": false,
-            "model__random_state": 101,
-            "model__solver": "sag",
-            "model__tol": 0.01
-        },
-        "silver run date": "2023-01-01 09:53:55.211064",
-        "silver score": 0.4599552669709268,
-        "silver time": 0.10984063148498535,
         "suboptimal": "pending"
     },
     "linear regression (ridge) (v10)": {

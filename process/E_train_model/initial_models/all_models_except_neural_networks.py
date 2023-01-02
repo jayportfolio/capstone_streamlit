@@ -11,7 +11,7 @@
 # * what fraction of the data we'll use for testing (0.1)
 # * if the data split will be randomised (it won't!)
 
-# In[2]:
+# In[106]:
 
 
 FILENAME = 'all_models_except_neural_networks'
@@ -52,7 +52,7 @@ create_python_script = True
 # 
 # 
 
-# In[3]:
+# In[107]:
 
 
 from sklearn.impute import SimpleImputer
@@ -133,7 +133,7 @@ from functions_f_evaluate_model_20221116 import get_best_estimator_average_time,
 print(env_vars)
 
 
-# In[4]:
+# In[108]:
 
 
 if is_jupyter:
@@ -148,7 +148,7 @@ if is_jupyter:
 
 # #### Include any overrides specific to the algorthm / python environment being used
 
-# In[5]:
+# In[109]:
 
 
 #running_locally = True
@@ -183,7 +183,7 @@ if 'forest' in ALGORITHM.lower() or True:
 # 
 # 
 
-# In[6]:
+# In[110]:
 
 
 from sklearn.pipeline import Pipeline
@@ -206,14 +206,14 @@ starter_pipe
 # 
 # ## Stage: get the data
 
-# In[7]:
+# In[111]:
 
 
 columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 LABEL = 'Price'
 
 
-# In[8]:
+# In[112]:
 
 
 df, retrieval_type = get_source_dataframe(cloud_run, VERSION, folder_prefix='../../../', row_limit=None)
@@ -227,7 +227,7 @@ if retrieval_type != 'tidy':
     df = df[columns]
 
 
-# In[9]:
+# In[113]:
 
 
 print(colored(f"features", "blue"), "-> ", columns)
@@ -235,20 +235,20 @@ columns.insert(0, LABEL)
 print(colored(f"label", "green", None, ['bold']), "-> ", LABEL)
 
 
-# In[10]:
+# In[114]:
 
 
 df = preprocess(df, version=VERSION)
 df = df.dropna()
 
 
-# In[11]:
+# In[115]:
 
 
 df.head(5)
 
 
-# In[12]:
+# In[116]:
 
 
 X_train, X_test, y_train, y_test, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
@@ -271,7 +271,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 
 
 
-# In[13]:
+# In[117]:
 
 
 #imputer = SimpleImputer(strategy='mean')
@@ -279,13 +279,13 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 #X_train[6] = imputer.transform(X_train[6])
 
 
-# In[14]:
+# In[118]:
 
 
 starter_model = starter_pipe[-1]
 
 
-# In[15]:
+# In[119]:
 
 
 X_train
@@ -299,7 +299,7 @@ X_train
 # 
 # 
 
-# In[16]:
+# In[120]:
 
 
 options_block = get_hyperparameters(ALGORITHM, use_gpu, prefix='../../../')
@@ -340,7 +340,7 @@ print("cv:", cv, "n_jobs:", n_jobs, "refit:", refit, "n_iter:", n_iter, "verbose
 #param_options if not using_catboost else options_block
 
 
-# In[37]:
+# In[121]:
 
 
 key = f'{ALGORITHM} (v{VERSION})'.lower()
@@ -376,35 +376,23 @@ if not using_catboost:
             return_train_score=True, #n_iter=n_iter,
             #error_score='raise'
         )
-    elif ALGORITHM_DETAIL == 'rerun best':#jhjh
+    elif ALGORITHM_DETAIL == 'rerun best':
         results_for_best_results = get_results()
-        #print(results_for_best_results)
-        
-        #model_for_best_results = results_for_best_results['linear regression (ridge) (v10)']
-        model_for_best_results = results_for_best_results['linear regression (ridge) (v10)']
-        #print(model_for_best_results)
-        
+        model_for_best_results = results_for_best_results[key]
         
         params_for_best_results = model_for_best_results['best params']
-        print(params_for_best_results)
-        print(type(params_for_best_results))
+        method_for_best_results = model_for_best_results['best method']
+
+        print(method_for_best_results)
+        print(DATA_DETAIL)
+        
+        if 'pca' in method_for_best_results and 'pca' not in DATA_DETAIL:
+            raise ValueError("can't rerun this here, pca encoding was used")
+            
         for each in params_for_best_results:
             if type(params_for_best_results[each]) != list:
                 params_for_best_results[each] = [params_for_best_results[each]]
-            #print(type(params_for_best_results[each]))
-
-        #raise ValueError("FINISH THIS!!!")
         
-        p2 = {
-            "model__alpha": [0.1],
-            "model__copy_X": [False],
-            "model__fit_intercept": [True],
-            "model__max_iter": [100],
-            "model__positive": [False],
-            "model__random_state": [101],
-            "model__solver": ["lsqr"],
-            "model__tol": [0.001]
-        }
         crossval_runner = GridSearchCV(
             estimator=starter_pipe,
             #param_grid=params_for_best_results,
@@ -416,7 +404,6 @@ if not using_catboost:
             #error_score='raise'
         )
 
-        #raise ValueError("FINISH THIS!!!")
     else:
         print('random search')
         crossval_runner = RandomizedSearchCV(
@@ -466,7 +453,7 @@ else:
 crossval_runner
 
 
-# In[18]:
+# In[122]:
 
 
 if ALGORITHM_DETAIL == 'grid search' or ALGORITHM_DETAIL == 'grid search (implied)':
@@ -479,7 +466,7 @@ if ALGORITHM_DETAIL == 'grid search' or ALGORITHM_DETAIL == 'grid search (implie
 # 
 # 
 
-# In[19]:
+# In[123]:
 
 
 if not using_catboost:
@@ -497,7 +484,7 @@ else:
     print(cat_cv_results)
 
 
-# In[20]:
+# In[124]:
 
 
 if not using_catboost:
@@ -535,7 +522,7 @@ if not using_catboost:
 # 
 # 
 
-# In[21]:
+# In[125]:
 
 
 if not using_catboost:
@@ -544,7 +531,7 @@ else:
     y_pred = starter_model.predict(pool_Xtest)
 
 
-# In[22]:
+# In[126]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -560,7 +547,7 @@ print('Mean Squared Error Accuracy', MSE)
 print('Root Mean Squared Error', RMSE)
 
 
-# In[23]:
+# In[127]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -580,7 +567,7 @@ combined['bedrooms'] = combined['bedrooms'].astype(int)
 combined
 
 
-# In[24]:
+# In[128]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -593,7 +580,7 @@ best_model_ax.set_xlabel('Actual')
 plt.show()
 
 
-# In[25]:
+# In[129]:
 
 
 if not using_catboost:
@@ -649,7 +636,7 @@ if not using_catboost:
     best_model_scores[-1] = fitted_graph_model.score(X_test, y_test)
 
 
-# In[26]:
+# In[130]:
 
 
 if not using_catboost:
@@ -708,7 +695,7 @@ if not using_catboost:
     plt.show()
 
 
-# In[27]:
+# In[131]:
 
 
 if not using_catboost:
@@ -749,7 +736,7 @@ if not using_catboost:
 # 
 # 
 
-# In[28]:
+# In[132]:
 
 
 # <catboost.core.CatBoostRegressor object at 0x7fb167387490>
@@ -765,6 +752,12 @@ cv_best_model_fit_time = cv_best_model_fit_time if not using_catboost else 999
 DD2 = "(" + ",".join(DATA_DETAIL) + ")" if len(DATA_DETAIL) >= 1 else ""
 
 method =  f"{ALGORITHM_DETAIL}{DD2}"
+if method == 'rerun best':
+    print("method:", method)
+    method += ": " + method_for_best_results
+    print("method:", method)
+    method = method.replace('rerun best: rerun best: ','rerun best: ')
+    print("method:", method)
 
 new_results = {
     '_score': R2,
@@ -793,13 +786,13 @@ print(key)
 new_results
 
 
-# In[29]:
+# In[133]:
 
 
 crossval_runner.best_estimator_  if not using_catboost else ''
 
 
-# In[30]:
+# In[134]:
 
 
 if this_model_is_best:
@@ -821,7 +814,7 @@ print(new_model_decision)
 # ## Stage: Investigate the feature importances (if applicable)
 # 
 
-# In[ ]:
+# In[135]:
 
 
 if model_uses_feature_importances:
@@ -844,7 +837,7 @@ else:
     print(f'{ALGORITHM} does not have feature_importances, skipping')
 
 
-# In[ ]:
+# In[136]:
 
 
 if model_uses_feature_importances:
@@ -862,7 +855,7 @@ else:
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[ ]:
+# In[137]:
 
 
 from bs4 import BeautifulSoup
@@ -1053,13 +1046,13 @@ def print_and_report(text_single, title):
 
 
 
-# In[ ]:
+# In[138]:
 
 
 print('Nearly finished...')
 
 
-# In[ ]:
+# In[139]:
 
 
 # !jupyter nbconvert --to script mycode.ipynb
@@ -1080,7 +1073,7 @@ if create_python_script and is_jupyter:
 #!mv ./folder/notebooks/*.py ./folder/python_scripts && \
 
 
-# In[ ]:
+# In[140]:
 
 
 print('Finished!')

@@ -1,20 +1,20 @@
 # Results from Linear Regression (Ridge)
 ### Dataset Version: 09
-Date run: 2023-01-01 22:31:38.815625
+Date run: 2023-01-02 00:17:20.839803
 
-Start time: 2023-01-01 22:31:31.555705
+Start time: 2023-01-02 00:17:12.917386
 
-End time: 2023-01-01 22:31:38.815537
+End time: 2023-01-02 00:17:20.839718
 
 ## Results
 ### Summary
 pickled new version of model
-0.4599725790552657 is new best score (it's better than 0.4599552669895083)
+0.4599725790552657 is new best score (it's better than 0.4599725790552657)
 
 ### Tuned Models ranked by performance, with parameter details
 |   rank_test_score |   mean_test_score |   mean_fit_time |   mean_score_time |   param_model__alpha | param_model__copy_X   | param_model__fit_intercept   |   param_model__max_iter | param_model__positive   |   param_model__random_state | param_model__solver   |   param_model__tol | params2                                   |
 |------------------:|------------------:|----------------:|------------------:|---------------------:|:----------------------|:-----------------------------|------------------------:|:------------------------|----------------------------:|:----------------------|-------------------:|:------------------------------------------|
-|                 1 |          0.452395 |       0.0898662 |        0.00329487 |                1e-05 | True                  | True                         |                  100000 | False                   |                         101 | sag                   |               0.01 | 1e-05/True/True/100000/False/101/sag/0.01 |
+|                 1 |          0.452395 |        0.101057 |        0.00389385 |                1e-05 | True                  | True                         |                  100000 | False                   |                         101 | sag                   |               0.01 | 1e-05/True/True/100000/False/101/sag/0.01 |
 ### Best and worst models obtained by tuning
 ![detail](../artifacts/linear_regression__ridge___v09__best_and_worst.png)
 ### Best Model: Comparing model predictions to actual property values
@@ -38,7 +38,7 @@ pickled new version of model
 | neural network m02 two layers (v09)                       |     0.540824 |  178.62     |                59659.9         |                   5.50478e+09 |            0.512696 |           74194.2         | 2022-11-30 13:34:57.703544 | loss=5424.62 valloss=5263.41 +valsplit=0.1 stop=52/500             |
 | neural network m04 3 layers+wider (v09)                   |     0.540678 | 1367.3      |                60774.6         |                   5.6628e+09  |            0.498708 |           75251.6         | 2022-12-12 11:55:30.653553 | loss=5.20e+09 valloss=5.09e+09 +valsplit=0.1 +patn=25              |
 | neural network m01 simple (v09)                           |     0.508847 |  188.63     |                71376.9         |                   7.55056e+09 |            0.331597 |           86893.9         | 2022-11-30 13:08:10.248178 | loss=5724.92 valloss=5608.12 +valsplit=0.1 stop=42/50              |
-| linear regression (ridge) (v09)                           |     0.459973 |    0.135545 |                63343           |                   6.10037e+09 |            0.459973 |           78104.9         | 2023-01-01 22:31:37.170134 | rerun best                                                         |
+| linear regression (ridge) (v09)                           |     0.459973 |    0.132456 |                63343           |                   6.10037e+09 |            0.459973 |           78104.9         | 2023-01-02 00:17:19.098111 | rerun best: random search(-)                                       |
 | neural network m03 2 layers+wider (v09)                   |     0.4523   | 1822.49     |                64123.6         |                   6.24293e+09 |            0.447352 |           79012.2         | 2022-12-11 18:56:27.304803 | loss=6.38e+09 valloss=6.41e+09 +valsplit=0.1 +patn=25              |
 | neural network with autoencoding m15 mega + dropout (v09) |     0.42689  | 1641.39     |                64379.5         |                   6.47409e+09 |            0.42689  |           80461.7         | 2022-12-21 01:26:33.005210 | loss=6.51e+04 valloss=6.52e+04 +valsplit=0.1 +patn=25 stop=214/400 |
 ### Comparison with all model performances
@@ -98,7 +98,7 @@ pickled new version of model
 | linear regression (ridge) (v11)                           |     0.484311 |    0.2412    |                61567.5         |                   5.82554e+09 |            0.484302 |           76325.2         | 2023-01-01 10:07:22.564855 | random search(pca,1.0% retain)                                                                                         |
 | linear regression (ridge) (v10)                           |     0.470806 |    0.239057  |                62604.9         |                   5.97844e+09 |            0.470766 |           77320.4         | 2022-12-01 19:50:08.050622 | random search                                                                                                          |
 | knn (v11)                                                 |     0.465113 |    0.618877  |                62944.7         |                   6.0423e+09  |            0.465113 |           77732.2         | 2022-11-30 16:20:53.948815 | random search                                                                                                          |
-| linear regression (ridge) (v09)                           |     0.459973 |    0.135545  |                63343           |                   6.10037e+09 |            0.459973 |           78104.9         | 2023-01-01 22:31:37.170134 | rerun best                                                                                                             |
+| linear regression (ridge) (v09)                           |     0.459973 |    0.132456  |                63343           |                   6.10037e+09 |            0.459973 |           78104.9         | 2023-01-02 00:17:19.098111 | rerun best: random search(-)                                                                                           |
 | linear regression (ridge) (v06)                           |     0.4569   |    0.28695   |                63603.1         |                   6.13521e+09 |            0.456889 |           78327.6         | 2022-12-03 19:20:52.874336 | random search                                                                                                          |
 | neural network m03 2 layers+wider (v09)                   |     0.4523   | 1822.49      |                64123.6         |                   6.24293e+09 |            0.447352 |           79012.2         | 2022-12-11 18:56:27.304803 | loss=6.38e+09 valloss=6.41e+09 +valsplit=0.1 +patn=25                                                                  |
 | neural network with autoencoding m15 mega + dropout (v09) |     0.42689  | 1641.39      |                64379.5         |                   6.47409e+09 |            0.42689  |           80461.7         | 2022-12-21 01:26:33.005210 | loss=6.51e+04 valloss=6.52e+04 +valsplit=0.1 +patn=25 stop=214/400                                                     |

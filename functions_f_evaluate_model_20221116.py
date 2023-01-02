@@ -159,12 +159,14 @@ def update_results(saved_results_json, new_results, key, directory='../../../res
     elif max_score == new_results['_score']:
 
         if old_results['best params'] == new_results['_params'] and new_results['_train time'] <= old_results['best time']:
+            print("3a: ? same params but better time ==> replace results and update model")
 
-            put_new_in_best(new_results, old_results)
-
+            #put_new_in_best(new_results, old_results)
+            replace_new_in_best(new_results, old_results)
             this_model_is_best = True
 
         elif old_results['best params'] != new_results['_params'] and new_results['_train time'] <= old_results['best time']:
+            print("3b: ? different params and better time ==> update results and update model")
 
             put_new_in_best(new_results, old_results)
             new_results['best is shared'] = True
@@ -172,11 +174,15 @@ def update_results(saved_results_json, new_results, key, directory='../../../res
             this_model_is_best = True
 
         elif old_results['best params'] == new_results['_params'] or old_results['best time'] > new_results['_train time'] * 3:
+            print("3c: ? same params or much better time ==> don't update results and don't update model")
+
             put_old_best_in_best(new_results, old_results)  ## was best2
 
             this_model_is_best = False
 
         else:
+            print("3z: ? something else ==> share best results and don't update model")
+
             put_old_best_in_best(new_results, old_results)  ## was best2
             new_results['best is shared'] = True
 
@@ -249,6 +255,16 @@ def put_new_in_best(new_results, old_results):
             new_results['silver run date'] = old_results['silver run date']
         else:
             print('(debug:do nothing)')
+
+    new_results['best score'] = new_results['_score']
+    new_results['best time'] = new_results['_train time']
+    new_results['best params'] = new_results['_params']
+    new_results['best method'] = new_results['_method']
+    new_results['best run date'] = new_results['date']
+    new_results['suboptimal'] = 'pending'
+
+
+def replace_new_in_best(new_results, old_results):
 
     new_results['best score'] = new_results['_score']
     new_results['best time'] = new_results['_train time']
