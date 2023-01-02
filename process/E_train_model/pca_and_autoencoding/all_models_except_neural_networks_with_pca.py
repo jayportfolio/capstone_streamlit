@@ -20,8 +20,8 @@ FILENAME = 'all_models_except_neural_networks_with_pca'
 #ALGORITHM = 'KNN'
 #ALGORITHM = 'Decision Tree'
 #ALGORITHM = 'Random Forest'
-#ALGORITHM = 'XG Boost (tree)'
-ALGORITHM = 'CatBoost'
+ALGORITHM = 'XG Boost (tree)'
+#ALGORITHM = 'CatBoost'
 #ALGORITHM = 'Light Gradient Boosting'
 
 ALGORITHM_DETAIL = 'random search'
@@ -29,7 +29,7 @@ ALGORITHM_DETAIL = 'random search'
 #DATA_DETAIL = ['explore param']
 #DATA_DETAIL = ['no dummies','autoencoding'] if 'catboost' in ALGORITHM.lower() else ['autoencoding']
 DATA_DETAIL = ['pca']
-VERSION = '10'
+VERSION = '09'
 
 RANDOM_STATE = 101
 TRAINING_SIZE = 0.9
