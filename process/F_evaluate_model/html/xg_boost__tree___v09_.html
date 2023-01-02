@@ -1,27 +1,27 @@
-<h1>Results from XG Boost (tree)</h1><h3>Dataset Version: 09</h3>Date run: 2023-01-02 16:33:40.340308<br>Start time: 2023-01-02 14:54:06.505491<br>End time: 2023-01-02 16:33:40.340215<br><hr><h2>Results</h2><h3>Summary</h3>pickled new version of model
-0.7289686969231612 is new best score (it's better than 0.7254059553904803)<br><hr><h3>Tuned Models ranked by performance, with parameter details</h3><table border="1" class="dataframe">
+<h1>Results from XG Boost (tree)</h1><h3>Dataset Version: 09</h3>Date run: 2023-01-02 18:08:27.702245<br>Start time: 2023-01-02 17:51:31.384117<br>End time: 2023-01-02 18:08:27.702234<br><hr><h2>Results</h2><h3>Summary</h3>not updated saved model, the previous run was better
+0.5595290759450242 is worse than or equal to 0.7289686969231612<br><hr><h3>Tuned Models ranked by performance, with parameter details</h3><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
       <th>mean_test_score</th>
       <th>mean_fit_time</th>
       <th>mean_score_time</th>
-      <th>param_model__booster</th>
-      <th>param_model__colsample_bytree</th>
-      <th>param_model__lambda</th>
-      <th>param_model__learning_rate</th>
-      <th>param_model__max_depth</th>
-      <th>param_model__max_features</th>
-      <th>param_model__max_leaf_nodes</th>
-      <th>param_model__max_samples</th>
-      <th>param_model__min_sample_split</th>
-      <th>param_model__min_samples_leaf</th>
-      <th>param_model__n_estimators</th>
-      <th>param_model__n_jobs</th>
-      <th>param_model__objective</th>
-      <th>param_model__subsample</th>
-      <th>param_model__tree_method</th>
       <th>param_model__verbosity</th>
+      <th>param_model__tree_method</th>
+      <th>param_model__subsample</th>
+      <th>param_model__objective</th>
+      <th>param_model__n_jobs</th>
+      <th>param_model__n_estimators</th>
+      <th>param_model__min_samples_leaf</th>
+      <th>param_model__min_sample_split</th>
+      <th>param_model__max_samples</th>
+      <th>param_model__max_leaf_nodes</th>
+      <th>param_model__max_features</th>
+      <th>param_model__max_depth</th>
+      <th>param_model__learning_rate</th>
+      <th>param_model__lambda</th>
+      <th>param_model__colsample_bytree</th>
+      <th>param_model__booster</th>
       <th>params2</th>
     </tr>
     <tr>
@@ -51,187 +51,182 @@
   <tbody>
     <tr>
       <th>1</th>
-      <td>0.705174</td>
-      <td>141.288971</td>
-      <td>1.945031</td>
-      <td>dart</td>
-      <td>0.9</td>
+      <td>0.542656</td>
+      <td>31.113766</td>
+      <td>0.560541</td>
       <td>1</td>
-      <td>0.1</td>
-      <td>15</td>
+      <td>auto</td>
+      <td>1</td>
+      <td>reg:squarederror</td>
+      <td>3</td>
+      <td>100</td>
       <td>None</td>
       <td>20</td>
-      <td>1</td>
-      <td>None</td>
-      <td>2000</td>
-      <td>100</td>
-      <td>3</td>
-      <td>reg:squarederror</td>
       <td>0.5</td>
-      <td>hist</td>
       <td>2</td>
-      <td>dart/0.9/1/0.1/15/None/20/1/None/2000/100/3/reg:squarederror/0.5/hist/2</td>
+      <td>64</td>
+      <td>15</td>
+      <td>0.3</td>
+      <td>100</td>
+      <td>0.75</td>
+      <td>dart</td>
+      <td>1/auto/1/reg:squarederror/3/100/None/20/0.5/2/64/15/0.3/100/0.75/dart</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.703675</td>
-      <td>305.577526</td>
-      <td>3.281737</td>
-      <td>dart</td>
+      <td>0.530836</td>
+      <td>33.023388</td>
+      <td>0.295837</td>
+      <td>1</td>
+      <td>auto</td>
       <td>0.9</td>
-      <td>1</td>
-      <td>0.1</td>
-      <td>15</td>
-      <td>None</td>
-      <td>20</td>
-      <td>1</td>
-      <td>None</td>
-      <td>2000</td>
-      <td>150</td>
-      <td>3</td>
       <td>reg:squarederror</td>
-      <td>0.5</td>
-      <td>hist</td>
-      <td>2</td>
-      <td>dart/0.9/1/0.1/15/None/20/1/None/2000/150/3/reg:squarederror/0.5/hist/2</td>
+      <td>3</td>
+      <td>75</td>
+      <td>2000</td>
+      <td>20</td>
+      <td>0.75</td>
+      <td>None</td>
+      <td>64</td>
+      <td>25</td>
+      <td>None</td>
+      <td>1000</td>
+      <td>1</td>
+      <td>dart</td>
+      <td>1/auto/0.9/reg:squarederror/3/75/2000/20/0.75/None/64/25/None/1000/1/dart</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.701655</td>
-      <td>179.817233</td>
-      <td>2.259024</td>
-      <td>dart</td>
-      <td>0.9</td>
+      <td>0.512464</td>
+      <td>16.384745</td>
+      <td>0.435678</td>
       <td>1</td>
-      <td>0.1</td>
-      <td>20</td>
-      <td>None</td>
-      <td>20</td>
-      <td>1</td>
-      <td>None</td>
-      <td>2000</td>
-      <td>100</td>
-      <td>3</td>
-      <td>reg:squarederror</td>
-      <td>0.5</td>
       <td>hist</td>
-      <td>2</td>
-      <td>dart/0.9/1/0.1/20/None/20/1/None/2000/100/3/reg:squarederror/0.5/hist/2</td>
+      <td>1</td>
+      <td>reg:squarederror</td>
+      <td>3</td>
+      <td>150</td>
+      <td>20</td>
+      <td>20</td>
+      <td>None</td>
+      <td>None</td>
+      <td>64</td>
+      <td>6</td>
+      <td>0.3</td>
+      <td>1000</td>
+      <td>0.9</td>
+      <td>dart</td>
+      <td>1/hist/1/reg:squarederror/3/150/20/20/None/None/64/6/0.3/1000/0.9/dart</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.699133</td>
-      <td>348.195378</td>
-      <td>3.297137</td>
-      <td>dart</td>
-      <td>0.9</td>
+      <td>0.490863</td>
+      <td>0.704126</td>
+      <td>0.037738</td>
       <td>1</td>
-      <td>0.1</td>
-      <td>20</td>
-      <td>None</td>
-      <td>20</td>
-      <td>1</td>
-      <td>None</td>
-      <td>2000</td>
-      <td>150</td>
-      <td>3</td>
-      <td>reg:squarederror</td>
-      <td>0.5</td>
       <td>hist</td>
-      <td>2</td>
-      <td>dart/0.9/1/0.1/20/None/20/1/None/2000/150/3/reg:squarederror/0.5/hist/2</td>
+      <td>0.75</td>
+      <td>reg:squarederror</td>
+      <td>3</td>
+      <td>100</td>
+      <td>20</td>
+      <td>20</td>
+      <td>0.5</td>
+      <td>20</td>
+      <td>None</td>
+      <td>6</td>
+      <td>0.1</td>
+      <td>100</td>
+      <td>0.5</td>
+      <td>gbtree</td>
+      <td>1/hist/0.75/reg:squarederror/3/100/20/20/0.5/20/None/6/0.1/100/0.5/gbtree</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.698644</td>
-      <td>59.123487</td>
-      <td>0.982504</td>
-      <td>dart</td>
-      <td>0.9</td>
+      <td>0.475363</td>
+      <td>13.963394</td>
+      <td>0.206896</td>
       <td>1</td>
-      <td>0.1</td>
-      <td>20</td>
-      <td>None</td>
-      <td>20</td>
-      <td>1</td>
-      <td>None</td>
-      <td>2000</td>
-      <td>50</td>
-      <td>3</td>
+      <td>auto</td>
+      <td>0.75</td>
       <td>reg:squarederror</td>
-      <td>0.5</td>
-      <td>hist</td>
+      <td>3</td>
+      <td>50</td>
       <td>2</td>
-      <td>dart/0.9/1/0.1/20/None/20/1/None/2000/50/3/reg:squarederror/0.5/hist/2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>None</td>
+      <td>None</td>
+      <td>20</td>
+      <td>0.3</td>
+      <td>1</td>
+      <td>0.5</td>
+      <td>dart</td>
+      <td>1/auto/0.75/reg:squarederror/3/50/2/2/1/None/None/20/0.3/1/0.5/dart</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.698631</td>
-      <td>72.252797</td>
-      <td>1.292805</td>
-      <td>dart</td>
-      <td>0.9</td>
+      <td>0.433593</td>
+      <td>18.659192</td>
+      <td>0.231126</td>
       <td>1</td>
-      <td>0.1</td>
-      <td>30</td>
-      <td>None</td>
-      <td>20</td>
-      <td>1</td>
-      <td>None</td>
-      <td>2000</td>
-      <td>50</td>
-      <td>3</td>
-      <td>reg:squarederror</td>
+      <td>auto</td>
       <td>0.5</td>
-      <td>hist</td>
-      <td>2</td>
-      <td>dart/0.9/1/0.1/30/None/20/1/None/2000/50/3/reg:squarederror/0.5/hist/2</td>
+      <td>reg:squarederror</td>
+      <td>3</td>
+      <td>75</td>
+      <td>None</td>
+      <td>None</td>
+      <td>0.9</td>
+      <td>20</td>
+      <td>64</td>
+      <td>25</td>
+      <td>0.3</td>
+      <td>10000</td>
+      <td>0.9</td>
+      <td>dart</td>
+      <td>1/auto/0.5/reg:squarederror/3/75/None/None/0.9/20/64/25/0.3/10000/0.9/dart</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.698573</td>
-      <td>225.645577</td>
-      <td>2.265688</td>
-      <td>dart</td>
+      <td>-1.719867</td>
+      <td>34.451094</td>
+      <td>0.427633</td>
+      <td>1</td>
+      <td>auto</td>
       <td>0.9</td>
-      <td>1</td>
-      <td>0.1</td>
-      <td>30</td>
-      <td>None</td>
-      <td>20</td>
-      <td>1</td>
-      <td>None</td>
-      <td>2000</td>
-      <td>100</td>
-      <td>3</td>
       <td>reg:squarederror</td>
-      <td>0.5</td>
-      <td>hist</td>
+      <td>3</td>
+      <td>100</td>
       <td>2</td>
-      <td>dart/0.9/1/0.1/30/None/20/1/None/2000/100/3/reg:squarederror/0.5/hist/2</td>
+      <td>2000</td>
+      <td>0.5</td>
+      <td>2000</td>
+      <td>64</td>
+      <td>25</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>1</td>
+      <td>dart</td>
+      <td>1/auto/0.9/reg:squarederror/3/100/2/2000/0.5/2000/64/25/0.01/1/1/dart</td>
     </tr>
   </tbody>
-</table><hr><h3>Best and worst models obtained by tuning</h3><img src="../artifacts/xg_boost__tree___v09__best_and_worst.png"/><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/xg_boost__tree___v09__best_model_correlation.png"/><hr><h2>Feature Importances</h2><h3>Feature Importances</h3>1. features 19 (0.197240)		tenure.tenureType_LEASEHOLD
-2. features 0 (0.150245)		bedrooms
-3. features 18 (0.103745)		tenure.tenureType_FREEHOLD
-4. features 4 (0.065064)		location.longitude
-5. features 5 (0.057819)		latitude_deviation
-6. features 1 (0.053386)		bathrooms
-7. features 6 (0.052305)		longitude_deviation
-8. features 3 (0.042826)		location.latitude
-9. features 20 (0.033349)		tenure.tenureType_SHARE_OF_FREEHOLD
-10. features 7 (0.023124)		feature__balcony
-11. features 12 (0.022415)		feature__private balcony
-12. features 8 (0.022063)		feature__chain free
-13. features 13 (0.021393)		feature__share of freehold
-14. features 11 (0.020779)		feature__one bedroom
-15. features 15 (0.020347)		feature__two bedrooms
-16. features 9 (0.020252)		feature__no onward chain
-17. features 2 (0.020246)		nearestStation
-18. features 16 (0.020129)		feature__two double bedrooms
-19. features 17 (0.019227)		tenure.tenureType_COMMONHOLD
-20. features 14 (0.017508)		feature__three bedrooms
-21. features 10 (0.016537)		feature__off street parking
+</table><hr><h3>Best and worst models obtained by tuning</h3><img src="../artifacts/xg_boost__tree___v09__best_and_worst.png"/><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/xg_boost__tree___v09__best_model_correlation.png"/><hr><h2>Feature Importances</h2><h3>Feature Importances</h3>1. features 0 (0.181156)		bedrooms
+2. features 15 (0.125094)		feature__two bedrooms
+3. features 12 (0.104800)		feature__private balcony
+4. features 2 (0.065954)		nearestStation
+5. features 14 (0.062578)		feature__three bedrooms
+6. features 8 (0.051602)		feature__chain free
+7. features 11 (0.048615)		feature__one bedroom
+8. features 13 (0.048252)		feature__share of freehold
+9. features 5 (0.046544)		latitude_deviation
+10. features 7 (0.041415)		feature__balcony
+11. features 9 (0.041079)		feature__no onward chain
+12. features 10 (0.039036)		feature__off street parking
+13. features 6 (0.037871)		longitude_deviation
+14. features 4 (0.037586)		location.longitude
+15. features 3 (0.036871)		location.latitude
+16. features 1 (0.031548)		bathrooms
 <br><hr><h3>Feature Importances (XG Boost (tree))</h3><img src="../artifacts/xg_boost__tree___v09__best_model_feature_importances.png"/><hr><h2>Comparison with other models</h2><h3>Comparison with version 09 performances</h3><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -251,23 +246,12 @@
       <th>xg boost (tree) (v09)</th>
       <td>0.728969</td>
       <td>89.213733</td>
-      <td>41339.502039</td>
-      <td>3061679537.661026</td>
-      <td>0.728969</td>
-      <td>55332.445614</td>
+      <td>55307.269346</td>
+      <td>4975738225.821958</td>
+      <td>0.559529</td>
+      <td>70538.912848</td>
       <td>2023-01-02 16:33:38.004418</td>
       <td>custom</td>
-    </tr>
-    <tr>
-      <th>xg boost (v09)</th>
-      <td>0.701117</td>
-      <td>119.28102</td>
-      <td>51922.608639</td>
-      <td>4355546020.138196</td>
-      <td>0.614431</td>
-      <td>65996.560669</td>
-      <td>2022-11-30 10:16:33.388760</td>
-      <td>random search</td>
     </tr>
     <tr>
       <th>catboost (v09)</th>
@@ -462,13 +446,24 @@
   </thead>
   <tbody>
     <tr>
+      <th>xg boost (tree) (v11)</th>
+      <td>0.731739</td>
+      <td>71.020266</td>
+      <td>41595.33032</td>
+      <td>3030387686.140499</td>
+      <td>0.731739</td>
+      <td>55048.957176</td>
+      <td>2023-01-02 18:02:37.951724</td>
+      <td>custom</td>
+    </tr>
+    <tr>
       <th>xg boost (tree) (v09)</th>
       <td>0.728969</td>
       <td>89.213733</td>
-      <td>41339.502039</td>
-      <td>3061679537.661026</td>
-      <td>0.728969</td>
-      <td>55332.445614</td>
+      <td>55307.269346</td>
+      <td>4975738225.821958</td>
+      <td>0.559529</td>
+      <td>70538.912848</td>
       <td>2023-01-02 16:33:38.004418</td>
       <td>custom</td>
     </tr>
@@ -484,15 +479,15 @@
       <td>random search</td>
     </tr>
     <tr>
-      <th>xg boost (v11) rs</th>
-      <td>0.721019</td>
-      <td>NaN</td>
-      <td>42603.011667</td>
-      <td>3151478137.618505</td>
-      <td>0.721019</td>
-      <td>56138.027554</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>xg boost (tree) (v10)</th>
+      <td>0.726364</td>
+      <td>69.306042</td>
+      <td>41944.360129</td>
+      <td>3091106200.799338</td>
+      <td>0.726364</td>
+      <td>55597.717586</td>
+      <td>2023-01-02 17:58:16.959076</td>
+      <td>custom</td>
     </tr>
     <tr>
       <th>knn (v06)</th>
@@ -517,17 +512,6 @@
       <td>random search</td>
     </tr>
     <tr>
-      <th>xg boost (v05) rs</th>
-      <td>0.710594</td>
-      <td>NaN</td>
-      <td>42229.001752</td>
-      <td>3219625252.591313</td>
-      <td>0.710594</td>
-      <td>56741.741713</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
       <th>light gradient boosting (v06)</th>
       <td>0.706735</td>
       <td>15.043873</td>
@@ -536,17 +520,6 @@
       <td>0.706735</td>
       <td>57557.275445</td>
       <td>2022-11-16 13:59:52.612654</td>
-      <td>random search</td>
-    </tr>
-    <tr>
-      <th>xg boost (v09)</th>
-      <td>0.701117</td>
-      <td>119.28102</td>
-      <td>51922.608639</td>
-      <td>4355546020.138196</td>
-      <td>0.614431</td>
-      <td>65996.560669</td>
-      <td>2022-11-30 10:16:33.388760</td>
       <td>random search</td>
     </tr>
     <tr>
@@ -581,28 +554,6 @@
       <td>87591.537613</td>
       <td>2022-11-30 16:14:29.405177</td>
       <td>random search(no dummies)</td>
-    </tr>
-    <tr>
-      <th>xg boost (v06)</th>
-      <td>0.687611</td>
-      <td>11.474795</td>
-      <td>45988.280765</td>
-      <td>3528869693.681411</td>
-      <td>0.687611</td>
-      <td>59404.290196</td>
-      <td>NaN</td>
-      <td>random search</td>
-    </tr>
-    <tr>
-      <th>xg boost (v10)</th>
-      <td>0.681785</td>
-      <td>9.309589</td>
-      <td>46626.687574</td>
-      <td>3594689512.156493</td>
-      <td>0.681785</td>
-      <td>59955.729602</td>
-      <td>2022-11-30 14:45:52.207314</td>
-      <td>random search</td>
     </tr>
     <tr>
       <th>random forest (v09)</th>
@@ -704,28 +655,6 @@
       <td>loss=4.55e+04 valloss=5.03e+04 +valsplit=0.1 +patn=25 stop=104/400</td>
     </tr>
     <tr>
-      <th>xg boost (tree) (v11)</th>
-      <td>0.603614</td>
-      <td>14.210391</td>
-      <td>52330.434568</td>
-      <td>4477737747.935365</td>
-      <td>0.603614</td>
-      <td>66915.900561</td>
-      <td>2022-11-30 20:18:59.876471</td>
-      <td>random search</td>
-    </tr>
-    <tr>
-      <th>xg boost (v04) rs</th>
-      <td>0.603522</td>
-      <td>NaN</td>
-      <td>50419.209714</td>
-      <td>4504941322.675693</td>
-      <td>0.603522</td>
-      <td>67118.859665</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
       <th>neural network m12 mega (v06)</th>
       <td>0.594032</td>
       <td>813.27</td>
@@ -768,17 +697,6 @@
       <td>70342.649221</td>
       <td>2022-12-01 10:27:39.663081</td>
       <td>loss=3878948096.0 valloss=4822886400.0 +valsplit=0.1 stop=38/400</td>
-    </tr>
-    <tr>
-      <th>xg boost (v03) rs</th>
-      <td>0.582071</td>
-      <td>NaN</td>
-      <td>51147.260967</td>
-      <td>4733296553.824069</td>
-      <td>0.574533</td>
-      <td>68798.957505</td>
-      <td>NaN</td>
-      <td>NaN</td>
     </tr>
     <tr>
       <th>neural network m05 rec deep (v06)</th>
@@ -979,17 +897,6 @@
       <td>loss=5724.92 valloss=5608.12 +valsplit=0.1 stop=42/50</td>
     </tr>
     <tr>
-      <th>xg boost (tree) (v10)</th>
-      <td>0.492273</td>
-      <td>266.120326</td>
-      <td>60245.476214</td>
-      <td>5735493449.706315</td>
-      <td>0.492273</td>
-      <td>75733.040674</td>
-      <td>2023-01-02 01:31:00.392180</td>
-      <td>random search(pca,0.95% retain)</td>
-    </tr>
-    <tr>
       <th>neural network with autoencoding m15 mega + dropout (v11)</th>
       <td>0.488747</td>
       <td>1276.23</td>
@@ -1009,28 +916,6 @@
       <td>0.484585</td>
       <td>76304.247262</td>
       <td>2022-11-30 15:12:50.989371</td>
-      <td>random search</td>
-    </tr>
-    <tr>
-      <th>xg boost (v11)</th>
-      <td>0.484341</td>
-      <td>1.663234</td>
-      <td>61556.686774</td>
-      <td>5825092993.841407</td>
-      <td>0.484341</td>
-      <td>76322.296833</td>
-      <td>2022-11-30 16:55:55.436173</td>
-      <td>random search</td>
-    </tr>
-    <tr>
-      <th>xg boost (linear) (v11)</th>
-      <td>0.484341</td>
-      <td>12.681655</td>
-      <td>62224.321741</td>
-      <td>5901034500.694016</td>
-      <td>0.477618</td>
-      <td>76818.191209</td>
-      <td>2022-11-30 19:47:04.498556</td>
       <td>random search</td>
     </tr>
     <tr>
@@ -1220,28 +1105,6 @@
       <td>NaN</td>
       <td>NaN</td>
     </tr>
-    <tr>
-      <th>xg boost (v02) rs</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>45160.157667</td>
-      <td>3627875443.187743</td>
-      <td>0.682955</td>
-      <td>60231.847416</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>xg boost - basic (v02)</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>48536.519056</td>
-      <td>3979587053.666782</td>
-      <td>0.652219</td>
-      <td>63083.968278</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
   </tbody>
 </table><hr><h2>Appendix</h2><h3>Data Sample</h3><table border="1" class="dataframe">
   <thead>
@@ -1380,6 +1243,6 @@
       <td>0</td>
     </tr>
   </tbody>
-</table><hr><h3>Hyperparameter options for Randomized Grid Search</h3>{'model__booster': ['gbtree', 'dart'], 'model__n_estimators': [100, 200, 500], 'model__learning_rate': [None, 0.3, 0.1, 0.01], 'model__lambda': [None, 1, 10, 100, 1000, 10000, 100000], 'model__tree_method': ['auto', 'hist'], 'model__max_depth': [6, 3, 8, 10], 'model__subsample': [1, 0.5, 0.75, 0.9], 'model__colsample_bytree': [1, 0.5, 0.75, 0.9], 'model__min_sample_split': [None, 2, 20, 200, 2000], 'model__max_leaf_nodes': [None, 2, 20, 200, 2000], 'model__min_samples_leaf': [None, 2, 20, 200, 2000], 'model__max_samples': [None, 1, 0.5, 0.75, 0.9], 'model__max_features': [None, 2, 4, 8, 16, 32, 64], 'model__objective': ['reg:squarederror', 'reg:squaredlogerror'], 'model__n_jobs': [3], 'model__verbosity': [1]}
+</table><hr><h3>Hyperparameter options for Randomized Grid Search</h3>{'model__booster': ['gbtree', 'dart'], 'model__n_estimators': [50, 75, 100, 150], 'model__learning_rate': [None, 0.3, 0.1, 0.01], 'model__lambda': [None, 1, 10, 100, 1000, 10000, 100000], 'model__tree_method': ['auto', 'hist'], 'model__max_depth': [6, 15, 20, 25], 'model__subsample': [1, 0.5, 0.75, 0.9], 'model__colsample_bytree': [1, 0.5, 0.75, 0.9], 'model__min_sample_split': [None, 2, 20, 200, 2000], 'model__max_leaf_nodes': [None, 2, 20, 200, 2000], 'model__min_samples_leaf': [None, 2, 20, 200, 2000], 'model__max_samples': [None, 1, 0.5, 0.75, 0.9], 'model__max_features': [None, 2, 4, 8, 16, 32, 64], 'model__objective': ['reg:squarederror', 'reg:squaredlogerror'], 'model__n_jobs': [3], 'model__verbosity': [1]}
 <hr><h3>Range of hyperparameter results</h3><img src="../artifacts/xg_boost__tree___v09__evolution_of_models_fig.png"/><hr><h3>Environment Variables</h3>{'notebook_environment': 'gradient', 'use_gpu': True, 'debug_mode': False, 'quick_mode': False, 'quick_override_cv_splits': 2, 'quick_override_n_iter': 10, 'quick_override_n_jobs': 3}
 <hr>

@@ -11,7 +11,7 @@
 # * what fraction of the data we'll use for testing (0.1)
 # * if the data split will be randomised (it won't!)
 
-# In[1]:
+# In[109]:
 
 
 FILENAME = 'all_models_except_neural_networks_with_pca'
@@ -24,12 +24,14 @@ ALGORITHM = 'XG Boost (tree)'
 #ALGORITHM = 'CatBoost'
 #ALGORITHM = 'Light Gradient Boosting'
 
-ALGORITHM_DETAIL = 'random search'
+#ALGORITHM_DETAIL = 'random search'
+#ALGORITHM_DETAIL = 'rerun best'
+ALGORITHM_DETAIL = 'custom'
 #DATA_DETAIL = ['no scale','no dummies']
 #DATA_DETAIL = ['explore param']
 #DATA_DETAIL = ['no dummies','autoencoding'] if 'catboost' in ALGORITHM.lower() else ['autoencoding']
 DATA_DETAIL = ['pca']
-VERSION = '09'
+VERSION = '10'
 
 RANDOM_STATE = 101
 TRAINING_SIZE = 0.9
@@ -37,7 +39,7 @@ TRAINING_SIZE = 0.9
 CROSS_VALIDATION_SCORING = 'r2'
 
 use_dimension_reduction = True # True
-pca_data_retain = 0.99 #0.5 #0.99 # 0.9999999999999 # 0.95
+pca_data_retain = 0.95 #0.5 #0.99 # 0.9999999999999 # 0.95
 #pca_data_retain = 0.9999999999999
 
 print(f'ALGORITHM: {ALGORITHM}')
@@ -47,8 +49,11 @@ print(f'DATA_DETAIL: {DATA_DETAIL}')
 print(f'use_dimension_reduction: {use_dimension_reduction}')
 print(f'pca_data_retain: {pca_data_retain}')
 
+
 model_uses_feature_importances = 'tree' in ALGORITHM.lower() or 'forest' in ALGORITHM.lower() or 'boost' in ALGORITHM.lower()
 create_python_script = True
+
+start = datetime.now()
 
 
 # <code style="background:blue;color:blue">**********************************************************************************************************</code>
@@ -57,7 +62,7 @@ create_python_script = True
 # 
 # 
 
-# In[2]:
+# In[110]:
 
 
 from sklearn.impute import SimpleImputer
@@ -139,7 +144,7 @@ from functions_f_evaluate_model_20221116 import get_best_estimator_average_time,
 print(env_vars)
 
 
-# In[3]:
+# In[111]:
 
 
 if is_jupyter:
@@ -157,7 +162,7 @@ if is_jupyter:
 
 # #### Include any overrides specific to the algorthm / python environment being used
 
-# In[4]:
+# In[112]:
 
 
 running_locally = run_env == 'local'
@@ -188,7 +193,7 @@ if 'forest' in ALGORITHM.lower() or True:
 # 
 # 
 
-# In[5]:
+# In[113]:
 
 
 from sklearn.pipeline import Pipeline
@@ -211,14 +216,14 @@ starter_pipe
 # 
 # ## Stage: get the data
 
-# In[6]:
+# In[114]:
 
 
 columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 LABEL = 'Price'
 
 
-# In[7]:
+# In[115]:
 
 
 df, retrieval_type = get_source_dataframe(cloud_run, VERSION, folder_prefix='../../../', row_limit=None)
@@ -231,7 +236,7 @@ if retrieval_type != 'tidy':
     df = df[columns]
 
 
-# In[8]:
+# In[116]:
 
 
 print(colored(f"features", "blue"), "-> ", columns)
@@ -239,14 +244,14 @@ columns.insert(0, LABEL)
 print(colored(f"label", "green", None, ['bold']), "-> ", LABEL)
 
 
-# In[9]:
+# In[117]:
 
 
 df = preprocess(df, version=VERSION)
 df = df.dropna()
 
 
-# In[10]:
+# In[118]:
 
 
 df.head(5)
@@ -258,7 +263,7 @@ df.head(5)
 # ## NEW Stage: do autoencoding
 # 
 
-# In[11]:
+# In[119]:
 
 
 import tensorflow as tf
@@ -293,7 +298,7 @@ config.gpu_options.allow_growth = True
 session = tf.Session(config=config....)'''
 
 
-# In[12]:
+# In[120]:
 
 
 X_train_orig, X_test_orig, y_train_orig, y_test_orig, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
@@ -322,8 +327,12 @@ print(X_train_orig.shape, X_test_orig.shape, y_train_orig.shape, y_test_orig.sha
 
 
 
-# In[13]:
+# In[121]:
 
+
+use_dimension_reduction = True # True
+pca_data_retain = 0.95 #0.5 #0.99 # 0.9999999999999 # 0.95
+pca_data_retain = 0.9999999999999
 
 if not use_dimension_reduction:
     print(DATA_DETAIL)
@@ -354,27 +363,27 @@ else:
     X_train, X_test, y_train, y_test = X_train_orig, X_test_orig, y_train_orig, y_test_orig
 
 
-# In[14]:
+# In[122]:
 
 
 print(X_train_orig.shape)
 X_train_orig[0:5]
 
 
-# In[15]:
+# In[123]:
 
 
 print(X_train.shape)
 X_train[0:5]
 
 
-# In[16]:
+# In[124]:
 
 
 y_train[0:5]
 
 
-# In[17]:
+# In[125]:
 
 
 X_test[0:5]
@@ -385,7 +394,7 @@ X_test[0:5]
 # <code
 # style = "background:black;color:black" > ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** </code>
 
-# In[18]:
+# In[126]:
 
 
 #imputer = SimpleImputer(strategy='mean')
@@ -393,7 +402,7 @@ X_test[0:5]
 #X_train[6] = imputer.transform(X_train[6])
 
 
-# In[19]:
+# In[127]:
 
 
 starter_model = starter_pipe[-1]
@@ -407,7 +416,7 @@ starter_model = starter_pipe[-1]
 # 
 # 
 
-# In[20]:
+# In[128]:
 
 
 options_block = get_hyperparameters(ALGORITHM, use_gpu, prefix='../../../')
@@ -447,7 +456,7 @@ print("cv:", cv, "n_jobs:", n_jobs, "refit:", refit, "n_iter:", n_iter, "verbose
 #param_options if not using_catboost else options_block
 
 
-# In[22]:
+# In[129]:
 
 
 def fit_model_with_cross_validation(gs, X_train, y_train, fits):
@@ -481,6 +490,72 @@ if not using_catboost:
             return_train_score=True,  #n_iter=n_iter,
             #error_score='raise'
         )
+    elif ALGORITHM_DETAIL == 'custom':
+        user_defined_params = {'model__booster': 'dart', 
+                               'model__colsample_bytree': 0.9, 
+                               'model__lambda': 1, 
+                               'model__learning_rate': 0.1, 
+                               'model__max_depth': [15,20,25], #[15,20,30], 
+                               'model__max_features': None, 
+                               'model__max_leaf_nodes': 20, 
+                               'model__max_samples': 1, 
+                               'model__min_sample_split': None, 
+                               'model__min_samples_leaf': 2000,
+                               'model__n_estimators': [20,50,100], #[50,100,150], 
+                               'model__n_jobs': 3, 
+                               'model__objective': 
+                               'reg:squarederror', 
+                               'model__subsample': 0.5, 
+                               'model__tree_method': 'hist', 
+                               'model__verbosity': 2, 
+                               #'score': 0.727131957076238, 'time': 134.17490124702454, 'date run': '2022-12-07 09:43:37.103009', 'method': 'random search'
+                              }
+
+        for each in user_defined_params:
+            if type(user_defined_params[each]) != list:
+                user_defined_params[each] = [user_defined_params[each]]
+                
+        print('user_defined_params:',user_defined_params)
+        
+        crossval_runner = GridSearchCV(
+            estimator=starter_pipe,
+            #param_grid=params_for_best_results,
+            param_grid=user_defined_params,
+            cv=cv, n_jobs=n_jobs, # get the AVX/AVX2 info if use n_jobs > 2
+            verbose=verbose, scoring=CROSS_VALIDATION_SCORING,
+            refit=refit,
+            return_train_score=True, #n_iter=n_iter,
+            #error_score='raise'
+        )
+
+    elif ALGORITHM_DETAIL == 'rerun best':
+        results_for_best_results = get_results()
+        model_for_best_results = results_for_best_results[key]
+        
+        params_for_best_results = model_for_best_results['best params']
+        method_for_best_results = model_for_best_results['best method']
+
+        print(method_for_best_results)
+        print(DATA_DETAIL)
+        
+        if 'pca' in method_for_best_results and 'pca' not in DATA_DETAIL:
+            raise ValueError("can't rerun this here, pca encoding was used")
+            
+        for each in params_for_best_results:
+            if type(params_for_best_results[each]) != list:
+                params_for_best_results[each] = [params_for_best_results[each]]
+        
+        crossval_runner = GridSearchCV(
+            estimator=starter_pipe,
+            #param_grid=params_for_best_results,
+            param_grid=params_for_best_results,
+            cv=cv, n_jobs=n_jobs, # get the AVX/AVX2 info if use n_jobs > 2
+            verbose=verbose, scoring=CROSS_VALIDATION_SCORING,
+            refit=refit,
+            return_train_score=True, #n_iter=n_iter,
+            #error_score='raise'
+        )
+
     else:
         print('random search')
         crossval_runner = RandomizedSearchCV(
@@ -534,7 +609,7 @@ else:
 crossval_runner
 
 
-# In[23]:
+# In[130]:
 
 
 if ALGORITHM_DETAIL == 'grid search' or ALGORITHM_DETAIL == 'grid search (implied)':
@@ -547,7 +622,7 @@ if ALGORITHM_DETAIL == 'grid search' or ALGORITHM_DETAIL == 'grid search (implie
 # 
 # 
 
-# In[24]:
+# In[131]:
 
 
 if not using_catboost:
@@ -565,7 +640,7 @@ else:
     print(cat_cv_results)
 
 
-# In[25]:
+# In[132]:
 
 
 key = f'{ALGORITHM} (v{VERSION})'.lower()
@@ -605,7 +680,7 @@ if not using_catboost:
 # 
 # 
 
-# In[26]:
+# In[133]:
 
 
 if not using_catboost:
@@ -620,7 +695,7 @@ else:
 
 
 
-# In[27]:
+# In[134]:
 
 
 y_pred = y_pred.reshape((-1, 1))
@@ -642,7 +717,7 @@ print('Root Mean Squared Error', RMSE)
 
 
 
-# In[28]:
+# In[135]:
 
 
 compare = np.hstack((y_test_index, y_test, y_pred))
@@ -668,7 +743,7 @@ combined
 
 
 
-# In[29]:
+# In[136]:
 
 
 best_model_fig, best_model_ax = plt.subplots()
@@ -681,7 +756,7 @@ best_model_ax.set_xlabel('Actual')
 plt.show()
 
 
-# In[30]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -737,7 +812,7 @@ if not using_catboost:
     best_model_scores[-1] = fitted_graph_model.score(X_test, y_test)
 
 
-# In[31]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -799,7 +874,7 @@ if not using_catboost:
     plt.show()
 
 
-# In[32]:
+# In[ ]:
 
 
 if not using_catboost:
@@ -845,7 +920,7 @@ if not using_catboost:
 # 
 # 
 
-# In[33]:
+# In[ ]:
 
 
 # <catboost.core.CatBoostRegressor object at 0x7fb167387490>
@@ -889,13 +964,13 @@ print(key)
 new_results
 
 
-# In[34]:
+# In[ ]:
 
 
 crossval_runner.best_estimator_ if not using_catboost else ''
 
 
-# In[35]:
+# In[ ]:
 
 
 if this_model_is_best:
@@ -917,7 +992,7 @@ print(new_model_decision)
 # ## Stage: Investigate the feature importances (if applicable)
 # 
 
-# In[36]:
+# In[ ]:
 
 
 if model_uses_feature_importances:
@@ -941,7 +1016,7 @@ else:
     print(f'{ALGORITHM} does not have feature_importances, skipping')
 
 
-# In[37]:
+# In[ ]:
 
 
 if model_uses_feature_importances:
@@ -959,7 +1034,7 @@ else:
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[38]:
+# In[ ]:
 
 
 from bs4 import BeautifulSoup
@@ -1161,45 +1236,40 @@ def print_and_report(text_single, title):
 
 
 
-# In[39]:
+# In[ ]:
 
 
 print('Nearly finished...')
 
 
-# In[40]:
+# In[ ]:
 
-
-# !jupyter nbconvert --to script mycode.ipynb
-# with open('it10_all_models_20221203.ipynb', 'r') as f:
-#     lines = f.readlines()
-# with open('mycode.py', 'w') as f:
-#     for line in lines:
-#         if 'nbconvert --to script' in line:
-#             break
-#         else:
-#             f.write(line)
 
 if create_python_script and is_jupyter:
     filename = FILENAME+'.ipynb'
     get_ipython().system('jupyter nbconvert --to script $filename')
 
-#!jupyter nbconvert --to script 'it10_all_models_20221203.ipynb' &&  \
-#!mv ./folder/notebooks/*.py ./folder/python_scripts && \
+
+# In[ ]:
 
 
-# In[41]:
 print(f'ALGORITHM: {ALGORITHM}')
 print(f'ALGORITHM_DETAIL: {ALGORITHM_DETAIL}')
 print(f'DATA VERSION: {VERSION}')
 print(f'DATA_DETAIL: {DATA_DETAIL}')
-print(f'FILENAME: {FILENAME}')
+print(f'use_dimension_reduction: {use_dimension_reduction}')
+print(f'pca_data_retain: {pca_data_retain}')
+print()
+print(f"Best Params\n {cat_params if using_catboost else crossval_runner.best_params_}", "\n---------------------")
+print(f'Verdict: {new_model_decision}')
+print(f'Start Timestamp: {start}')
+print(f'End Timestamp: {datetime.now()}')
 
-print('Finished!')
+print(f'FILENAME: {FILENAME}')
 
 
 # In[ ]:
 
 
-
+print('Finished!')
 
