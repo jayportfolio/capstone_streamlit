@@ -31,7 +31,7 @@ ALGORITHM_DETAIL = 'custom'
 #DATA_DETAIL = ['explore param']
 DATA_DETAIL = ['no dummies'] if 'catboost' in ALGORITHM.lower() else []
 #VERSION = '06'
-VERSION = '09'
+VERSION = '10'
 
 RANDOM_STATE = 101
 TRAINING_SIZE = 0.9
@@ -374,13 +374,13 @@ if not using_catboost:
                                'model__colsample_bytree': 0.9, 
                                'model__lambda': 1, 
                                'model__learning_rate': 0.1, 
-                               'model__max_depth': [5], #[15,20,30], 
+                               'model__max_depth': [15,20], #[15,20,30], 
                                'model__max_features': None, 
                                'model__max_leaf_nodes': 20, 
                                'model__max_samples': 1, 
                                'model__min_sample_split': None, 
                                'model__min_samples_leaf': 2000,
-                               'model__n_estimators': [20], #[50,100,150], 
+                               'model__n_estimators': [20,50], #[50,100,150], 
                                'model__n_jobs': 3, 
                                'model__objective': 
                                'reg:squarederror', 
