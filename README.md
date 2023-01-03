@@ -52,3 +52,6 @@ python it10_ann_neural_model__20221203.py
 
 apt-get update
 apt-get install graphviz*
+
+pip install tabulate catboost
+pip install tensorflow-gpu

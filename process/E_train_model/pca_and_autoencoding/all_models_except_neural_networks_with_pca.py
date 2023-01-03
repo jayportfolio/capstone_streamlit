@@ -16,22 +16,22 @@
 
 FILENAME = 'all_models_except_neural_networks_with_pca'
 
-#ALGORITHM = 'Linear Regression (Ridge)'
+ALGORITHM = 'Linear Regression (Ridge)'
 #ALGORITHM = 'KNN'
 #ALGORITHM = 'Decision Tree'
 #ALGORITHM = 'Random Forest'
-ALGORITHM = 'XG Boost (tree)'
+#ALGORITHM = 'XG Boost (tree)'
 #ALGORITHM = 'CatBoost'
 #ALGORITHM = 'Light Gradient Boosting'
 
-ALGORITHM_DETAIL = 'random search'
+ALGORITHM_DETAIL = 'grid search'
 #ALGORITHM_DETAIL = 'rerun best'
 #ALGORITHM_DETAIL = 'custom'
 #DATA_DETAIL = ['no scale','no dummies']
 #DATA_DETAIL = ['explore param']
 #DATA_DETAIL = ['no dummies','autoencoding'] if 'catboost' in ALGORITHM.lower() else ['autoencoding']
 DATA_DETAIL = ['pca']
-VERSION = '10'
+VERSION = '11'
 
 RANDOM_STATE = 101
 TRAINING_SIZE = 0.9
@@ -39,8 +39,9 @@ TRAINING_SIZE = 0.9
 CROSS_VALIDATION_SCORING = 'r2'
 
 use_dimension_reduction = True # True
-pca_data_retain = 0.95 #0.5 #0.99 # 0.9999999999999 # 0.95
+#pca_data_retain = 0.95 #0.5 #0.99 # 0.9999999999999 # 0.95
 pca_data_retain = 0.9999999999999
+pca_data_retain = 0.99
 
 print(f'ALGORITHM: {ALGORITHM}')
 print(f'ALGORITHM_DETAIL: {ALGORITHM_DETAIL}')

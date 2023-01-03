@@ -1,15 +1,14 @@
 # Results from Neural Network m02 two layers
 ### Dataset Version: 10
-Date run: 2023-01-03 12:29:51.983772
+Date run: 2023-01-03 17:03:46.178364
 
-Start time: 2023-01-03 12:26:21.432944
+Start time: 2023-01-03 17:02:32.097042
 
-End time: 2023-01-03 12:29:51.983620
+End time: 2023-01-03 17:03:46.178276
 
 ## Results
 ### Summary
-pickled new version of model
-0.4527318085575077 is new best score (it's better than -999)
+not updated saved model, the score 0.5189383341721788 doesn't exceed the threshold of 0.6
 
 ### Best Model: Comparing model predictions to actual property values
 ![detail](../artifacts/neural_network_m02_two_layers__v10__best_ann_model.png)
@@ -24,60 +23,61 @@ can't display model performance graphs for neural network
 ### Neural Network Loss - Head
 |    |        loss |    val_loss |   epoch |
 |---:|------------:|------------:|--------:|
-|  0 | 3.29626e+10 | 9.71408e+09 |       0 |
-|  1 | 8.96332e+09 | 8.3832e+09  |       1 |
-|  2 | 7.99391e+09 | 7.67909e+09 |       2 |
-|  3 | 7.50362e+09 | 7.32412e+09 |       3 |
-|  4 | 7.24321e+09 | 7.12551e+09 |       4 |
+|  0 | 6.27419e+10 | 6.59837e+09 |       0 |
+|  1 | 6.18879e+09 | 5.97595e+09 |       1 |
+|  2 | 5.88485e+09 | 5.86242e+09 |       2 |
+|  3 | 5.79586e+09 | 5.81812e+09 |       3 |
+|  4 | 5.75441e+09 | 5.79326e+09 |       4 |
 
 
 
 ### Neural Network Loss - Tail
 |    |        loss |    val_loss |   epoch |
 |---:|------------:|------------:|--------:|
-| 15 | 6.40559e+09 | 6.43019e+09 |      15 |
-| 16 | 6.381e+09   | 6.40692e+09 |      16 |
-| 17 | 6.34211e+09 | 6.39119e+09 |      17 |
-| 18 | 6.3275e+09  | 6.37247e+09 |      18 |
-| 19 | 6.31815e+09 | 6.3619e+09  |      19 |
+| 15 | 5.50215e+09 | 5.55901e+09 |      15 |
+| 16 | 5.49371e+09 | 5.54989e+09 |      16 |
+| 17 | 5.47486e+09 | 5.52545e+09 |      17 |
+| 18 | 5.46089e+09 | 5.51387e+09 |      18 |
+| 19 | 5.44914e+09 | 5.49741e+09 |      19 |
 
 ![detail](../artifacts/neural_network_m02_two_layers__v10__end_loss.png)
 
 ### Model Structure
->Model: "sequential_1"
+>Model: "sequential"
 >________________________________________________________________________________________________________________________________________________________________
 > Layer (type)                                                           Output Shape                                                    Param #                 
 >
-> dense_3 (Dense)                                                        (None, 61)                                                      3782                    
+> dense (Dense)                                                          (None, 60)                                                      3660                    
 >                                                                                                                                                                
-> normalization_1 (Normalization)                                        (None, 61)                                                      123                     
+> normalization (Normalization)                                          (None, 60)                                                      121                     
 >                                                                                                                                                                
-> dense_4 (Dense)                                                        (None, 61)                                                      3782                    
+> dense_1 (Dense)                                                        (None, 60)                                                      3660                    
 >                                                                                                                                                                
-> dense_5 (Dense)                                                        (None, 1)                                                       62                      
+> dense_2 (Dense)                                                        (None, 1)                                                       61                      
 >                                                                                                                                                                
 >
->Total params: 7,749
->Trainable params: 7,626
->Nontrainable params: 123
+>Total params: 7,502
+>Trainable params: 7,381
+>Nontrainable params: 121
 >________________________________________________________________________________________________________________________________________________________________
 
 
 ## Comparison with other models
 ### Comparison with version 10 performances
-|                                      |   best score |    best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                                      |
-|:-------------------------------------|-------------:|-------------:|-------------------------------:|------------------------------:|--------------------:|--------------------------:|:---------------------------|:-----------------------------------------------------------------|
-| xg boost (tree) (v10)                |     0.726364 |   69.306     |                        50931.5 |                   4.29054e+09 |            0.620186 |                   65502.2 | 2023-01-02 17:58:16.959076 | custom                                                           |
-| catboost (v10)                       |     0.694651 |    4.77      |                        68364.3 |                   7.1318e+09  |            0.368666 |                   84450   | 2022-11-30 14:14:50.145713 | random search(no dummies)                                        |
-| random forest - random search (vx10) |     0.647421 |  nan         |                        49942   |                   3.98288e+09 |            0.647421 |                   63110.1 | nan                        | nan                                                              |
-| neural network m13 mega (v10)        |     0.583716 |  142.89      |                        54668.9 |                   4.94809e+09 |            0.561977 |                   70342.6 | 2022-12-01 10:27:39.663081 | loss=3878948096.0 valloss=4822886400.0 +valsplit=0.1 stop=38/400 |
-| neural network m14 mega (v10)        |     0.579095 | 1129.09      |                        53124   |                   4.75471e+09 |            0.579095 |                   68954.4 | 2022-12-01 11:52:45.011704 | loss=4.85e+04 valloss=5.34e+04 +valsplit=0.1 stop=156/400        |
-| neural network m12 mega (v10)        |     0.567453 |  240.1       |                        55444   |                   4.88623e+06 |            0.567453 |                   69901.6 | 2022-12-01 09:57:17.586487 | loss=4790.75 valloss=4998.79 +valsplit=0.1 stop=66/400           |
-| decision tree - random search (vx10) |     0.558257 |  nan         |                        55865.4 |                   4.99011e+09 |            0.558257 |                   70640.7 | nan                        | nan                                                              |
-| knn - random search (vx10)           |     0.533823 |    0.0497677 |                        57566.9 |                   5.26613e+09 |            0.533823 |                   72568.1 | nan                        | nan                                                              |
-| knn (v10)                            |     0.484585 |    0.29179   |                        61764.2 |                   5.82234e+09 |            0.484585 |                   76304.2 | 2022-11-30 15:12:50.989371 | random search                                                    |
-| linear regression (ridge) (v10)      |     0.470806 |    0.239057  |                        62597.9 |                   5.97812e+09 |            0.470795 |                   77318.3 | 2022-12-01 19:50:08.050622 | random search                                                    |
-| neural network m02 two layers (v10)  |     0.452732 |  198.06      |                        63576.2 |                   6.18216e+09 |            0.452732 |                   78626.7 | 2023-01-03 12:29:49.352260 | loss=6.32e+09 valloss=6.36e+09 +valsplit=0.1 +patn=25            |
+|                                         |   best score |    best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                                        |
+|:----------------------------------------|-------------:|-------------:|-------------------------------:|------------------------------:|--------------------:|--------------------------:|:---------------------------|:-------------------------------------------------------------------|
+| xg boost (tree) (v10)                   |     0.726364 |   69.306     |                        53862.9 |                   4.63705e+09 |            0.589511 |                   68095.9 | 2023-01-02 17:58:16.959076 | custom                                                             |
+| catboost (v10)                          |     0.694651 |    4.77      |                        68364.3 |                   7.1318e+09  |            0.368666 |                   84450   | 2022-11-30 14:14:50.145713 | random search(no dummies)                                          |
+| random forest - random search (vx10)    |     0.647421 |  nan         |                        49942   |                   3.98288e+09 |            0.647421 |                   63110.1 | nan                        | nan                                                                |
+| neural network m13 mega (v10)           |     0.583716 |  142.89      |                        54668.9 |                   4.94809e+09 |            0.561977 |                   70342.6 | 2022-12-01 10:27:39.663081 | loss=3878948096.0 valloss=4822886400.0 +valsplit=0.1 stop=38/400   |
+| neural network m14 mega (v10)           |     0.579095 | 1129.09      |                        53124   |                   4.75471e+09 |            0.579095 |                   68954.4 | 2022-12-01 11:52:45.011704 | loss=4.85e+04 valloss=5.34e+04 +valsplit=0.1 stop=156/400          |
+| neural network m15 mega + dropout (v10) |     0.574437 | 2488.18      |                        53257.8 |                   4.80733e+09 |            0.574437 |                   69334.9 | 2023-01-03 13:24:06.467094 | loss=4.69e+04 valloss=5.37e+04 +valsplit=0.1 +patn=25 stop=170/400 |
+| neural network m12 mega (v10)           |     0.567453 |  240.1       |                        55444   |                   4.88623e+06 |            0.567453 |                   69901.6 | 2022-12-01 09:57:17.586487 | loss=4790.75 valloss=4998.79 +valsplit=0.1 stop=66/400             |
+| decision tree - random search (vx10)    |     0.558257 |  nan         |                        55865.4 |                   4.99011e+09 |            0.558257 |                   70640.7 | nan                        | nan                                                                |
+| knn - random search (vx10)              |     0.533823 |    0.0497677 |                        57566.9 |                   5.26613e+09 |            0.533823 |                   72568.1 | nan                        | nan                                                                |
+| neural network m02 two layers (v10)     |     0.518938 |   57.25      |                        59709.6 |                   5.43427e+09 |            0.518938 |                   73717.5 | 2023-01-03 17:03:44.795229 | loss=5.45e+09 valloss=5.50e+09 +valsplit=0.1 +patn=25              |
+| knn (v10)                               |     0.484585 |    0.29179   |                        61764.2 |                   5.82234e+09 |            0.484585 |                   76304.2 | 2022-11-30 15:12:50.989371 | random search                                                      |
+| linear regression (ridge) (v10)         |     0.470806 |    0.239057  |                        70964.1 |                   7.60485e+09 |            0.32679  |                   87205.8 | 2022-12-01 19:50:08.050622 | random search                                                      |
 
 ### Comparison with all model performances
 |                                                           |   best score |    best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                                                                                            |
@@ -85,7 +85,7 @@ can't display model performance graphs for neural network
 | xg boost (tree) (v11)                                     |     0.731739 |   71.0203    |                41595.3         |                   3.03039e+09 |            0.731739 |           55049           | 2023-01-02 18:02:37.951724 | custom                                                                                                                 |
 | xg boost (tree) (v09)                                     |     0.728969 |   89.2137    |                55307.3         |                   4.97574e+09 |            0.559529 |           70538.9         | 2023-01-02 16:33:38.004418 | custom                                                                                                                 |
 | xg boost (tree) (v06)                                     |     0.727132 |  134.175     |                42215           |                   3.09601e+09 |            0.725929 |           55641.8         | 2022-12-07 09:43:37.103009 | random search                                                                                                          |
-| xg boost (tree) (v10)                                     |     0.726364 |   69.306     |                50931.5         |                   4.29054e+09 |            0.620186 |           65502.2         | 2023-01-02 17:58:16.959076 | custom                                                                                                                 |
+| xg boost (tree) (v10)                                     |     0.726364 |   69.306     |                53862.9         |                   4.63705e+09 |            0.589511 |           68095.9         | 2023-01-02 17:58:16.959076 | custom                                                                                                                 |
 | knn (v06)                                                 |     0.719049 |    0.0179159 |                41531.1         |                   3.2181e+09  |            0.715122 |           56728.3         | 2022-11-21 18:05:21.585382 | random search                                                                                                          |
 | catboost (v06)                                            |     0.715606 |   12.2565    |                51000           |                   4.30136e+09 |            0.619227 |           65584.8         | 1999-11-13 15:26:55.706567 | random search                                                                                                          |
 | light gradient boosting (v06)                             |     0.706735 |   15.0439    |                44081           |                   3.31284e+09 |            0.706735 |           57557.3         | 2022-11-16 13:59:52.612654 | random search                                                                                                          |
@@ -111,6 +111,7 @@ can't display model performance graphs for neural network
 | neural network m13 mega (v10)                             |     0.583716 |  142.89      |                54668.9         |                   4.94809e+09 |            0.561977 |           70342.6         | 2022-12-01 10:27:39.663081 | loss=3878948096.0 valloss=4822886400.0 +valsplit=0.1 stop=38/400                                                       |
 | neural network m05 rec deep (v06)                         |     0.580348 |  604.9       |                59357.5         |                   5.47083e+09 |            0.515701 |           73965.1         | 2022-11-29 11:41:39.682217 | loss=4908.71 valloss=4603.08 stop=214/500                                                                              |
 | neural network m14 mega (v10)                             |     0.579095 | 1129.09      |                53124           |                   4.75471e+09 |            0.579095 |           68954.4         | 2022-12-01 11:52:45.011704 | loss=4.85e+04 valloss=5.34e+04 +valsplit=0.1 stop=156/400                                                              |
+| neural network m15 mega + dropout (v10)                   |     0.574437 | 2488.18      |                53257.8         |                   4.80733e+09 |            0.574437 |           69334.9         | 2023-01-03 13:24:06.467094 | loss=4.69e+04 valloss=5.37e+04 +valsplit=0.1 +patn=25 stop=170/400                                                     |
 | neural network m12 mega (v09)                             |     0.571972 |  848.7       |                54696           |                   4.83518e+09 |            0.571972 |           69535.4         | 2022-12-12 15:16:52.189760 | loss=4.76e+09 valloss=4.77e+09 +valsplit=0.1 +patn=25 stop=179/400                                                     |
 | neural network m15 mega + dropout (v11)                   |     0.5707   | 1191.61      |                53709.7         |                   4.84954e+09 |            0.5707   |           69638.7         | 2022-12-21 02:55:33.483148 | loss=4.43e+04 valloss=5.35e+04 +valsplit=0.1 +patn=25 stop=170/400                                                     |
 | neural network m12 mega (v10)                             |     0.567453 |  240.1       |                55444           |                   4.88623e+06 |            0.567453 |           69901.6         | 2022-12-01 09:57:17.586487 | loss=4790.75 valloss=4998.79 +valsplit=0.1 stop=66/400                                                                 |
@@ -126,16 +127,16 @@ can't display model performance graphs for neural network
 | knn - random search (vx10)                                |     0.533823 |    0.0497677 |                57566.9         |                   5.26613e+09 |            0.533823 |           72568.1         | nan                        | nan                                                                                                                    |
 | neural network - random search [i64,norm,d64^6,d1] (v11)  |     0.533579 |  nan         |                57201.7         |                   5.26888e+09 |            0.533579 |           72587           | nan                        | nan                                                                                                                    |
 | neural network m04 3 layers+wider (v06)                   |     0.520933 |  395.14      |                64421.2         |                   6.26641e+09 |            0.445274 |           79160.6         | 2022-11-29 11:21:09.812732 | loss=5415.7 valloss=5095.94 stop=166/500                                                                               |
+| neural network m02 two layers (v10)                       |     0.518938 |   57.25      |                59709.6         |                   5.43427e+09 |            0.518938 |           73717.5         | 2023-01-03 17:03:44.795229 | loss=5.45e+09 valloss=5.50e+09 +valsplit=0.1 +patn=25                                                                  |
 | neural network m02 two layers (v06)                       |     0.516773 |  112.54      |                64363.1         |                   6.26209e+09 |            0.445656 |           79133.4         | 2022-11-29 09:31:18.853517 | mse +norm +epochs=50 +learn=0.003 +endloss=5785.6953125                                                                |
 | neural network m01 simple (v09)                           |     0.508847 |  188.63      |                71376.9         |                   7.55056e+09 |            0.331597 |           86893.9         | 2022-11-30 13:08:10.248178 | loss=5724.92 valloss=5608.12 +valsplit=0.1 stop=42/50                                                                  |
 | neural network with autoencoding m15 mega + dropout (v11) |     0.488747 | 1276.23      |                58773.7         |                   5.77532e+09 |            0.488747 |           75995.5         | 2022-12-22 19:06:48.049482 | loss=5.27e+04 valloss=5.91e+04 +valsplit=0.1 +patn=25 stop=181/400                                                     |
 | knn (v10)                                                 |     0.484585 |    0.29179   |                61764.2         |                   5.82234e+09 |            0.484585 |           76304.2         | 2022-11-30 15:12:50.989371 | random search                                                                                                          |
-| linear regression (ridge) (v11)                           |     0.484311 |    0.2412    |                61567.5         |                   5.82554e+09 |            0.484302 |           76325.2         | 2023-01-01 10:07:22.564855 | random search(pca,1.0% retain)                                                                                         |
-| linear regression (ridge) (v10)                           |     0.470806 |    0.239057  |                62597.9         |                   5.97812e+09 |            0.470795 |           77318.3         | 2022-12-01 19:50:08.050622 | random search                                                                                                          |
+| linear regression (ridge) (v11)                           |     0.484311 |    0.2412    |                68636.7         |                   7.1824e+09  |            0.364187 |           84749.1         | 2023-01-01 10:07:22.564855 | random search(pca,1.0% retain)                                                                                         |
+| linear regression (ridge) (v10)                           |     0.470806 |    0.239057  |                70964.1         |                   7.60485e+09 |            0.32679  |           87205.8         | 2022-12-01 19:50:08.050622 | random search                                                                                                          |
 | knn (v11)                                                 |     0.465113 |    0.618877  |                62944.7         |                   6.0423e+09  |            0.465113 |           77732.2         | 2022-11-30 16:20:53.948815 | random search                                                                                                          |
 | linear regression (ridge) (v09)                           |     0.459973 |    0.132456  |                63343           |                   6.10037e+09 |            0.459973 |           78104.9         | 2023-01-02 00:17:19.098111 | rerun best: random search(-)                                                                                           |
 | linear regression (ridge) (v06)                           |     0.4569   |    0.28695   |                63603.1         |                   6.13521e+09 |            0.456889 |           78327.6         | 2022-12-03 19:20:52.874336 | random search                                                                                                          |
-| neural network m02 two layers (v10)                       |     0.452732 |  198.06      |                63576.2         |                   6.18216e+09 |            0.452732 |           78626.7         | 2023-01-03 12:29:49.352260 | loss=6.32e+09 valloss=6.36e+09 +valsplit=0.1 +patn=25                                                                  |
 | neural network m03 2 layers+wider (v09)                   |     0.4523   | 1822.49      |                64123.6         |                   6.24293e+09 |            0.447352 |           79012.2         | 2022-12-11 18:56:27.304803 | loss=6.38e+09 valloss=6.41e+09 +valsplit=0.1 +patn=25                                                                  |
 | linear regression (ridge) - random search (v05)           |     0.443478 |  nan         |                63770.7         |                   6.19128e+09 |            0.443478 |           78684.7         | nan                        | nan                                                                                                                    |
 | neural network with autoencoding m15 mega + dropout (v09) |     0.42689  | 1641.39      |                64379.5         |                   6.47409e+09 |            0.42689  |           80461.7         | 2022-12-21 01:26:33.005210 | loss=6.51e+04 valloss=6.52e+04 +valsplit=0.1 +patn=25 stop=214/400                                                     |
