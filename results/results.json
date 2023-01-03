@@ -494,8 +494,8 @@
         "R square Accuracy": 0.5468906572891401,
         "Root Mean Squared Error": 73115.2927822678,
         "_score": 0.5468906572891401,
-        "best score": 0.5468906572891401,
         "_train time": 0.0904770851135254,
+        "best score": 0.5468906572891401,
         "date": "2022-10-11 21:22:27.645835",
         "first run": "2022-10-11 00:00:00.000000",
         "random_state": 101
@@ -506,8 +506,8 @@
         "R square Accuracy": 0.584355522195951,
         "Root Mean Squared Error": 68964.72118575693,
         "_score": 0.584355522195951,
-        "best score": 0.584355522195951,
         "_train time": 0.11162738800048828,
+        "best score": 0.584355522195951,
         "date": "2022-10-12 17:41:02.327871",
         "first run": "2022-10-12 00:00:00.000000",
         "random_state": 101
@@ -518,8 +518,8 @@
         "R square Accuracy": 0.5879392489828836,
         "Root Mean Squared Error": 69724.81004529294,
         "_score": 0.5879392489828836,
-        "best score": 0.5879392489828836,
         "_train time": 0.11853766441345215,
+        "best score": 0.5879392489828836,
         "date": "2022-10-12 15:59:45.219224",
         "first run": "2022-10-11 00:00:00.000000",
         "random_state": 101
@@ -530,8 +530,8 @@
         "R square Accuracy": 0.6274698660916171,
         "Root Mean Squared Error": 65290.00194931081,
         "_score": 0.6274698660916171,
-        "best score": 0.6274698660916171,
         "_train time": 0.11113905906677246,
+        "best score": 0.6274698660916171,
         "date": "2022-10-12 17:37:11.760678",
         "first run": "2022-10-12 00:00:00.000000",
         "random_state": 101
@@ -574,8 +574,8 @@
         "R square Accuracy": 0.5874395788689057,
         "Root Mean Squared Error": 69767.07183365672,
         "_score": 0.5874395788689057,
-        "best score": 0.5874395788689057,
         "_train time": 0.10507874488830567,
+        "best score": 0.5874395788689057,
         "date": "2022-10-11 21:22:35.293865",
         "first run": "2022-10-11 00:00:00.000000",
         "random_state": 101
@@ -656,7 +656,6 @@
             "model__tol": 0.0001
         },
         "_score": 0.456888592235293,
-        "best score": 0.456888592235293,
         "_train time": 0.01982283592224121,
         "best is shared": false,
         "best method": "random search",
@@ -733,23 +732,23 @@
         "suboptimal": "pending"
     },
     "linear regression (ridge) (v10)": {
-        "Mean Absolute Error Accuracy": 62605.892636547476,
-        "Mean Squared Error Accuracy": 5978516060.074188,
-        "R square Accuracy": 0.4707594383096033,
-        "Root Mean Squared Error": 77320.8643257057,
+        "Mean Absolute Error Accuracy": 62597.94158160654,
+        "Mean Squared Error Accuracy": 5978119917.978841,
+        "R square Accuracy": 0.47079450628683117,
+        "Root Mean Squared Error": 77318.30260668453,
         "_method": "random search(pca,1.0% retain)",
         "_params": {
-            "model__alpha": 100,
-            "model__copy_X": false,
+            "model__alpha": 1,
+            "model__copy_X": true,
             "model__fit_intercept": true,
-            "model__max_iter": 100,
+            "model__max_iter": 100000,
             "model__positive": false,
             "model__random_state": 101,
-            "model__solver": "cholesky",
-            "model__tol": 0.001
+            "model__solver": "sag",
+            "model__tol": 0.01
         },
-        "_score": 0.4707594383096033,
-        "_train time": 0.05441904067993164,
+        "_score": 0.47079450628683117,
+        "_train time": 0.3415985107421875,
         "best is shared": false,
         "best method": "random search",
         "best params": {
@@ -765,7 +764,7 @@
         "best run date": "2022-12-01 19:50:08.050622",
         "best score": 0.4708062463710102,
         "best time": 0.23905722300211588,
-        "date": "2023-01-02 00:43:31.961060",
+        "date": "2023-01-03 12:12:04.130619",
         "first run": "2022-12-01 14:21:36.707990",
         "random_state": 101,
         "run_env": "gradient",
@@ -852,9 +851,9 @@
             "model__tol": 0.001
         },
         "_score": 0.32687875693294177,
-        "best score": 0.32687875693294177,
         "_train time": 0.28690123558044434,
         "best params": "MULTIPLE PARAM OPTIONS",
+        "best score": 0.32687875693294177,
         "date": "2022-10-18 23:48:02.696625",
         "first run": "2022-10-18 23:44:19.835809",
         "random_state": 101
@@ -873,9 +872,9 @@
             "model__tol": 1e-05
         },
         "_score": 0.3265113362749439,
-        "best score": 0.3265113362749439,
         "_train time": 0.09189772605895996,
         "best params": "MULTIPLE PARAM OPTIONS",
+        "best score": 0.3265113362749439,
         "date": "2022-10-18 23:49:36.437220",
         "first run": "2022-10-18 23:48:41.539572",
         "random_state": 101
@@ -894,9 +893,9 @@
             "model__tol": 0.001
         },
         "_score": 0.32122428255851376,
-        "best score": 0.32122428255851376,
         "_train time": 0.028859615325927734,
         "best params": "MULTIPLE PARAM OPTIONS",
+        "best score": 0.32122428255851376,
         "date": "2022-10-18 23:56:43.784546",
         "first run": "2022-10-18 23:56:19.993042",
         "random_state": 101
@@ -915,9 +914,9 @@
             "model__tol": 1e-05
         },
         "_score": 0.44347826903665266,
-        "best score": 0.44347826903665266,
         "_train time": 0.14141321182250977,
         "best params": "MULTIPLE PARAM OPTIONS",
+        "best score": 0.44347826903665266,
         "date": "2022-10-19 11:11:49.868418",
         "first run": "2022-10-19 00:13:33.773722",
         "random_state": 101
@@ -928,8 +927,8 @@
         "R square Accuracy": 0.29666981355195765,
         "Root Mean Squared Error": 91093.28075499646,
         "_score": 0.29666981355195765,
-        "best score": 0.29666981355195765,
         "_train time": 0.0998755931854248,
+        "best score": 0.29666981355195765,
         "date": "2022-10-12 12:13:28.904470",
         "first run": "2022-10-11 00:00:00.000000",
         "random_state": 101
@@ -1090,6 +1089,27 @@
         "silver score": 0.5126960668754335,
         "silver time": 822.12,
         "suboptimal": "suboptimal"
+    },
+    "neural network m02 two layers (v10)": {
+        "Mean Absolute Error Accuracy": 63576.186912247904,
+        "Mean Squared Error Accuracy": 6182163478.279871,
+        "R square Accuracy": 0.4527318085575077,
+        "Root Mean Squared Error": 78626.73513684688,
+        "_method": "loss=6.32e+09 valloss=6.36e+09 +valsplit=0.1 +patn=25",
+        "_params": "mse +epochs=500 +learn=0.003",
+        "_score": 0.4527318085575077,
+        "_train time": 198.06,
+        "best is shared": false,
+        "best method": "loss=6.32e+09 valloss=6.36e+09 +valsplit=0.1 +patn=25",
+        "best params": "mse +epochs=500 +learn=0.003",
+        "best run date": "2023-01-03 12:29:49.352260",
+        "best score": 0.4527318085575077,
+        "best time": 198.06,
+        "date": "2023-01-03 12:29:49.352260",
+        "first run": "2023-01-03 12:29:49.370155",
+        "random_state": 101,
+        "run_env": "gradient",
+        "suboptimal": "pending"
     },
     "neural network m03 2 layers+wider (v06)": {
         "Mean Absolute Error Accuracy": 64376.51743074439,

@@ -1,30 +1,68 @@
-# Results from Linear Regression (Ridge)
+# Results from Neural Network m02 two layers
 ### Dataset Version: 10
-Date run: 2023-01-03 12:12:05.348212
+Date run: 2023-01-03 12:29:51.983772
 
-Start time: 2023-01-03 12:11:00.287986
+Start time: 2023-01-03 12:26:21.432944
 
-End time: 2023-01-03 12:12:05.348105
+End time: 2023-01-03 12:29:51.983620
 
 ## Results
 ### Summary
-not updated saved model, the previous run was better
-0.47079450628683117 is worse than or equal to 0.4708062463710102
+pickled new version of model
+0.4527318085575077 is new best score (it's better than -999)
 
-### Tuned Models ranked by performance, with parameter details
-|   rank_test_score |   mean_test_score |   mean_fit_time |   mean_score_time |   param_model__tol | param_model__solver   |   param_model__random_state | param_model__positive   |   param_model__max_iter | param_model__fit_intercept   | param_model__copy_X   |   param_model__alpha | params2                                  |
-|------------------:|------------------:|----------------:|------------------:|-------------------:|:----------------------|----------------------------:|:------------------------|------------------------:|:-----------------------------|:----------------------|---------------------:|:-----------------------------------------|
-|                 1 |          0.468565 |       0.273064  |        0.0090971  |             0.01   | sag                   |                         101 | False                   |                  100000 | True                         | True                  |                1     | 0.01/sag/101/False/100000/True/True/1    |
-|                 2 |          0.468565 |       0.27225   |        0.00702373 |             0.01   | sag                   |                         101 | False                   |                 1000000 | True                         | True                  |                0.1   | 0.01/sag/101/False/1000000/True/True/0.1 |
-|                 2 |          0.468565 |       0.303257  |        0.0102883  |             0.01   | sag                   |                         101 | False                   |                  100000 | True                         | True                  |                0.1   | 0.01/sag/101/False/100000/True/True/0.1  |
-|                 4 |          0.468565 |       0.282706  |        0.00905935 |             0.01   | sag                   |                         101 | False                   |                    1000 | True                         | True                  |                0.001 | 0.01/sag/101/False/1000/True/True/0.001  |
-|                 5 |          0.468506 |       0.300949  |        0.00854381 |             0.001  | saga                  |                         101 | False                   |                   10000 | True                         | True                  |              100     | 0.001/saga/101/False/10000/True/True/100 |
-|                 6 |          0.468506 |       0.206639  |        0.00803471 |             0.0001 | svd                   |                         101 | False                   |                     100 | True                         | False                 |              100     | 0.0001/svd/101/False/100/True/False/100  |
-|                 6 |          0.468506 |       0.0587389 |        0.00684293 |             0.001  | auto                  |                         101 | False                   |                    1000 | True                         | True                  |              100     | 0.001/auto/101/False/1000/True/True/100  |
-### Best and worst models obtained by tuning
-![detail](../artifacts/linear_regression__ridge___v10__best_and_worst.png)
 ### Best Model: Comparing model predictions to actual property values
-![detail](../artifacts/linear_regression__ridge___v10__best_model_correlation.png)
+![detail](../artifacts/neural_network_m02_two_layers__v10__best_ann_model.png)
+
+### Model Specific Notes
+can't display hyperparameter comparison for neural network
+
+can't display model performance graphs for neural network
+
+can't display model performance graphs for neural network
+
+### Neural Network Loss - Head
+|    |        loss |    val_loss |   epoch |
+|---:|------------:|------------:|--------:|
+|  0 | 3.29626e+10 | 9.71408e+09 |       0 |
+|  1 | 8.96332e+09 | 8.3832e+09  |       1 |
+|  2 | 7.99391e+09 | 7.67909e+09 |       2 |
+|  3 | 7.50362e+09 | 7.32412e+09 |       3 |
+|  4 | 7.24321e+09 | 7.12551e+09 |       4 |
+
+
+
+### Neural Network Loss - Tail
+|    |        loss |    val_loss |   epoch |
+|---:|------------:|------------:|--------:|
+| 15 | 6.40559e+09 | 6.43019e+09 |      15 |
+| 16 | 6.381e+09   | 6.40692e+09 |      16 |
+| 17 | 6.34211e+09 | 6.39119e+09 |      17 |
+| 18 | 6.3275e+09  | 6.37247e+09 |      18 |
+| 19 | 6.31815e+09 | 6.3619e+09  |      19 |
+
+![detail](../artifacts/neural_network_m02_two_layers__v10__end_loss.png)
+
+### Model Structure
+>Model: "sequential_1"
+>________________________________________________________________________________________________________________________________________________________________
+> Layer (type)                                                           Output Shape                                                    Param #                 
+>
+> dense_3 (Dense)                                                        (None, 61)                                                      3782                    
+>                                                                                                                                                                
+> normalization_1 (Normalization)                                        (None, 61)                                                      123                     
+>                                                                                                                                                                
+> dense_4 (Dense)                                                        (None, 61)                                                      3782                    
+>                                                                                                                                                                
+> dense_5 (Dense)                                                        (None, 1)                                                       62                      
+>                                                                                                                                                                
+>
+>Total params: 7,749
+>Trainable params: 7,626
+>Nontrainable params: 123
+>________________________________________________________________________________________________________________________________________________________________
+
+
 ## Comparison with other models
 ### Comparison with version 10 performances
 |                                      |   best score |    best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                                      |
@@ -39,6 +77,8 @@ not updated saved model, the previous run was better
 | knn - random search (vx10)           |     0.533823 |    0.0497677 |                        57566.9 |                   5.26613e+09 |            0.533823 |                   72568.1 | nan                        | nan                                                              |
 | knn (v10)                            |     0.484585 |    0.29179   |                        61764.2 |                   5.82234e+09 |            0.484585 |                   76304.2 | 2022-11-30 15:12:50.989371 | random search                                                    |
 | linear regression (ridge) (v10)      |     0.470806 |    0.239057  |                        62597.9 |                   5.97812e+09 |            0.470795 |                   77318.3 | 2022-12-01 19:50:08.050622 | random search                                                    |
+| neural network m02 two layers (v10)  |     0.452732 |  198.06      |                        63576.2 |                   6.18216e+09 |            0.452732 |                   78626.7 | 2023-01-03 12:29:49.352260 | loss=6.32e+09 valloss=6.36e+09 +valsplit=0.1 +patn=25            |
+
 ### Comparison with all model performances
 |                                                           |   best score |    best time |   Mean Absolute Error Accuracy |   Mean Squared Error Accuracy |   R square Accuracy |   Root Mean Squared Error | best run date              | best method                                                                                                            |
 |:----------------------------------------------------------|-------------:|-------------:|-------------------------------:|------------------------------:|--------------------:|--------------------------:|:---------------------------|:-----------------------------------------------------------------------------------------------------------------------|
@@ -95,6 +135,7 @@ not updated saved model, the previous run was better
 | knn (v11)                                                 |     0.465113 |    0.618877  |                62944.7         |                   6.0423e+09  |            0.465113 |           77732.2         | 2022-11-30 16:20:53.948815 | random search                                                                                                          |
 | linear regression (ridge) (v09)                           |     0.459973 |    0.132456  |                63343           |                   6.10037e+09 |            0.459973 |           78104.9         | 2023-01-02 00:17:19.098111 | rerun best: random search(-)                                                                                           |
 | linear regression (ridge) (v06)                           |     0.4569   |    0.28695   |                63603.1         |                   6.13521e+09 |            0.456889 |           78327.6         | 2022-12-03 19:20:52.874336 | random search                                                                                                          |
+| neural network m02 two layers (v10)                       |     0.452732 |  198.06      |                63576.2         |                   6.18216e+09 |            0.452732 |           78626.7         | 2023-01-03 12:29:49.352260 | loss=6.32e+09 valloss=6.36e+09 +valsplit=0.1 +patn=25                                                                  |
 | neural network m03 2 layers+wider (v09)                   |     0.4523   | 1822.49      |                64123.6         |                   6.24293e+09 |            0.447352 |           79012.2         | 2022-12-11 18:56:27.304803 | loss=6.38e+09 valloss=6.41e+09 +valsplit=0.1 +patn=25                                                                  |
 | linear regression (ridge) - random search (v05)           |     0.443478 |  nan         |                63770.7         |                   6.19128e+09 |            0.443478 |           78684.7         | nan                        | nan                                                                                                                    |
 | neural network with autoencoding m15 mega + dropout (v09) |     0.42689  | 1641.39      |                64379.5         |                   6.47409e+09 |            0.42689  |           80461.7         | 2022-12-21 01:26:33.005210 | loss=6.51e+04 valloss=6.52e+04 +valsplit=0.1 +patn=25 stop=214/400                                                     |
@@ -102,6 +143,7 @@ not updated saved model, the previous run was better
 | linear regression (ridge) - random search (v03)           |     0.326511 |  nan         |                70746.7         |                   7.49253e+09 |            0.326511 |           86559.4         | nan                        | nan                                                                                                                    |
 | linear regression (ridge) - random search (v04)           |     0.321224 |  nan         |                71834.4         |                   7.71252e+09 |            0.321224 |           87821           | nan                        | nan                                                                                                                    |
 | linear regression - basic (v01)                           |     0.29667  |  nan         |                72921.6         |                   8.29799e+09 |            0.29667  |           91093.3         | nan                        | nan                                                                                                                    |
+
 ## Appendix
 ### Data Sample
 |          |   Price |   bedrooms |   bathrooms |   nearestStation |   location.latitude |   location.longitude |   latitude_deviation |   longitude_deviation | tenure.tenureType   |   feature__1 bedroom |   feature__2 bedrooms |   feature__2 double bedrooms |   feature__allocated parking |   feature__allocated parking space |   feature__balcony |   feature__bathroom |   feature__chain free |   feature__close to local amenities |   feature__communal garden |   feature__communal gardens |   feature__double bedroom |   feature__double glazed |   feature__double glazing |   feature__epc rating c |   feature__epc rating d |   feature__excellent location |   feature__excellent transport links |   feature__family bathroom |   feature__first floor |   feature__fitted kitchen |   feature__garage |   feature__garden |   feature__gas central heating |   feature__great location |   feature__ground floor |   feature__kitchen |   feature__leasehold |   feature__long lease |   feature__modern bathroom |   feature__modern kitchen |   feature__no chain |   feature__no onward chain |   feature__off street parking |   feature__one bedroom |   feature__one double bedroom |   feature__parking |   feature__private balcony |   feature__private garden |   feature__private rear garden |   feature__reception room |   feature__separate kitchen |   feature__share of freehold |   feature__three bedrooms |   feature__three double bedrooms |   feature__top floor |   feature__two bathrooms |   feature__two bedrooms |   feature__two double bedrooms |   feature__two reception rooms |
@@ -111,25 +153,10 @@ not updated saved model, the previous run was better
 | 33593487 |  579950 |          2 |           1 |         0.438045 |             51.4472 |            -0.33877  |             0.05254  |              0.23435  | FREEHOLD            |                    0 |                     0 |                            1 |                            0 |                                  0 |                  0 |                   0 |                     0 |                                   0 |                          0 |                           0 |                         0 |                        0 |                         0 |                       0 |                       0 |                             0 |                                    0 |                          0 |                      0 |                         0 |                 0 |                 0 |                              0 |                         0 |                       0 |                  0 |                    0 |                     0 |                          0 |                         0 |                   0 |                          1 |                             0 |                      0 |                             0 |                  0 |                          0 |                         0 |                              0 |                         0 |                           0 |                            0 |                         0 |                                0 |                    0 |                        0 |                       0 |                              0 |                              0 |
 | 35271294 |  370000 |          2 |           1 |         0.399307 |             51.4496 |            -0.140154 |             0.050152 |              0.035734 | LEASEHOLD           |                    0 |                     0 |                            0 |                            0 |                                  0 |                  1 |                   0 |                     0 |                                   0 |                          0 |                           0 |                         0 |                        0 |                         1 |                       0 |                       0 |                             0 |                                    0 |                          0 |                      0 |                         0 |                 0 |                 0 |                              0 |                         1 |                       0 |                  0 |                    0 |                     0 |                          0 |                         0 |                   0 |                          0 |                             0 |                      0 |                             0 |                  0 |                          0 |                         0 |                              0 |                         0 |                           0 |                            0 |                         0 |                                0 |                    0 |                        0 |                       0 |                              0 |                              0 |
 | 44749111 |  475000 |          2 |           1 |         0.41055  |             51.37   |            -0.21241  |             0.12967  |              0.10799  | FREEHOLD            |                    0 |                     0 |                            0 |                            0 |                                  0 |                  0 |                   0 |                     0 |                                   0 |                          0 |                           0 |                         0 |                        0 |                         0 |                       0 |                       0 |                             0 |                                    0 |                          0 |                      0 |                         1 |                 0 |                 0 |                              0 |                         0 |                       0 |                  0 |                    0 |                     0 |                          0 |                         0 |                   0 |                          0 |                             0 |                      0 |                             0 |                  0 |                          0 |                         0 |                              0 |                         0 |                           0 |                            0 |                         0 |                                0 |                    0 |                        0 |                       0 |                              0 |                              0 |
-### Hyperparameter options for Randomized Grid Search
-model__alpha = [1e-05, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000]
 
-model__fit_intercept = [True, False]
+### FIX THIS!!
+FIX THIS!
 
-model__max_iter = [10000, 1000, 100, 100000, 1000000]
-
-model__positive = [False]
-
-model__copy_X = [True, False]
-
-model__solver = ['auto', 'svd', 'cholesky', 'lsqr', 'sparse_cg', 'sag', 'saga', 'lbfgs']
-
-model__tol = [1e-05, 0.0001, 0.001, 0.01]
-
-model__random_state = [101]
-
-### Range of hyperparameter results
-![detail](../artifacts/linear_regression__ridge___v10__evolution_of_models_fig.png)
 ### Environment Variables
 notebook_environment = gradient
 
@@ -144,4 +171,7 @@ quick_override_cv_splits = 2
 quick_override_n_iter = 10
 
 quick_override_n_jobs = 3
+
+### Useful info
+Tensorflow version: 2.9.1
 

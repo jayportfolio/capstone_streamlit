@@ -12,8 +12,10 @@
 # * what fraction of the data we'll use for testing (0.1)
 # * if the data split will be randomised (it won't!)
 
-# In[1]:
+# In[20]:
 
+
+FILENAME = 'neural_networks_model'
 
 #ALGORITHM = 'Neural Network'
 ALGORITHM = 'Neural Network [TYPE]'
@@ -22,7 +24,9 @@ ALGORITHM_DETAIL_ORIG = ALGORITHM_DETAIL
 #ALGORITHM_DETAIL += ' tbc'
 DATA_DETAIL = []
 #DATA_DETAIL = ['no scale','no dummies']
-VERSION = '11'
+VERSION = '10'
+
+force_quick_mode = False
 
 RANDOM_STATE = 101
 TRAINING_SIZE = 0.9
@@ -89,7 +93,7 @@ create_python_script = True
 # 
 # 
 
-# In[2]:
+# In[21]:
 
 
 import os
@@ -105,7 +109,7 @@ if is_jupyter:
     get_ipython().system('pip install tabulate')
 
 
-# In[3]:
+# In[22]:
 
 
 from sklearn.impute import SimpleImputer
@@ -150,7 +154,7 @@ else:
 
 use_gpu = env_vars.get('use_gpu', False)
 debug_mode = env_vars.get('debug_mode', False)
-quick_mode = env_vars.get('quick_mode', False)
+quick_mode = env_vars.get('quick_mode', False) | force_quick_mode
 OVERRIDE_CV = env_vars.get('quick_override_cv_splits', None) if quick_mode else None
 OVERRIDE_N_ITER = env_vars.get('quick_override_n_iter', None) if quick_mode else None
 OVERRIDE_JOBS = env_vars.get('quick_override_n_jobs', None) if quick_mode else None
@@ -188,7 +192,7 @@ print(env_vars)
 
 # #### Include any overrides specific to the algorthm / python environment being used
 
-# In[4]:
+# In[23]:
 
 
 #running_locally = True
@@ -201,7 +205,7 @@ running_locally = run_env == 'local'
 # 
 # 
 
-# In[5]:
+# In[24]:
 
 
 from sklearn.pipeline import Pipeline
@@ -534,14 +538,14 @@ def make_simple_ann(key, inputs=-1):
 # ## Stage: get the data
 # 
 
-# In[6]:
+# In[25]:
 
 
 columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 LABEL = 'Price'
 
 
-# In[7]:
+# In[26]:
 
 
 df, retrieval_type = get_source_dataframe(cloud_run, VERSION, folder_prefix='../../../', row_limit=None)
@@ -555,7 +559,7 @@ if retrieval_type != 'tidy':
     df = df[columns]
 
 
-# In[8]:
+# In[27]:
 
 
 print(colored(f"features", "blue"), "-> ", columns)
@@ -563,14 +567,14 @@ columns.insert(0, LABEL)
 print(colored(f"label", "green", None, ['bold']), "-> ", LABEL)
 
 
-# In[9]:
+# In[28]:
 
 
 df = preprocess(df, version=VERSION)
 df = df.dropna()
 
 
-# In[10]:
+# In[29]:
 
 
 df['Price'] = df['Price'] / price_divisor # potentially making the price smaller to make the ANN perform better
@@ -578,7 +582,7 @@ df['Price'] = df['Price'] / price_divisor # potentially making the price smaller
 df.head(30)
 
 
-# In[11]:
+# In[30]:
 
 
 X_train, X_test, y_train, y_test, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
@@ -604,15 +608,16 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 # 
 # 
 
-# In[ ]:
+# In[31]:
 
 
 trainable_model, ALGORITHM_DETAIL, chosen_epochs, chosen_params = make_simple_ann(selected_neural_network)
 
+if quick_mode: chosen_epochs=20
 ALGORITHM_DETAIL
 
 
-# In[ ]:
+# In[32]:
 
 
 print("selected_neural_network",selected_neural_network)
@@ -1086,17 +1091,27 @@ print('Nearly finished...')
 
 
 if create_python_script and is_jupyter:
-    get_ipython().system("jupyter nbconvert --to script 'neural_networks_model.ipynb'")
+    filename = FILENAME+'.ipynb'
+    get_ipython().system('jupyter nbconvert --to script $filename')
+
+
+# In[ ]:
+
+
+print(f'ALGORITHM: {ALGORITHM}')
+print(f'ALGORITHM_DETAIL: {ALGORITHM_DETAIL}')
+print(f'DATA VERSION: {VERSION}')
+print(f'DATA_DETAIL: {DATA_DETAIL}')
+print()
+print(f'Verdict: {new_model_decision}')
+print(f'Start Timestamp: {start}')
+print(f'End Timestamp: {datetime.now()}')
+
+print(f'FILENAME: {FILENAME}')
 
 
 # In[ ]:
 
 
 print('Finished!')
-
-
-# In[ ]:
-
-
-
 
