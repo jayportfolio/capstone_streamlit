@@ -756,7 +756,7 @@ best_model_ax.set_xlabel('Actual')
 plt.show()
 
 
-# In[ ]:
+# In[137]:
 
 
 if not using_catboost:
@@ -812,7 +812,7 @@ if not using_catboost:
     best_model_scores[-1] = fitted_graph_model.score(X_test, y_test)
 
 
-# In[ ]:
+# In[138]:
 
 
 if not using_catboost:
@@ -874,7 +874,7 @@ if not using_catboost:
     plt.show()
 
 
-# In[ ]:
+# In[139]:
 
 
 if not using_catboost:
@@ -920,7 +920,7 @@ if not using_catboost:
 # 
 # 
 
-# In[ ]:
+# In[140]:
 
 
 # <catboost.core.CatBoostRegressor object at 0x7fb167387490>
@@ -964,13 +964,13 @@ print(key)
 new_results
 
 
-# In[ ]:
+# In[141]:
 
 
 crossval_runner.best_estimator_ if not using_catboost else ''
 
 
-# In[ ]:
+# In[142]:
 
 
 if this_model_is_best:
@@ -992,7 +992,7 @@ print(new_model_decision)
 # ## Stage: Investigate the feature importances (if applicable)
 # 
 
-# In[ ]:
+# In[143]:
 
 
 if model_uses_feature_importances:
@@ -1016,7 +1016,7 @@ else:
     print(f'{ALGORITHM} does not have feature_importances, skipping')
 
 
-# In[ ]:
+# In[144]:
 
 
 if model_uses_feature_importances:
@@ -1034,7 +1034,7 @@ else:
 # 
 # ## Stage: Write the final report for this algorithm and dataset version
 
-# In[ ]:
+# In[145]:
 
 
 from bs4 import BeautifulSoup
@@ -1236,13 +1236,13 @@ def print_and_report(text_single, title):
 
 
 
-# In[ ]:
+# In[146]:
 
 
 print('Nearly finished...')
 
 
-# In[ ]:
+# In[147]:
 
 
 if create_python_script and is_jupyter:
@@ -1250,7 +1250,7 @@ if create_python_script and is_jupyter:
     get_ipython().system('jupyter nbconvert --to script $filename')
 
 
-# In[ ]:
+# In[148]:
 
 
 print(f'ALGORITHM: {ALGORITHM}')
@@ -1268,7 +1268,7 @@ print(f'End Timestamp: {datetime.now()}')
 print(f'FILENAME: {FILENAME}')
 
 
-# In[ ]:
+# In[149]:
 
 
 print('Finished!')

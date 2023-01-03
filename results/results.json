@@ -1945,7 +1945,7 @@
             "model__verbosity": 2
         },
         "_score": 0.5986551673008995,
-        "_train time": 26.494011163711548,
+        "_train time": 23.34439492225647,
         "best is shared": false,
         "best method": "custom",
         "best params": {
@@ -1969,7 +1969,7 @@
         "best run date": "2023-01-02 17:58:16.959076",
         "best score": 0.7263637388413389,
         "best time": 69.30604219436646,
-        "date": "2023-01-02 19:39:49.954731",
+        "date": "2023-01-02 23:11:24.257568",
         "first run": "2023-01-02 01:31:00.393253",
         "random_state": 101,
         "run_env": "gradient",
