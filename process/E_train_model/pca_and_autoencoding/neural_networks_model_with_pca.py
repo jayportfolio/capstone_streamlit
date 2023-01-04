@@ -12,10 +12,10 @@
 # * what fraction of the data we'll use for testing (0.1)
 # * if the data split will be randomised (it won't!)
 
-# In[55]:
+# In[32]:
 
 
-FILENAME = 'neural_networks_model'
+FILENAME = 'neural_networks_model_with_pca'
 
 #ALGORITHM = 'Neural Network'
 ALGORITHM = 'Neural Network [TYPE]'
@@ -25,6 +25,11 @@ ALGORITHM_DETAIL_ORIG = ALGORITHM_DETAIL
 DATA_DETAIL = []
 #DATA_DETAIL = ['no scale','no dummies']
 VERSION = '11'
+
+use_dimension_reduction = True
+pca_data_retain = 0.9999999
+pca_data_retain = 0.95
+
 
 force_quick_mode = False #True
 
@@ -93,7 +98,7 @@ create_python_script = True
 # 
 # 
 
-# In[56]:
+# In[33]:
 
 
 import os
@@ -109,7 +114,7 @@ if is_jupyter:
     get_ipython().system('pip install tabulate')
 
 
-# In[57]:
+# In[34]:
 
 
 from sklearn.impute import SimpleImputer
@@ -193,7 +198,7 @@ start = datetime.now()
 
 # #### Include any overrides specific to the algorthm / python environment being used
 
-# In[58]:
+# In[35]:
 
 
 #running_locally = True
@@ -206,7 +211,7 @@ running_locally = run_env == 'local'
 # 
 # 
 
-# In[59]:
+# In[36]:
 
 
 from sklearn.pipeline import Pipeline
@@ -227,6 +232,12 @@ loss_dict = {
             }
 
 def make_simple_ann(key, inputs=-1):
+    
+    batch_size = 32
+    epochs = 400
+    learn_rate = 0.0003 # 0.003 #0.3
+    chosen_loss = 'mean_squared_error'
+    
     if False:
         pass
     elif key == 'quite simple':
@@ -234,7 +245,7 @@ def make_simple_ann(key, inputs=-1):
         new_algorithm_detail = ALGORITHM_DETAIL_ORIG + 'quite simple model + normalise, mse'
 
         learn_rate = 0.1
-        epochs, chosen_loss = 100, 'mean_squared_error'
+        chosen_loss ='mean_squared_error'
 
         normalizer = tf.keras.layers.Normalization(axis=-1)
         normalizer.adapt(np.array(X_train))
@@ -246,9 +257,6 @@ def make_simple_ann(key, inputs=-1):
         ])
 
     elif key == 'recommended simple v1':
-
-        learn_rate = 0.003 #0.3
-        epochs, chosen_loss = 50, 'mean_squared_error'
 
         new_algorithm_detail = ALGORITHM_DETAIL_ORIG + 'recommended simple model/mse'
 
@@ -263,9 +271,6 @@ def make_simple_ann(key, inputs=-1):
 
     elif key == 'm02 two layers':
 
-        learn_rate = 0.003 #0.3
-        epochs, chosen_loss = 500, 'mean_squared_error'
-
         normalizer = tf.keras.layers.Normalization(axis=-1)
         normalizer.adapt(np.array(X_train))
 
@@ -279,9 +284,6 @@ def make_simple_ann(key, inputs=-1):
 
     elif key == 'm03 2 layers+wider':
 
-        learn_rate = 0.0003 # 0.003 #0.3
-        epochs, chosen_loss = 500, 'mean_squared_error'
-
         normalizer = tf.keras.layers.Normalization(axis=-1)
         normalizer.adapt(np.array(X_train))
 
@@ -293,9 +295,6 @@ def make_simple_ann(key, inputs=-1):
         ])
 
     elif key == 'm04 3 layers+wider':
-
-        learn_rate = 0.003
-        epochs, chosen_loss = 500, 'mean_squared_error'
 
         normalizer = tf.keras.layers.Normalization(axis=-1)
         normalizer.adapt(np.array(X_train))
@@ -310,21 +309,14 @@ def make_simple_ann(key, inputs=-1):
 
     elif key == 'm0x four layers,wider,batchnorm':
 
-        learn_rate = 0.0003 #0.3
-        epochs, chosen_loss = 500, 'mean_squared_error'
-
-        #from layers.normalization import BatchNormalization
-
         normalizer = tf.keras.layers.Normalization(axis=-1)
         batchnorm = layers.BatchNormalization()
         activation = layers.Activation('relu')
 
         normalizer.adapt(np.array(X_train))
-        #new_algorithm_detail += ' +norm'
 
         chosen_model = tf.keras.Sequential([
             layers.Dense(X_train.shape[1], input_shape=(X_train.shape[1],), activation='relu'),
-            #normalizer,
             layers.Dense(30, activation='relu'),
             batchnorm,
             activation,
@@ -347,12 +339,6 @@ def make_simple_ann(key, inputs=-1):
         # The Output Layer :
         chosen_model.add(Dense(1, kernel_initializer='normal',activation='linear'))
 
-        # Compile the network :
-        #chosen_model.compile(loss='mean_squared_error', optimizer='adam', metrics=['mean_squared_error'])
-
-        learn_rate = 0.0003 #0.3
-        epochs, chosen_loss = 500, 'mean_squared_error'
-
     elif key == 'm11 mega':
         chosen_model = Sequential()
 
@@ -371,12 +357,6 @@ def make_simple_ann(key, inputs=-1):
 
         # The Output Layer :
         chosen_model.add(Dense(1, kernel_initializer='normal',activation='linear'))
-
-        # Compile the network :
-        #chosen_model.compile(loss='mean_squared_error', optimizer='adam', metrics=['mean_squared_error'])
-
-        learn_rate = 0.0003
-        epochs, chosen_loss = 400, 'mean_squared_error'
 
     elif key == 'm12 mega':
         chosen_model = Sequential()
@@ -398,8 +378,6 @@ def make_simple_ann(key, inputs=-1):
         # Compile the network :
         #chosen_model.compile(loss='mean_squared_error', optimizer='adam', metrics=['mean_squared_error'])
 
-        learn_rate = 0.0003
-        epochs, chosen_loss = 400, 'mean_squared_error'
     elif key == 'm13 mega':
         normalizer = tf.keras.layers.Normalization(axis=-1)
         normalizer.adapt(np.array(X_train))
@@ -423,8 +401,6 @@ def make_simple_ann(key, inputs=-1):
         # The Output Layer :
         chosen_model.add(Dense(1, kernel_initializer='normal',activation='linear'))
 
-        learn_rate = 0.0003
-        epochs = 400
         chosen_loss = 'mean_absolute_error' # 'mean_squared_error'
 
     elif key == 'm14 mega':
@@ -463,8 +439,6 @@ def make_simple_ann(key, inputs=-1):
         # The Output Layer :
         chosen_model.add(Dense(1, kernel_initializer='normal',activation='linear'))
 
-        learn_rate = 0.0003
-        epochs = 400
         chosen_loss = 'mean_absolute_error' # 'mean_squared_error'
 
     elif key == "m15 mega + dropout":
@@ -510,7 +484,8 @@ def make_simple_ann(key, inputs=-1):
         chosen_model.add(Dense(1, kernel_initializer='normal',activation='linear'))
 
         learn_rate = 0.0003
-        epochs = 400
+        epochs = 800
+        batch_size = 64 #128
         chosen_loss = 'mean_absolute_error' # 'mean_squared_error'
 
     else:
@@ -528,8 +503,9 @@ def make_simple_ann(key, inputs=-1):
     new_algorithm_detail = ALGORITHM_DETAIL_ORIG + loss_dict[chosen_loss]
     new_algorithm_detail += f' +epochs={epochs}'
     new_algorithm_detail += f' +learn={learn_rate}'
+    new_algorithm_detail += f' +batch={batch_size}'
 
-    return chosen_model, new_algorithm_detail, epochs, {'learning_rate':learn_rate}
+    return chosen_model, new_algorithm_detail, {'learning_rate':learn_rate, 'epochs':epochs, 'batch_size': batch_size}
 
 #make_simple_ann('m04 four layers,wider,batchnorm')
 
@@ -539,14 +515,14 @@ def make_simple_ann(key, inputs=-1):
 # ## Stage: get the data
 # 
 
-# In[60]:
+# In[37]:
 
 
 columns, booleans, floats, categories, custom, wildcard = get_columns(version=VERSION)
 LABEL = 'Price'
 
 
-# In[61]:
+# In[38]:
 
 
 df, retrieval_type = get_source_dataframe(cloud_run, VERSION, folder_prefix='../../../', row_limit=None)
@@ -560,7 +536,7 @@ if retrieval_type != 'tidy':
     df = df[columns]
 
 
-# In[62]:
+# In[39]:
 
 
 print(colored(f"features", "blue"), "-> ", columns)
@@ -568,14 +544,14 @@ columns.insert(0, LABEL)
 print(colored(f"label", "green", None, ['bold']), "-> ", LABEL)
 
 
-# In[63]:
+# In[40]:
 
 
 df = preprocess(df, version=VERSION)
 df = df.dropna()
 
 
-# In[64]:
+# In[41]:
 
 
 df['Price'] = df['Price'] / price_divisor # potentially making the price smaller to make the ANN perform better
@@ -583,10 +559,15 @@ df['Price'] = df['Price'] / price_divisor # potentially making the price smaller
 df.head(30)
 
 
-# In[65]:
+# <code
+# style = "background:red;color:red" > ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** </code>
+# 
+# ## NEW Stage: do autoencoding
+
+# In[42]:
 
 
-X_train, X_test, y_train, y_test, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
+X_train_orig, X_test_orig, y_train_orig, y_test_orig, X_train_index, X_test_index, y_train_index, y_test_index, df_features, df_labels = create_train_test_data(
     df,
     categories=categories,
     RANDOM_STATE=RANDOM_STATE, return_index=True,
@@ -594,12 +575,60 @@ X_train, X_test, y_train, y_test, X_train_index, X_test_index, y_train_index, y_
     no_dummies=no_dummies
 )
 
+if 'forest' in ALGORITHM.lower() or ALGORITHM.lower() == 'light gradient boosting':
+    #y_train_orig = y_train
+    y_train_orig = y_train_orig.ravel()
+
 #print(X_train[0])
 print(df.shape)
-print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.shape, X_test_index.shape,
+print(X_train_orig.shape, X_test_orig.shape, y_train_orig.shape, y_test_orig.shape, X_train_index.shape,
+      X_test_index.shape,
       y_train_index.shape, y_test_index.shape)
 
 
+
+# In[43]:
+
+
+if not use_dimension_reduction:
+    print(DATA_DETAIL)
+    DATA_DETAIL = [] # DATA_DETAIL.remove('pca')
+    print(DATA_DETAIL)
+else:
+    print(DATA_DETAIL)
+    DATA_DETAIL = ['pca'] # DATA_DETAIL.append('pca')
+    DATA_DETAIL.append(str(round(pca_data_retain,4))+"% retain")
+    print(DATA_DETAIL)
+
+if use_dimension_reduction:
+
+    from sklearn.decomposition import PCA
+
+    pca = PCA()
+    pca.fit(X_train_orig)
+    cumsum = np.cumsum(pca.explained_variance_ratio_)
+    d = np.argmax(cumsum >= pca_data_retain) + 1
+    print("preserve this many features:", d, "out of", X_train_orig.shape[1])
+
+    pca = PCA(n_components=pca_data_retain)
+    X_train = pca.fit_transform(X_train_orig)
+    X_test =  pca.transform(X_test_orig)
+    y_train = y_train_orig
+    y_test = y_test_orig
+else:
+    X_train, X_test, y_train, y_test = X_train_orig, X_test_orig, y_train_orig, y_test_orig
+
+
+# In[ ]:
+
+
+
+
+
+# End of dimensionality reduction segment
+# 
+# <code
+# style = "background:black;color:black" > ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** </code>
 
 # <code style="background:blue;color:blue">**********************************************************************************************************</code>
 # 
@@ -609,27 +638,30 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape, X_train_index.sh
 # 
 # 
 
-# In[66]:
+# In[44]:
 
 
-trainable_model, ALGORITHM_DETAIL, chosen_epochs, chosen_params = make_simple_ann(selected_neural_network)
+trainable_model, ALGORITHM_DETAIL, chosen_params = make_simple_ann(selected_neural_network)
+
+chosen_epochs = chosen_params['epochs']
+chosen_batch_size = chosen_params['batch_size']
 
 if quick_mode: chosen_epochs=20
 ALGORITHM_DETAIL
 
 
-# In[67]:
+# In[45]:
 
 
 print("selected_neural_network",selected_neural_network)
 trainable_model.summary()
 
 
-# In[68]:
+# In[ ]:
 
 
 val_split = 0.1
-min_delta=0 #10, #50, #10, #50,
+min_delta=50 #10 #0 #10, #50, #10, #50,
 val_delta_patience = 25 # 10
 
 # https://keras.io/api/callbacks/early_stopping/
@@ -654,12 +686,14 @@ history = trainable_model.fit(
     # Calculate validation results on 20% of the training data.
     validation_split=val_split,  #0.2,
     callbacks=[callback],
+    #batch_size=32,
+    batch_size=chosen_batch_size,
 )
 pipe_end = time()
 estimated_time = round((pipe_end - pipe_start), 2)
 
 
-# In[69]:
+# In[ ]:
 
 
 #ALGORITHM_DETAIL.replace("epochs=", f"epochs={len(hist)}/")
@@ -671,7 +705,7 @@ estimated_time = round((pipe_end - pipe_start), 2)
 # 
 # 
 
-# In[70]:
+# In[ ]:
 
 
 hist = pd.DataFrame(history.history)
@@ -715,6 +749,34 @@ hist.tail()
 
 
 
+
+
+# In[ ]:
+
+
+def plot_loss(history):
+    loss_fig, loss_ax = plt.subplots()
+    loss_ax.plot(history.history['loss'], label='loss')
+    loss_ax.plot(history.history['val_loss'], label='val_loss')
+    #plt.ylim([0, 10])
+    min_y = min(min(history.history['val_loss']),min(history.history['loss'])) - 100
+    #max_y = min(max(history.history['val_loss']),max(history.history['loss'])) + 500
+    #max_y = min(sorted(history.history['val_loss'])[-3],sorted(history.history['loss'])[-3]) + 100
+    max_y = min(sorted(history.history['val_loss'])[-1],sorted(history.history['val_loss'])[-1])
+    
+    print(max_y - min_y)
+    ticks = (max_y - min_y)/10
+    print(ticks)
+    
+    plt.ylim([min_y, max_y])
+    plt.xlabel('Epoch')
+    plt.ylabel('Error [Property Price]')
+    plt.legend()
+    plt.grid(True)
+    plt.yticks(np.arange(min_y, max_y, ticks))  # JHJH
+    return loss_fig, loss_ax
+
+loss_fig, loss_ax = plot_loss(history)
 
 
 # In[ ]:
@@ -869,7 +931,7 @@ if this_model_is_best and latest_score > 0.55:
         new_model_decision = f"pickled new version of model\n{latest_score} is new best score (it's better than {old_best_score})"
         #print(results_json[key]['_score'], 'is an improvement on', results_json[key]['second best score'])
 elif latest_score <= 0.55:
-    new_model_decision = f"not updated saved model, the score {latest_score} doesn't exceed the threshold of 0.55"
+    new_model_decision = f"not updated saved model, the score {latest_score} doesn't exceed the threshold of 0.6 (n.b. best version is/was {old_best_score}))"
 else:
     new_model_decision = f"not updated saved model, the previous run was better\n{old_results_json[key]['_score']} is worse than or equal to {old_best_score}"
 
@@ -1107,6 +1169,8 @@ print(f'ALGORITHM: {ALGORITHM}')
 print(f'ALGORITHM_DETAIL: {ALGORITHM_DETAIL}')
 print(f'DATA VERSION: {VERSION}')
 print(f'DATA_DETAIL: {DATA_DETAIL}')
+print(f'use_dimension_reduction: {use_dimension_reduction}')
+print(f'pca_data_retain: {pca_data_retain}')
 print()
 print(f'Verdict: {new_model_decision}')
 print(f'Start Timestamp: {start}')
