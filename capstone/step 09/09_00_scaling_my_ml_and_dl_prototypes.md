@@ -21,6 +21,9 @@ hyperparameters while ensuring my model does not suffer from overfitting.
 My main focus was xgboost since it was the most consistently well performing model. I also included neural networks when scaling my data, to see if I could create a deep learning model capable of outperforming my best performing non-neural network. 
 
 I also experimented with using autoencoders and pca to perform dimensionality reduction, in the hope that it would improve the overall performance of the model. However the results were systemically better when using the data without dimensionality reduction using either autoencoding or Principal Component Analysis.
+[all_models_except_neural_networks_with_autoencoding.ipynb](..%2F..%2Fprocess%2FE_train_model%2Fpca_and_autoencoding%2Fall_models_except_neural_networks_with_autoencoding.ipynb)
+[all_models_except_neural_networks_with_pca.py](..%2F..%2Fprocess%2FE_train_model%2Fpca_and_autoencoding%2Fall_models_except_neural_networks_with_pca.py)
+[neural_networks_model_with_pca.py](..%2F..%2Fprocess%2FE_train_model%2Fpca_and_autoencoding%2Fneural_networks_model_with_pca.py)
 
 ## Results
 
