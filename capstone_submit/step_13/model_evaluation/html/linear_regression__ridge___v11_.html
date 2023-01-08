@@ -1,0 +1,791 @@
+<h1>Results from Linear Regression (Ridge)</h1><h3>Dataset Version: 11</h3>Date run: 2023-01-08 12:58:43.669131<br>Start time: 2023-01-08 12:58:04.674631<br>End time: 2023-01-08 12:58:43.669119<br><hr><h2>Results</h2><h3>Summary</h3>pickled new version of model
+0.4843016956392443 is new best score (it's better than -999)<br><hr><h3>Tuned Models ranked by performance, with parameter details</h3><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean_test_score</th>
+      <th>mean_fit_time</th>
+      <th>mean_score_time</th>
+      <th>param_model__tol</th>
+      <th>param_model__solver</th>
+      <th>param_model__random_state</th>
+      <th>param_model__positive</th>
+      <th>param_model__max_iter</th>
+      <th>param_model__fit_intercept</th>
+      <th>param_model__copy_X</th>
+      <th>param_model__alpha</th>
+      <th>params2</th>
+    </tr>
+    <tr>
+      <th>rank_test_score</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.481372</td>
+      <td>3.499237</td>
+      <td>0.014203</td>
+      <td>0.00001</td>
+      <td>saga</td>
+      <td>101</td>
+      <td>False</td>
+      <td>10000</td>
+      <td>True</td>
+      <td>True</td>
+      <td>100</td>
+      <td>1e-05/saga/101/False/10000/True/True/100</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.481370</td>
+      <td>0.167658</td>
+      <td>0.042031</td>
+      <td>0.00001</td>
+      <td>lsqr</td>
+      <td>101</td>
+      <td>False</td>
+      <td>10000</td>
+      <td>True</td>
+      <td>False</td>
+      <td>10</td>
+      <td>1e-05/lsqr/101/False/10000/True/False/10</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.481368</td>
+      <td>0.382350</td>
+      <td>0.023779</td>
+      <td>0.00001</td>
+      <td>auto</td>
+      <td>101</td>
+      <td>False</td>
+      <td>100</td>
+      <td>True</td>
+      <td>True</td>
+      <td>0.01</td>
+      <td>1e-05/auto/101/False/100/True/True/0.01</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.481368</td>
+      <td>0.115627</td>
+      <td>0.021727</td>
+      <td>0.00001</td>
+      <td>auto</td>
+      <td>101</td>
+      <td>False</td>
+      <td>10000</td>
+      <td>True</td>
+      <td>True</td>
+      <td>0.01</td>
+      <td>1e-05/auto/101/False/10000/True/True/0.01</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.481368</td>
+      <td>1.057640</td>
+      <td>0.021763</td>
+      <td>0.001</td>
+      <td>svd</td>
+      <td>101</td>
+      <td>False</td>
+      <td>10000</td>
+      <td>True</td>
+      <td>True</td>
+      <td>0.01</td>
+      <td>0.001/svd/101/False/10000/True/True/0.01</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.481361</td>
+      <td>1.201894</td>
+      <td>0.012227</td>
+      <td>0.001</td>
+      <td>sag</td>
+      <td>101</td>
+      <td>False</td>
+      <td>100000</td>
+      <td>True</td>
+      <td>False</td>
+      <td>0.0001</td>
+      <td>0.001/sag/101/False/100000/True/False/0.0001</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.481097</td>
+      <td>0.277380</td>
+      <td>0.034535</td>
+      <td>0.01</td>
+      <td>lsqr</td>
+      <td>101</td>
+      <td>False</td>
+      <td>100</td>
+      <td>True</td>
+      <td>False</td>
+      <td>0.1</td>
+      <td>0.01/lsqr/101/False/100/True/False/0.1</td>
+    </tr>
+  </tbody>
+</table><hr><h3>Best and worst models obtained by tuning</h3><img src="../artifacts/linear_regression__ridge___v11__best_and_worst.png"/><hr><h3>Best Model: Comparing model predictions to actual property values</h3><img src="../artifacts/linear_regression__ridge___v11__best_model_correlation.png"/><hr><h2>Comparison with other models</h2><h3>Comparison with version 11 performances</h3><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>best score</th>
+      <th>best time</th>
+      <th>Mean Absolute Error Accuracy</th>
+      <th>Mean Squared Error Accuracy</th>
+      <th>R square Accuracy</th>
+      <th>Root Mean Squared Error</th>
+      <th>best run date</th>
+      <th>best method</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>linear regression (ridge) (v11)</th>
+      <td>0.484302</td>
+      <td>2.038143</td>
+      <td>61567.490155</td>
+      <td>5825537228.148832</td>
+      <td>0.484302</td>
+      <td>76325.20703</td>
+      <td>2023-01-08 12:58:43.144331</td>
+      <td>random search</td>
+    </tr>
+  </tbody>
+</table><hr><h3>Comparison with all model performances</h3><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>best score</th>
+      <th>best time</th>
+      <th>Mean Absolute Error Accuracy</th>
+      <th>Mean Squared Error Accuracy</th>
+      <th>R square Accuracy</th>
+      <th>Root Mean Squared Error</th>
+      <th>best run date</th>
+      <th>best method</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>linear regression (ridge) (v11)</th>
+      <td>0.484302</td>
+      <td>2.038143</td>
+      <td>61567.490155</td>
+      <td>5825537228.148832</td>
+      <td>0.484302</td>
+      <td>76325.20703</td>
+      <td>2023-01-08 12:58:43.144331</td>
+      <td>random search</td>
+    </tr>
+  </tbody>
+</table><hr><h2>Appendix</h2><h3>Data Sample</h3><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Price</th>
+      <th>bedrooms</th>
+      <th>bathrooms</th>
+      <th>nearestStation</th>
+      <th>location.latitude</th>
+      <th>location.longitude</th>
+      <th>latitude_deviation</th>
+      <th>longitude_deviation</th>
+      <th>tenure.tenureType</th>
+      <th>feature__1 bedroom</th>
+      <th>feature__2 bedrooms</th>
+      <th>feature__2 double bedrooms</th>
+      <th>feature__allocated parking</th>
+      <th>feature__allocated parking space</th>
+      <th>feature__balcony</th>
+      <th>feature__bathroom</th>
+      <th>feature__chain free</th>
+      <th>feature__close to local amenities</th>
+      <th>feature__communal garden</th>
+      <th>feature__communal gardens</th>
+      <th>feature__double bedroom</th>
+      <th>feature__double glazed</th>
+      <th>feature__double glazing</th>
+      <th>feature__epc rating c</th>
+      <th>feature__epc rating d</th>
+      <th>feature__excellent location</th>
+      <th>feature__excellent transport links</th>
+      <th>feature__family bathroom</th>
+      <th>feature__first floor</th>
+      <th>feature__fitted kitchen</th>
+      <th>feature__garage</th>
+      <th>feature__garden</th>
+      <th>feature__gas central heating</th>
+      <th>feature__great location</th>
+      <th>feature__ground floor</th>
+      <th>feature__kitchen</th>
+      <th>feature__leasehold</th>
+      <th>feature__long lease</th>
+      <th>feature__modern bathroom</th>
+      <th>feature__modern kitchen</th>
+      <th>feature__no chain</th>
+      <th>feature__no onward chain</th>
+      <th>feature__off street parking</th>
+      <th>feature__one bedroom</th>
+      <th>feature__one double bedroom</th>
+      <th>feature__parking</th>
+      <th>feature__private balcony</th>
+      <th>feature__private garden</th>
+      <th>feature__private rear garden</th>
+      <th>feature__reception room</th>
+      <th>feature__separate kitchen</th>
+      <th>feature__share of freehold</th>
+      <th>feature__three bedrooms</th>
+      <th>feature__three double bedrooms</th>
+      <th>feature__top floor</th>
+      <th>feature__two bathrooms</th>
+      <th>feature__two bedrooms</th>
+      <th>feature__two double bedrooms</th>
+      <th>feature__two reception rooms</th>
+      <th>feature__2__garden</th>
+      <th>feature__2__central heating</th>
+      <th>feature__2__parking</th>
+      <th>feature__2__off road</th>
+      <th>feature__2__shower</th>
+      <th>feature__2__cavity wall insulation</th>
+      <th>feature__2__wall insulation</th>
+      <th>feature__2__insulation</th>
+      <th>feature__2__insulat</th>
+      <th>feature__2__dining room</th>
+      <th>feature__2__garage</th>
+      <th>feature__2__en-suite</th>
+      <th>feature__2__en suite</th>
+      <th>feature__2__penthouse</th>
+      <th>feature__2__balcony</th>
+      <th>feature__2__double-glazing</th>
+      <th>feature__2__double glazing</th>
+      <th>feature__2__off-road parking</th>
+      <th>feature__2__security</th>
+      <th>feature__2__patio</th>
+      <th>feature__2__underfloor heating</th>
+      <th>feature__2__marble</th>
+    </tr>
+    <tr>
+      <th>iddd</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>14520525</th>
+      <td>550000.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>0.274316</td>
+      <td>51.529950</td>
+      <td>-0.207020</td>
+      <td>0.030230</td>
+      <td>0.102600</td>
+      <td>LEASEHOLD</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>27953107</th>
+      <td>400000.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0.305845</td>
+      <td>51.549390</td>
+      <td>-0.482600</td>
+      <td>0.049670</td>
+      <td>0.378180</td>
+      <td>LEASEHOLD</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>33593487</th>
+      <td>579950.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.438045</td>
+      <td>51.447180</td>
+      <td>-0.338770</td>
+      <td>0.052540</td>
+      <td>0.234350</td>
+      <td>FREEHOLD</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>35271294</th>
+      <td>370000.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.399307</td>
+      <td>51.449568</td>
+      <td>-0.140154</td>
+      <td>0.050152</td>
+      <td>0.035734</td>
+      <td>LEASEHOLD</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>44749111</th>
+      <td>475000.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.410550</td>
+      <td>51.370050</td>
+      <td>-0.212410</td>
+      <td>0.129670</td>
+      <td>0.107990</td>
+      <td>FREEHOLD</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table><hr><h3>Hyperparameter options for Randomized Grid Search</h3>{'model__alpha': [1e-05, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000], 'model__fit_intercept': [True, False], 'model__max_iter': [10000, 1000, 100, 100000, 1000000], 'model__positive': [False], 'model__copy_X': [True, False], 'model__solver': ['auto', 'svd', 'cholesky', 'lsqr', 'sparse_cg', 'sag', 'saga', 'lbfgs'], 'model__tol': [1e-05, 0.0001, 0.001, 0.01], 'model__random_state': [101]}
+<hr><h3>Range of hyperparameter results</h3><img src="../artifacts/linear_regression__ridge___v11__evolution_of_models_fig.png"/><hr><h3>Environment Variables</h3>{'notebook_environment': 'local', 'use_gpu': False, 'debug_mode': False, 'quick_mode': False, 'quick_override_cv_splits': 2, 'quick_override_n_iter': 10, 'quick_override_n_jobs': 3}
+<hr>

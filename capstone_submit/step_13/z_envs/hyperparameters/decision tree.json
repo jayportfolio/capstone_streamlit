@@ -1,0 +1,13 @@
+{
+	"splitter": ["best", "random"],
+	"random_state": [4, 8, 15, 16, 23, 42, 101],
+	"min_weight_fraction_leaf": [0.0, 0.1, 0.25, 0.5],
+	"min_samples_split": [2, 4, 8, 50, 100, 200, 500],
+	"min_samples_leaf": [1, 0.25, 0.5, 1.5, 2, 4, 8, 50],
+	"min_impurity_decrease": [0.0, 0.1, 0.25, 1, 5],
+	"max_leaf_nodes": [null, 2, 5, 10, 50, 100, 200, 500, 750],
+	"max_features": [null, 1.0, "sqrt", "log2", 0.5, 0.25, 0.1, 2],
+	"max_depth": [null, 1, 2, 5, 10, 50],
+	"criterion": ["squared_error", "friedman_mse", "absolute_error", "poisson"],
+	"ccp_alpha": [0.0, 0.05, 0.1, 0.25, 1, 5]
+}

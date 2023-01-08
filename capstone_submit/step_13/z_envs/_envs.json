@@ -1,0 +1,9 @@
+{
+  "notebook_environment": "local",
+  "use_gpu": false,
+  "debug_mode": false,
+  "quick_mode": false,
+  "quick_override_cv_splits": 2,
+  "quick_override_n_iter": 10,
+  "quick_override_n_jobs": 3
+}

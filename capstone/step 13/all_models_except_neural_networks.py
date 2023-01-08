@@ -1,5 +1,5 @@
 # To run:
-#  cd "capstone/step 13/";python all_models_except_neural_networks.py;cd ../..
+#  cd "capstone/step_13/";python all_models_except_neural_networks.py;cd ../..
 
 #!/usr/bin/env python
 # coding: utf-8

@@ -1,0 +1,41 @@
+{
+    "linear regression (ridge) (v11)": {
+        "Mean Absolute Error Accuracy": 61567.490155188425,
+        "Mean Squared Error Accuracy": 5825537228.148832,
+        "R square Accuracy": 0.4843016956392443,
+        "Root Mean Squared Error": 76325.20702984586,
+        "_method": "random search",
+        "_params": {
+            "model__alpha": 100,
+            "model__copy_X": true,
+            "model__fit_intercept": true,
+            "model__max_iter": 10000,
+            "model__positive": false,
+            "model__random_state": 101,
+            "model__solver": "saga",
+            "model__tol": 1e-05
+        },
+        "_score": 0.4843016956392443,
+        "_train time": 2.0381431579589844,
+        "best is shared": false,
+        "best method": "random search",
+        "best params": {
+            "model__alpha": 100,
+            "model__copy_X": true,
+            "model__fit_intercept": true,
+            "model__max_iter": 10000,
+            "model__positive": false,
+            "model__random_state": 101,
+            "model__solver": "saga",
+            "model__tol": 1e-05
+        },
+        "best run date": "2023-01-08 12:58:43.144331",
+        "best score": 0.4843016956392443,
+        "best time": 2.0381431579589844,
+        "date": "2023-01-08 12:58:43.144331",
+        "first run": "2023-01-08 12:58:43.144908",
+        "random_state": 101,
+        "run_env": "local",
+        "suboptimal": "pending"
+    }
+}
