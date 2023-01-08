@@ -1,0 +1,17 @@
+{
+
+            "booster": ["gblinear"],
+
+            "n_estimators": [100, 200, 500, 1000],
+            "early_stopping_rounds": [null],
+            "learning_rate": [null],
+
+            "lambda":[0,0.1, 0.5, 1, 2],
+            "feature_selector":["cyclic","random","greedy"],
+            "top_k":[0,3,10,50],
+    
+            "objective": ["reg:squarederror", "reg:squaredlogerror"],
+            "n_jobs": 3,
+            "verbosity": 1
+    
+        }

@@ -1,0 +1,12 @@
+{
+	"boosting_type": ["gbdt","rf","dart","goss"],
+	"colsample_bytree": 0.6,
+	"is_unbalance": [true,false],
+	"learning_rate": [0.0005, 0.005, 0.05, 0.5, 5],
+	"metric": "auc",
+	"min_child_samples": 20,
+	"n_estimators": [64, 132, 264],
+	"num_iterations": [25,50,100,500,1000],
+	"num_leaves": 20,
+	"verbose": 1
+}
