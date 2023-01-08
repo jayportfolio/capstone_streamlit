@@ -1,0 +1,2 @@
+cd /media/sf_shared_files/capstone_streamlit/capstone_submit/
+pandoc step_12/deployment_solution_markdown.md -o step_12/deployment_solution.pdf
